@@ -1,0 +1,13 @@
+.row-no-padding > [class*="col-"] {
+  padding-left: 0 !important;
+  padding-right: 0 !important; }
+
+.login-view .login-form {
+  max-width: 500px;
+  padding: 50px;
+  margin-left: auto;
+  margin-right: auto; }
+  .login-view .login-form .form-control {
+    margin-bottom: 15px; }
+
+/*# sourceMappingURL=style.css.map */

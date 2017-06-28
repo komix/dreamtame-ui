@@ -1,0 +1,25 @@
+<div class="login-view">
+  <div class="login-form text-center">
+    <h4>Вітаю!</h4>
+    <form data-ng-submit="vm.submit()">
+      <div class="form-group">
+        <input type="text"
+               class="form-control"
+               data-ng-model="vm.user.name"
+               placeholder="ім'я"
+               ng-required="true"
+        >
+        <input type="password"
+               class="form-control"
+               data-ng-model="vm.user.password"
+               placeholder="пароль"
+               ng-required="true"
+        >
+        <input type="submit" class="btn btn-default" value="Увійти">
+      </div>
+    </form>
+    <a ui-sref="photos.gallery" class="btn btn-primary">На сайт</a>
+  </div>
+</div>
+
+

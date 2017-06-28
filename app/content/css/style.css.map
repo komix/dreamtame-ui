@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,iCAAkC;EAChC,YAAY,EAAE,YAAY;EAC1B,aAAa,EAAE,YAAY;;ACD3B,uBAAY;EACV,SAAS,EAAE,KAAK;EAChB,OAAO,EAAE,IAAI;EACb,WAAW,EAAE,IAAI;EACjB,YAAY,EAAE,IAAI;EAElB,qCAAc;IACZ,aAAa,EAAE,IAAI",
+"sources": ["../scss/general.scss","../scss/auth.scss"],
+"names": [],
+"file": "style.css"
+}

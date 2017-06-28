@@ -1,0 +1,10 @@
+<div class="select-image-container">
+	<div ng-click="vm.triggerInput()" class="select-image-box" ng-class="{'image-editable': vm.editable}">
+		<img ng-show="vm.imageThumb.src" ng-src="{{vm.imageThumb.src}}">
+		<img ng-hide="vm.image.src" src="content/images/placeholder_cropped.jpg">
+		<div class="select-image-overlay">
+			<a href="" class="btn"><span ng-hide="vm.image.src">add image</span><span ng-show="vm.image.src">change image</span></a>
+		</div>
+	</div>
+	<input type="file" id='{{vm.inputId}}' class="select-image" onchange="angular.element(this).scope().vm.onImageLoaded(this.files[0])">
+</div>
