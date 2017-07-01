@@ -1,0 +1,30 @@
+<div class="modal-header">
+  <button type="button" class="close" ng-click="$dismiss()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <h4 class="modal-title">Add photo</h4>
+</div>
+<div class="modal-body">
+  <div ng-show="vm.dataUrl && !vm.preview.dataUrl" class="img-container">
+    <img ng-src="{{vm.dataUrl}}"
+         ng-cropper
+         ng-cropper-proxy="vm.cropperProxy"
+         ng-cropper-show="vm.showEvent"
+         ng-cropper-hide="vm.hideEvent"
+         ng-cropper-options="vm.options">
+  </div>
+
+  <button ng-hide="vm.preview.dataUrl" class="btn btn-success show-preview" ng-click="vm.getPreview()">Next</button>
+
+  <div class="preview-container">
+    <img ng-if="vm.preview.dataUrl" ng-src="{{vm.preview.dataUrl}}">
+  </div>
+
+  <div ng-show="vm.preview.dataUrl" class="photo-submit-container">
+    <a href="" class="btn btn-success" ng-click="vm.sendFile(vm.preview.dataUrl)">Save</a>
+    <!--<a href="" class="btn btn-primary" ng-click="vm.scale()" data-ng-bind="vm.cropperService.cropWidth"></a>-->
+    <a href="" class="btn btn-danger" ng-click="vm.preview.dataUrl = null">Cancel</a>
+  </div>
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-sm btn-default" ng-click="$dismiss()">Close</button>
+</div>

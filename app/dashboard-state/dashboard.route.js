@@ -10,7 +10,9 @@
                     templateUrl: 'dashboard-state/dashboard.view.html',
                     controller: 'DashboardController',
                     controllerAs: 'vm',
-                    needAuth: true
+                    permissions: {
+                        only: 'seeDashboard'
+                    }
                 })
         }])
 })();

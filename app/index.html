@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="bower_components/photoswipe/dist/photoswipe.css">
   <link rel="stylesheet" href="bower_components/photoswipe/dist/default-skin/default-skin.css">
+  <link href="bower_components/ng-cropper/dist/ngCropper.all.css" rel="stylesheet">
   <link rel="stylesheet" href="content/css/style.css">
 </head>
 <body ng-controller='BaseController as vm'>
@@ -26,8 +27,7 @@
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
-
-  <div ui-view></div>
+  <div ng-include="'layout/shell.html'" id="shell-wrap"></div>
   <div data-dt-photoswipe></div>
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
@@ -61,7 +61,7 @@
   <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
   <script src="bower_components/angular-masonry/angular-masonry.js"></script>
   <script src='bower_components/ngInfiniteScroll/build/ng-infinite-scroll.min.js'></script>
-  <script src="bower_components/angular-google-analytics/dist/angular-google-analytics.js"></script>
+  <!--<script src="bower_components/angular-google-analytics/dist/angular-google-analytics.js"></script>-->
   <script src="bower_components/ngstorage/ngStorage.min.js"></script>
   <!--<script src="bower_components/ng-photoswipe/angular-photoswipe.min.js"></script>-->
   <script src="bower_components/chance/dist/chance.min.js"></script>
@@ -76,19 +76,32 @@
 
 
   <script src="api/dtApi.js"></script>
+  <script src="blocks/photos/photos.service.js"></script>
 
 
   <script src="core/base.controller.js"></script>
 
   <script src="core/auth-interceptor/auth-interceptor.service.js"></script>
   <script src="core/auth-interceptor/auth-interceptor.config.js"></script>
+  <script src="core/router.run.js"></script>
   <script src="core/router.helper.js"></script>
+
+  <script src="core/data-models/PermissionsGroup.js"></script>
+  <script src="core/permissions.js"></script>
 
   <script src="layout/modals/confirm-modal/confirm-modal.controller.js"></script>
   <script src="layout/select-image/select-image.directive.js"></script>
   <script src="layout/select-image/image-service.service.js"></script>
+
+  <script src="layout/cropper/cropper.service.js"></script>
+  <script src="layout/cropper/cropper.controller.js"></script>
   <!--<script src="layout/dt-photoswipe/photoswipe.directive.js"></script>-->
 
+  <script src="home-state/home.route.js"></script>
+  <script src="home-state/home.controller.js"></script>
+
+  <script src="profile-state/profile.controller.js"></script>
+  <script src="profile-state/profile.route.js"></script>
 
   <script src="login-state/login.route.js"></script>
   <script src="login-state/login.controller.js"></script>
@@ -103,7 +116,5 @@
   <script src="dashboard-state/dashboard.controller.js"></script>
 
 
-
-  <script src="components/version/interpolate-filter.js"></script>
 </body>
 </html>

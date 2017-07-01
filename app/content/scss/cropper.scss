@@ -1,0 +1,26 @@
+.modal-body {
+  .show-preview {
+    display: block;
+    margin: 30px auto;
+    padding: 10 30px;
+
+  }
+  .img-container {
+    width: 100%;
+    margin: 0 auto;
+    img {
+      width: 40%;
+    }
+  }
+  .preview-container {
+    img {
+      width: 50%;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  .photo-submit-container {
+    padding: 30px;
+    text-align: center;
+  }
+}

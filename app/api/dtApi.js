@@ -13,7 +13,7 @@
             resource = $resource('', {}, {
                 getUserById: {method: 'GET', url: apiUrl + '/users/:id', isArray: false},
                 getUserByToken: {method: 'GET', url: apiUrl + '/api/users/get/by-token', isArray: false},
-                updateUser: {method: 'PUT', url: apiUrl + '/users/:id', isArray: false}
+                updateUser: {method: 'PUT', url: apiUrl + '/api/users/:id', isArray: false}
             }),
             service = {
                 user: {

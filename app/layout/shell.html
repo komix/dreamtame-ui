@@ -1,0 +1,39 @@
+<div class="shell">
+  <header class="main-header">
+    <div class="inner-header">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="site-logo">
+            <img src="content/icons/logo_dt.svg">
+          </div>
+          <div class="site-name">
+            <h1>Dreamtame</h1>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <ul class="navigation">
+            <li><a data-ui-sref="home">Home</a></li>
+            <li><a data-ui-sref="about">About</a></li>
+            <li data-ng-if="!vm.isLoggedIn()">
+              <a data-ui-sref="login">Login</a>
+            </li>
+            <li data-ng-if="vm.isStateAvailable('dashboard')">
+              <a data-ui-sref="dashboard">Dashboard</a>
+            </li>
+            <li data-ng-if="vm.isLoggedIn()">
+              <a href="#"
+                 data-ng-click="vm.logout()"
+              >Logout</a>
+            </li>
+            <li data-ng-if="vm.isLoggedIn()">
+              <a data-ui-sref="profile({id: vm.users.current.id})">Profile</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="content-block">
+    <div data-ui-view></div>
+  </div>
+</div>

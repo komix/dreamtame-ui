@@ -5,17 +5,11 @@
         .module('app')
         .controller('AboutController', AboutController);
 
-    AboutController.$inject = ['$stateParams', 'categories'];
+    AboutController.$inject = [];
 
-    function AboutController($stateParams, categories) {
+    function AboutController() {
         var vm = this;
 
-
-        //activate();
-        //
-        //function activate() {
-        //
-        //}
 
     }
 

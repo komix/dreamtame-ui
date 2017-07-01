@@ -7,7 +7,7 @@
             $stateProvider
                 .state('about', {
                     url:'/about',
-                    templateUrl: 'about/about.html',
+                    templateUrl: 'about-state/about.view.html',
                     controller: 'AboutController',
                     controllerAs: 'vm'
                 })

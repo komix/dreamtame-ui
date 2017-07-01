@@ -17,32 +17,51 @@
             templateUrl: 'layout/select-image/select-image.html',
             scope: {
                 image: '=',
-                imageThumb: '=?',
-                editable: '=?'
+                editable: '=?',
+                config: '=?'
             }
         };
 
         return directive;
     }
 
-    SelectImageController.$inject = ['$scope', '$element', 'imageService'];
+    SelectImageController.$inject = ['$scope', '$element', 'imageService', 'cropperService'];
 
-    function SelectImageController($scope, $element, imageService) {
+    function SelectImageController($scope, $element, imageService, cropperService) {
         var vm = this;
         vm.triggerInput = triggerInput;
         vm.onImageLoaded = onImageLoaded;
 
         vm.inputId = 'input-' + chance.guid();
-        vm.image = '';
 
-        function onImageLoaded(file) {
-            imageService.resize(file).then(function(response) {
-                vm.image = response.imgUrl;
-                vm.imageThumb = response.thumbUrl;
-                $('#' + vm.inputId).val(null);
-            });
+        var defaultConfig = {
+            aspectRatio: 1,
+            resizeTo: 700,
+            mWidth: 500
+        };
+
+        if (vm.config) {
+            vm.config.aspectRatio = vm.config.aspectRatio || defaultConfig.aspectRatio;
+            vm.config.resizeTo = vm.config.resizeTo || defaultConfig.resizeTo;
+            vm.config.mWidth = vm.config.mWidth || defaultConfig.mWidth;
+        } else {
+            vm.config = defaultConfig;
         }
 
+        function onImageLoaded(file) {
+            cropperService.openCropper(file, vm.config.aspectRatio, vm.config.resizeTo, vm.config.mWidth)
+                .then(function(data){
+                    vm.image = data;
+                    if (vm.config.onChange) {
+                        vm.config.onChange(data);
+                    }
+                })
+                .catch(function(err) {
+                    console.log('err');
+                });
+
+            $('#' + vm.inputId).val(null);
+        }
 
         function triggerInput() {
             $('#' + vm.inputId).click();

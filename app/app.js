@@ -10,17 +10,24 @@ angular
       'ngResource',
       'ngCropper',
       'infinite-scroll',
-      'angular-google-analytics'
+      //'angular-google-analytics'
     ])
 
-    .config(['$urlRouterProvider', '$locationProvider', 'AnalyticsProvider',
-      function($urlRouterProvider, $locationProvider, AnalyticsProvider) {
-        $locationProvider.html5Mode(true);
-        $urlRouterProvider.otherwise("login");
-        AnalyticsProvider.setAccount('UA-100601648-1');
-      }])
-    .run(['Analytics', function(Analytics) { }]);
+    //.config(['$urlRouterProvider', '$locationProvider', 'AnalyticsProvider',
+    //  function($urlRouterProvider, $locationProvider, AnalyticsProvider) {
+    //    //$locationProvider.html5Mode(true);
+    //    $urlRouterProvider.otherwise("login");
+    //    AnalyticsProvider.setAccount('UA-100601648-1');
+    //  }])
+    //.run(['Analytics', function(Analytics) { }]);
 
+    .config(['$urlRouterProvider', '$locationProvider',
+        function($urlRouterProvider, $locationProvider) {
+            //$locationProvider.html5Mode(true);
+            $urlRouterProvider.otherwise("login");
+            //AnalyticsProvider.setAccount('UA-100601648-1');
+        }]);
+    //.run(['Analytics', function(Analytics) { }]);
 
 
 

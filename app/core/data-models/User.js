@@ -36,6 +36,7 @@
 
         User.prototype.login = function(credentials) {
             var _this = this;
+
             $http({
                 method: 'POST',
                 url: global.apiUrl + '/api/login_check',
@@ -52,11 +53,14 @@
                 $localStorage.token = response.data.token;
                 _this.currentToken = response.data.token;
                 _this.load().then(function(response) {
-                    console.log(response);
                     _this.init(response);
                     _this.emit('onLoaded');
                 });
             });
+        };
+
+        User.prototype.logout = function() {
+            this.emit('onLoggedOut');
         };
 
         User.prototype.load = function() {

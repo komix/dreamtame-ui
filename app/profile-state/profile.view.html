@@ -1,0 +1,33 @@
+<div class="profile-view">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+        <select-image data-image="vm.image"
+                      data-config="vm.selImgConfig"
+                      data-editable="vm.isImageEditable">
+        </select-image>
+      </div>
+      <div class="col-md-9">
+        <div class="user-info">
+          <p data-ng-bind="vm.user.firstName"></p>
+          <p data-ng-bind="vm.user.lastName"></p>
+          <button class="btn btn-default"
+                  data-ng-click="vm.logOut()"
+          >Вийти</button>
+          <a ui-sref="edit-profile"
+            class="btn btn-default">
+            редагувати профіль
+            <i class="fa fa-pencil"></i>
+          </a>
+          <a ui-sref="manage-institution"
+             class="btn btn-default">
+            <i class="fa fa-plus"></i>
+            додати групу
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

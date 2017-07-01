@@ -1,0 +1,42 @@
+.shell {
+  .main-header {
+    .inner-header {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .site-logo {
+      display: inline-block;
+      padding: 10px;
+
+      img {
+        height: 45px;
+      }
+    }
+
+    .site-name {
+      display: inline-block;
+      font-family: 'Poppins', sans-serif;
+
+      h1 {
+        font-size: 21px;
+        font-weight: normal;
+        margin: 0;
+        padding: 19px 0;
+      }
+    }
+
+    .navigation {
+      list-style-type: none;
+      margin: 0;
+
+      li {
+        display: inline-block;
+        a {
+          display: block;
+          padding: 10px;
+        }
+      }
+    }
+  }
+}

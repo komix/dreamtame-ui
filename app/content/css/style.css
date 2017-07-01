@@ -1,3 +1,82 @@
+.shell .main-header .inner-header {
+  max-width: 900px;
+  margin: 0 auto; }
+.shell .main-header .site-logo {
+  display: inline-block;
+  padding: 10px; }
+  .shell .main-header .site-logo img {
+    height: 45px; }
+.shell .main-header .site-name {
+  display: inline-block;
+  font-family: 'Poppins', sans-serif; }
+  .shell .main-header .site-name h1 {
+    font-size: 21px;
+    font-weight: normal;
+    margin: 0;
+    padding: 19px 0; }
+.shell .main-header .navigation {
+  list-style-type: none;
+  margin: 0; }
+  .shell .main-header .navigation li {
+    display: inline-block; }
+    .shell .main-header .navigation li a {
+      display: block;
+      padding: 10px; }
+
+.home-view .main-banner {
+  width: 100%;
+  height: 400px;
+  background-image: url("../images/main-banner.jpg");
+  background-size: cover;
+  background-position-y: bottom; }
+
+.select-image-container {
+  width: 100%; }
+  .select-image-container .select-image-box {
+    width: 100%;
+    position: relative; }
+    .select-image-container .select-image-box img {
+      width: 100%; }
+    .select-image-container .select-image-box .select-image-overlay {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      text-align: center;
+      line-height: 100%; }
+      .select-image-container .select-image-box .select-image-overlay a {
+        border: 1px solid #fff;
+        border-radius: 0;
+        margin-top: calc(50% - 17px);
+        vertical-align: center;
+        text-transform: uppercase; }
+        .select-image-container .select-image-box .select-image-overlay a:hover {
+          color: #fff; }
+    .select-image-container .select-image-box.image-editable:hover .select-image-overlay {
+      display: block; }
+  .select-image-container #photo-input, .select-image-container .select-image {
+    display: none; }
+
+.modal-body .show-preview {
+  display: block;
+  margin: 30px auto;
+  padding: 10 30px; }
+.modal-body .img-container {
+  width: 100%;
+  margin: 0 auto; }
+  .modal-body .img-container img {
+    width: 40%; }
+.modal-body .preview-container img {
+  width: 50%;
+  display: block;
+  margin: 0 auto; }
+.modal-body .photo-submit-container {
+  padding: 30px;
+  text-align: center; }
+
 .row-no-padding > [class*="col-"] {
   padding-left: 0 !important;
   padding-right: 0 !important; }

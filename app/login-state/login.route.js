@@ -9,7 +9,10 @@
                     url:'/login',
                     templateUrl: 'login-state/login.view.html',
                     controller: 'LoginController',
-                    controllerAs: 'vm'
+                    controllerAs: 'vm',
+                    permissions: {
+                        except: 'isAuthorized'
+                    }
                 })
         }])
 })();

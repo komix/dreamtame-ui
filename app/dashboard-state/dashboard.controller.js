@@ -4,15 +4,15 @@
 		.module('app')
 		.controller('DashboardController', DashboardController);
 
-	DashboardController.$inject = ['user'];
+	DashboardController.$inject = ['users'];
 
-	function DashboardController(user) {
+	function DashboardController(users) {
 		var vm = this;
 
 		vm.logOut = logOut;
 
 		function logOut() {
-			user.logout();
+			users.logout();
 		}
 
 	}
