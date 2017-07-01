@@ -3,9 +3,22 @@
 		<img ng-show="vm.image.src" ng-src="{{vm.image.src}}">
 		<img ng-hide="vm.image.src" src="content/images/placeholder_cropped.jpg">
 		<div class="select-image-overlay"
+				 data-ng-if="!vm.config.buttonUnder"
 				 data-ng-click="vm.triggerInput()">
-			<a href="" class="btn"><span ng-hide="vm.image.src">додати фото</span><span ng-show="vm.image.src">змінити фото</span></a>
+			<a href="#" class="btn"><span ng-hide="vm.image.src">додати фото</span><span ng-show="vm.image.src">змінити фото</span></a>
 		</div>
 	</div>
+	<div class="change-add-buttons"
+	data-ng-if="vm.config.buttonUnder">
+		<button class="btn btn-default"
+						ng-show="vm.image.src"
+						data-ng-click="vm.triggerInput()"
+		>Змінити фото</button>
+		<button class="btn btn-default"
+						ng-hide="vm.image.src"
+						data-ng-click="vm.triggerInput()"
+		>Додати фото</button>
+	</div>
+
 	<input type="file" id='{{vm.inputId}}' class="select-image" onchange="angular.element(this).scope().vm.onImageLoaded(this.files[0])">
 </div>
