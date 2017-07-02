@@ -1,0 +1,32 @@
+<div class="manage-inst-view">
+  <h1 data-ng-bind="vm.actionName"></h1>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3">
+        <select-image data-image="vm.image"
+                      data-config="vm.selImgConfig"
+                      data-editable="vm.isImageEditable">
+        </select-image>
+      </div>
+      <div class="col-sm-9">
+        <form data-ng-submit="vm.submit()">
+          <div class="manage-inst-form">
+            <div class="form-group">
+              <label class="form-label" for="name-input">Назва:</label>
+              <input type="text"
+                     class="form-control"
+                     data-ng-model="vm.inst.title"
+                     placeholder="Назва"
+                     id="name-input"
+                     data-ng-required="true"
+              >
+            </div>
+
+          </div>
+          <input type="submit" value="Зберегти зміни" class="btn btn-default">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

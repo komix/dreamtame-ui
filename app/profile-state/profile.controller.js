@@ -39,7 +39,6 @@
 
         function onProfileImageChange(image) {
             photosService.add(image).then(function(response) {
-               console.log(response);
                 users.update(users.current.id, {photoId: response.data.id});
             });
         }
