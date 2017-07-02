@@ -97,4 +97,33 @@
 .edit-profile-view .edit-profile-form {
   max-width: 400px; }
 
+.form-group {
+  margin-bottom: 10px; }
+
+.categories-tree {
+  list-style-type: none;
+  margin-bottom: 0;
+  max-width: 600px; }
+  .categories-tree ul {
+    list-style-type: none;
+    margin-bottom: 0; }
+    .categories-tree ul .nested-items {
+      margin-left: 10px; }
+  .categories-tree .list-group-item {
+    padding-left: 30px;
+    cursor: pointer; }
+    .categories-tree .list-group-item .toggle-icons {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 30px;
+      text-align: center;
+      line-height: 40px; }
+
+.dashboard-view .admin-buttons {
+  padding: 20px; }
+  .dashboard-view .admin-buttons .btn {
+    margin-right: 10px; }
+
 /*# sourceMappingURL=style.css.map */

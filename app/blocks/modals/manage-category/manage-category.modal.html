@@ -1,0 +1,31 @@
+<div class="modal-header">
+  <button type="button" class="close" ng-click="$dismiss()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  <h4 class="modal-title" id="{{$index}}-label" data-ng-bind="vm.modalMessage"></h4>
+</div>
+<div class="modal-body">
+  <form data-ng-submit="vm.submit()">
+    <div class="form-group">
+      <label for="name-input" class="form-label">Назва англійською:</label>
+      <input class="form-control"
+             type="text"
+             placeholder="назва категорії англійською"
+             ng-model="vm.cat.name"
+             id="name-input"
+      >
+    </div>
+    <div class="form-group">
+      <label for="uk-name-input" class="form-label">Назва українською:</label>
+      <input class="form-control"
+             type="text"
+             placeholder="назва категорії українською"
+             ng-model="vm.cat.ukName"
+             id="uk-name-input"
+      >
+    </div>
+
+    <input class="btn btn-success" type="submit">
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-sm btn-default" ng-click="$dismiss()">Close</button>
+</div>

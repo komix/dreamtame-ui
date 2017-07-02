@@ -1,0 +1,40 @@
+<ul class="categories-tree list-group">
+  <li data-ng-transclude></li>
+  <li data-ng-repeat="item in vm.tree track by $index"
+      data-ng-click="vm.toggleItemExpantion(item, $event)"
+      class="nested-items">
+    <div class="list-group-item">
+      <div class="toggle-icons" data-ng-if="item.children">
+        <i class="fa fa-chevron-right toggle-icon" data-ng-if="!item.isExpanded"></i>
+        <i class="fa fa-chevron-down toggle-icon" data-ng-if="item.isExpanded"></i>
+      </div>
+
+      <span ng-bind="item.ukName"></span>
+      <div class="pull-right">
+				<span>
+					<button class="btn btn-default btn-xs"
+                  data-ng-click="vm.showAddCategoryModal($event, item)"
+                  title="Додати категорію">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+          </button>
+					<button class="btn btn-default btn-xs"
+                  data-ng-click="vm.showEditCategoryModal($event, item)"
+                  title="Редагувати категорію">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </button>
+					<button class="btn btn-danger btn-xs"
+                  data-ng-click="vm.showDeleteCategoryModal($event, item)"
+                  data-ng-if="!item.children"
+                  title="Видалити категорію">
+            <i class="fa fa-trash-o" aria-hidden="true"></i>
+          </button>
+				</span>
+      </div>
+    </div>
+
+
+    <div data-ng-if="item.isExpanded" class="nested-items">
+      <cat-tree data-tree="item.children"></cat-tree>
+    </div>
+  </li>
+</ul>

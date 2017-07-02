@@ -10,13 +10,13 @@
     function confirm($q, $uibModal, $uibModalStack) {
     	var defer;
     	var service = {
-    		openConfirmModal: openConfirmModal,
+    		open: open,
     		resolve: resolve
     	};
 
     	return service;
 
-    	function openConfirmModal(message) {
+    	function open(message) {
             defer = $q.defer();
             var modalInstance = $uibModal.open({
                 animation: true,

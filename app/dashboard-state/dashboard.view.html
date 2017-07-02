@@ -1,12 +1,13 @@
-<div class="dashboard-container">
+<div class="dashboard-view">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="admin-buttons">
-				<button class="btn btn-warning" data-ng-click="vm.logOut()">Log Out</button>
-				<button class="btn btn-default" ui-sref="photos.gallery">Back to site</button>
+				<button class="btn btn-warning" data-ng-click="vm.logOut()">Вийти</button>
+				<button class="btn btn-primary" ui-sref="home">На сайт</button>
+				<button class="btn btn-default" ui-sref="dashboard.categories">Категорії</button>
 			</div>
 			<div class="col-md-12">
-				<div ui-view></div>
+				<div data-ui-view></div>
 			</div>
 		</div>
 	</div>

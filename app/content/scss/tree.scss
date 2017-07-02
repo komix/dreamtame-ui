@@ -1,0 +1,35 @@
+.categories-tree {
+  list-style-type: none;
+  margin-bottom: 0;
+  max-width: 600px;
+
+  ul {
+    list-style-type: none;
+    margin-bottom: 0;
+
+    .nested-items {
+      margin-left: 10px;
+    }
+
+  }
+
+  .list-group-item {
+    padding-left: 30px;
+    cursor: pointer;
+
+    .toggle-icons {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 30px;
+      text-align: center;
+      line-height: 40px;
+
+      .toggle-icon {
+
+      }
+    }
+  }
+
+}
