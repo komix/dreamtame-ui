@@ -21,10 +21,11 @@ angular
     //  }])
     //.run(['Analytics', function(Analytics) { }]);
 
-    .config(['$urlRouterProvider', '$locationProvider',
-        function($urlRouterProvider, $locationProvider) {
+    .config(['$urlRouterProvider', '$locationProvider', '$compileProvider',
+        function($urlRouterProvider, $locationProvider, $compileProvider) {
             //$locationProvider.html5Mode(true);
             $urlRouterProvider.otherwise("login");
+            $compileProvider.preAssignBindingsEnabled(true);
             //AnalyticsProvider.setAccount('UA-100601648-1');
         }]);
     //.run(['Analytics', function(Analytics) { }]);

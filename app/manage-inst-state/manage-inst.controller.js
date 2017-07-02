@@ -4,9 +4,9 @@
         .module('app')
         .controller('ManageInstController', ManageInstController);
 
-    ManageInstController.$inject = ['$stateParams', 'users', 'instService'];
+    ManageInstController.$inject = ['$q', '$stateParams', 'users', 'instService', 'categoriesService'];
 
-    function ManageInstController($stateParams, users, instService) {
+    function ManageInstController($q, $stateParams, users, instService, categoriesService) {
         var vm = this;
 
         var instId = $stateParams.id;
@@ -19,14 +19,20 @@
             onChange: onInstImageChange
         };
 
+        var infSelectConfig = {
+            tree: null,
+            preselected: null
+        };
+
+        vm.instId = instId;
         vm.selImgConfig = selImgConfig;
         vm.isCreateState = true;
+        vm.isLoadInProcess = true;
 
         activate();
 
         function activate() {
             if (instId) {
-                getInst(instId);
                 vm.isCreateState = false;
                 vm.actionName = 'Редагувати групу';
             } else {
@@ -34,13 +40,37 @@
                 vm.actionName = 'Створити групу';
                 vm.inst = {};
             }
+
+            $q.all(getPromises()).then(function(responses) {
+                vm.isLoadInProcess = false;
+                vm.infSelectConfig = infSelectConfig;
+            })
         }
 
-        function getInst(id) {
-            instService.get(id).then(function(response) {
+        function getPromises() {
+            var promises = [];
+
+            promises.push(getCategoriesPromise());
+
+            if (!vm.isCreateState) {
+                promises.push(getInstPromise())
+            }
+
+            return promises;
+        }
+
+        function getCategoriesPromise() {
+            return categoriesService.getTree().then(function(response) {
+                infSelectConfig.tree = response.data;
+            });
+        }
+
+        function getInstPromise() {
+            return instService.get(vm.instId).then(function(response) {
                 vm.inst = response.data;
                 getInstPhoto(vm.inst.photoId);
                 vm.isImageEditable = parseInt(vm.inst.owner) === parseInt(users.current.id);
+                infSelectConfig.preselected = vm.inst.categoryId;
             });
         }
 
