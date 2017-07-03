@@ -42,7 +42,8 @@
                 var preselectedCat = hash[vm.config.preselected];
                 var hierarchy = getHierarchy(hash, preselectedCat);
 
-                vm.selectedOptionsList = hierarchy;
+                helper.updateArrayByReference(vm.config.selectedList);
+
                 vm.selected = hierarchy[0];
 
                 _.each(hierarchy, function(elem, index) {
@@ -50,8 +51,6 @@
                         vm.selectedSubLoc[elem.id] = hierarchy[index + 1]
                     }
                 });
-            } else {
-                vm.selectedOptionsList = [];
             }
         }
 
@@ -90,17 +89,25 @@
         }
 
         function onBaseOptionChanged() {
-            vm.selectedOptionsList.length = 0;
-            vm.selectedOptionsList.push(vm.selected);
+            vm.config.selectedList.length = 0;
+            vm.config.selectedList.push(vm.selected);
+            checkValidity();
         }
 
         function onOptionsChanged(id, index) {
-            vm.selectedOptionsList.splice(index + 1, vm.selectedOptionsList.length);
+            vm.config.selectedList.splice(index + 1, vm.config.selectedList.length);
 
             if (vm.selectedSubLoc && vm.selectedSubLoc[id]) {
-                vm.selectedOptionsList.push(vm.selectedSubLoc[id]);
+                vm.config.selectedList.push(vm.selectedSubLoc[id]);
             }
 
+            checkValidity();
+        }
+
+        function checkValidity() {
+            vm.config.valid = vm.config.requiredAll ?
+                !_.last(vm.config.selectedList).children
+                : true;
         }
     }
 

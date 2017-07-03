@@ -21,13 +21,18 @@
 
         var infSelectConfig = {
             tree: null,
-            preselected: null
+            preselected: null,
+            selectedList: [],
+            valid: false,
+            requiredAll: true
         };
 
         vm.instId = instId;
         vm.selImgConfig = selImgConfig;
         vm.isCreateState = true;
         vm.isLoadInProcess = true;
+
+        vm.submit = submit;
 
         activate();
 
@@ -85,6 +90,11 @@
             photosService.get(photoId).then(function(response) {
                 vm.image = response.data;
             });
+        }
+
+        function submit() {
+            if (!vm.infSelectConfig.valid) { return false; }
+            vm.inst.categoryId = _.last(vm.infSelectConfig.selectedList).id;
         }
     }
 

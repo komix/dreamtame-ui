@@ -5,12 +5,12 @@
     <option value=''>Оберіть категорію</option>
   </select>
 
-  <div ng-repeat="options in vm.selectedOptionsList track by $index">
+  <div ng-repeat="options in vm.config.selectedList track by $index">
     <select ng-options="item as item.name for item in options.children track by item.id"
             data-ng-model="vm.selectedSubLoc[options.id]"
             data-ng-if="options.children"
             data-ng-change="vm.onOptionChanged(options.id, $index)">
-      <option value=''>Choose Region</option>
+      <option value=''>Оберіть підкатегорію</option>
     </select>
   </div>
 </div>
