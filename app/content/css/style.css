@@ -86,6 +86,14 @@
   padding-left: 0 !important;
   padding-right: 0 !important; }
 
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
 .login-view .login-form {
   max-width: 500px;
   padding: 50px;
@@ -97,8 +105,17 @@
 .edit-profile-view .edit-profile-form {
   max-width: 400px; }
 
-.form-group {
+.dt-form .form-group {
   margin-bottom: 10px; }
+  .dt-form .form-group .form-control {
+    margin-bottom: 10px; }
+.dt-form .ng-dirty.ng-invalid {
+  border-color: #FF7F7F;
+  background-color: #ffe6e6; }
+.dt-form select {
+  -webkit-appearance: none;
+  width: auto;
+  min-width: 300px; }
 
 .categories-tree {
   list-style-type: none;
@@ -125,5 +142,16 @@
   padding: 20px; }
   .dashboard-view .admin-buttons .btn {
     margin-right: 10px; }
+
+.dt-google-map .google-map {
+  height: 250px; }
+
+.manage-inst-view {
+  max-width: 1024px;
+  margin: 0 auto; }
+  .manage-inst-view .page-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    text-align: center; }
 
 /*# sourceMappingURL=style.css.map */

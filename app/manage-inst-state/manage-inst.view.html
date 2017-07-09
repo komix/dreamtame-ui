@@ -1,5 +1,5 @@
 <div class="manage-inst-view">
-  <h1 data-ng-bind="vm.actionName"></h1>
+  <h1 class="page-title" data-ng-bind="vm.actionName"></h1>
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-3">
@@ -9,8 +9,8 @@
         </select-image>
       </div>
       <div class="col-sm-9">
-        <form data-ng-submit="vm.submit()">
-          <div class="manage-inst-form">
+        <form name="vm.form" data-ng-submit="vm.submit()">
+          <div class="manage-inst-form dt-form">
             <div class="form-group">
               <label class="form-label" for="name-input">Назва:</label>
               <input type="text"
@@ -19,17 +19,38 @@
                      placeholder="Назва"
                      id="name-input"
                      data-ng-required="true"
+                     data-ng-trim="true"
               >
             </div>
 
-            <div data-ng-if="vm.infSelectConfig"
-                 data-infinite-select
-                 data-config="vm.infSelectConfig"
-            ></div>
+            <div class="form-group">
+              <label class="form-label" for="name-input">Категорія:</label>
+              <div data-ng-if="vm.infSelectConfig"
+                   data-infinite-select
+                   data-config="vm.infSelectConfig"
+              ></div>
+            </div>
 
+            <div class="form-group">
+              <label class="form-label" for="description-input">Опис:</label>
+              <textarea class="form-control"
+                        data-ng-model="vm.inst.description"
+                        placeholder="Опис"
+                        id="description-input"
+                        data-ng-required="true"
+              ></textarea>
+            </div>
+
+
+            <div class="form-group" data-ng-if="vm.googleMapsConfig">
+              <label class="form-label" for="name-input">Адреса:</label>
+              <d-google-map data-config="vm.googleMapsConfig"
+              >
+              </d-google-map>
+            </div>
           </div>
-          <input type="submit" value="Зберегти зміни" class="btn btn-default">
         </form>
+        <button class="btn btn-default" data-ng-bind="vm.submitActionTitle" data-ng-click="vm.submit()"></button>
       </div>
     </div>
   </div>

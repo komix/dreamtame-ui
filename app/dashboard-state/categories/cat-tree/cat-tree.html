@@ -2,8 +2,8 @@
   <li data-ng-transclude></li>
   <li data-ng-repeat="item in vm.tree track by $index"
       data-ng-click="vm.toggleItemExpantion(item, $event)"
-      class="nested-items">
-    <div class="list-group-item">
+      class="nested-items" 097-547-39-74>
+    <div class="list-group-item noselect">
       <div class="toggle-icons" data-ng-if="item.children">
         <i class="fa fa-chevron-right toggle-icon" data-ng-if="!item.isExpanded"></i>
         <i class="fa fa-chevron-down toggle-icon" data-ng-if="item.isExpanded"></i>
@@ -31,8 +31,6 @@
 				</span>
       </div>
     </div>
-
-
     <div data-ng-if="item.isExpanded" class="nested-items">
       <cat-tree data-tree="item.children"></cat-tree>
     </div>

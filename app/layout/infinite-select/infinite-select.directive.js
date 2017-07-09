@@ -22,13 +22,12 @@
         return directive;
     }
 
-    InfiniteSelectController.$inject = ['$rootScope'];
+    InfiniteSelectController.$inject = ['$rootScope', 'helper'];
     /* @ngInject */
 
-    function InfiniteSelectController($rootScope) {
+    function InfiniteSelectController($rootScope, helper) {
         var vm = this;
-
-        vm.selected = {};
+        vm.selected = null;
         vm.selectedSubLoc = {};
 
         vm.onBaseOptionChanged = onBaseOptionChanged;
@@ -37,12 +36,12 @@
         activate();
 
         function activate() {
-            if (preselectedCat) {
+            if (vm.config.preselected) {
                 var hash = getHash(vm.config.tree);
                 var preselectedCat = hash[vm.config.preselected];
                 var hierarchy = getHierarchy(hash, preselectedCat);
 
-                helper.updateArrayByReference(vm.config.selectedList);
+                helper.updateArrayByReference(vm.config.selectedList, hierarchy);
 
                 vm.selected = hierarchy[0];
 
@@ -91,7 +90,6 @@
         function onBaseOptionChanged() {
             vm.config.selectedList.length = 0;
             vm.config.selectedList.push(vm.selected);
-            checkValidity();
         }
 
         function onOptionsChanged(id, index) {
@@ -100,14 +98,6 @@
             if (vm.selectedSubLoc && vm.selectedSubLoc[id]) {
                 vm.config.selectedList.push(vm.selectedSubLoc[id]);
             }
-
-            checkValidity();
-        }
-
-        function checkValidity() {
-            vm.config.valid = vm.config.requiredAll ?
-                !_.last(vm.config.selectedList).children
-                : true;
         }
     }
 

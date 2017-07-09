@@ -37,9 +37,9 @@
             return defered.promise;
         }
 
-        function update(inst) {
+        function update(instId, inst) {
             var defered = $q.defer();
-            $http.put(apiUrl +  '/api/institutions/' + inst.id, inst).then(function(data){
+            $http.put(apiUrl +  '/api/institutions/' + instId, inst).then(function(data){
                 defered.resolve(data);
             });
             return defered.promise;

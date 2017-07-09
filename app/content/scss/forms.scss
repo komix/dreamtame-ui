@@ -1,3 +1,24 @@
-.form-group {
-  margin-bottom: 10px;
+
+
+.dt-form {
+  .form-group {
+    margin-bottom: 10px;
+
+    .form-control {
+      margin-bottom: 10px;
+    }
+  }
+
+  .ng-dirty {
+    &.ng-invalid {
+      border-color: #FF7F7F;
+      background-color: #ffe6e6;
+    }
+  }
+
+  select {
+    -webkit-appearance: none;
+    width: auto;
+    min-width: 300px;
+  }
 }

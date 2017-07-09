@@ -50,14 +50,15 @@
 
         function onImageLoaded(file) {
             cropperService.openCropper(file, vm.config.aspectRatio, vm.config.resizeTo, vm.config.mWidth)
-                .then(function(data){
-                    vm.image = data;
-                    if (vm.config.onChange) {
-                        vm.config.onChange(data);
-                    }
-                })
                 .catch(function(err) {
-                    console.log('err');
+                    console.log(err);
+                })
+                .then(function(response){
+                    if (!response) { return false; }
+                    vm.image = response;
+                    if (vm.config.onChange) {
+                        vm.config.onChange(response);
+                    }
                 });
 
             $('#' + vm.inputId).val(null);

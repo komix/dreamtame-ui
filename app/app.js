@@ -21,11 +21,12 @@ angular
     //  }])
     //.run(['Analytics', function(Analytics) { }]);
 
-    .config(['$urlRouterProvider', '$locationProvider', '$compileProvider',
-        function($urlRouterProvider, $locationProvider, $compileProvider) {
+    .config(['$urlRouterProvider', '$locationProvider', '$compileProvider', '$qProvider',
+        function($urlRouterProvider, $locationProvider, $compileProvider, $qProvider) {
             //$locationProvider.html5Mode(true);
             $urlRouterProvider.otherwise("login");
             $compileProvider.preAssignBindingsEnabled(true);
+            $qProvider.errorOnUnhandledRejections(false);
             //AnalyticsProvider.setAccount('UA-100601648-1');
         }]);
     //.run(['Analytics', function(Analytics) { }]);
