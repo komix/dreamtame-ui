@@ -4,9 +4,9 @@
         .module('app')
         .controller('ProfileController', ProfileController);
 
-    ProfileController.$inject = ['$stateParams', 'users', 'photosService'];
+    ProfileController.$inject = ['$stateParams', 'users', 'photosService', 'instService'];
 
-    function ProfileController($stateParams, users, photosService) {
+    function ProfileController($stateParams, users, photosService, instService) {
         var vm = this;
 
         var userId = $stateParams.id;
@@ -34,6 +34,7 @@
             users.getUser(userId).then(function(response) {
                 vm.user = response.data;
                 getProfilePhoto(vm.user.photoId);
+                getInstitutions(vm.user.id);
             });
         }
 
@@ -47,6 +48,12 @@
             if (!photoId) { return false; }
             photosService.get(photoId).then(function(response) {
                 vm.image = response.data;
+            });
+        }
+
+        function getInstitutions(id) {
+            instService.getByOwnerId(id).then(function(response) {
+                vm.institutions = response.data;
             });
         }
     }

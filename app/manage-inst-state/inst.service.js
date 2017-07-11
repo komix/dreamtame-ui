@@ -14,8 +14,11 @@
         var service = {
             add: add,
             get: get,
+            getAll: getAll,
+            getByOwnerId: getByOwnerId,
+            getByCategoryId: getByCategoryId,
             update: update,
-            remove: remove,
+            remove: remove
         };
 
         return service;
@@ -32,6 +35,30 @@
         function get(instId){
             var defered = $q.defer();
             $http.get(apiUrl +  '/institutions/' + instId).then(function(data){
+                defered.resolve(data);
+            });
+            return defered.promise;
+        }
+
+        function getAll() {
+            var defered = $q.defer();
+            $http.get(apiUrl +  '/institutions').then(function(data){
+                defered.resolve(data);
+            });
+            return defered.promise;
+        }
+
+        function getByOwnerId(id) {
+            var defered = $q.defer();
+            $http.get(apiUrl + '/institutions/owner/' + id).then(function(data){
+                defered.resolve(data);
+            });
+            return defered.promise;
+        }
+
+        function getByCategoryId(id) {
+            var defered = $q.defer();
+            $http.get(apiUrl +  '/institutions/category/' + id).then(function(data){
                 defered.resolve(data);
             });
             return defered.promise;

@@ -1,0 +1,26 @@
+<div class="profile-view">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+        <select-image data-image="vm.image"
+                      data-config="vm.selImgConfig"
+                      data-editable="vm.isOwnerOrAdmin()">
+        </select-image>
+      </div>
+      <div class="col-md-9">
+        <div class="user-info">
+          <p data-ng-bind="vm.inst.title"></p>
+          <p data-ng-bind="vm.inst.address"></p>
+          <p data-ng-bind="vm.inst.description"></p>
+
+          <a ui-sref="manage-inst({id: vm.inst.id})"
+             data-ng-if="vm.isOwnerOrAdmin()"
+             class="btn btn-default">
+            редагувати
+            <i class="fa fa-pencil"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

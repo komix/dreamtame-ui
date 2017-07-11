@@ -52,7 +52,8 @@
         border-radius: 0;
         margin-top: calc(50% - 17px);
         vertical-align: center;
-        text-transform: uppercase; }
+        text-transform: uppercase;
+        color: #fff; }
         .select-image-container .select-image-box .select-image-overlay a:hover {
           color: #fff; }
     .select-image-container .select-image-box.image-editable:hover .select-image-overlay {
@@ -115,7 +116,11 @@
 .dt-form select {
   -webkit-appearance: none;
   width: auto;
-  min-width: 300px; }
+  min-width: 300px;
+  background-image: url("../icons/chevron-down.svg");
+  background-position: 95% center;
+  background-size: 10px 10px;
+  background-repeat: no-repeat; }
 
 .categories-tree {
   list-style-type: none;
