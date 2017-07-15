@@ -35,7 +35,10 @@
         }
 
         function initialize() {
-            var input = $element.find('#dt-google-map-autocomplete')[0];
+            if (vm.config.searchField) {
+                attachPlacesInput();
+            }
+
             vm.location = new google.maps.LatLng(vm.config.lat, vm.config.lng);
 
             vm.mapOptions = {
@@ -45,7 +48,10 @@
 
             var mapEl = document.getElementById(vm.config.id);
             vm.map = new google.maps.Map(mapEl, vm.mapOptions);
+        }
 
+        function attachPlacesInput() {
+            var input = $element.find('#dt-google-map-autocomplete')[0];
             var autocomplete = new google.maps.places.Autocomplete(input);
 
             google.maps.event.addListener(autocomplete, 'place_changed', function() {

@@ -8,10 +8,10 @@
     modalService.$inject = ['$q', '$uibModal', '$uibModalStack'];
 
     function modalService($q, $uibModal, $uibModalStack) {
-        var defer;
         var service = {
             showAddCatModal: showAddCatModal,
-            showEditCatModal: showEditCatModal
+            showEditCatModal: showEditCatModal,
+            showMapModal: showMapModal
         };
 
         return service;
@@ -34,7 +34,6 @@
             });
         }
 
-
         function showEditCatModal(cat) {
             $uibModal.open({
                 animation: true,
@@ -54,6 +53,20 @@
         }
 
 
+        function showMapModal(mapConfig) {
+            $uibModal.open({
+                animation: true,
+                templateUrl: 'blocks/modals/map-modal/map-modal.view.html',
+                controller: 'MapModalController',
+                controllerAs: 'vm',
+                size: 'lg',
+                resolve: {
+                    mapConfig: function() {
+                        return mapConfig;
+                    }
+                }
+            })
+        }
 
     }
 

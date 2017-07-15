@@ -4,9 +4,9 @@
         .module('app')
         .controller('ManageInstController', ManageInstController);
 
-    ManageInstController.$inject = ['$q', '$stateParams', 'users', 'instService', 'categoriesService', 'photosService'];
+    ManageInstController.$inject = ['$q', '$state', '$stateParams', 'users', 'instService', 'categoriesService', 'photosService'];
 
-    function ManageInstController($q, $stateParams, users, instService, categoriesService, photosService) {
+    function ManageInstController($q, $state, $stateParams, users, instService, categoriesService, photosService) {
         var vm = this;
 
         var instId = $stateParams.id;
@@ -115,7 +115,7 @@
         }
 
         function getSubmitPromise() {
-            return vm.isCreateState ? instService.add : instService.update;
+            return vm.isCreateState ? instService.add(vm.inst) : instService.update(vm.inst.id, vm.inst);
         }
 
         function submit() {
@@ -127,15 +127,13 @@
 
             if (vm.googleMapsConfig.address) {
                 vm.inst.address = vm.googleMapsConfig.address;
-                vm.inst.lat =  vm.googleMapsConfig.lat;
-                vm.inst.lng =  vm.googleMapsConfig.lng;
+                vm.inst.lat = vm.googleMapsConfig.lat;
+                vm.inst.lng = vm.googleMapsConfig.lng;
             }
 
             vm.inst.categoryId = _.last(vm.infSelectConfig.selectedList).id;
 
-            var promise = getSubmitPromise();
-
-            promise(vm.inst).then(function(response) {
+            getSubmitPromise().then(function(response) {
                 $state.go('institution', {id: response.data.id});
             });
 

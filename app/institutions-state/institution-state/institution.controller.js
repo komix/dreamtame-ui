@@ -30,9 +30,21 @@
             instService.get(instId).then(function(response) {
                 vm.inst = response.data;
                 vm.isImageEditable = parseInt(vm.inst.owner) === parseInt(users.current.id);
+
+                setMapConfig();
                 getInstPhoto(vm.inst.photoId);
                 emitActiveCatChangeEvent(vm.inst.categoryId);
             });
+        }
+
+        function setMapConfig() {
+            vm.mapConfig = {
+                id: 'inst-map-' + chance.guid(),
+                lat: vm.inst.lat,
+                lng: vm.inst.lng,
+                address: vm.inst.address,
+                title: vm.inst.title
+            }
         }
 
         function emitActiveCatChangeEvent(catId) {

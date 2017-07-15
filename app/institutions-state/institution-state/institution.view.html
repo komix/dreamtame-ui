@@ -10,7 +10,11 @@
       <div class="col-md-9">
         <div class="user-info">
           <p data-ng-bind="vm.inst.title"></p>
-          <p data-ng-bind="vm.inst.address"></p>
+
+          <location-string data-map-config="vm.mapConfig"
+                           data-ng-if="vm.mapConfig"
+          ></location-string>
+
           <p data-ng-bind="vm.inst.description"></p>
 
           <a ui-sref="manage-inst({id: vm.inst.id})"
