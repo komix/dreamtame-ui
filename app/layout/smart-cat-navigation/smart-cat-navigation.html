@@ -1,0 +1,27 @@
+<div class="cats-navigation">
+  <div class="cat-history">
+    <span class="cat-history-item"
+          data-ng-repeat="item in vm.catHistory track by $index"
+    >
+      <span data-ng-bind="item.name"
+            data-ng-click="vm.switchBack($index)"
+      ></span>
+      <span>--></span>
+    </span>
+  </div>
+  <p class="sn-header">Select Category:</p>
+  <div class="previous-cat-controls">
+    <button data-ng-show="vm.catHistory.length"
+            data-ng-click="vm.switchBack()"
+            class="btn btn-default">
+      <i class="fa fa-long-arrow-left"></i>
+    </button>
+  </div>
+
+  <ul class="slide-navigation">
+    <li data-ng-repeat="cat in vm.activeCat.children track by cat.id"
+        ng-click='vm.onCatClick(cat)'>
+      <a href=''>{{cat.ukName}}</a>
+    </li>
+  </ul>
+</div>

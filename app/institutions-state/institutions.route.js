@@ -5,10 +5,10 @@
         .module('app')
         .config(['$stateProvider', function($stateProvider) {
             $stateProvider
-                .state('institution', {
-                    url:'/institution/:id',
-                    templateUrl: 'institution-state/institution.view.html',
-                    controller: 'InstitutionController',
+                .state('institutions', {
+                    url:'/institutions',
+                    templateUrl: 'institutions-state/institutions.view.html',
+                    controller: 'InstitutionsController',
                     controllerAs: 'vm'
                 })
         }])

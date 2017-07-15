@@ -26,7 +26,7 @@ angular
             //$locationProvider.html5Mode(true);
             $urlRouterProvider.otherwise("login");
             $compileProvider.preAssignBindingsEnabled(true);
-            $qProvider.errorOnUnhandledRejections(false);
+            //$qProvider.errorOnUnhandledRejections(false);
             //AnalyticsProvider.setAccount('UA-100601648-1');
         }]);
     //.run(['Analytics', function(Analytics) { }]);

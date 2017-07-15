@@ -1,0 +1,6 @@
+<div>
+  <a data-ng-repeat="inst in vm.institutions"
+     ui-sref="institutions.institution({id: inst.id})"
+     data-ng-bind="inst.title"
+  ></a>
+</div>

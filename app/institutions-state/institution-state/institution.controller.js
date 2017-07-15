@@ -4,9 +4,9 @@
         .module('app')
         .controller('InstitutionController', InstitutionController);
 
-    InstitutionController.$inject = ['$stateParams', 'users', 'photosService', 'instService'];
+    InstitutionController.$inject = ['$rootScope', '$stateParams', 'users', 'photosService', 'instService'];
 
-    function InstitutionController($stateParams, users, photosService, instService) {
+    function InstitutionController($rootScope, $stateParams, users, photosService, instService) {
         var vm = this;
 
         var instId = $stateParams.id;
@@ -31,7 +31,12 @@
                 vm.inst = response.data;
                 vm.isImageEditable = parseInt(vm.inst.owner) === parseInt(users.current.id);
                 getInstPhoto(vm.inst.photoId);
+                emitActiveCatChangeEvent(vm.inst.categoryId);
             });
+        }
+
+        function emitActiveCatChangeEvent(catId) {
+            $rootScope.$emit('activeCatChange', catId);
         }
 
         function onInstImageChange(image) {
