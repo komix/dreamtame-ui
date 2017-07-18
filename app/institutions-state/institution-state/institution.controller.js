@@ -18,6 +18,10 @@
             onChange: onInstImageChange
         };
 
+        vm.addImageConfig = {
+            instId: instId
+        };
+
         vm.isOwnerOrAdmin = isOwnerOrAdmin;
 
         activate();
@@ -33,6 +37,7 @@
 
                 setMapConfig();
                 getInstPhoto(vm.inst.photoId);
+                getInstPhotos();
                 emitActiveCatChangeEvent(vm.inst.categoryId);
             });
         }
@@ -61,6 +66,12 @@
             if (!photoId) { return false; }
             photosService.get(photoId).then(function(response) {
                 vm.image = response.data;
+            });
+        }
+
+        function getInstPhotos() {
+            photosService.getByInstId(instId).then(function(response) {
+                vm.photos = response.data;
             });
         }
 

@@ -7,16 +7,19 @@
 	imageService.$inject = ['$q', '$http', 'global', 'Cropper'];
 
 	function imageService($q, $http, global, Cropper) {
-		var defered;
 		var apiUrl = global.apiUrl;
 
+		var ORIG_W = 2000;
+		var THUMB_W = 700;
+
 		var service = {
-			deployImage: deployImage
+			deployCroppedImage: deployCroppedImage,
+			deployRawImage: deployRawImage
 		};
 
 		return service;
 
-		function deployImage(img) {
+		function deployCroppedImage(img) {
 			var defered = $q.defer();
 
 			$q.all([deployImageString(img.src), deployImageString(img.msrc)])
@@ -33,6 +36,69 @@
 				});
 
 			return defered.promise;
+		}
+
+		function deployRawImage(file, config) {
+			var defered = $q.defer();
+			var origW = config && config.origW ? config.origW : ORIG_W;
+			var thumbW = config && config.thumbW ? config.thumbW : THUMB_W;
+
+			var images = [];
+			var imageObj = {
+				src: '',
+				msrc: '',
+				width: 0,
+				height: 0
+			};
+
+			scaleImages();
+
+			return defered.promise;
+
+			function scaleImages() {
+				$q.all([scale(file, origW), scale(file, thumbW)]).then(function(results) {
+					_.each(results, function(elem) {
+						var fileReader = new FileReader();
+						fileReader.onload = getBase64;
+						fileReader.readAsDataURL(elem);
+					});
+				});
+			}
+
+			function getBase64(result) {
+				images.push(result.currentTarget.result);
+
+				if (images.length === 2) {
+					deployImages(images);
+				}
+			}
+
+			function deployImages(images) {
+				$q.all([deployImageString(images[0]), deployImageString(images[1])])
+					.then(function(results) {
+						defered.resolve(formImageData([
+							results[0].data,
+							results[1].data
+						]));
+					});
+			}
+
+			function formImageData(images) {
+				var imageData = {};
+				var orig = images[0].width > images[1].width ? images[0] : images[1];
+				var thumb = images[0].width > images[1].width ? images[1] : images[0];
+
+				imageData.src = orig.src;
+				imageData.msrc = thumb.src;
+				imageData.w = orig.width;
+				imageData.h = orig.height;
+
+				return imageData;
+			}
+
+			function scale(blob, width) {
+				return Cropper.scale(blob, {width: width});
+			}
 		}
 
 

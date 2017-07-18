@@ -4,9 +4,11 @@
         .module('app')
         .controller('ManageInstController', ManageInstController);
 
-    ManageInstController.$inject = ['$q', '$state', '$stateParams', 'users', 'instService', 'categoriesService', 'photosService'];
+    ManageInstController.$inject = ['$q', '$state', '$stateParams', 'users', 'instService', 'categoriesService',
+                                  'photosService'];
 
-    function ManageInstController($q, $state, $stateParams, users, instService, categoriesService, photosService) {
+    function ManageInstController($q, $state, $stateParams, users, instService, categoriesService,
+                                  photosService) {
         var vm = this;
 
         var instId = $stateParams.id;

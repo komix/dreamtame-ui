@@ -14,6 +14,7 @@
         var service = {
             getAll: getAll,
             get: get,
+            getByInstId: getByInstId,
             add: add,
             edit: edit,
             remove: remove
@@ -32,6 +33,14 @@
         function get(photoId) {
             var defered = $q.defer();
             $http.get(apiUrl +  '/photos/' + photoId).then(function(data){
+                defered.resolve(data);
+            });
+            return defered.promise;
+        }
+
+        function getByInstId(id) {
+            var defered = $q.defer();
+            $http.get(apiUrl +  '/photos/institution/' + id).then(function(data){
                 defered.resolve(data);
             });
             return defered.promise;

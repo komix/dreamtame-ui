@@ -45,7 +45,7 @@
         }
 
         function sendImage(image) {
-            imageService.deployImage(image).then(function(result) {
+            imageService.deployCroppedImage(image).then(function(result) {
                 service.defer.resolve(result);
                 reset();
             });
