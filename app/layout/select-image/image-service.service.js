@@ -14,7 +14,8 @@
 
 		var service = {
 			deployCroppedImage: deployCroppedImage,
-			deployRawImage: deployRawImage
+			deployRawImage: deployRawImage,
+			deployImageString: deployImageString
 		};
 
 		return service;
@@ -38,18 +39,12 @@
 			return defered.promise;
 		}
 
-		function deployRawImage(file, config) {
+		function deployRawImage(file, config, placeholder) {
 			var defered = $q.defer();
 			var origW = config && config.origW ? config.origW : ORIG_W;
 			var thumbW = config && config.thumbW ? config.thumbW : THUMB_W;
 
 			var images = [];
-			var imageObj = {
-				src: '',
-				msrc: '',
-				width: 0,
-				height: 0
-			};
 
 			scaleImages();
 
@@ -92,6 +87,10 @@
 				imageData.msrc = thumb.src;
 				imageData.w = orig.width;
 				imageData.h = orig.height;
+
+				if (placeholder) {
+					imageData.sqr = placeholder;
+				}
 
 				return imageData;
 			}

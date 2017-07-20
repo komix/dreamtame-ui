@@ -4,13 +4,12 @@
         .module('app')
         .controller('CropController', CropController);
 
-    CropController.$inject = ['$q', '$scope', '$uibModalInstance', '$animate', 'Cropper',
+    CropController.$inject = ['$q', '$scope', 'Cropper',
         '$timeout', '$uibModalStack', 'cropperService'];
 
-    function CropController($q, $scope, $uibModalInstance, $animate, Cropper,
+    function CropController($q, $scope, Cropper,
                             $timeout, $uibModalStack, cropperService) {
         var vm = this;
-
         var file, data;
 
         vm.cropperService = cropperService;
@@ -85,6 +84,12 @@
         }
 
         function sendFile() {
+            if (!cropperService.mCropWidth) {
+                cropperService.sendImage(vm.preview.dataUrl);
+                $uibModalStack.dismissAll();
+                return false;
+            }
+
             var image = {
               src: vm.preview.dataUrl,
               msrc: null

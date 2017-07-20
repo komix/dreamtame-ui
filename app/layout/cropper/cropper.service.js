@@ -45,7 +45,11 @@
         }
 
         function sendImage(image) {
-            imageService.deployCroppedImage(image).then(function(result) {
+            var request = service.mCropWidth
+                ? imageService.deployCroppedImage(image)
+                : imageService.deployImageString(image);
+
+            request.then(function(result) {
                 service.defer.resolve(result);
                 reset();
             });
@@ -60,8 +64,6 @@
             service.mCropWidth = null;
             service.imageData = {};
         }
-
-
     }
 
 })();

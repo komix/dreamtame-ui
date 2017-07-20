@@ -23,9 +23,9 @@
         return directive;
     }
 
-    AddImageController.$inject = ['$scope', '$element', 'imageService', 'cropperService', 'photosService'];
+    AddImageController.$inject = ['imageService', 'photosService', 'cropperService'];
 
-    function AddImageController($scope, $element, imageService, cropperService, photosService) {
+    function AddImageController(imageService, photosService, cropperService) {
         var vm = this;
         vm.triggerInput = triggerInput;
         vm.onImageLoaded = onImageLoaded;
@@ -33,9 +33,26 @@
         vm.inputId = 'input-' + chance.guid();
 
         function onImageLoaded(file) {
-            imageService.deployRawImage(file).then(function(response) {
-                deployImage(response);
-            });
+            if (vm.config.aspectRatio) {
+                deployWithPlaceholder(file).then(function(result) {
+                    deployImage(result);
+                })
+            } else {
+                imageService.deployRawImage(file).then(function(result) {
+                    deployImage(result);
+                });
+            }
+        }
+
+        function deployWithPlaceholder(file) {
+            return cropperService.openCropper(file, vm.config.aspectRatio, vm.config.resizeTo)
+                .catch(function(err) {
+                    console.log(err);
+                })
+                .then(function(response){
+                    if (!response) { return false; }
+                    return imageService.deployRawImage(file, {}, response.data.src)
+                });
         }
 
         function deployImage(imageData) {

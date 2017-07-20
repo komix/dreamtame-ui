@@ -19,7 +19,10 @@
         };
 
         vm.addImageConfig = {
-            instId: instId
+            instId: instId,
+            rawDownload: true,
+            aspectRatio: 1,
+            resizeTo: 640
         };
 
         vm.isOwnerOrAdmin = isOwnerOrAdmin;

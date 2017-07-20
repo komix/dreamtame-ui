@@ -95,6 +95,10 @@
   -ms-user-select: none;
   user-select: none; }
 
+.shell {
+  max-width: 1200px;
+  margin: 0 auto; }
+
 .login-view .login-form {
   max-width: 500px;
   padding: 50px;
@@ -158,5 +162,11 @@
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
     text-align: center; }
+
+.media-item {
+  overflow: hidden;
+  margin-top: 30px; }
+  .media-item .media-item-image {
+    width: 100%; }
 
 /*# sourceMappingURL=style.css.map */
