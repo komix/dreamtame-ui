@@ -35,10 +35,12 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div data-ng-repeat="photo in vm.photos track by photo.id" class="col-md-4">
-        <media-item data-item="photo">
-        </media-item>
+    <div class="institution-photos">
+      <div class="row">
+        <div data-ng-repeat="photo in vm.photos track by photo.id" class="col-md-4">
+          <media-item data-item="photo">
+          </media-item>
+        </div>
       </div>
     </div>
   </div>
