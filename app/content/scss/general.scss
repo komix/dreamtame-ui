@@ -16,3 +16,22 @@
   max-width: 1200px;
   margin: 0 auto;
 }
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+.dt-btn {
+  background-color: transparent;
+  padding: 0;
+  outline: none !important;
+
+  &:focus, &:active {
+    outline: none;
+  }
+}

@@ -33,6 +33,10 @@
 
         vm.onCatClick = onCatClick;
         vm.switchBack = switchBack;
+        vm.getAbr = getAbr;
+        vm.getFirstLetters = getFirstLetters;
+        vm.hasAbstractCats = hasAbstractCats;
+        vm.isCatActive = isCatActive;
 
         activate();
 
@@ -57,6 +61,8 @@
                 var baseCat = {
                     id: 'base',
                     name: 'general',
+                    ukName: 'вcі категорії',
+                    abr: 'всі',
                     children: tree
                 };
 
@@ -103,6 +109,39 @@
             }
 
             vm.activeCat = _.last(vm.catHistory);
+        }
+
+        function getAbr(cat) {
+            return cat.abr ? cat.abr : getFirstLetters(cat.ukName);
+        }
+
+        function getFirstLetters(title) {
+            if (!title) { return ''; }
+
+            var firstLetters = [];
+            var words = title.split(' ');
+
+            _.each(words, function(elem) {
+                firstLetters.push(elem[0]);
+            });
+
+            return firstLetters.join('');
+        }
+
+        function hasAbstractCats() {
+            if (!vm.activeCat) { return false; }
+            var result = false;
+
+            _.each(vm.activeCat.children, function(elem) {
+                if (elem.children) { result = true }
+            });
+
+            return result;
+        }
+
+        function isCatActive(id) {
+            if (!vm.activeCat) { return false; }
+            return vm.activeCat.id === id;
         }
 
     }

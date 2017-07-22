@@ -1,27 +1,45 @@
 <div class="cats-navigation">
   <div class="cat-history">
-    <span class="cat-history-item"
+    <button class="btn dt-btn btn-default cat-thumbnail noselect"
           data-ng-repeat="item in vm.catHistory track by $index"
+          data-ng-click="vm.switchBack($index)"
+          data-ng-attr-title="{{item.ukName}}"
+          data-ng-class="{'last-thumbnail': $last && !vm.hasAbstractCats(),
+                           active: vm.isCatActive(item.id)}"
     >
-      <span data-ng-bind="item.name"
-            data-ng-click="vm.switchBack($index)"
+      <span data-ng-bind="vm.getAbr(item)"
       ></span>
-      <span>--></span>
+      <span data-ng-hide="$last && !vm.hasAbstractCats()"
+            class="cat-thumbnail-arrow"
+      ></span>
+    </button>
+    <span data-ng-if="vm.hasAbstractCats()"
+          class="cat-thumbnail last-thumbnail">
+      <i class="fa fa-chevron-right" aria-hidden="true"></i>
     </span>
   </div>
-  <p class="sn-header">Select Category:</p>
+
   <div class="previous-cat-controls">
-    <button data-ng-show="vm.catHistory.length"
-            data-ng-click="vm.switchBack()"
-            class="btn btn-default">
-      <i class="fa fa-long-arrow-left"></i>
+    <button class="btn dt-btn btn-default cat-thumbnail noselect"
+          data-ng-click="vm.switchBack()"
+          data-ng-disabled="">
+          <i class="fa fa-chevron-left" aria-hidden="true"></i>
     </button>
+
+    <h2 class="active-cat-title" data-ng-bind="vm.activeCat.ukName"></h2>
   </div>
 
-  <ul class="slide-navigation">
+  <ul class="categories-list">
     <li data-ng-repeat="cat in vm.activeCat.children track by cat.id"
         ng-click='vm.onCatClick(cat)'>
-      <a href=''>{{cat.ukName}}</a>
+      <a href=''
+         class="category-link"
+         data-ng-bind="cat.ukName"
+      >
+      </a>
+      <i data-ng-if="cat.children"
+         class="children-icon fa fa-chevron-circle-right"
+         aria-hidden="true"></i>
     </li>
   </ul>
 </div>

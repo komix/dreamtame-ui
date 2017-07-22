@@ -99,6 +99,27 @@
   max-width: 1200px;
   margin: 0 auto; }
 
+.noselect {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently supported by Chrome and Opera */ }
+
+.dt-btn {
+  background-color: transparent;
+  padding: 0;
+  outline: none !important; }
+  .dt-btn:focus, .dt-btn:active {
+    outline: none; }
+
 .login-view .login-form {
   max-width: 500px;
   padding: 50px;
@@ -171,5 +192,67 @@
 
 .institution-photos {
   padding-bottom: 30px; }
+
+.cats-navigation .cat-history {
+  clear: both;
+  overflow: hidden;
+  padding-bottom: 10px; }
+  .cats-navigation .cat-history .cat-thumbnail {
+    position: relative;
+    float: left; }
+.cats-navigation .cat-thumbnail {
+  display: inline-block;
+  height: 41px;
+  width: 41px;
+  border-radius: 50%;
+  border: 2px solid #656565;
+  margin-right: 15px;
+  cursor: pointer;
+  text-align: center;
+  line-height: 39px;
+  color: #656565;
+  text-transform: uppercase; }
+  .cats-navigation .cat-thumbnail.last-thumbnail:after {
+    content: '';
+    display: block;
+    clear: both; }
+  .cats-navigation .cat-thumbnail.active {
+    background-color: #656565;
+    color: #fff; }
+  .cats-navigation .cat-thumbnail .cat-thumbnail-arrow {
+    display: inline-block;
+    position: absolute;
+    top: 18px;
+    right: -17px;
+    height: 3px;
+    width: 15px;
+    background-color: #656565; }
+    .cats-navigation .cat-thumbnail .cat-thumbnail-arrow.preciding {
+      right: auto;
+      left: -17px; }
+.cats-navigation .previous-cat-controls {
+  position: relative; }
+  .cats-navigation .previous-cat-controls .cat-thumbnail {
+    position: absolute;
+    top: 0;
+    left: 0; }
+  .cats-navigation .previous-cat-controls .active-cat-title {
+    white-space: nowrap;
+    height: 41px;
+    line-height: 41px;
+    margin: 0;
+    padding-left: 50px;
+    color: #717171;
+    text-transform: capitalize;
+    font-size: 18px; }
+.cats-navigation .categories-list {
+  list-style-type: none;
+  padding-left: 51px; }
+  .cats-navigation .categories-list .category-link, .cats-navigation .categories-list .children-icon {
+    color: #717171;
+    text-transform: capitalize;
+    font-size: 17px; }
+    .cats-navigation .categories-list .category-link.active, .cats-navigation .categories-list .children-icon.active {
+      color: #0084A8; }
 
 /*# sourceMappingURL=style.css.map */
