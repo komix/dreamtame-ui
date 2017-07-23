@@ -2,7 +2,7 @@
   <header class="main-header">
     <div class="inner-header">
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3 left-header">
           <div class="site-logo">
             <img src="content/icons/logo_dt.svg">
           </div>
@@ -10,24 +10,24 @@
             <h1>Dreamtame</h1>
           </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-9">
           <ul class="navigation">
-            <li><a data-ui-sref="home">Home</a></li>
-            <li><a data-ui-sref="about">About</a></li>
-            <li><a data-ui-sref="institutions">Institutions</a></li>
+            <li><a data-ui-sref="home" data-ng-class="{active: vm.isStateActive('home')}">Головна</a></li>
+            <li><a data-ui-sref="about" data-ng-class="{active: vm.isStateActive('about')}">Про проект</a></li>
+            <li><a data-ui-sref="institutions" data-ng-class="{active: vm.isStateActive('institutions')}">Секції</a></li>
             <li data-ng-if="!vm.isLoggedIn()">
-              <a data-ui-sref="login">Login</a>
+              <a data-ui-sref="login">Увійти</a>
             </li>
             <li data-ng-if="vm.isStateAvailable('dashboard')">
-              <a data-ui-sref="dashboard">Dashboard</a>
+              <a data-ui-sref="dashboard" data-ng-class="{active: vm.isStateActive('dashboard')}">Адмінка</a>
             </li>
+            <!--<li data-ng-if="vm.isLoggedIn()">-->
+              <!--<a href="#"-->
+                 <!--data-ng-click="vm.logout()"-->
+              <!--&gt;Вийти</a>-->
+            <!--</li>-->
             <li data-ng-if="vm.isLoggedIn()">
-              <a href="#"
-                 data-ng-click="vm.logout()"
-              >Logout</a>
-            </li>
-            <li data-ng-if="vm.isLoggedIn()">
-              <a data-ui-sref="profile({id: vm.users.current.id})">Profile</a>
+              <a data-ui-sref="profile({id: vm.users.current.id})">Профіль</a>
             </li>
           </ul>
         </div>

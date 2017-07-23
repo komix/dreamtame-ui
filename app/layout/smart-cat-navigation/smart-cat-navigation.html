@@ -5,7 +5,7 @@
           data-ng-click="vm.switchBack($index)"
           data-ng-attr-title="{{item.ukName}}"
           data-ng-class="{'last-thumbnail': $last && !vm.hasAbstractCats(),
-                           active: vm.isCatActive(item.id)}"
+                           active: vm.isThumbActive(item.id)}"
     >
       <span data-ng-bind="vm.getAbr(item)"
       ></span>
@@ -31,15 +31,17 @@
 
   <ul class="categories-list">
     <li data-ng-repeat="cat in vm.activeCat.children track by cat.id"
-        ng-click='vm.onCatClick(cat)'>
+        ng-click='vm.onCatClick(cat)'
+        data-ng-class="{active: vm.isCatActive(cat.id)}">
       <a href=''
          class="category-link"
-         data-ng-bind="cat.ukName"
       >
+        <span data-ng-bind="cat.ukName"></span>
+        <i data-ng-if="cat.children"
+           data-ng-class="{active: vm.isCatActive(cat.id)}"
+           class="children-icon fa fa-chevron-circle-right"
+           aria-hidden="true"></i>
       </a>
-      <i data-ng-if="cat.children"
-         class="children-icon fa fa-chevron-circle-right"
-         aria-hidden="true"></i>
     </li>
   </ul>
 </div>

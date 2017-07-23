@@ -4,9 +4,9 @@
         .module('app')
         .controller('InstitutionController', InstitutionController);
 
-    InstitutionController.$inject = ['$rootScope', '$stateParams', 'users', 'photosService', 'instService'];
+    InstitutionController.$inject = ['$rootScope', '$stateParams', 'users', 'photosService', 'instService', 'categoriesService'];
 
-    function InstitutionController($rootScope, $stateParams, users, photosService, instService) {
+    function InstitutionController($rootScope, $stateParams, users, photosService, instService, categoriesService) {
         var vm = this;
 
         var instId = $stateParams.id;
@@ -25,7 +25,10 @@
             resizeTo: 640
         };
 
+        vm.isDescriptionShortened = true;
+
         vm.isOwnerOrAdmin = isOwnerOrAdmin;
+        vm.toggleDeskriptionShortened = toggleDeskriptionShortened;
 
         activate();
 
@@ -37,6 +40,7 @@
             instService.get(instId).then(function(response) {
                 vm.inst = response.data;
                 vm.isImageEditable = parseInt(vm.inst.owner) === parseInt(users.current.id);
+                categoriesService.activeId = vm.inst.categoryId;
 
                 setMapConfig();
                 getInstPhoto(vm.inst.photoId);
@@ -85,6 +89,12 @@
 
             return isAdmin || isOwner;
         }
+
+        function toggleDeskriptionShortened() {
+            vm.isDescriptionShortened = !vm.isDescriptionShortened;
+        }
+
+
     }
 
 })();

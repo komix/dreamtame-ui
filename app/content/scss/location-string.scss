@@ -1,0 +1,22 @@
+.location-string {
+  position: relative;
+  padding-left: 20px;
+
+  a {
+    color: $logo-color;
+    text-decoration: underline;
+    font-size: 15px;
+
+    &:hover, &:active {
+      text-decoration: none;
+    }
+  }
+
+  i {
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 22px;
+  }
+}

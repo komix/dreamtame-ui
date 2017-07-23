@@ -1,4 +1,4 @@
-<div class="profile-view">
+<div class="institution-view">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-3">
@@ -8,14 +8,23 @@
         </select-image>
       </div>
       <div class="col-md-9">
-        <div class="user-info">
-          <h1 data-ng-bind="vm.inst.title"></h1>
+        <div class="inst-info">
+          <h1 class="inst-title" data-ng-bind="vm.inst.title"></h1>
 
           <location-string data-map-config="vm.mapConfig"
                            data-ng-if="vm.mapConfig"
           ></location-string>
 
-          <p data-ng-bind="vm.inst.description"></p>
+          <div class="inst-description"
+               data-dot-dot-dot
+               data-markup="vm.inst.description"
+               data-is-truncated="vm.isDescriptionShortened"
+               data-ng-if="vm.inst.description"
+               data-ng-class="{'full-text': !vm.isDescriptionShortened}">
+          </div>
+          <button class="btn btn-default"
+                  data-ng-click="vm.toggleDeskriptionShortened()"
+          >Детальніше</button>
 
           <a ui-sref="manage-inst({id: vm.inst.id})"
              data-ng-if="vm.isOwnerOrAdmin()"

@@ -36,6 +36,7 @@
         vm.getAbr = getAbr;
         vm.getFirstLetters = getFirstLetters;
         vm.hasAbstractCats = hasAbstractCats;
+        vm.isThumbActive = isThumbActive;
         vm.isCatActive = isCatActive;
 
         activate();
@@ -139,10 +140,15 @@
             return result;
         }
 
-        function isCatActive(id) {
+        function isThumbActive(id) {
             if (!vm.activeCat) { return false; }
             return vm.activeCat.id === id;
         }
+
+        function isCatActive(id) {
+            return categoriesService.activeId === id;
+        }
+
 
     }
 })();

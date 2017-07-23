@@ -12,6 +12,7 @@
         var apiUrl = global.apiUrl;
 
         var service = {
+            activeId: null,
             getTree: getTree,
             add: add,
             get: get,
