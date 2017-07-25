@@ -30,6 +30,7 @@
             loadGoogleMaps.mapsInitialized.then(function() {
                 $timeout(function() {
                     initialize();
+                    setMarker(vm.location);
                 });
             });
         }

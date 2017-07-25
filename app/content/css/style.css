@@ -208,7 +208,7 @@
 .institution-view .inst-info .inst-title {
   font-size: 22px;
   margin: 0;
-  padding-bottom: 10px;
+  padding-bottom: 6px;
   color: #656565; }
 .institution-view .inst-info .location-string {
   margin-bottom: 5px; }
@@ -277,7 +277,7 @@
     padding-left: 50px;
     color: #717171;
     text-transform: capitalize;
-    font-size: 18px; }
+    font-size: 16px; }
 .cats-navigation .categories-list {
   list-style-type: none;
   padding-left: 46px; }
@@ -286,17 +286,19 @@
   .cats-navigation .categories-list .category-link {
     position: relative;
     display: block;
-    padding: 3px 30px 3px 5px;
+    padding: 3px 5px 3px 5px;
     border-radius: 4px;
     color: #717171;
     text-transform: capitalize;
-    font-size: 17px; }
+    font-size: 14px; }
     .cats-navigation .categories-list .category-link span {
       display: block;
       width: 100%;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis; }
+    .cats-navigation .categories-list .category-link.has-children {
+      padding-right: 33px; }
     .cats-navigation .categories-list .category-link.active, .cats-navigation .categories-list .category-link:hover, .cats-navigation .categories-list .category-link:focus {
       background-color: #656565;
       color: #fff;
@@ -310,7 +312,7 @@
     height: 100%;
     font-size: 17px;
     color: #717171;
-    padding: 6px 7px; }
+    padding: 4px 7px; }
 
 .location-string {
   position: relative;
@@ -327,5 +329,17 @@
     left: 0;
     top: 0;
     font-size: 22px; }
+
+.institution-block {
+  margin-bottom: 15px; }
+  .institution-block .inst-block-image {
+    display: block; }
+    .institution-block .inst-block-image img {
+      width: 100%; }
+  .institution-block .inst-block-title {
+    font-size: 22px;
+    margin: 0;
+    padding-bottom: 6px;
+    color: #656565; }
 
 /*# sourceMappingURL=style.css.map */

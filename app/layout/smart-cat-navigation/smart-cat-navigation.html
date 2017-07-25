@@ -35,10 +35,11 @@
         data-ng-class="{active: vm.isCatActive(cat.id)}">
       <a href=''
          class="category-link"
+         data-ng-class="{active: vm.isCatActive(cat.id),
+                        'has-children': cat.children}"
       >
         <span data-ng-bind="cat.ukName"></span>
         <i data-ng-if="cat.children"
-           data-ng-class="{active: vm.isCatActive(cat.id)}"
            class="children-icon fa fa-chevron-circle-right"
            aria-hidden="true"></i>
       </a>

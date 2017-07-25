@@ -1,0 +1,18 @@
+.institution-block {
+  margin-bottom: 15px;
+
+  .inst-block-image {
+    display: block;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .inst-block-title {
+    font-size: 22px;
+    margin: 0;
+    padding-bottom: 6px;
+    color: $logo-color;
+  }
+}

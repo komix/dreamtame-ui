@@ -1,0 +1,18 @@
+<div class="institution-block">
+  <div class="row">
+    <div class="col-md-3">
+      <a data-ui-sref="institutions.institution({id: vm.inst.id})" class="inst-block-image">
+        <img data-ng-if="vm.image" data-ng-src="{{vm.image.msrc}}" alt="">
+        <img data-ng-if="!vm.image" src="content/images/placeholder_cropped.jpg" alt="">
+      </a>
+    </div>
+    <div class="col-md-9">
+      <div class="inst-block-info">
+        <h3 class="inst-block-title" data-ng-bind="vm.inst.title"></h3>
+        <location-string data-map-config="vm.mapConfig"
+                         data-ng-if="vm.mapConfig"
+        ></location-string>
+      </div>
+    </div>
+  </div>
+</div>
