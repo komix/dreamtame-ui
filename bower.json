@@ -26,6 +26,6 @@
     "ngstorage": "^0.3.11",
     "eventEmitter": "^5.1.0",
     "angular-resource": "^1.6.4",
-    "jQuery.dotdotdot": "dotdotdot#^1.8.3"
+    "shave": "^2.0.4"
   }
 }

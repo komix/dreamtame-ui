@@ -21,24 +21,8 @@
     }
 
     .inst-description {
-      max-height: 80px;
       overflow: hidden;
       margin-bottom: 10px;
-
-      span {
-        text-decoration: underline;
-        cursor: pointer;
-        display: inline-block;
-        margin-left: 7px;
-
-         &:hover {
-           text-decoration: none;
-         }
-      }
-
-      &.full-text {
-        max-height: none;
-      }
     }
   }
 }

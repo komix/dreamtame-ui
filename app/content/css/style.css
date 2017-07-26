@@ -213,18 +213,8 @@
 .institution-view .inst-info .location-string {
   margin-bottom: 5px; }
 .institution-view .inst-info .inst-description {
-  max-height: 80px;
   overflow: hidden;
   margin-bottom: 10px; }
-  .institution-view .inst-info .inst-description span {
-    text-decoration: underline;
-    cursor: pointer;
-    display: inline-block;
-    margin-left: 7px; }
-    .institution-view .inst-info .inst-description span:hover {
-      text-decoration: none; }
-  .institution-view .inst-info .inst-description.full-text {
-    max-height: none; }
 
 .cats-navigation .cat-history {
   clear: both;
@@ -329,6 +319,9 @@
     left: 0;
     top: 0;
     font-size: 22px; }
+
+.truncated .text {
+  cursor: pointer; }
 
 .institution-block {
   margin-bottom: 15px; }

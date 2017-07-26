@@ -4,9 +4,9 @@
         .module('app')
         .controller('InstitutionController', InstitutionController);
 
-    InstitutionController.$inject = ['$rootScope', '$stateParams', 'users', 'photosService', 'instService', 'categoriesService'];
+    InstitutionController.$inject = ['$rootScope', '$state', '$stateParams', 'users', 'photosService', 'instService', 'categoriesService'];
 
-    function InstitutionController($rootScope, $stateParams, users, photosService, instService, categoriesService) {
+    function InstitutionController($rootScope, $state, $stateParams, users, photosService, instService, categoriesService) {
         var vm = this;
 
         var instId = $stateParams.id;
@@ -25,10 +25,7 @@
             resizeTo: 640
         };
 
-        vm.isDescriptionShortened = true;
-
         vm.isOwnerOrAdmin = isOwnerOrAdmin;
-        vm.toggleDeskriptionShortened = toggleDeskriptionShortened;
 
         activate();
 
@@ -88,10 +85,6 @@
             var isAdmin = users.current.role === 'admin' || users.current.role === 'superman';
 
             return isAdmin || isOwner;
-        }
-
-        function toggleDeskriptionShortened() {
-            vm.isDescriptionShortened = !vm.isDescriptionShortened;
         }
 
 

@@ -19,12 +19,10 @@
                data-dot-dot-dot
                data-markup="vm.inst.description"
                data-is-truncated="vm.isDescriptionShortened"
+               data-height="90"
                data-ng-if="vm.inst.description"
                data-ng-class="{'full-text': !vm.isDescriptionShortened}">
           </div>
-          <button class="btn btn-default"
-                  data-ng-click="vm.toggleDeskriptionShortened()"
-          >Детальніше</button>
 
           <a ui-sref="manage-inst({id: vm.inst.id})"
              data-ng-if="vm.isOwnerOrAdmin()"
