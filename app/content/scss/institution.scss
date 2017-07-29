@@ -23,6 +23,25 @@
     .inst-description {
       overflow: hidden;
       margin-bottom: 10px;
+      max-height: 85px;
+
+      a {
+        display: inline-block;
+        color: $logo-color;
+        text-decoration: underline;
+        font-style: italic;
+        cursor: pointer;
+        margin-left: 7px;
+
+
+        &:hover, :focus {
+          text-decoration: none;
+        }
+      }
+
+      &.full-length {
+        max-height: none;
+      }
     }
   }
 }

@@ -25,7 +25,10 @@
             resizeTo: 640
         };
 
+        vm.isStoryDescriptionTruncated = true;
+
         vm.isOwnerOrAdmin = isOwnerOrAdmin;
+        vm.showDetailedDescription = showDetailedDescription;
 
         activate();
 
@@ -87,7 +90,9 @@
             return isAdmin || isOwner;
         }
 
-
+        function showDetailedDescription() {
+            vm.isStoryDescriptionTruncated = false;
+        }
     }
 
 })();

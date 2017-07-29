@@ -16,7 +16,8 @@
             restrict: 'E',
             templateUrl: 'layout/media-item/media-item.html',
             scope: {
-                item: '='
+                item: '=',
+                isOwner: '='
             }
         };
 

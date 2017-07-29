@@ -12,6 +12,13 @@
         <location-string data-map-config="vm.mapConfig"
                          data-ng-if="vm.mapConfig"
         ></location-string>
+        <div class="inst-block-description"
+             data-truncate
+             data-clickable="true"
+             data-ng-if="vm.inst.description"
+             data-ng-bind="vm.inst.description"
+        >
+        </div>
       </div>
     </div>
   </div>

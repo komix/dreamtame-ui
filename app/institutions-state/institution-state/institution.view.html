@@ -16,12 +16,12 @@
           ></location-string>
 
           <div class="inst-description"
-               data-dot-dot-dot
-               data-markup="vm.inst.description"
-               data-is-truncated="vm.isDescriptionShortened"
-               data-height="90"
+               data-truncate
+               data-ng-bind="vm.inst.description"
                data-ng-if="vm.inst.description"
-               data-ng-class="{'full-text': !vm.isDescriptionShortened}">
+               data-toggle="true"
+               data-ng-class="{'full-length': !vm.isStoryDescriptionTruncated}"
+               >
           </div>
 
           <a ui-sref="manage-inst({id: vm.inst.id})"
@@ -30,8 +30,8 @@
             <i class="fa fa-pencil"></i>
             <span>редагувати</span>
           </a>
-          <add-image data-config="vm.addImageConfig">
-
+          <add-image data-config="vm.addImageConfig"
+                     data-ng-if="vm.isOwnerOrAdmin()">
           </add-image>
           <!--<button class="btn btn-default"-->
                   <!--data-ng-click="vm.openAddMediaModal()"-->
@@ -45,7 +45,7 @@
     <div class="institution-photos">
       <div class="row">
         <div data-ng-repeat="photo in vm.photos track by photo.id" class="col-md-4">
-          <media-item data-item="photo">
+          <media-item data-item="photo" data-is-owner="vm.isOwnerOrAdmin()">
           </media-item>
         </div>
       </div>

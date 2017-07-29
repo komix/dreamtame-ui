@@ -1,9 +1,34 @@
 .media-item {
+  position: relative;
   overflow: hidden;
   margin-bottom: 30px;
 
   .media-item-image {
     width: 100%;
+  }
+
+  .overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    text-align: right;
+    background-color: rgba(0,0,0,0.3);
+  }
+
+  &:hover {
+    .overlay {
+      display: block;
+
+      .remove-icon {
+        color: #fff;
+        font-size: 18px;
+        cursor: pointer;
+        padding: 6px 10px ;
+      }
+    }
   }
 }
 

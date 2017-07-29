@@ -10,9 +10,21 @@
   }
 
   .inst-block-title {
-    font-size: 22px;
+    font-size: 18px;
     margin: 0;
     padding-bottom: 6px;
+    font-weight: normal;
+    text-transform: capitalize;
     color: $logo-color;
+  }
+
+  .location-string {
+    margin-bottom: 5px;
+  }
+
+  .inst-block-description {
+    overflow: hidden;
+    margin-bottom: 10px;
+    max-height: 60px;
   }
 }
