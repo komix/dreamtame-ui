@@ -37,7 +37,8 @@
 
         }
 
-        function onRemoveClick() {
+        function onRemoveClick(e) {
+            e.stopPropagation();
             if (vm.item.src) {
                 var message = 'Ви впевнені, що хочете видалити фото?';
 

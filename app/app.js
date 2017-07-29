@@ -10,6 +10,7 @@ angular
       'ngResource',
       'ngCropper',
       'infinite-scroll',
+      'youtube-embed'
       //'angular-google-analytics'
     ])
 

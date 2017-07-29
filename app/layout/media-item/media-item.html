@@ -1,11 +1,11 @@
-<div class="media-item">
+<div class="media-item noselect">
   <img data-ng-src="{{vm.item.sqr}}" class="media-item-image" alt="">
-  <div class="overlay" data-ng-if="vm.isOwner">
-    <span>
+  <div class="overlay">
+    <span data-ng-if="vm.isOwner">
       <i class="remove-icon fa fa-times"
          aria-hidden="true"
          title="Видалити"
-         data-ng-click="vm.onRemoveClick()"></i>
+         data-ng-click="vm.onRemoveClick($event)"></i>
     </span>
   </div>
 </div>

@@ -22,17 +22,27 @@
                 backButtonHideEnabled: false,
                 history: false,
                 maxSpreadZoom: 2,
-                //modal: false,
-                shareEl: false,
-                //barsSize: {top:0, bottom:0}
+                shareEl: false
             };
 
-            var gallery = new PhotoSwipe(service.element, PhotoSwipeUI_Default, items, options);
+            items = _.filter(items, function(elem){
+                return !elem.url;
+            });
 
-            gallery.init();
+
+            items = _.each(items, function(elem) {
+               if (elem.url) {
+                   console.log(elem.url);
+                   elem.html = '<youtube-video class="ps-video" data-video-url="' + "'" + elem.url + "'" + '"></youtube-video>';
+                   elem.w = 800;
+                   elem.h = 600;
+               }
+            });
+
+            service.gallery = new PhotoSwipe(service.element, PhotoSwipeUI_Default, items, options);
+
+            service.gallery.init();
         }
-
-
 
     }
 })();

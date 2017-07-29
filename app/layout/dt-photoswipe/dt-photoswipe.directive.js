@@ -24,7 +24,15 @@
     PhotoswipeController.$inject = ['$element', 'photoswipe'];
 
     function PhotoswipeController($element, photoswipe) {
+        var vm = this;
         photoswipe.element = $element[0];
+
+        activate();
+
+        function activate() {
+        }
+
+
     }
 
 })();

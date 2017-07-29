@@ -4,9 +4,11 @@
         .module('app')
         .controller('InstitutionController', InstitutionController);
 
-    InstitutionController.$inject = ['$rootScope', '$state', '$stateParams', 'users', 'photosService', 'instService', 'categoriesService'];
+    InstitutionController.$inject = ['$rootScope', '$state', '$stateParams', 'users', 'photosService',
+        'instService', 'categoriesService', 'photoswipe'];
 
-    function InstitutionController($rootScope, $state, $stateParams, users, photosService, instService, categoriesService) {
+    function InstitutionController($rootScope, $state, $stateParams, users, photosService,
+                                   instService, categoriesService, photoswipe) {
         var vm = this;
 
         var instId = $stateParams.id;
@@ -30,6 +32,8 @@
 
         vm.isOwnerOrAdmin = isOwnerOrAdmin;
         vm.showDetailedDescription = showDetailedDescription;
+        vm.show = show;
+        vm.initPhotoSwipe = initPhotoSwipe;
 
         activate();
 
@@ -88,6 +92,11 @@
         function getInstPhotos() {
             photosService.getByInstId(instId).then(function(response) {
                 vm.photos = response.data;
+                vm.photos.unshift({
+                    id: 141414,
+                    url: 'https://www.youtube.com/watch?v=18-xvIjH8T4',
+                    sqr: 'http://localhost:8000/uploads/image59704a41263147.91473634.jpeg'
+                })
             });
         }
 
@@ -105,6 +114,27 @@
 
         function onPhotoUploaded(photo) {
             vm.photos.unshift(photo);
+        }
+
+        function show(index) {
+            if (vm.photos[index].url) {
+                return false;
+            } else {
+                initPhotoSwipe(vm.photos, index);
+            }
+        }
+
+        function initPhotoSwipe(items, index) {
+            var trueIndex = getPhotoTrueIndex(index);
+            photoswipe.init(angular.copy(items), trueIndex);
+        }
+
+        function getPhotoTrueIndex(index) {
+            var photo = vm.photos[index];
+            var photosOnly = _.filter(vm.photos, function(elem) {
+                return !elem.url;
+            });
+            return _.indexOf(photosOnly, photo);
         }
     }
 
