@@ -22,7 +22,8 @@
             instId: instId,
             rawDownload: true,
             aspectRatio: 1,
-            resizeTo: 640
+            resizeTo: 640,
+            onSuccess: onPhotoUploaded
         };
 
         vm.isStoryDescriptionTruncated = true;
@@ -34,6 +35,14 @@
 
         function activate() {
             getInst();
+
+            $rootScope.$on('media-item-deleted', function(event, payload) {
+                var deletedPhoto = _.find(vm.photos, function(elem) {
+                    return elem.id === payload.id;
+                });
+                var index = _.indexOf(vm.photos, deletedPhoto);
+                vm.photos.splice(index, 1);
+            });
         }
 
         function getInst() {
@@ -92,6 +101,10 @@
 
         function showDetailedDescription() {
             vm.isStoryDescriptionTruncated = false;
+        }
+
+        function onPhotoUploaded(photo) {
+            vm.photos.unshift(photo);
         }
     }
 

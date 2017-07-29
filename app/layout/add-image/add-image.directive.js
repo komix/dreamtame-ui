@@ -65,7 +65,9 @@
             }
 
             photosService.add(imageData).then(function(response) {
-
+                if (vm.config.onSuccess) {
+                    vm.config.onSuccess(response.data);
+                }
             });
         }
 

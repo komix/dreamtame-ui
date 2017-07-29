@@ -17,27 +17,39 @@
             templateUrl: 'layout/media-item/media-item.html',
             scope: {
                 item: '=',
-                isOwner: '='
+                isOwner: '=?'
             }
         };
 
         return directive;
     }
 
-    MediaItemController.$inject = ['$element'];
+    MediaItemController.$inject = ['photosService', 'confirm', '$rootScope'];
 
-    function MediaItemController($element) {
+    function MediaItemController(photosService, confirm, $rootScope) {
         var vm = this;
+
+        vm.onRemoveClick = onRemoveClick;
 
         activate();
 
-
-
         function activate() {
+
         }
 
+        function onRemoveClick() {
+            if (vm.item.src) {
+                var message = 'Ви впевнені, що хочете видалити фото?';
 
-
+                confirm.open(message).then(function(result) {
+                    if (result) {
+                        photosService.remove(vm.item.id).then(function() {
+                            $rootScope.$emit('media-item-deleted', {id: vm.item.id});
+                        })
+                    }
+                });
+            }
+        }
 
     }
 })();
