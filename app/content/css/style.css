@@ -379,4 +379,35 @@
 .pswp__ui--fit .pswp__top-bar {
   background-color: transparent; }
 
+.video-modal-wrap + .modal-backdrop.in {
+  opacity: 0.8; }
+.video-modal-wrap .modal-dialog .modal-content {
+  background-color: transparent;
+  box-shadow: none; }
+.video-modal-wrap .modal-dialog .modal-body {
+  padding: 0;
+  position: relative; }
+  .video-modal-wrap .modal-dialog .modal-body .close {
+    position: absolute;
+    top: -28px;
+    right: -28px;
+    color: #fff;
+    font-size: 32px; }
+.video-modal-wrap .video-modal .embed-responsive {
+  position: relative;
+  display: block;
+  height: 0;
+  padding: 0;
+  overflow: hidden; }
+.video-modal-wrap .video-modal .embed-responsive.embed-responsive-16by9 {
+  padding-bottom: 56.25%; }
+.video-modal-wrap .video-modal .embed-responsive-item {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0; }
+
 /*# sourceMappingURL=style.css.map */

@@ -11,7 +11,8 @@
         var service = {
             showAddCatModal: showAddCatModal,
             showEditCatModal: showEditCatModal,
-            showMapModal: showMapModal
+            showMapModal: showMapModal,
+            showVideoModal: showVideoModal
         };
 
         return service;
@@ -63,6 +64,22 @@
                 resolve: {
                     mapConfig: function() {
                         return mapConfig;
+                    }
+                }
+            })
+        }
+
+        function showVideoModal(videoConfig) {
+            $uibModal.open({
+                animation: true,
+                templateUrl: 'blocks/modals/video-modal/video-modal.html',
+                controller: 'VideoModalController',
+                controllerAs: 'vm',
+                size: 'lg',
+                windowClass: 'video-modal-wrap',
+                resolve: {
+                    videoConfig: function() {
+                        return videoConfig;
                     }
                 }
             })

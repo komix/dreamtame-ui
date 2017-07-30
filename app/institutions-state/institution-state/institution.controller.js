@@ -5,10 +5,10 @@
         .controller('InstitutionController', InstitutionController);
 
     InstitutionController.$inject = ['$rootScope', '$state', '$stateParams', 'users', 'photosService',
-        'instService', 'categoriesService', 'photoswipe'];
+        'instService', 'categoriesService', 'photoswipe', 'modalService'];
 
     function InstitutionController($rootScope, $state, $stateParams, users, photosService,
-                                   instService, categoriesService, photoswipe) {
+                                   instService, categoriesService, photoswipe, modalService) {
         var vm = this;
 
         var instId = $stateParams.id;
@@ -118,7 +118,7 @@
 
         function show(index) {
             if (vm.photos[index].url) {
-                return false;
+                modalService.showVideoModal({url: 'https://www.youtube.com/watch?v=18-xvIjH8T4'});
             } else {
                 initPhotoSwipe(vm.photos, index);
             }
