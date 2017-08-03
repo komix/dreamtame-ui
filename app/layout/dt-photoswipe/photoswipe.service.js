@@ -26,17 +26,7 @@
             };
 
             items = _.filter(items, function(elem){
-                return !elem.url;
-            });
-
-
-            items = _.each(items, function(elem) {
-               if (elem.url) {
-                   console.log(elem.url);
-                   elem.html = '<youtube-video class="ps-video" data-video-url="' + "'" + elem.url + "'" + '"></youtube-video>';
-                   elem.w = 800;
-                   elem.h = 600;
-               }
+                return !elem.ytbUrl && !elem.ytbId;
             });
 
             service.gallery = new PhotoSwipe(service.element, PhotoSwipeUI_Default, items, options);

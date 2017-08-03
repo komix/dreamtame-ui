@@ -33,12 +33,12 @@
           <add-image data-config="vm.addImageConfig"
                      data-ng-if="vm.isOwnerOrAdmin()">
           </add-image>
-          <!--<button class="btn btn-default"-->
-                  <!--data-ng-click="vm.openAddMediaModal()"-->
-                  <!--data-ng-if="vm.isOwnerOrAdmin()">-->
-            <!--<i class="fa fa-video-camera" aria-hidden="true"></i>-->
-            <!--<span>Додати відео</span>-->
-          <!--</button>-->
+          <button class="btn btn-default"
+                  data-ng-click="vm.showVideoModal()"
+                  data-ng-if="vm.isOwnerOrAdmin()">
+            <i class="fa fa-video-camera" aria-hidden="true"></i>
+            <span>Додати відео</span>
+          </button>
         </div>
       </div>
     </div>

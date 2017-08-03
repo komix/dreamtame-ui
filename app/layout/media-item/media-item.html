@@ -1,5 +1,5 @@
 <div class="media-item noselect">
-  <img data-ng-src="{{vm.item.sqr}}" class="media-item-image" alt="">
+  <img data-ng-src="{{vm.item.sqr || vm.item.imgUrl}}" class="media-item-image" alt="">
   <div class="overlay">
     <span data-ng-if="vm.isOwner">
       <i class="remove-icon fa fa-times"

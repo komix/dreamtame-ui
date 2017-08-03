@@ -4,11 +4,11 @@
         .module('app')
         .controller('InstitutionController', InstitutionController);
 
-    InstitutionController.$inject = ['$rootScope', '$state', '$stateParams', 'users', 'photosService',
-        'instService', 'categoriesService', 'photoswipe', 'modalService'];
+    InstitutionController.$inject = ['$q', '$rootScope', '$state', '$stateParams', 'users', 'photosService',
+        'instService', 'categoriesService', 'photoswipe', 'modalService', 'videos'];
 
-    function InstitutionController($rootScope, $state, $stateParams, users, photosService,
-                                   instService, categoriesService, photoswipe, modalService) {
+    function InstitutionController($q, $rootScope, $state, $stateParams, users, photosService,
+                                   instService, categoriesService, photoswipe, modalService, videos) {
         var vm = this;
 
         var instId = $stateParams.id;
@@ -25,7 +25,7 @@
             rawDownload: true,
             aspectRatio: 1,
             resizeTo: 640,
-            onSuccess: onPhotoUploaded
+            onSuccess: onMediaItemUploaded
         };
 
         vm.isStoryDescriptionTruncated = true;
@@ -34,6 +34,7 @@
         vm.showDetailedDescription = showDetailedDescription;
         vm.show = show;
         vm.initPhotoSwipe = initPhotoSwipe;
+        vm.showVideoModal = showVideoModal;
 
         activate();
 
@@ -57,7 +58,7 @@
 
                 setMapConfig();
                 getInstPhoto(vm.inst.photoId);
-                getInstPhotos();
+                getInstMedia();
                 emitActiveCatChangeEvent(vm.inst.categoryId);
             });
         }
@@ -89,15 +90,19 @@
             });
         }
 
-        function getInstPhotos() {
-            photosService.getByInstId(instId).then(function(response) {
-                vm.photos = response.data;
-                vm.photos.unshift({
-                    id: 141414,
-                    url: 'https://www.youtube.com/watch?v=18-xvIjH8T4',
-                    sqr: 'http://localhost:8000/uploads/image59704a41263147.91473634.jpeg'
-                })
+        function getInstMedia() {
+            $q.all([getInstPhotos(), getInstVideos()]).then(function(responses) {
+               console.log(responses);
+                vm.photos = responses[0].data.concat(responses[1].data);
             });
+        }
+
+        function getInstVideos() {
+            return videos.getByInstId(instId);
+        }
+
+        function getInstPhotos() {
+            return photosService.getByInstId(instId);
         }
 
         function isOwnerOrAdmin() {
@@ -112,13 +117,13 @@
             vm.isStoryDescriptionTruncated = false;
         }
 
-        function onPhotoUploaded(photo) {
+        function onMediaItemUploaded(photo) {
             vm.photos.unshift(photo);
         }
 
         function show(index) {
-            if (vm.photos[index].url) {
-                modalService.showVideoModal({url: 'https://www.youtube.com/watch?v=18-xvIjH8T4'});
+            if (vm.photos[index].ytbUrl) {
+                modalService.showVideoModal({ytbUrl: vm.photos[index].ytbUrl});
             } else {
                 initPhotoSwipe(vm.photos, index);
             }
@@ -135,6 +140,15 @@
                 return !elem.url;
             });
             return _.indexOf(photosOnly, photo);
+        }
+
+        function showVideoModal() {
+            modalService.showManageVideoModal({
+                instId: instId,
+                title: 'Додати відео',
+                instance: 'institution',
+                onSuccess: onMediaItemUploaded
+            })
         }
     }
 

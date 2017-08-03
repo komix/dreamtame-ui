@@ -12,7 +12,8 @@
             showAddCatModal: showAddCatModal,
             showEditCatModal: showEditCatModal,
             showMapModal: showMapModal,
-            showVideoModal: showVideoModal
+            showVideoModal: showVideoModal,
+            showManageVideoModal: showManageVideoModal
         };
 
         return service;
@@ -84,6 +85,25 @@
                 }
             })
         }
+
+        function showManageVideoModal(videoConfig) {
+            $uibModal.open({
+                animation: true,
+                templateUrl: 'blocks/modals/manage-video/manage-video.html',
+                controller: 'ManageVideoModalController',
+                controllerAs: 'vm',
+                size: 'lg',
+                windowClass: 'manage-video-modal-wrap',
+                backdrop: 'static',
+                resolve: {
+                    videoConfig: function() {
+                        return videoConfig;
+                    }
+                }
+            })
+        }
+
+
 
     }
 

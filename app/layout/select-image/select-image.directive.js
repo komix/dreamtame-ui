@@ -36,14 +36,12 @@
 
         var defaultConfig = {
             aspectRatio: 1,
-            resizeTo: 700,
-            mWidth: 500
+            resizeTo: 700
         };
 
         if (vm.config) {
             vm.config.aspectRatio = vm.config.aspectRatio || defaultConfig.aspectRatio;
             vm.config.resizeTo = vm.config.resizeTo || defaultConfig.resizeTo;
-            vm.config.mWidth = vm.config.mWidth || defaultConfig.mWidth;
         } else {
             vm.config = defaultConfig;
         }
@@ -55,7 +53,8 @@
                 })
                 .then(function(response){
                     if (!response) { return false; }
-                    vm.image = response;
+                    vm.image = response.data ? response.data : response;
+
                     if (vm.config.onChange) {
                         vm.config.onChange(response);
                     }

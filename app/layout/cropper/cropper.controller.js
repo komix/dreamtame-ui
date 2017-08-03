@@ -86,7 +86,7 @@
         function sendFile() {
             if (!cropperService.mCropWidth) {
                 cropperService.sendImage(vm.preview.dataUrl);
-                $uibModalStack.dismissAll();
+                cropperService.closeModal();
                 return false;
             }
 
@@ -98,7 +98,7 @@
             getMinified().then(function(imgString) {
                 image.msrc = imgString;
                 cropperService.sendImage(image);
-                $uibModalStack.dismissAll();
+                cropperService.closeModal();
             });
         }
 

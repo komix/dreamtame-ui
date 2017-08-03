@@ -5,9 +5,9 @@
         .module('app')
         .factory('cropperService', cropperService);
 
-    cropperService.$inject = ['$q', '$uibModal', 'imageService'];
+    cropperService.$inject = ['$q', '$uibModal', 'imageService', 'modalService'];
     /* @ngInject */
-    function cropperService($q, $modal, imageService) {
+    function cropperService($q, $modal, imageService, modalService) {
         var imageData = {};
 
         var service = {
@@ -17,9 +17,11 @@
             cropWidth: null,
             mCropWidth: null,
             imageData: imageData,
+            modal: null,
             openCropper: openCropper,
             sendImage: sendImage,
-            reset: reset
+            reset: reset,
+            closeModal: closeModal
         };
 
         return service;
@@ -33,11 +35,12 @@
             service.mCropWidth = mCropWidth;
 
             if (blob) {
-                $modal.open({
+                service.modal = $modal.open({
                     templateUrl: 'layout/cropper/cropper-modal.html',
                     controller: 'CropController',
                     controllerAs: 'vm',
-                    size: 'lg'
+                    size: 'lg',
+                    backdrop: 'static'
                 })
             }
 
@@ -55,6 +58,9 @@
             });
         }
 
+        function closeModal() {
+            service.modal.close();
+        }
 
         function reset() {
             service.defer = null;
