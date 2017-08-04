@@ -6,9 +6,9 @@
         .controller('VideoModalController', VideoModalController);
 
 
-    VideoModalController.$inject = ['videoConfig'];
+    VideoModalController.$inject = ['videoConfig', '$scope'];
 
-    function VideoModalController(videoConfig) {
+    function VideoModalController(videoConfig, $scope) {
         var vm = this;
 
         vm.config = videoConfig;
@@ -18,7 +18,11 @@
         activate();
 
         function activate() {
+            //vm.player.playVideo();
 
+            $scope.$on('youtube.player.ready', function ($event, player) {
+                vm.player.playVideo();
+            });
         }
 
 

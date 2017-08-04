@@ -33,6 +33,10 @@
                     setMarker(vm.location);
                 });
             });
+
+            $scope.$on('$destroy', function() {
+                vm.map = null;
+            })
         }
 
         function initialize() {

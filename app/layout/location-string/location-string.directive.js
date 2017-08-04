@@ -37,7 +37,7 @@
         }
 
         function openLocationModal() {
-            modalService.showMapModal(vm.mapConfig);
+            modalService.showMapModal(angular.copy(vm.mapConfig));
         }
 
 
