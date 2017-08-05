@@ -75,6 +75,8 @@
     width: 100%;
     height: 38px;
     margin-top: 10px; }
+  .select-image-container.invalid .image-placeholder, .select-image-container.invalid .btn {
+    border: 1px solid #FF7F7F; }
 
 .modal-body .show-preview {
   display: block;
@@ -199,6 +201,15 @@
   overflow: hidden;
   margin-bottom: 30px;
   cursor: pointer; }
+  .media-item .play-icon {
+    position: absolute;
+    display: block;
+    padding: 10px 14px;
+    font-size: 38px;
+    color: #fff;
+    bottom: 0;
+    right: 0;
+    z-index: 2; }
   .media-item .media-item-image {
     width: 100%; }
   .media-item .overlay {
@@ -218,7 +229,21 @@
       cursor: pointer;
       padding: 6px 10px; }
 
-.institution-view .institution-photos {
+.institution-view .inst-navigation {
+  padding-top: 20px; }
+  .institution-view .inst-navigation .dt-nav-pill {
+    display: block;
+    height: 30px;
+    padding: 0 8px;
+    margin-right: 10px;
+    border-radius: 3px;
+    line-height: 30px;
+    background-color: transparent;
+    color: #656565; }
+    .institution-view .inst-navigation .dt-nav-pill.active, .institution-view .inst-navigation .dt-nav-pill:hover {
+      color: #fff;
+      background-color: #656565; }
+.institution-view .institution-photos, .institution-view .institution-videos {
   padding-top: 30px; }
 .institution-view .select-image-box {
   border-radius: 50%;
@@ -306,7 +331,7 @@
   .cats-navigation .categories-list .category-link {
     position: relative;
     display: block;
-    padding: 3px 5px 3px 5px;
+    padding: 3px 8px 3px 8px;
     border-radius: 4px;
     color: #717171;
     text-transform: capitalize;
@@ -409,5 +434,9 @@
   width: 100%;
   height: 100%;
   border: 0; }
+
+.manage-video .errors {
+  padding: 10px;
+  color: #FF7F7F; }
 
 /*# sourceMappingURL=style.css.map */

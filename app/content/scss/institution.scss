@@ -1,5 +1,26 @@
 .institution-view {
-  .institution-photos {
+  .inst-navigation {
+    padding-top: 20px;
+
+    .dt-nav-pill {
+      display: block;
+      height: 30px;
+      padding: 0 8px;
+      margin-right: 10px;
+      border-radius: 3px;
+      line-height: 30px;
+      background-color: transparent;
+      color: $logo-color;
+
+      &.active, &:hover {
+        color: #fff;
+        background-color: $logo-color;
+      }
+    }
+
+  }
+
+  .institution-photos, .institution-videos {
     padding-top: 30px;
   }
 

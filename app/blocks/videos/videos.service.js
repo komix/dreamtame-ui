@@ -62,9 +62,9 @@
             return defered.promise;
         }
 
-        function remove(categoryId) {
+        function remove(id) {
             var defered = $q.defer();
-            $http.delete(apiUrl +  '/api/videos/' + categoryId).then(function(data){
+            $http.delete(apiUrl +  '/api/videos/' + id).then(function(data){
                 defered.resolve(data);
             });
             return defered.promise;

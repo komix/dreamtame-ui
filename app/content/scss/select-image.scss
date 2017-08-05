@@ -50,4 +50,10 @@
     }
   }
 
+  &.invalid {
+    .image-placeholder, .btn {
+      border: 1px solid $invalid-color;
+    }
+  }
+
 }

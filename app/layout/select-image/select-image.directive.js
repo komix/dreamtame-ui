@@ -25,9 +25,9 @@
         return directive;
     }
 
-    SelectImageController.$inject = ['$scope', '$element', 'imageService', 'cropperService'];
+    SelectImageController.$inject = ['cropperService'];
 
-    function SelectImageController($scope, $element, imageService, cropperService) {
+    function SelectImageController(cropperService) {
         var vm = this;
         vm.triggerInput = triggerInput;
         vm.onImageLoaded = onImageLoaded;

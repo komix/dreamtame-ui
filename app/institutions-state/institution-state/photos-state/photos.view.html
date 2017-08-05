@@ -1,0 +1,10 @@
+<div class="institution-photos">
+  <div class="row">
+    <div data-ng-repeat="photo in vm.photos track by photo.id" class="col-md-4">
+      <media-item data-item="photo"
+                  data-is-owner="vm.isOwnerOrAdmin()"
+                  data-ng-click="vm.initPhotoSwipe($index)">
+      </media-item>
+    </div>
+  </div>
+</div>

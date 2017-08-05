@@ -17,8 +17,9 @@ function ManageVideoModalController($rootScope, videoConfig, $uibModalStack, vid
     var selImgConfig = {
         aspectRatio: 1,
         resizeTo: 700,
-        buttonUnder: true
-        //onChange: onInstImageChange
+        buttonUnder: true,
+        required: true,
+        onChange: onSelectedImageChange
     };
 
     vm.selImgConfig = selImgConfig;
@@ -32,6 +33,20 @@ function ManageVideoModalController($rootScope, videoConfig, $uibModalStack, vid
     }
 
     function submit() {
+        _.each(vm.form.$error.required, function(elem) {
+            elem.$setDirty();
+        });
+
+        if (!vm.image.src) {
+            vm.selImgConfig.invalid = true;
+            vm.imgErrMessage = 'Додайте фото-обкладинку для вашого відеозапису.';
+            return false;
+        }
+
+        if (!vm.form.$valid) {
+            return false;
+        }
+
         vm.video.imgUrl = vm.image.src;
         vm.video.instanceId = vm.config.instId;
         vm.video.instance = vm.config.instance;
@@ -45,6 +60,13 @@ function ManageVideoModalController($rootScope, videoConfig, $uibModalStack, vid
         if (vm.config.onSuccess) {
             vm.config.onSuccess(mediaItem);
         }
+
+        $rootScope.$emit('video-added', mediaItem);
+        $uibModalStack.dismissAll();
+    }
+
+    function onSelectedImageChange() {
+        vm.imgErrMessage = '';
     }
 
 }

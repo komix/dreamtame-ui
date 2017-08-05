@@ -1,7 +1,10 @@
-<div class="select-image-container noselect">
-	<div class="select-image-box" ng-class="{'image-editable': vm.editable}">
+<div class="select-image-container noselect" data-ng-class="{'invalid': vm.config.invalid}">
+	<div class="select-image-box"
+			 dat-ng-class="{'image-editable': vm.editable}">
 		<img ng-show="vm.image.src" ng-src="{{vm.image.src}}">
-		<img ng-hide="vm.image.src" src="content/images/placeholder_cropped.jpg">
+		<img ng-hide="vm.image.src"
+				 src="content/images/placeholder_cropped.jpg"
+				 class="image-placeholder">
 		<div class="select-image-overlay"
 				 data-ng-if="!vm.config.buttonUnder"
 				 data-ng-click="vm.triggerInput()">

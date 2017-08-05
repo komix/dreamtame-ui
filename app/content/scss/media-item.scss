@@ -4,6 +4,17 @@
   margin-bottom: 30px;
   cursor: pointer;
 
+  .play-icon {
+    position: absolute;
+    display: block;
+    padding: 10px 14px;
+    font-size: 38px;
+    color: #fff;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+  }
+
   .media-item-image {
     width: 100%;
   }

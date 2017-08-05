@@ -4,14 +4,15 @@
         .module('app')
         .controller('InstitutionController', InstitutionController);
 
-    InstitutionController.$inject = ['$q', '$rootScope', '$state', '$stateParams', 'users', 'photosService',
-        'instService', 'categoriesService', 'photoswipe', 'modalService', 'videos'];
+    InstitutionController.$inject = ['$rootScope', '$state', '$stateParams', 'users', 'photosService',
+        'instService', 'categoriesService', 'photoswipe', 'modalService'];
 
-    function InstitutionController($q, $rootScope, $state, $stateParams, users, photosService,
-                                   instService, categoriesService, photoswipe, modalService, videos) {
+    function InstitutionController($rootScope, $state, $stateParams, users, photosService,
+                                   instService, categoriesService, photoswipe, modalService) {
         var vm = this;
 
         var instId = $stateParams.id;
+        vm.instId = instId;
 
         vm.selImgConfig = {
             aspectRatio: 1,
@@ -24,30 +25,23 @@
             instId: instId,
             rawDownload: true,
             aspectRatio: 1,
-            resizeTo: 640,
-            onSuccess: onMediaItemUploaded
+            resizeTo: 640
         };
 
         vm.isStoryDescriptionTruncated = true;
 
         vm.isOwnerOrAdmin = isOwnerOrAdmin;
-        vm.showDetailedDescription = showDetailedDescription;
-        vm.show = show;
         vm.initPhotoSwipe = initPhotoSwipe;
-        vm.showVideoModal = showVideoModal;
+        vm.isSubStateActive = isSubStateActive;
+        vm.showAddVideoModal = showAddVideoModal;
 
         activate();
 
         function activate() {
             getInst();
-
-            $rootScope.$on('media-item-deleted', function(event, payload) {
-                var deletedPhoto = _.find(vm.photos, function(elem) {
-                    return elem.id === payload.id;
-                });
-                var index = _.indexOf(vm.photos, deletedPhoto);
-                vm.photos.splice(index, 1);
-            });
+            if ($state.current.name === 'institutions.institution') {
+                $state.go('institutions.institution.photos', {id: instId});
+            }
         }
 
         function getInst() {
@@ -58,7 +52,6 @@
 
                 setMapConfig();
                 getInstPhoto(vm.inst.photoId);
-                getInstMedia();
                 emitActiveCatChangeEvent(vm.inst.categoryId);
             });
         }
@@ -90,21 +83,6 @@
             });
         }
 
-        function getInstMedia() {
-            $q.all([getInstPhotos(), getInstVideos()]).then(function(responses) {
-               console.log(responses);
-                vm.photos = responses[0].data.concat(responses[1].data);
-            });
-        }
-
-        function getInstVideos() {
-            return videos.getByInstId(instId);
-        }
-
-        function getInstPhotos() {
-            return photosService.getByInstId(instId);
-        }
-
         function isOwnerOrAdmin() {
             if (!vm.inst || !users.current) { return false; }
             var isOwner = parseInt(vm.inst.owner) === parseInt(users.current.id);
@@ -113,41 +91,21 @@
             return isAdmin || isOwner;
         }
 
-        function showDetailedDescription() {
-            vm.isStoryDescriptionTruncated = false;
-        }
-
-        function onMediaItemUploaded(photo) {
-            vm.photos.unshift(photo);
-        }
-
-        function show(index) {
-            if (vm.photos[index].ytbUrl) {
-                modalService.showVideoModal({ytbUrl: vm.photos[index].ytbUrl});
-            } else {
-                initPhotoSwipe(vm.photos, index);
-            }
-        }
-
         function initPhotoSwipe(items, index) {
             var trueIndex = getPhotoTrueIndex(index);
             photoswipe.init(angular.copy(items), trueIndex);
         }
 
-        function getPhotoTrueIndex(index) {
-            var photo = vm.photos[index];
-            var photosOnly = _.filter(vm.photos, function(elem) {
-                return !elem.url;
-            });
-            return _.indexOf(photosOnly, photo);
+        function isSubStateActive(name) {
+            if (!$state.current || !$state.current.name) { return false; }
+            return $state.current.name.includes(name);
         }
 
-        function showVideoModal() {
+        function showAddVideoModal() {
             modalService.showManageVideoModal({
                 instId: instId,
                 title: 'Додати відео',
                 instance: 'institution',
-                onSuccess: onMediaItemUploaded
             })
         }
     }

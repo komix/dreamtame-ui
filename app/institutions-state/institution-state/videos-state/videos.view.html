@@ -1,0 +1,10 @@
+<div class="institution-videos">
+  <div class="row">
+    <div data-ng-repeat="video in vm.videos track by video.id" class="col-md-4">
+      <media-item data-item="video"
+                  data-is-owner="vm.isOwnerOrAdmin()"
+                  data-ng-click="vm.showVideo(video)">
+      </media-item>
+    </div>
+  </div>
+</div>

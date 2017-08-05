@@ -34,7 +34,7 @@
                      data-ng-if="vm.isOwnerOrAdmin()">
           </add-image>
           <button class="btn btn-default"
-                  data-ng-click="vm.showVideoModal()"
+                  data-ng-click="vm.showAddVideoModal()"
                   data-ng-if="vm.isOwnerOrAdmin()">
             <i class="fa fa-video-camera" aria-hidden="true"></i>
             <span>Додати відео</span>
@@ -42,14 +42,34 @@
         </div>
       </div>
     </div>
-    <div class="institution-photos">
-      <div class="row">
-        <div data-ng-repeat="photo in vm.photos track by photo.id" class="col-md-4">
-          <media-item data-item="photo"
-                      data-is-owner="vm.isOwnerOrAdmin()"
-                      data-ng-click="vm.show($index)">
-          </media-item>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="inst-navigation">
+          <ul class="nav nav-pills">
+            <li>
+              <a ui-sref="institutions.institution.info({id: vm.instId})"
+                 class="dt-nav-pill"
+                 data-ng-class="{active: vm.isSubStateActive('info')}"
+              >Інформація</a>
+            </li>
+            <li>
+              <a ui-sref="institutions.institution.photos({id: vm.instId})"
+                 class="dt-nav-pill"
+                 data-ng-class="{active: vm.isSubStateActive('photos')}"
+              >Фотографії</a>
+            </li>
+            <li>
+              <a ui-sref="institutions.institution.videos({id: vm.instId})"
+                 class="dt-nav-pill"
+                 data-ng-class="{active: vm.isSubStateActive('videos')}"
+              >Відеозаписи</a>
+            </li>
+          </ul>
+
+
+
         </div>
+        <div data-ui-view></div>
       </div>
     </div>
   </div>

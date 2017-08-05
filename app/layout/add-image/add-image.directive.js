@@ -23,9 +23,9 @@
         return directive;
     }
 
-    AddImageController.$inject = ['imageService', 'photosService', 'cropperService'];
+    AddImageController.$inject = ['imageService', 'photosService', 'cropperService', '$rootScope'];
 
-    function AddImageController(imageService, photosService, cropperService) {
+    function AddImageController(imageService, photosService, cropperService, $rootScope) {
         var vm = this;
         vm.triggerInput = triggerInput;
         vm.onImageLoaded = onImageLoaded;
@@ -65,9 +65,11 @@
             }
 
             photosService.add(imageData).then(function(response) {
-                if (vm.config.onSuccess) {
-                    vm.config.onSuccess(response.data);
-                }
+                //if (vm.config.onSuccess) {
+                //    vm.config.onSuccess(response.data);
+                //}
+
+                $rootScope.$emit('photo-added', response.data);
             });
         }
 
