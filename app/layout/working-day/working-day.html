@@ -1,0 +1,105 @@
+<div class="working-days-manage">
+  <div class="working-day-form dt-form">
+    <form name="vm.infoform">
+      <div class="form-group">
+        <label class="form-label" for="name-input">Назва:</label>
+        <input type="text"
+               class="form-control"
+               data-ng-model="vm.workingDays.name"
+               placeholder="Назва"
+               id="name-input"
+               data-ng-required="true"
+               data-ng-trim="true"
+        >
+      </div>
+    </form>
+    <form name="vm.form">
+      <div class="input-group">
+        <label>Оберіть день тижня:</label>
+        <select class="working-day-select form-control"
+                data-ng-options="day.dayNumber as day.dayName for day in vm.daysOfWeek | filter: vm.optionsFilter"
+                data-ng-model="vm.workingDay.dayNumber"
+                data-ng-change="vm.onDaySelectChange()"
+                data-ng-class="{'has-error': !vm.workingDay.isDayNumberValid}"
+        >
+          <option value=''>Оберіть день</option>
+        </select>
+      </div>
+
+      <div class="timepicker-wrapper" data-ng-class="{'has-error': !vm.workingDay.isStartValid}">
+        <label>Від:</label>
+        <div data-uib-timepicker
+             data-ng-model="vm.workingDay.start"
+             data-ng-change="vm.workingDay.clearErrors()"
+             data-hour-step="1"
+             data-minute-step="1"
+             data-show-meridian="false"
+             data-template-url="layout/working-day/layouts/timepicker.html"
+        ></div>
+      </div>
+
+      <div class="timepicker-wrapper" data-ng-class="{'has-error': !vm.workingDay.isEndValid}">
+        <label>До:</label>
+        <div data-uib-timepicker
+             data-ng-model="vm.workingDay.end"
+             data-ng-change="vm.workingDay.clearErrors()"
+             data-hour-step="1"
+             data-minute-step="1"
+             data-show-meridian="false"
+             data-template-url="layout/working-day/layouts/timepicker.html"
+        ></div>
+      </div>
+
+      <div class="input-group submit-button">
+        <button class="btn btn-sm btn-default" data-ng-click="vm.submitWorkingDay()">Додати</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="errors-list">
+    <div class="alert alert-danger" role="alert" data-ng-if="!vm.workingDay.isDayNumberValid">
+      Оберіть, будь ласка, день тижня.
+    </div>
+    <div class="alert alert-danger" role="alert" data-ng-if="!vm.workingDay.isStartValid">
+      Вкажіть час початку роботи.
+    </div>
+    <div class="alert alert-danger" role="alert" data-ng-if="!vm.workingDay.isEndValid">
+      Вкажіть час завершення роботи.
+    </div>
+  </div>
+
+  <div class="working-days-list">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info"
+          data-ng-repeat="day in vm.workingDays.data | orderBy:'dayNumber' track by day.dayNumber">
+        <span class="working-day-info-wrapper">
+          <span class="working-day-label">День тижня:</span>
+          <span data-ng-bind="vm.workingDaysService.getDayTitle(day.dayNumber)"></span>
+        </span>
+
+        <span class="working-day-info-wrapper">
+          <span class="working-day-label">Від:</span>
+          <span data-ng-bind="vm.workingDaysService.getTimeFormatted(day.start)"></span>
+        </span>
+
+        <span class="working-day-info-wrapper">
+          <span class="working-day-label">До:</span>
+          <span data-ng-bind="vm.workingDaysService.getTimeFormatted(day.end)"></span>
+        </span>
+
+        <span class="remove-working-day pull-right" data-ng-click="vm.removeWorkingDay(day)">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <button class="btn btn-default" data-ng-click="vm.submit()">Зберегти</button>
+    <button class="btn btn-default" data-ng-click="vm.removeSchedule()">Видалити</button>
+  </div>
+
+</div>
+
+
+

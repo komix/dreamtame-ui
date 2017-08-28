@@ -1,0 +1,14 @@
+<div class="working-time">
+  <button class="btn btn-default" data-ng-click="vm.openWorkingHoursModal()">Додати</button>
+  <div class="working-time-item" data-ng-repeat="schedule in vm.workingDays.data track by schedule.id">
+    <p data-ng-bind="schedule.name"></p>
+    <button class="btn btn-default" data-ng-click="vm.openWorkingHoursModal(schedule)">Редагувати</button>
+    <ul class="working-time-days">
+      <li class="working-time-day" data-ng-repeat="day in schedule.workingDays track by $index">
+        <span data-ng-bind="vm.workingDaysService.getDayTitle(day.dayNumber)"></span>
+        <span data-ng-bind="vm.workingDaysService.getTimeFormatted(day.start)"></span>
+        <span data-ng-bind="vm.workingDaysService.getTimeFormatted(day.end)"></span>
+      </li>
+    </ul>
+  </div>
+</div>

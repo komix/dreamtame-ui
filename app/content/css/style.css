@@ -150,6 +150,14 @@
 .dt-form .ng-dirty.ng-invalid {
   border-color: #FF7F7F;
   background-color: #ffe6e6; }
+.dt-form .ng-dirty.ng-invalid-time {
+  background-color: transparent; }
+.dt-form .has-error input, .dt-form .has-error button select {
+  border-color: #FF7F7F;
+  background-color: #ffe6e6; }
+.dt-form input.has-error, .dt-form button.has-error, .dt-form select.has-error {
+  border-color: #FF7F7F;
+  background-color: #ffe6e6; }
 .dt-form select {
   -webkit-appearance: none;
   width: auto;
@@ -158,6 +166,10 @@
   background-position: 95% center;
   background-size: 10px 10px;
   background-repeat: no-repeat; }
+
+.errors-list .alert {
+  padding: 8px 10px;
+  margin-bottom: 10px; }
 
 .categories-tree {
   list-style-type: none;
@@ -438,5 +450,202 @@
 .manage-video .errors {
   padding: 10px;
   color: #FF7F7F; }
+
+.timepicker-wrapper {
+  display: inline-block;
+  float: left; }
+  .timepicker-wrapper .timepicker-layout {
+    display: inline-block;
+    overflow: hidden; }
+    .timepicker-wrapper .timepicker-layout .timepicker-colon {
+      float: left;
+      height: 30px;
+      line-height: 30px;
+      font-size: 18px;
+      width: 10px; }
+    .timepicker-wrapper .timepicker-layout .timepicker-input-wrap {
+      display: inline-block;
+      float: left; }
+      .timepicker-wrapper .timepicker-layout .timepicker-input-wrap input {
+        float: left;
+        width: 43px;
+        height: 30px;
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        padding-left: 2px;
+        padding-right: 2px; }
+      .timepicker-wrapper .timepicker-layout .timepicker-input-wrap .input-buttons {
+        display: inline-block;
+        float: left; }
+        .timepicker-wrapper .timepicker-layout .timepicker-input-wrap .input-buttons button {
+          height: 15px;
+          line-height: 13px;
+          width: 20px;
+          display: block;
+          background-color: transparent;
+          outline: none;
+          border: 1px solid #cccccc;
+          border-left: none;
+          border-top-right-radius: 3px;
+          padding: 0; }
+          .timepicker-wrapper .timepicker-layout .timepicker-input-wrap .input-buttons button span {
+            font-size: 10px; }
+          .timepicker-wrapper .timepicker-layout .timepicker-input-wrap .input-buttons button + button {
+            border-top-right-radius: 0;
+            border-top: none;
+            border-bottom-right-radius: 3px; }
+    .timepicker-wrapper .timepicker-layout input[type=number]::-webkit-inner-spin-button,
+    .timepicker-wrapper .timepicker-layout input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0; }
+  .timepicker-wrapper.has-error .timepicker-layout .timepicker-input-wrap .input-buttons button {
+    border-color: #FF7F7F;
+    background-color: #fef4f4; }
+  .timepicker-wrapper.has-error .timepicker-layout .timepicker-input-wrap input {
+    border-color: #FF7F7F; }
+  .timepicker-wrapper .control-label {
+    clear: both;
+    display: block; }
+  .timepicker-wrapper .error-list {
+    clear: both; }
+    .timepicker-wrapper .error-list ul {
+      list-style-type: none;
+      padding-left: 0; }
+  .timepicker-wrapper .datepicker-field {
+    text-align: center; }
+
+.datetimepicker .datepicker-wrapper {
+  float: left;
+  display: inline-block;
+  width: 150px;
+  margin-right: 20px; }
+  .datetimepicker .datepicker-wrapper .uib-daypicker:focus, .datetimepicker .datepicker-wrapper .uib-daypicker:active {
+    outline: none; }
+  .datetimepicker .datepicker-wrapper .input-group-btn .btn-default {
+    border-color: #cccccc; }
+    .datetimepicker .datepicker-wrapper .input-group-btn .btn-default:focus, .datetimepicker .datepicker-wrapper .input-group-btn .btn-default:active {
+      outline: none; }
+  .datetimepicker .datepicker-wrapper.has-error .input-group-btn .btn-default {
+    border-color: #fb9694;
+    background-color: #fef4f4; }
+.datetimepicker .control-label {
+  clear: both;
+  display: block; }
+.datetimepicker .error-list {
+  clear: both; }
+  .datetimepicker .error-list ul {
+    list-style-type: none;
+    padding-left: 0; }
+.datetimepicker .datepicker-field {
+  text-align: center; }
+.datetimepicker:after {
+  content: '';
+  display: block;
+  clear: both; }
+.datetimepicker.disabled .timepicker-layout .timepicker-input-wrap .input-buttons button {
+  cursor: not-allowed;
+  background-color: #dfe5e7; }
+.datetimepicker.disabled .input-group-btn .btn-default {
+  cursor: not-allowed;
+  background-color: #dfe5e7;
+  color: #39424c; }
+.datetimepicker .now-trigger {
+  clear: both;
+  display: block;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: normal; }
+  .datetimepicker .now-trigger .label-title {
+    margin-left: 5px; }
+
+.uib-datepicker-popup {
+  padding: 10px; }
+  .uib-datepicker-popup .uib-left {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 0; }
+  .uib-datepicker-popup .uib-title {
+    border-radius: 0; }
+  .uib-datepicker-popup .uib-right {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: 0; }
+  .uib-datepicker-popup .day-labels {
+    padding: 15px 0 5px; }
+  .uib-datepicker-popup .uib-button-bar {
+    padding: 10px 0 0 0; }
+    .uib-datepicker-popup .uib-button-bar .btn {
+      min-width: 10px;
+      width: auto;
+      line-height: 1; }
+  .uib-datepicker-popup .uib-yearpicker tbody:before, .uib-datepicker-popup .uib-monthpicker tbody:before {
+    content: '';
+    display: block;
+    height: 20px; }
+  .uib-datepicker-popup .uib-weeks .uib-day:hover .btn,
+  .uib-datepicker-popup .uib-weeks .uib-day:hover .btn.active, .uib-datepicker-popup .uib-weeks .uib-month:hover .btn,
+  .uib-datepicker-popup .uib-weeks .uib-month:hover .btn.active, .uib-datepicker-popup .uib-weeks .uib-year:hover .btn,
+  .uib-datepicker-popup .uib-weeks .uib-year:hover .btn.active, .uib-datepicker-popup .uib-months .uib-day:hover .btn,
+  .uib-datepicker-popup .uib-months .uib-day:hover .btn.active, .uib-datepicker-popup .uib-months .uib-month:hover .btn,
+  .uib-datepicker-popup .uib-months .uib-month:hover .btn.active, .uib-datepicker-popup .uib-months .uib-year:hover .btn,
+  .uib-datepicker-popup .uib-months .uib-year:hover .btn.active, .uib-datepicker-popup .uib-years .uib-day:hover .btn,
+  .uib-datepicker-popup .uib-years .uib-day:hover .btn.active, .uib-datepicker-popup .uib-years .uib-month:hover .btn,
+  .uib-datepicker-popup .uib-years .uib-month:hover .btn.active, .uib-datepicker-popup .uib-years .uib-year:hover .btn,
+  .uib-datepicker-popup .uib-years .uib-year:hover .btn.active {
+    color: #fff; }
+    .uib-datepicker-popup .uib-weeks .uib-day:hover .btn .text-info,
+    .uib-datepicker-popup .uib-weeks .uib-day:hover .btn.active .text-info, .uib-datepicker-popup .uib-weeks .uib-month:hover .btn .text-info,
+    .uib-datepicker-popup .uib-weeks .uib-month:hover .btn.active .text-info, .uib-datepicker-popup .uib-weeks .uib-year:hover .btn .text-info,
+    .uib-datepicker-popup .uib-weeks .uib-year:hover .btn.active .text-info, .uib-datepicker-popup .uib-months .uib-day:hover .btn .text-info,
+    .uib-datepicker-popup .uib-months .uib-day:hover .btn.active .text-info, .uib-datepicker-popup .uib-months .uib-month:hover .btn .text-info,
+    .uib-datepicker-popup .uib-months .uib-month:hover .btn.active .text-info, .uib-datepicker-popup .uib-months .uib-year:hover .btn .text-info,
+    .uib-datepicker-popup .uib-months .uib-year:hover .btn.active .text-info, .uib-datepicker-popup .uib-years .uib-day:hover .btn .text-info,
+    .uib-datepicker-popup .uib-years .uib-day:hover .btn.active .text-info, .uib-datepicker-popup .uib-years .uib-month:hover .btn .text-info,
+    .uib-datepicker-popup .uib-years .uib-month:hover .btn.active .text-info, .uib-datepicker-popup .uib-years .uib-year:hover .btn .text-info,
+    .uib-datepicker-popup .uib-years .uib-year:hover .btn.active .text-info {
+      color: inherit; }
+  .uib-datepicker-popup .uib-weeks .uib-day .btn, .uib-datepicker-popup .uib-weeks .uib-month .btn, .uib-datepicker-popup .uib-weeks .uib-year .btn, .uib-datepicker-popup .uib-months .uib-day .btn, .uib-datepicker-popup .uib-months .uib-month .btn, .uib-datepicker-popup .uib-months .uib-year .btn, .uib-datepicker-popup .uib-years .uib-day .btn, .uib-datepicker-popup .uib-years .uib-month .btn, .uib-datepicker-popup .uib-years .uib-year .btn {
+    border: none;
+    border-radius: 0; }
+    .uib-datepicker-popup .uib-weeks .uib-day .btn.active, .uib-datepicker-popup .uib-weeks .uib-month .btn.active, .uib-datepicker-popup .uib-weeks .uib-year .btn.active, .uib-datepicker-popup .uib-months .uib-day .btn.active, .uib-datepicker-popup .uib-months .uib-month .btn.active, .uib-datepicker-popup .uib-months .uib-year .btn.active, .uib-datepicker-popup .uib-years .uib-day .btn.active, .uib-datepicker-popup .uib-years .uib-month .btn.active, .uib-datepicker-popup .uib-years .uib-year .btn.active {
+      font-weight: 700;
+      background-color: #00A0DA;
+      box-shadow: none;
+      color: #fff; }
+    .uib-datepicker-popup .uib-weeks .uib-day .btn .text-info, .uib-datepicker-popup .uib-weeks .uib-month .btn .text-info, .uib-datepicker-popup .uib-weeks .uib-year .btn .text-info, .uib-datepicker-popup .uib-months .uib-day .btn .text-info, .uib-datepicker-popup .uib-months .uib-month .btn .text-info, .uib-datepicker-popup .uib-months .uib-year .btn .text-info, .uib-datepicker-popup .uib-years .uib-day .btn .text-info, .uib-datepicker-popup .uib-years .uib-month .btn .text-info, .uib-datepicker-popup .uib-years .uib-year .btn .text-info {
+      color: inherit; }
+  .uib-datepicker-popup .uib-weeks .uib-day.out-of-active-month, .uib-datepicker-popup .uib-weeks .uib-month.out-of-active-month, .uib-datepicker-popup .uib-weeks .uib-year.out-of-active-month, .uib-datepicker-popup .uib-months .uib-day.out-of-active-month, .uib-datepicker-popup .uib-months .uib-month.out-of-active-month, .uib-datepicker-popup .uib-months .uib-year.out-of-active-month, .uib-datepicker-popup .uib-years .uib-day.out-of-active-month, .uib-datepicker-popup .uib-years .uib-month.out-of-active-month, .uib-datepicker-popup .uib-years .uib-year.out-of-active-month {
+    border-width: 0; }
+
+.working-days-manage .working-day-form {
+  overflow: hidden;
+  padding-bottom: 6px; }
+  .working-days-manage .working-day-form .input-group, .working-days-manage .working-day-form .timepicker-wrapper {
+    margin-right: 15px; }
+  .working-days-manage .working-day-form .input-group {
+    float: left;
+    display: inline-block; }
+    .working-days-manage .working-day-form .input-group label {
+      display: block; }
+  .working-days-manage .working-day-form .working-day-select {
+    display: block;
+    width: auto;
+    min-width: 140px;
+    padding: 0 18px;
+    height: 30px;
+    text-transform: capitalize;
+    border-radius: 3px; }
+  .working-days-manage .working-day-form .submit-button {
+    padding-top: 25px; }
+.working-days-manage .working-days-list .working-day-info-wrapper {
+  margin-right: 20px; }
+  .working-days-manage .working-days-list .working-day-info-wrapper .working-day-label {
+    font-style: italic;
+    font-weight: bold; }
+  .working-days-manage .working-days-list .working-day-info-wrapper:first-child {
+    display: inline-block;
+    min-width: 200px; }
+.working-days-manage .working-days-list .remove-working-day {
+  cursor: pointer; }
 
 /*# sourceMappingURL=style.css.map */

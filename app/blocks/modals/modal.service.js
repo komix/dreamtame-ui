@@ -13,7 +13,8 @@
             showEditCatModal: showEditCatModal,
             showMapModal: showMapModal,
             showVideoModal: showVideoModal,
-            showManageVideoModal: showManageVideoModal
+            showManageVideoModal: showManageVideoModal,
+            showWorkingHoursModal: showWorkingHoursModal
         };
 
         return service;
@@ -103,6 +104,21 @@
             })
         }
 
+        function showWorkingHoursModal(workingHoursItem) {
+            $uibModal.open({
+                animation: true,
+                templateUrl: 'blocks/modals/working-hours/working-hours.html',
+                controller: 'WorkingHoursModalController',
+                controllerAs: 'vm',
+                size: 'lg',
+                backdrop: 'static',
+                resolve: {
+                    workingHours: function() {
+                        return workingHoursItem;
+                    }
+                }
+            })
+        }
 
 
     }

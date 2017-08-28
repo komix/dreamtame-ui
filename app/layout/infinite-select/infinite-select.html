@@ -1,5 +1,5 @@
 <div class="infinite-select form-group">
-  <select ng-options="item as item[vm.config.propertyToShow] for item in vm.config.tree track by item.id"
+  <select data-ng-options="item as item[vm.config.propertyToShow] for item in vm.config.tree track by item.id"
           data-ng-model="vm.selected"
           data-ng-change="vm.onBaseOptionChanged()"
           class="form-control"
@@ -9,7 +9,7 @@
   </select>
 
   <div ng-repeat="options in vm.config.selectedList track by $index">
-    <select ng-options="item as item[vm.config.propertyToShow] for item in options.children track by item.id"
+    <select data-ng-options="item as item[vm.config.propertyToShow] for item in options.children track by item.id"
             data-ng-model="vm.selectedSubLoc[options.id]"
             data-ng-if="options.children"
             data-ng-change="vm.onOptionChanged(options.id, $index)"

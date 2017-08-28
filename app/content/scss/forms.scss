@@ -11,8 +11,25 @@
 
   .ng-dirty {
     &.ng-invalid {
-      border-color: #FF7F7F;
-      background-color: #ffe6e6;
+      border-color: $invalid-color;
+      background-color: $invalid-background;
+    }
+    &.ng-invalid-time {
+      background-color: transparent;
+    }
+  }
+
+  .has-error {
+    input, button select {
+      border-color: $invalid-color;
+      background-color: $invalid-background;
+    }
+  }
+
+  input, button, select {
+    &.has-error {
+      border-color: $invalid-color;
+      background-color: $invalid-background;
     }
   }
 
@@ -24,5 +41,13 @@
     background-position: 95% center;
     background-size: 10px 10px;
     background-repeat: no-repeat;
+  }
+}
+
+
+.errors-list {
+  .alert {
+    padding: 8px 10px;
+    margin-bottom: 10px;
   }
 }

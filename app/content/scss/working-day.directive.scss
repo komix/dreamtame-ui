@@ -1,0 +1,56 @@
+.working-days-manage {
+  .working-day-form {
+    overflow: hidden;
+    padding-bottom: 6px;
+
+    .input-group, .timepicker-wrapper {
+      margin-right: 15px;
+    }
+
+    .input-group {
+      float: left;
+      display: inline-block;
+
+      label {
+        display: block;
+      }
+    }
+
+    .working-day-select {
+      display: block;
+      width: auto;
+      min-width: 140px;
+      padding: 0 18px;
+      height: 30px;
+      text-transform: capitalize;
+      border-radius: 3px;
+    }
+
+    .submit-button {
+      padding-top: 25px;
+    }
+  }
+
+  .working-days-list {
+    .working-day-info-wrapper {
+      margin-right: 20px;
+
+      .working-day-label {
+        font-style: italic;
+        font-weight: bold;
+      }
+
+      &:first-child {
+        display: inline-block;
+        min-width: 200px;
+      }
+    }
+
+    .remove-working-day {
+      cursor: pointer;
+    }
+  }
+
+
+
+}
