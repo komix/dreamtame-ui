@@ -1,9 +1,8 @@
 .shell .main-header {
-  height: 65px;
-  line-height: 65px;
-  margin-bottom: 10px; }
+  margin-bottom: 30px; }
   .shell .main-header .left-header {
-    white-space: nowrap; }
+    white-space: nowrap;
+    padding-top: 15px; }
     .shell .main-header .left-header .site-logo {
       display: inline-block;
       margin-left: 30px; }
@@ -21,17 +20,25 @@
         padding: 0; }
   .shell .main-header .navigation {
     list-style-type: none;
-    margin: 0; }
+    margin: 0;
+    padding-top: 20px; }
     .shell .main-header .navigation li {
       display: inline-block; }
       .shell .main-header .navigation li a {
-        color: #656565;
         display: block;
-        padding: 0 15px;
-        font-size: 16px; }
+        padding: 0 15px; }
+        .shell .main-header .navigation li a span {
+          display: block;
+          height: 30px;
+          line-height: 30px;
+          padding: 0 8px;
+          color: #656565;
+          border-radius: 3px; }
         .shell .main-header .navigation li a:hover, .shell .main-header .navigation li a.active, .shell .main-header .navigation li a:focus {
-          text-decoration: none;
-          color: #6A9ABF; }
+          text-decoration: none; }
+          .shell .main-header .navigation li a:hover span, .shell .main-header .navigation li a.active span, .shell .main-header .navigation li a:focus span {
+            background-color: #656565;
+            color: #fff; }
 
 .home-view .main-banner {
   width: 100%;
@@ -647,5 +654,51 @@
     min-width: 200px; }
 .working-days-manage .working-days-list .remove-working-day {
   cursor: pointer; }
+
+.info-state .working-hours-wrapper .info-section-title {
+  font-size: 17px;
+  font-weight: normal;
+  color: #656565; }
+
+.schedule .schedule-button {
+  display: inline-block;
+  height: 41px;
+  width: 41px;
+  border: 2px solid #656565;
+  line-height: 37px;
+  color: #656565;
+  border-radius: 50%;
+  cursor: pointer;
+  text-align: center;
+  font-size: 21px; }
+  .schedule .schedule-button:hover {
+    background-color: #656565;
+    color: #fff; }
+.schedule .add-schedule-button {
+  margin-top: -12px; }
+.schedule .working-time-item {
+  position: relative; }
+  .schedule .working-time-item .edit-schedule-button {
+    position: absolute;
+    right: 0;
+    bottom: 10px; }
+  .schedule .working-time-item .schedule-name {
+    color: #262626;
+    font-size: 16px;
+    font-weight: 500; }
+  .schedule .working-time-item .working-time-days {
+    list-style-type: none;
+    margin-left: 0; }
+    .schedule .working-time-item .working-time-days .day-title {
+      display: inline-block;
+      min-width: 80px;
+      text-transform: capitalize;
+      font-size: 15px; }
+    .schedule .working-time-item .working-time-days .working-day-from-to {
+      display: inline-block;
+      border: 2px solid #656565;
+      border-radius: 3px;
+      padding: 1px 4px;
+      margin-bottom: 10px; }
 
 /*# sourceMappingURL=style.css.map */

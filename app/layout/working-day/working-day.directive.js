@@ -38,6 +38,10 @@
         vm.optionsFilter = optionsFilter;
         vm.removeWorkingDay = removeWorkingDay;
         vm.removeSchedule = removeSchedule;
+        vm.setPristine = setPristine;
+        vm.isDefaultScheduleWarningVisible = isDefaultScheduleWarningVisible;
+        vm.isGroupScheduleWarningVisible = isGroupScheduleWarningVisible;
+        vm.areScheduleTypeOptionsVisible = areScheduleTypeOptionsVisible;
         vm.submit = submit;
 
         activate();
@@ -50,6 +54,10 @@
             if (vm.config.id) {
                 options.id = vm.config.id;
                 options.name = vm.config.name;
+                vm.isEditState = true;
+                options.isDefaultSchedule = vm.config.isDefaultSchedule;
+            } else {
+                options.isDefaultSchedule = true;
             }
 
             vm.workingDays = new WorkingDays(options);
@@ -108,7 +116,30 @@
             vm.workingDays.remove();
         }
 
+        function setPristine() {
+            vm.infoform.$setPristine();
+        }
+
+        function isDefaultScheduleWarningVisible() {
+            return vm.config.hasDefaultSchedule && !vm.isEditState;
+        }
+
+        function isGroupScheduleWarningVisible() {
+            return !vm.config.hasDefaultSchedule && vm.config.data && vm.config.data.length;
+        }
+
+        function areScheduleTypeOptionsVisible() {
+            return !vm.isEditState && !vm.config.data.length;
+        }
+
         function submit() {
+            if (!vm.infoform.$valid) {
+                _.each(vm.infoform.$error.required, function(elem) {
+                    elem.$setDirty();
+                });
+                return false;
+            }
+
             var request = vm.workingDays.id ? vm.workingDays.update() : vm.workingDays.add();
 
             request.then(function(response) {

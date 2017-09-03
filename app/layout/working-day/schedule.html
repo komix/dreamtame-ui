@@ -1,14 +1,48 @@
-<div class="working-time">
-  <button class="btn btn-default" data-ng-click="vm.openWorkingHoursModal()">Додати</button>
-  <div class="working-time-item" data-ng-repeat="schedule in vm.workingDays.data track by schedule.id">
-    <p data-ng-bind="schedule.name"></p>
-    <button class="btn btn-default" data-ng-click="vm.openWorkingHoursModal(schedule)">Редагувати</button>
-    <ul class="working-time-days">
-      <li class="working-time-day" data-ng-repeat="day in schedule.workingDays track by $index">
-        <span data-ng-bind="vm.workingDaysService.getDayTitle(day.dayNumber)"></span>
-        <span data-ng-bind="vm.workingDaysService.getTimeFormatted(day.start)"></span>
-        <span data-ng-bind="vm.workingDaysService.getTimeFormatted(day.end)"></span>
-      </li>
-    </ul>
+<div class="schedule">
+  <div class="row">
+    <div class="col-md-4">
+      <h3 class="info-section-title">
+        <span>Розклад Роботи</span>
+        <span class="schedule-button add-schedule-button pull-right"
+              data-ng-click="vm.openWorkingHoursModal()"
+              data-ng-if="vm.isOwner()">
+          <i class="fa fa-plus"
+             aria-hidden="true"
+             title="Додати розклад роботи"
+          ></i>
+        </span>
+      </h3>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-4" data-ng-repeat="schedule in vm.workingDays.data track by schedule.id">
+      <div class="working-time-item">
+        <p data-ng-if="!schedule.isDefaultSchedule"
+              class="schedule-name"
+        >
+          <span data-ng-bind="schedule.name"></span><span>:</span>
+        </p>
+        <span class="schedule-button edit-schedule-button"
+              data-ng-click="vm.openWorkingHoursModal(schedule)"
+              data-ng-if="vm.isOwner()">
+          <i class="fa fa-pencil"
+             aria-hidden="true"
+             title="Редагувати"
+          ></i>
+        </span>
+        <div class="working-time-days">
+          <div class="working-time-day" data-ng-repeat="day in schedule.workingDays | orderBy:'dayNumber' track by day.dayNumber">
+            <span data-ng-bind="vm.workingDaysService.getDayTitle(day.dayNumber)" class="day-title"></span>
+        <span class="working-day-from-to">
+          <span data-ng-bind="vm.workingDaysService.getTimeFormatted(day.start)"></span>
+          <span>-</span>
+          <span data-ng-bind="vm.workingDaysService.getTimeFormatted(day.end)"></span>
+        </span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,11 +1,10 @@
 .shell {
   .main-header {
-    height: 65px;
-    line-height: 65px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 
     .left-header {
       white-space: nowrap;
+      padding-top: 15px;
 
       .site-logo {
         display: inline-block;
@@ -34,18 +33,30 @@
     .navigation {
       list-style-type: none;
       margin: 0;
+      padding-top: 20px;
 
       li {
         display: inline-block;
+
         a {
-          color: $logo-color;
           display: block;
           padding: 0 15px;
-          font-size: 16px;
+
+          span {
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 8px;
+            color: $logo-color;
+            border-radius: 3px;
+          }
 
           &:hover, &.active, &:focus {
             text-decoration: none;
-            color: $active-color;
+            span {
+              background-color: $logo-color;
+              color: #fff;
+            }
           }
         }
       }

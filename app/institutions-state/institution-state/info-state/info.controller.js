@@ -10,7 +10,9 @@
         var vm = this;
 
         var instId = $stateParams.id;
+
         vm.workingDays = new WorkingDays({institutionId: instId});
+        vm.scheduleConfig = {};
 
         activate();
 

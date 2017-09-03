@@ -10,11 +10,14 @@
     function workingDays(workingDays) {
         _(WorkingDays.prototype).extend(EventEmitter.prototype);
 
+        var defaultScheduleName = 'Розклад роботи';
+
         function WorkingDays(options) {
             this.id = null;
             this.name = null;
             this.data = [];
             this.institutionId = null;
+            this.isDefaultSchedule = false;
 
             this.isValid = true;
 
@@ -27,6 +30,7 @@
                 this.institutionId = options.institutionId || null;
                 this.name = options.name || null;
                 this.data = options.data || [];
+                this.isDefaultSchedule = options.isDefaultSchedule || false;
             }
         };
 
@@ -58,9 +62,10 @@
         WorkingDays.prototype.getData = function() {
             return {
                 id: this.id,
-                name: this.name,
+                name: this.isDefaultSchedule ? defaultScheduleName : this.name,
                 institutionId: this.institutionId,
-                workingDays: this.data
+                workingDays: this.data,
+                isDefaultSchedule: this.isDefaultSchedule || false
             }
         };
 
@@ -76,6 +81,25 @@
             return workingDays.remove(this.id);
         };
 
+        WorkingDays.prototype.hasDefaultSchedule = function() {
+            return !!_.find(this.data, function(day) {
+                return day.isDefaultSchedule;
+            })
+        };
+
+        WorkingDays.prototype.getInstitution = function() {
+            var scheduleWithInst = _.find(this.data, function(elem) {
+               return elem.institution;
+            });
+
+            return scheduleWithInst ? scheduleWithInst.institution : null;
+        };
+
+        WorkingDays.prototype.getOwnerId = function() {
+            var institution = this.getInstitution();
+
+            return institution ? institution.owner : null;
+        };
 
         return WorkingDays;
     }
