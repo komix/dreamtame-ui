@@ -8,47 +8,10 @@
   <div class="recruit-info">
     <div class="row">
       <div class="col-md-4">
-        <h3 class="info-section-title">
-          <span>Набір</span>
-          <span class="info-manage-button pull-right"
-                data-ng-click="vm.openRecruitAgeModal()"
-                data-ng-if="vm.isOwner()">
-            <i class="fa"
-               data-ng-class="vm.getRecruitButtonClass()"
-               aria-hidden="true"
-               title="Додати розклад роботи"
-            ></i>
-          </span>
-        </h3>
-
-        <div data-ng-if="vm.isFromToAvailable()">
-          <span>Від</span>
-          <span data-ng-bind="vm.institution.recruitFrom"></span>
-          <span>до</span>
-          <span data-ng-bind="vm.institution.recruitTo"></span>
-          <span>років.</span>
+        <div data-recruit-age
+             data-institution="vm.institution"
+        >
         </div>
-
-        <div data-ng-if="vm.isOnlyFromAvailable()">
-          <span>Від</span>
-          <span data-ng-bind="vm.institution.recruitFrom"></span>
-          <span>років.</span>
-        </div>
-
-        <div data-ng-if="vm.isOnlyToAvailable()">
-          <span>До</span>
-          <span data-ng-bind="vm.institution.recruitTo"></span>
-          <span>років.</span>
-        </div>
-
-        <div data-ng-if="!vm.isRecruitAgeAvailable()">
-          <span>Не вказано.</span>
-        </div>
-
-        <div data-ng-if="vm.isUnlimited()">
-          <span>Немає вікових обмежень.</span>
-        </div>
-
       </div>
     </div>
   </div>

@@ -15,17 +15,24 @@
         var MAX_AGE = 102;
 
         vm.institution = institution;
-        vm.recruitFrom = institution.recruitFrom;
-        vm.recruitTo = institution.recruitTo;
-        vm.fromUnlimited = false;
-        vm.toUnlimited = false;
 
         vm.submit = submit;
 
         activate();
 
         function activate() {
+            vm.recruitFrom = institution.recruitFrom;
+            vm.recruitTo = institution.recruitTo;
 
+            if (institution.recruitFrom === MIN_AGE) {
+                vm.fromUnlimited = true;
+                vm.recruitFrom = null;
+            }
+
+            if (institution.recruitTo === MAX_AGE) {
+                vm.toUnlimited = true;
+                vm.recruitTo = null;
+            }
         }
 
         function submit() {
