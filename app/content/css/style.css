@@ -709,4 +709,10 @@
       padding: 1px 4px;
       margin-bottom: 10px; }
 
+.phone-numbers .phone-numbers-list {
+  list-style-type: none;
+  padding-left: 0; }
+  .phone-numbers .phone-numbers-list .phone-numbers-item {
+    max-width: 180px; }
+
 /*# sourceMappingURL=style.css.map */

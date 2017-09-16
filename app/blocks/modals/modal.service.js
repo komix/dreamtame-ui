@@ -15,7 +15,8 @@
             showVideoModal: showVideoModal,
             showManageVideoModal: showManageVideoModal,
             showWorkingHoursModal: showWorkingHoursModal,
-            showRecruitAgeModal: showRecruitAgeModal
+            showRecruitAgeModal: showRecruitAgeModal,
+            showManagePhoneNumberModal: showManagePhoneNumberModal
         };
 
         return service;
@@ -137,6 +138,21 @@
             })
         }
 
+        function showManagePhoneNumberModal(options) {
+            $uibModal.open({
+                animation: true,
+                templateUrl: 'blocks/modals/manage-phone-number/manage-phone-number.html',
+                controller: 'ManagePhoneNumberModalController',
+                controllerAs: 'vm',
+                size: 'lg',
+                backdrop: 'static',
+                resolve: {
+                    options: function() {
+                        return options;
+                    }
+                }
+            })
+        }
 
     }
 

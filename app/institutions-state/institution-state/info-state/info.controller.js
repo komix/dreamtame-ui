@@ -12,6 +12,7 @@
         var instId = $stateParams.id;
 
         vm.scheduleConfig = {};
+        vm.phoneNumbersOptions = null;
 
         vm.isOwner = isOwner;
         vm.openRecruitAgeModal = openRecruitAgeModal;
@@ -27,6 +28,9 @@
                 vm.institution = response.data;
                 vm.workingDays = new WorkingDays({institutionId: instId, ownerId: vm.institution.owner});
                 vm.workingDays.getRemote();
+                vm.phoneNumbersOptions = {
+                    institution: vm.institution
+                };
             });
         }
 

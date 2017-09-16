@@ -19,7 +19,10 @@
             getByCategoryId: getByCategoryId,
             update: update,
             remove: remove,
-            setRecruitAge: setRecruitAge
+            setRecruitAge: setRecruitAge,
+            addPhoneNumber: addPhoneNumber,
+            editPhoneNumber: editPhoneNumber,
+            removePhoneNumber: removePhoneNumber
         };
 
         return service;
@@ -84,10 +87,38 @@
         function setRecruitAge(instId, ageRange) {
             var defered = $q.defer();
 
-            $http.post(apiUrl +  '/api/institutions/' + instId + '/recruit-age', ageRange).then(function(data){
+            $http.post(apiUrl + '/api/institutions/' + instId + '/recruit-age', ageRange).then(function(data){
                 defered.resolve(data);
             });
 
+            return defered.promise;
+        }
+
+        function addPhoneNumber(options) {
+            var defered = $q.defer();
+
+            $http.post(apiUrl + '/api/phone-numbers', options).then(function(data){
+                defered.resolve(data);
+            });
+
+            return defered.promise;
+        }
+
+        function editPhoneNumber(id, options) {
+            var defered = $q.defer();
+
+            $http.put(apiUrl + '/api/phone-numbers/' + id, options).then(function(data){
+                defered.resolve(data);
+            });
+
+            return defered.promise;
+        }
+
+        function removePhoneNumber(id) {
+            var defered = $q.defer();
+            $http.delete(apiUrl +  '/api/phone-numbers/' + id).then(function(data){
+                defered.resolve(data);
+            });
             return defered.promise;
         }
     }
