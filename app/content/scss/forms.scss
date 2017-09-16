@@ -1,11 +1,25 @@
 
-
 .dt-form {
   .form-group {
     margin-bottom: 10px;
 
     .form-control {
       margin-bottom: 10px;
+    }
+
+    .form-label {
+      display: block;
+    }
+
+    &.inline-addon {
+      input {
+        display: inline-block;
+
+        &.form-control {
+          margin-right: 10px;
+        }
+      }
+
     }
   }
 
@@ -31,6 +45,10 @@
       border-color: $invalid-color;
       background-color: $invalid-background;
     }
+  }
+
+  input[type=number] {
+    max-width: 150px;
   }
 
   select {

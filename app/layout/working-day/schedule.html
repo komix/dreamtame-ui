@@ -3,7 +3,7 @@
     <div class="col-md-4">
       <h3 class="info-section-title">
         <span>Розклад Роботи</span>
-        <span class="schedule-button add-schedule-button pull-right"
+        <span class="info-manage-button add-schedule-button pull-right"
               data-ng-click="vm.openWorkingHoursModal()"
               data-ng-if="vm.isOwner()">
           <i class="fa fa-plus"
@@ -14,9 +14,8 @@
       </h3>
     </div>
   </div>
-
-
   <div class="row">
+    <span data-ng-if="vm.workingDays.isEmpty()">Не вказано.</span>
     <div class="col-md-4" data-ng-repeat="schedule in vm.workingDays.data track by schedule.id">
       <div class="working-time-item">
         <p data-ng-if="!schedule.isDefaultSchedule"
@@ -24,7 +23,7 @@
         >
           <span data-ng-bind="schedule.name"></span><span>:</span>
         </p>
-        <span class="schedule-button edit-schedule-button"
+        <span class="info-manage-button edit-schedule-button"
               data-ng-click="vm.openWorkingHoursModal(schedule)"
               data-ng-if="vm.isOwner()">
           <i class="fa fa-pencil"

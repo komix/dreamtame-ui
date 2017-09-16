@@ -1,22 +1,4 @@
 .schedule {
-  .schedule-button {
-    display: inline-block;
-    height: 41px;
-    width: 41px;
-    border: 2px solid $logo-color;
-    line-height: 37px;
-    color: $logo-color;
-    border-radius: 50%;
-    cursor: pointer;
-    text-align: center;
-    font-size: 21px;
-
-    &:hover {
-      background-color: $logo-color;
-      color: #fff;
-    }
-  }
-
 
   .add-schedule-button {
     margin-top: -12px;

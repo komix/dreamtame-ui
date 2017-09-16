@@ -14,7 +14,8 @@
             showMapModal: showMapModal,
             showVideoModal: showVideoModal,
             showManageVideoModal: showManageVideoModal,
-            showWorkingHoursModal: showWorkingHoursModal
+            showWorkingHoursModal: showWorkingHoursModal,
+            showRecruitAgeModal: showRecruitAgeModal
         };
 
         return service;
@@ -115,6 +116,22 @@
                 resolve: {
                     workingHours: function() {
                         return workingHoursItem;
+                    }
+                }
+            })
+        }
+
+        function showRecruitAgeModal(institution) {
+            $uibModal.open({
+                animation: true,
+                templateUrl: 'blocks/modals/recruit-age/recruit-age.html',
+                controller: 'RecruitAgeModalController',
+                controllerAs: 'vm',
+                size: 'lg',
+                backdrop: 'static',
+                resolve: {
+                    institution: function() {
+                        return institution;
                     }
                 }
             })

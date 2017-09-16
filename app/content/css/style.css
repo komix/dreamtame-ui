@@ -154,6 +154,12 @@
   margin-bottom: 10px; }
   .dt-form .form-group .form-control {
     margin-bottom: 10px; }
+  .dt-form .form-group .form-label {
+    display: block; }
+  .dt-form .form-group.inline-addon input {
+    display: inline-block; }
+    .dt-form .form-group.inline-addon input.form-control {
+      margin-right: 10px; }
 .dt-form .ng-dirty.ng-invalid {
   border-color: #FF7F7F;
   background-color: #ffe6e6; }
@@ -165,6 +171,8 @@
 .dt-form input.has-error, .dt-form button.has-error, .dt-form select.has-error {
   border-color: #FF7F7F;
   background-color: #ffe6e6; }
+.dt-form input[type=number] {
+  max-width: 150px; }
 .dt-form select {
   -webkit-appearance: none;
   width: auto;
@@ -655,12 +663,11 @@
 .working-days-manage .working-days-list .remove-working-day {
   cursor: pointer; }
 
-.info-state .working-hours-wrapper .info-section-title {
+.info-state .info-section-title {
   font-size: 17px;
   font-weight: normal;
   color: #656565; }
-
-.schedule .schedule-button {
+.info-state .info-manage-button {
   display: inline-block;
   height: 41px;
   width: 41px;
@@ -671,9 +678,10 @@
   cursor: pointer;
   text-align: center;
   font-size: 21px; }
-  .schedule .schedule-button:hover {
+  .info-state .info-manage-button:hover {
     background-color: #656565;
     color: #fff; }
+
 .schedule .add-schedule-button {
   margin-top: -12px; }
 .schedule .working-time-item {

@@ -17,6 +17,7 @@
             this.name = null;
             this.data = [];
             this.institutionId = null;
+            this.ownerId = null;
             this.isDefaultSchedule = false;
 
             this.isValid = true;
@@ -28,6 +29,7 @@
             if (options) {
                 this.id = options.id || null;
                 this.institutionId = options.institutionId || null;
+                this.ownerId = options.ownerId || null;
                 this.name = options.name || null;
                 this.data = options.data || [];
                 this.isDefaultSchedule = options.isDefaultSchedule || false;
@@ -87,6 +89,10 @@
             })
         };
 
+        WorkingDays.prototype.isEmpty = function() {
+            return !this.data.length;
+        };
+
         WorkingDays.prototype.getInstitution = function() {
             var scheduleWithInst = _.find(this.data, function(elem) {
                return elem.institution;
@@ -96,8 +102,9 @@
         };
 
         WorkingDays.prototype.getOwnerId = function() {
-            var institution = this.getInstitution();
+            if (this.ownerId) { return this.ownerId; }
 
+            var institution = this.getInstitution();
             return institution ? institution.owner : null;
         };
 

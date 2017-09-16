@@ -18,7 +18,8 @@
             getByOwnerId: getByOwnerId,
             getByCategoryId: getByCategoryId,
             update: update,
-            remove: remove
+            remove: remove,
+            setRecruitAge: setRecruitAge
         };
 
         return service;
@@ -77,6 +78,16 @@
             $http.delete(apiUrl +  '/api/institutions/' + instId).then(function(data){
                 defered.resolve(data);
             });
+            return defered.promise;
+        }
+
+        function setRecruitAge(instId, ageRange) {
+            var defered = $q.defer();
+
+            $http.post(apiUrl +  '/api/institutions/' + instId + '/recruit-age', ageRange).then(function(data){
+                defered.resolve(data);
+            });
+
             return defered.promise;
         }
     }

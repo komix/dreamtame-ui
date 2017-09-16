@@ -1,10 +1,25 @@
 .info-state {
+  .info-section-title {
+    font-size: 17px;
+    font-weight: normal;
+    color: $logo-color;
+  }
 
-  .working-hours-wrapper {
-    .info-section-title {
-      font-size: 17px;
-      font-weight: normal;
-      color: $logo-color;
+  .info-manage-button {
+    display: inline-block;
+    height: 41px;
+    width: 41px;
+    border: 2px solid $logo-color;
+    line-height: 37px;
+    color: $logo-color;
+    border-radius: 50%;
+    cursor: pointer;
+    text-align: center;
+    font-size: 21px;
+
+    &:hover {
+      background-color: $logo-color;
+      color: #fff;
     }
   }
 }
