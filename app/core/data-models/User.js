@@ -22,6 +22,7 @@
             this.firstName = options && options.firstName ? options.firstName : null;
             this.lastName = options && options.lastName ? options.lastName : null;
             this.photoId = options && options.photoId ? options.photoId : null;
+            this.smallPhotoUrl = options && options.smallPhotoUrl ? options.smallPhotoUrl : null;
             this.eventHandlers = options && options.eventHandlers ? options.eventHandlers : null;
             this.role = options && options.role ? options.role : null;
 
@@ -69,6 +70,24 @@
             }
 
             return dtApi.user.getByToken().$promise;
+        };
+
+        User.prototype.reload = function() {
+            if (!this.id && !this.currentToken) {
+                return false;
+            }
+
+            var _this = this;
+
+            return dtApi.user.getByToken().$promise.then(function(response) {
+                _this.onReload(response);
+            });
+        };
+
+        User.prototype.onReload = function(response) {
+            this.init(response);
+            console.log(response);
+            $localStorage.user = this;
         };
 
         User.prototype.attachEventHandlers = function() {

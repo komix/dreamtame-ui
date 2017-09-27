@@ -64,10 +64,13 @@
                  data-ng-class="{active: vm.isSubStateActive('videos')}"
               >Відеозаписи</a>
             </li>
+            <li>
+              <a ui-sref="institutions.institution.comments({id: vm.instId})"
+                 class="dt-nav-pill"
+                 data-ng-class="{active: vm.isSubStateActive('comments')}"
+              >Відгуки</a>
+            </li>
           </ul>
-
-
-
         </div>
         <div data-ui-view></div>
       </div>

@@ -86,8 +86,10 @@
         }
 
         function update(id, userData) {
-            console.log(userData);
-            return dtApi.user.update({id: id}, userData).$promise;
+            return dtApi.user.update({id: id}, userData).$promise
+                .then(function() {
+                    service.current.reload();
+                });
         }
     }
 })();

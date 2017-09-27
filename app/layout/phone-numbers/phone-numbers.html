@@ -9,6 +9,7 @@
          title="Додати розклад роботи"
       ></i>
     </span>
+  </h3>
     <ul class="phone-numbers-list">
       <li class="phone-numbers-item"
           data-ng-repeat="elem in vm.options.institution.phoneNumbers"
@@ -16,8 +17,10 @@
         <span data-ng-bind="elem.rawNumber"></span>
         <span class="fa fa-pencil edit-button pull-right"
               title="Редагувати"
-              data-ng-click="vm.openAddPhoneNumberModal(elem)"></span>
+              data-ng-click="vm.openAddPhoneNumberModal(elem)"
+              data-ng-if="vm.isOwner()"
+        ></span>
       </li>
     </ul>
-  </h3>
+
 </div>

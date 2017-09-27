@@ -103,19 +103,19 @@
 
             if (vm.append) {
                 if (vm.appendClick) {
-                    character += '<a href=""' +
+                    character += '<span' +
                         ' class="' + vm.CHARACTER_CLASS + '"' +
                         ' data-ng-click="vm.appendClick()"' +
-                        '>' + vm.append + '</a>';
+                        '>' + vm.append + '</span>';
                 } else {
                     character += ' ' + vm.append;
                 }
             } else if (vm.toggle) {
                 vm.lastHeight = maxheight;
-                character += ' ' + '<a ' +
-                    ' class="' + vm.CHARACTER_CLASS + '"' +
+                character += ' ' + '<span ' +
+                    ' class="' + vm.CHARACTER_CLASS + ' truncate-addon"' +
                     ' data-ng-click="vm.toggleClick()"' +
-                    '>' + 'більше' + '</a>';
+                    '>' + 'більше' + '</span>';
             }
 
             elem.shave(maxheight, {character: character});
@@ -133,11 +133,11 @@
             vm.originalMaxHeight = elem.css('max-height');
             elem.css('max-height', 'none');
 
-            var templateElement = angular.element('<a ' +
-                ' class="' + 'less-span-button' + '"' +
+            var templateElement = angular.element('<span ' +
+                ' class="' + 'less-span-button truncate-addon' + '"' +
                 ' data-ng-click="vm.toggleClick()"' +
                     'data-ng-show="vm.isManuallyShown"' +
-                '>' + 'менше' + '</a>');
+                '>' + 'менше' + '</span>');
 
             var clonedElement = $compile(templateElement)($scope, function(clonedElement, scope) {
                 vm.$showLessButton = clonedElement;

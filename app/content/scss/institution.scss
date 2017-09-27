@@ -1,6 +1,7 @@
 .institution-view {
   .inst-navigation {
     padding-top: 20px;
+    padding-bottom: 20px;
 
     .dt-nav-pill {
       display: block;
@@ -46,7 +47,7 @@
       margin-bottom: 10px;
       max-height: 85px;
 
-      a {
+      .truncate-addon {
         display: inline-block;
         color: $logo-color;
         text-decoration: underline;
