@@ -13,8 +13,10 @@
   <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <!--<link href="bower_components/summernote/dist/summernote.css">-->
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="bower_components/photoswipe/dist/photoswipe.css">
   <link rel="stylesheet" href="bower_components/photoswipe/dist/default-skin/default-skin.css">
   <link href="bower_components/ng-cropper/dist/ngCropper.all.css" rel="stylesheet">
@@ -34,6 +36,8 @@
   -->
 
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="bower_components/summernote/dist/summernote.min.js"></script>
   <script src="https://www.youtube.com/iframe_api"></script>
   <script src="bower_components/shave/dist/jquery.shave.min.js"></script>
   <script src="bower_components/underscore/underscore-min.js"></script>
@@ -54,7 +58,7 @@
 
   <!-- optional -->
   <script src="bower_components/imagesloaded/imagesloaded.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
 
   <script src="bower_components/angular/angular.js"></script>
 
@@ -66,12 +70,14 @@
   <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
   <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
   <script src="bower_components/angular-masonry/angular-masonry.js"></script>
+  <script src="bower_components/angular-summernote/dist/angular-summernote.min.js"></script>
   <script src='bower_components/ngInfiniteScroll/build/ng-infinite-scroll.min.js'></script>
   <!--<script src="bower_components/angular-google-analytics/dist/angular-google-analytics.js"></script>-->
   <script src="bower_components/ngstorage/ngStorage.min.js"></script>
   <!--<script src="bower_components/ng-photoswipe/angular-photoswipe.min.js"></script>-->
   <script src="bower_components/chance/dist/chance.min.js"></script>
   <script src="bower_components/ng-cropper/dist/ngCropper.all.js"></script>
+  <script src="bower_components/angular-preload-image/angular-preload-image.min.js"></script>
   
   <script src="app.js"></script>
   <script src="core/global.service.js"></script>
@@ -112,6 +118,7 @@
   <script src="core/permissions.js"></script>
 
   <script src="layout/modals/confirm-modal/confirm-modal.controller.js"></script>
+  <script src="layout/summer/summer.directive.js"></script>
   <script src="layout/select-image/select-image.directive.js"></script>
   <script src="layout/select-image/image-service.service.js"></script>
 
@@ -141,6 +148,11 @@
   <script src="about-state/about.route.js"></script>
   <script src="about-state/about.controller.js"></script>
 
+  <script src="news-state/news.route.js"></script>
+  <script src="news-state/news.controller.js"></script>
+
+
+
   <script src="manage-inst-state/inst.service.js"></script>
   <script src="manage-inst-state/manage-inst.route.js"></script>
   <script src="manage-inst-state/manage-inst.controller.js"></script>
@@ -168,6 +180,8 @@
 
   <script src="layout/comments/data-models/Comment.js"></script>
   <script src="layout/comments/data-models/CommentsList.js"></script>
+
+  <script src="layout/read-markup/read-markup.directive.js"></script>
 
   <script src="institutions-state/institution-state/info-state/recruit-age/recruit-age.directive.js"></script>
 
@@ -199,6 +213,22 @@
   <script src="dashboard-state/categories/categories.controller.js"></script>
   <script src="dashboard-state/categories/categories.service.js"></script>
   <script src="dashboard-state/categories/cat-tree/cat-tree.directive.js"></script>
+
+  <script src="dashboard-state/news/news.route.js"></script>
+  <script src="dashboard-state/news/news.controller.js"></script>
+  <script src="dashboard-state/news/manage-article/manage-article.route.js"></script>
+  <script src="dashboard-state/news/manage-article/manage-article.controller.js"></script>
+
+  <script src="news-state/article-state/article.route.js"></script>
+  <script src="news-state/article-state/article.controller.js"></script>
+
+  <script src="news-state/news-list-state/news-list.route.js"></script>
+  <script src="news-state/news-list-state/news-list.controller.js"></script>
+
+  <script src="news-state/data-models/Article.js"></script>
+  <script src="news-state/data-models/ArticlesList.js"></script>
+  <script src="news-state/news.service.js"></script>
+  <script src="news-state/article-block/article-block.directive.js"></script>
 
 
 </body>

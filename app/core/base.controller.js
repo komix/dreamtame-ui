@@ -31,6 +31,10 @@
                 }
             },
             {
+                ukName: 'Новини',
+                name: 'news'
+            },
+            {
                 ukName: 'Адмінка',
                 name: 'dashboard'
             }

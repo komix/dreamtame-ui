@@ -36,6 +36,10 @@
             if (state.permissions) {
                 if (state.permissions.only) {
                     stateIsAvailable = users.isPermissionAvailable(state.permissions.only);
+
+                    if (state.permissions.only === 'abstractState') {
+                        stateIsAvailable = isStateAvailable(state.redirectTo[0]);
+                    }
                 }
                 if (state.permissions.except) {
                     stateIsAvailable = !users.isPermissionAvailable(state.permissions.except);
@@ -46,26 +50,27 @@
         }
 
         function onStateChangeStart(event, toState) {
-            if (toState.resolve) {
-                $state.isResolveInProcess = true;
-            }
-
             if (toState.permissions) {
                 if (toState.permissions.only) {
+                    if (toState.permissions.only === 'abstractState') {
+                        event.preventDefault();
+                        return service.goToDefaultState(toState.redirectTo);
+                    }
+
                     if (!users.isPermissionAvailable(toState.permissions.only)) {
                         event.preventDefault();
                         $state.isResolveInProcess = false;
+
                         if (toState.permissions.only === 'isAuthorized') {
-                            service.goToLoginState();
+                            return service.goToLoginState();
                         } else {
-                            service.goToDefaultState(toState.redirectTo);
+                            return service.goToDefaultState(toState.redirectTo);
                         }
                     }
                 } else if (toState.permissions.except){
                     if (users.isPermissionAvailable(toState.permissions.except)) {
                         event.preventDefault();
-                        $state.isResolveInProcess = false;
-                        service.goToDefaultState(toState.redirectTo);
+                        return service.goToDefaultState(toState.redirectTo);
                     }
                 }
             }

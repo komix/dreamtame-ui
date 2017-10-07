@@ -1,0 +1,23 @@
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+      <a ui-sref="dashboard.news.manage-article({id: null})"
+         class="btn btn-default"
+      >
+        <span>Створити пост</span>
+      </a>
+      <ul class="articles-list items-list">
+        <li data-ng-repeat="article in vm.news.data track by article.id">
+          <a ui-sref="dashboard.news.manage-article({id: article.id})"
+             class="item-link">
+            <span data-ng-bind="article.title"></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-9">
+      <div data-ui-view></div>
+    </div>
+  </div>
+</div>

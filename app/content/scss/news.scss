@@ -1,0 +1,23 @@
+.news-state {
+  .articles-list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+}
+
+.article-block {
+  .article-info {
+    .article-title {
+      text-transform: capitalize;
+      font-size: 19px;
+      color: $text-color-dark;
+      margin-top: 0;
+    }
+
+    .article-snippet {
+      color: $text-color-light;
+      max-height: 70px;
+      overflow: hidden;
+    }
+  }
+}

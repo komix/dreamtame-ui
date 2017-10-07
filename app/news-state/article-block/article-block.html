@@ -1,0 +1,16 @@
+<div class="article-block unit-block">
+  <a data-ui-sref="news.article({id: vm.article.id})"
+     class="article-block-image unit-block-image">
+    <img data-ng-src="{{vm.article.imgUrl}}">
+  </a>
+  <div class="article-info unit-block-info">
+    <a data-ui-sref="news.article({id: vm.article.id})">
+      <h1 class="article-title" data-ng-bind="vm.article.title"></h1>
+    </a>
+    <p class="article-snippet"
+       data-ng-bind="vm.article.snippet"
+       data-truncate
+       data-ng-if="vm.article.snippet"
+    ></p>
+  </div>
+</div>

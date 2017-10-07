@@ -1,0 +1,12 @@
+<div class="news-list">
+  <ul class="articles-list items-list">
+    <li data-ng-repeat="article in vm.news.data track by article.id">
+      <div data-article-block
+           data-article="article"
+      >
+      </div>
+      <div class="block-separator"></div>
+    </li>
+  </ul>
+</div>
+

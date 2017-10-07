@@ -6,4 +6,20 @@
       margin-right: 10px;
     }
   }
+
+  .items-list {
+    list-style-type: none;
+
+    .item-link {
+      display: block;
+      font-size: 15px;
+      padding: 10px 0;
+      color: $text-color-dark;
+      text-decoration: none;
+
+      &:hover {
+        color: $active-color;
+      }
+    }
+  }
 }

@@ -10,7 +10,9 @@ angular
       'ngResource',
       'ngCropper',
       'infinite-scroll',
-      'youtube-embed'
+      'youtube-embed',
+      'summernote',
+      'angular-preload-image'
       //'angular-google-analytics'
     ])
 

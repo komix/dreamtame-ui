@@ -2,5 +2,6 @@
   <div data-ng-repeat="inst in vm.institutions">
     <inst-block data-inst="inst">
     </inst-block>
+    <div class="block-separator" data-ng-if="!$last"></div>
   </div>
 </div>

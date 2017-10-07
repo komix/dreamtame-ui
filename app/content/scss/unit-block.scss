@@ -1,0 +1,48 @@
+.unit-block {
+  $block-height: 170px;
+  $break-small: 480px;
+
+  overflow: hidden;
+  position: relative;
+  height: $block-height;
+  //box-shadow: -2px 4px 30px 0 rgba(103, 122, 141, 0.17);
+
+  .unit-block-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    img {
+      width: $block-height;
+      border-radius: 3px;
+    }
+  }
+
+  .unit-block-info {
+    padding: 5px 20px;
+    padding-left: $block-height + 10;
+  }
+
+  @media screen and (max-width: $break-small) {
+    height: auto;
+
+    .unit-block-image {
+      position: static;
+      width: 100%;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .unit-block-info {
+      padding: 10px 20px;
+    }
+  }
+}
+
+.block-separator {
+  background-color: $logo-color;
+  height: 2px;
+  margin: 9px 70px;
+}

@@ -1,0 +1,13 @@
+.manage-form {
+  .summernote-wrap {
+    margin-top: 20px;
+
+    .note-editable {
+      &.panel-body {
+        min-height: 300px;
+      }
+    }
+  }
+}
+
+
