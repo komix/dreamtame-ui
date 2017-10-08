@@ -26,14 +26,14 @@
 
           <a ui-sref="manage-inst({id: vm.inst.id})"
              data-ng-if="vm.isOwnerOrAdmin()"
-             class="btn btn-default">
+             class="btn dt-btn btn-default">
             <i class="fa fa-pencil"></i>
             <span>редагувати</span>
           </a>
           <add-image data-config="vm.addImageConfig"
                      data-ng-if="vm.isOwnerOrAdmin()">
           </add-image>
-          <button class="btn btn-default"
+          <button class="btn dt-btn btn-default"
                   data-ng-click="vm.showAddVideoModal()"
                   data-ng-if="vm.isOwnerOrAdmin()">
             <i class="fa fa-video-camera" aria-hidden="true"></i>

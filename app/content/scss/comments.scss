@@ -4,6 +4,7 @@
     padding-left: 65px;
     position: relative;
     overflow: hidden;
+    padding-bottom: 10px;
 
     .user-photo {
       position: absolute;
@@ -22,7 +23,6 @@
   .comments-list {
     list-style-type: none;
     padding-left: 0;
-    padding-top: 20px;
 
     img {
       max-width: 100%;
@@ -31,14 +31,16 @@
     .comment-item {
       padding-left: 65px;
       position: relative;
-      padding-bottom: 11px;
       overflow: hidden;
+
+      //padding-top: 5px;
+      padding-bottom: 5px;
 
       .author-photo {
         position: absolute;
         overflow: hidden;
         left: 0;
-        top: 0;
+        top: 5px;
         width: 55px;
         border-radius: 4px;
 
@@ -48,6 +50,8 @@
       }
 
       .comment-info {
+        padding: 0 0;
+
         .author-name {
           font-size: 16px;
           color: $text-color-dark;
@@ -57,6 +61,7 @@
         .comment-text {
           color: $text-color-light;
           max-height: 60px;
+          margin-bottom: 0;
 
           .truncate-addon {
             cursor: pointer;
@@ -74,6 +79,7 @@
 
         .comment-date {
           color: $text-color-light;
+          font-size: 12px;
         }
       }
 
@@ -85,15 +91,33 @@
           top: 10px;
         }
       }
-
-      .comment-separator {
-        background-color: $separator-color;
-        height: 2px;
-        width: 220px;
-        margin: 0 auto;
-      }
     }
 
+    .comment-answers {
+      margin-left: -40px;
 
+      .comment-item {
+        padding-left: 45px;
+
+        .author-photo {
+          width: 35px;
+        }
+
+        .comment-info {
+          padding: 0;
+        }
+      }
+    }
+  }
+
+  .comment-separator {
+    height: 2px;
+    background-color: $separator-color;
+    margin: 0 25px;
+    margin-bottom: 5px;
+  }
+
+  .dt-btn {
+    margin-left: 10px;
   }
 }

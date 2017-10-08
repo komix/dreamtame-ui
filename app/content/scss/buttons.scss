@@ -1,0 +1,23 @@
+.btn {
+  &.dt-btn {
+    border: 2px solid $logo-color;
+    background-color: transparent;
+    padding: 0 10px;
+    outline: none !important;
+    height: 30px;
+    line-height: 26px;
+    color: $text-color-dark;
+
+    &:focus, &:active, &:hover {
+      outline: none;
+      background-color: $logo-color;
+      color: #fff;
+    }
+
+    &.dt-btn-sm {
+      height: 25px;
+      line-height: 21px;
+      font-size: 12px;
+    }
+  }
+}

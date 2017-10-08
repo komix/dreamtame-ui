@@ -38,13 +38,12 @@
         vm.submitAnswer = submitAnswer;
         vm.isAnswerFormVisible = isAnswerFormVisible;
         vm.setActiveCommentId = setActiveCommentId;
+        vm.loadMoreComments = loadMoreComments;
 
         activate();
 
         function activate() {
-            vm.comments.getRemote().then(function() {
-                console.log(vm.comments.data);
-            });
+            vm.comments.getRemote();
         }
 
         function getAuthorFullName(author) {
@@ -96,5 +95,8 @@
             vm.activeCommentId = id;
         }
 
+        function loadMoreComments() {
+            vm.comments.getRemote();
+        }
     }
 })();

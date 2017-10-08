@@ -30,6 +30,7 @@
 
         vm.catHistory = [];
         vm.isLoadInProcess = false;
+        vm.catsAreLoaded = false;
 
         vm.onCatClick = onCatClick;
         vm.switchBack = switchBack;
@@ -66,6 +67,8 @@
                     abr: 'всі',
                     children: tree
                 };
+
+                vm.catsAreLoaded = true;
 
                 if (vm.activeId) {
                     setActiveCat(baseCat, vm.activeId);

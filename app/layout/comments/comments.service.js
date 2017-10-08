@@ -31,12 +31,17 @@
             return defered.promise;
         }
 
-        function getCommentsByInstitutionId(id) {
+        function getCommentsByInstitutionId(id, params) {
             var defered = $q.defer();
 
-            $http.get(apiUrl + '/comments/institution/' + id).then(function(data){
-                defered.resolve(data);
-            });
+            $http.post(apiUrl + '/comments/institution/' + id, params)
+                .catch(function(error) {
+                    defered.reject(error);
+                })
+                .then(function(data){
+                    if (!data) { return false; }
+                    defered.resolve(data);
+                });
 
             return defered.promise;
         }

@@ -1,5 +1,6 @@
 <div class="comments">
-  <div class="comments-textarea">
+  <div class="comments-textarea"
+       data-ng-if="!vm.comments.isLoadInProcess">
     <div class="user-photo">
       <img data-ng-src="{{vm.users.current.smallPhotoUrl}}"
            data-ng-show="vm.users.current && vm.users.current.smallPhotoUrl">
@@ -19,19 +20,20 @@
                      data-ng-model="vm.commentData.text"
                      data-ng-required="true"
            ></textarea>
-            <button class="btn btn-default pull-right" data-ng-click="vm.submit()">Відправити</button>
+            <button class="btn dt-btn btn-default pull-right" data-ng-click="vm.submit()">Відправити</button>
           </div>
         </div>
       </form>
     </div>
-
   </div>
 
-  <div>
+  <div class="comment-separator"><div class="inner-separator"></div></div>
+
+  <div data-infinite-scroll="vm.loadMoreComments()"
+       data-infinite-scroll-distance="0">
     <ul class="comments-list">
-      <li data-ng-repeat="comment in vm.comments.data track by $index"
-          class="comment-item"
-      >
+      <li data-ng-repeat="comment in vm.comments.data track by $index">
+        <div class="comment-item">
           <div class="author-photo">
             <img ng-src="{{comment.author.smallPhotoUrl}}"
                  data-ng-if="comment.author.smallPhotoUrl">
@@ -54,59 +56,62 @@
               <span data-ng-bind="comment.getCreatedAtFromNow()"
               ></span>
             </span>
-            <span data-ng-click="vm.setActiveCommentId(comment.id)">
+            <span data-ng-click="vm.setActiveCommentId(comment.id)"
+                  class="btn btn-default dt-btn dt-btn-sm"
+            >
               <span>Відповісти</span>
             </span>
           </div>
 
-        <div class="comment-answers">
-          <ul class="comments-list">
-            <li data-ng-repeat="answer in comment.answers track by $index"
-                class="comment-item"
-            >
-              <div class="author-photo">
-                <img ng-src="{{answer.author.smallPhotoUrl}}"
-                     data-ng-if="answer.author.smallPhotoUrl">
-                <img data-ng-hide="answer.author.smallPhotoUrl"
-                     src="content/images/placeholder_cropped.jpg"
-                     class="image-placeholder">
-              </div>
-              <div class="comment-info">
-                <p class="author-name"
-                   data-ng-bind="vm.getAuthorFullName(answer.author)"
-                ></p>
-                <p class="comment-text"
-                   data-ng-bind="answer.text"
-                   data-ng-if="answer.text"
-                   data-truncate
-                   data-toggle="true"
-                ></p>
+          <div class="comment-answers" data-ng-if="comment.answers.length">
+            <ul class="comments-list">
+              <li data-ng-repeat="answer in comment.answers track by $index"
+                  class="comment-item"
+              >
+                <div class="author-photo">
+                  <img ng-src="{{answer.author.smallPhotoUrl}}"
+                       data-ng-if="answer.author.smallPhotoUrl">
+                  <img data-ng-hide="answer.author.smallPhotoUrl"
+                       src="content/images/placeholder_cropped.jpg"
+                       class="image-placeholder">
+                </div>
+                <div class="comment-info">
+                  <p class="author-name"
+                     data-ng-bind="vm.getAuthorFullName(answer.author)"
+                  ></p>
+                  <p class="comment-text"
+                     data-ng-bind="answer.text"
+                     data-ng-if="answer.text"
+                     data-truncate
+                     data-toggle="true"
+                  ></p>
             <span class="comment-date">
               <i class="fa fa-calendar" aria-hidden="true"></i>
               <span data-ng-bind="answer.getCreatedAtFromNow()"
               ></span>
             </span>
-            <span data-ng-click="vm.setActiveCommentId(comment.id)">
+            <span data-ng-click="vm.setActiveCommentId(comment.id)"
+                  class="btn btn-default dt-btn dt-btn-sm">
               <span>Відповісти</span>
             </span></div>
-            </li>
-          </ul>
-        </div>
-
-        <div class="comment-answer-block comments-textarea"
-             data-ng-if="vm.isAnswerFormVisible(comment.id)">
-          <div class="user-photo">
-            <img data-ng-src="{{vm.users.current.smallPhotoUrl}}"
-                 data-ng-show="vm.users.current && vm.users.current.smallPhotoUrl">
-            <img data-ng-hide="vm.users.current.smallPhotoUrl"
-                 src="content/images/placeholder_cropped.jpg"
-                 class="image-placeholder">
+              </li>
+            </ul>
           </div>
 
-          <div class="comment-form">
-            <form name="vm.answerform">
-              <div class="dt-form">
-                <div class="form-group">
+          <div class="comment-answer-block comments-textarea"
+               data-ng-if="vm.isAnswerFormVisible(comment.id)">
+            <div class="user-photo">
+              <img data-ng-src="{{vm.users.current.smallPhotoUrl}}"
+                   data-ng-show="vm.users.current && vm.users.current.smallPhotoUrl">
+              <img data-ng-hide="vm.users.current.smallPhotoUrl"
+                   src="content/images/placeholder_cropped.jpg"
+                   class="image-placeholder">
+            </div>
+
+            <div class="comment-form">
+              <form name="vm.answerform">
+                <div class="dt-form">
+                  <div class="form-group">
                    <textarea name="comment-textarea"
                              id="comments-textarea"
                              class="form-control"
@@ -114,16 +119,23 @@
                              data-ng-model="vm.commentAnswer.text"
                              data-ng-required="true"
                    ></textarea>
-                  <button class="btn btn-default pull-right"
-                          data-ng-click="vm.submitAnswer(comment.id)"
-                  >Відповісти</button>
+                    <button class="btn dt-btn btn-default pull-right"
+                            data-ng-click="vm.setActiveCommentId(null)"
+                    >Скасувати</button>
+                    <button class="btn dt-btn btn-default pull-right"
+                            data-ng-click="vm.submitAnswer(comment.id)"
+                    >Відповісти</button>
+                  </div>
                 </div>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
-        <div class="comment-separator"></div>
+        <div class="comment-separator"><div class="inner-separator"></div></div>
       </li>
     </ul>
   </div>
+  <div data-preloader
+       data-ng-if="vm.comments.isLoadInProcess"
+  ></div>
 </div>

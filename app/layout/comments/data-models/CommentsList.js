@@ -17,7 +17,8 @@
             this.article = null;
             this.author = null;
             this.data = [];
-            this.isLoadInProgress = false;
+            this.isLoadInProcess = false;
+            this.allCommentsLoaded = false;
 
             this.init(params);
         }
@@ -52,19 +53,27 @@
         CommentsList.prototype.addList = function(commentsList) {
             var _this = this;
 
+            if (!commentsList.length) {
+                this.allCommentsLoaded = true;
+            }
+
             _.each(commentsList, function(elem) {
                 _this.add(elem);
             });
         };
 
         CommentsList.prototype.getRemote = function() {
+            if (this.allCommentsLoaded || this.isLoadInProcess) { return false; }
             var _this = this;
 
-            this.isLoadInProgress = true;
-            return this.getRemoteRequest().then(function(response) {
-                _this.addList(response.data);
-                _this.isLoadInProgress = false;
-            });
+            this.isLoadInProcess = true;
+            return this.getRemoteRequest()
+                .then(function(response) {
+                    _this.addList(response.data);
+                })
+                .finally(function() {
+                    _this.isLoadInProcess = false;
+                });
         };
 
         CommentsList.prototype.getRemoteRequest = function() {
@@ -73,7 +82,10 @@
             }
 
             if (this.institution) {
-                return commentsService.getCommentsByInstitutionId(this.institution.id);
+                return commentsService.getCommentsByInstitutionId(this.institution.id, {
+                    offset: this.data.length,
+                    limit: 10
+                });
             }
 
             if (this.article) {

@@ -1,8 +1,12 @@
 <div class="select-image-container noselect" data-ng-class="{'invalid': vm.config.invalid}">
 	<div class="select-image-box"
-			 dat-ng-class="{'image-editable': vm.editable}">
-		<img ng-show="vm.image.src" ng-src="{{vm.image.src}}">
-		<img ng-hide="vm.image.src"
+			 data-ng-class="{'image-editable': vm.editable}">
+		<img data-ng-if="vm.image.src"
+				 data-ng-src="{{vm.image.src}}"
+				 data-preload-image
+				 data-default-image="content/images/preloader.gif">
+
+		<img data-ng-hide="vm.image.src"
 				 src="content/images/placeholder_cropped.jpg"
 				 class="image-placeholder">
 		<div class="select-image-overlay"
@@ -12,7 +16,7 @@
 		</div>
 	</div>
 	<div class="change-add-buttons"
-	data-ng-if="vm.config.buttonUnder">
+			 data-ng-if="vm.config.buttonUnder">
 		<button class="btn btn-default"
 						ng-show="vm.image.src"
 						data-ng-click="vm.triggerInput()"

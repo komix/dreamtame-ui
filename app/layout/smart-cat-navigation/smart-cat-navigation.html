@@ -1,48 +1,51 @@
 <div class="cats-navigation">
-  <div class="cat-history">
-    <button class="btn dt-btn btn-default cat-thumbnail noselect"
-          data-ng-repeat="item in vm.catHistory track by $index"
-          data-ng-click="vm.switchBack($index)"
-          data-ng-attr-title="{{item.ukName}}"
-          data-ng-class="{'last-thumbnail': $last && !vm.hasAbstractCats(),
+  <div data-preloader data-ng-if="!vm.catsAreLoaded"></div>
+  <div class="inner-wrapper" data-ng-if="vm.catsAreLoaded">
+    <div class="cat-history">
+      <button class="btn btn-default cat-thumbnail noselect"
+              data-ng-repeat="item in vm.catHistory track by $index"
+              data-ng-click="vm.switchBack($index)"
+              data-ng-attr-title="{{item.ukName}}"
+              data-ng-class="{'last-thumbnail': $last && !vm.hasAbstractCats(),
                            active: vm.isThumbActive(item.id)}"
-    >
+      >
       <span data-ng-bind="vm.getAbr(item)"
       ></span>
       <span data-ng-hide="$last && !vm.hasAbstractCats()"
             class="cat-thumbnail-arrow"
       ></span>
-    </button>
+      </button>
     <span data-ng-if="vm.hasAbstractCats()"
           class="cat-thumbnail last-thumbnail">
       <i class="fa fa-chevron-right" aria-hidden="true"></i>
     </span>
-  </div>
+    </div>
 
-  <div class="previous-cat-controls">
-    <button class="btn dt-btn btn-default cat-thumbnail noselect"
-          data-ng-click="vm.switchBack()"
-          data-ng-disabled="">
-          <i class="fa fa-chevron-left" aria-hidden="true"></i>
-    </button>
+    <div class="previous-cat-controls">
+      <button class="btn btn-default cat-thumbnail noselect"
+              data-ng-click="vm.switchBack()"
+              data-ng-disabled="">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+      </button>
 
-    <h2 class="active-cat-title" data-ng-bind="vm.activeCat.ukName"></h2>
-  </div>
+      <h2 class="active-cat-title" data-ng-bind="vm.activeCat.ukName"></h2>
+    </div>
 
-  <ul class="categories-list">
-    <li data-ng-repeat="cat in vm.activeCat.children track by cat.id"
-        ng-click='vm.onCatClick(cat)'
-        data-ng-class="{active: vm.isCatActive(cat.id)}">
-      <a href=''
-         class="category-link"
-         data-ng-class="{active: vm.isCatActive(cat.id),
+    <ul class="categories-list">
+      <li data-ng-repeat="cat in vm.activeCat.children track by cat.id"
+          ng-click='vm.onCatClick(cat)'
+          data-ng-class="{active: vm.isCatActive(cat.id)}">
+        <a href=''
+           class="category-link"
+           data-ng-class="{active: vm.isCatActive(cat.id),
                         'has-children': cat.children}"
-      >
-        <span data-ng-bind="cat.ukName"></span>
-        <i data-ng-if="cat.children"
-           class="children-icon fa fa-chevron-circle-right"
-           aria-hidden="true"></i>
-      </a>
-    </li>
-  </ul>
+        >
+          <span data-ng-bind="cat.ukName"></span>
+          <i data-ng-if="cat.children"
+             class="children-icon fa fa-chevron-circle-right"
+             aria-hidden="true"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>
