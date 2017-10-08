@@ -1,7 +1,15 @@
-<div>
-  <div data-ng-repeat="inst in vm.institutions">
+<div class="institutions-list"
+     data-infinite-scroll="vm.loadMoreInstitutions()"
+     data-infinite-scroll-distance="0"
+>
+  <div data-ng-repeat="inst in vm.institutions.data">
     <inst-block data-inst="inst">
     </inst-block>
     <div class="block-separator" data-ng-if="!$last"></div>
   </div>
+  <div data-preloader
+       data-ng-if="vm.institutions.isLoadInProcess"
+  ></div>
+  <p class="all-loaded" data-ng-if="vm.institutions.allInstitutionsLoaded"
+  >Всі секції відображено.</p>
 </div>

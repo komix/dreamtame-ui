@@ -134,6 +134,10 @@
   user-select: none;
   /* Non-prefixed version, currently supported by Chrome and Opera */ }
 
+.all-loaded {
+  padding: 10px;
+  text-align: center; }
+
 .login-view .login-form {
   max-width: 500px;
   padding: 50px;
@@ -276,8 +280,6 @@
     .institution-view .inst-navigation .dt-nav-pill.active, .institution-view .inst-navigation .dt-nav-pill:hover {
       color: #fff;
       background-color: #656565; }
-.institution-view .institution-photos, .institution-view .institution-videos {
-  padding-top: 30px; }
 .institution-view .select-image-box {
   border-radius: 50%;
   overflow: hidden; }
@@ -674,9 +676,13 @@
   cursor: pointer; }
 
 .info-state .info-section-title {
+  height: 25px;
+  line-height: 25px;
   font-size: 17px;
   font-weight: normal;
-  color: #656565; }
+  color: #656565;
+  margin: 0;
+  margin-bottom: 5px; }
 .info-state .info-manage-button {
   display: inline-block;
   height: 41px;
@@ -695,7 +701,8 @@
 .schedule .add-schedule-button {
   margin-top: -12px; }
 .schedule .working-time-item {
-  position: relative; }
+  position: relative;
+  margin-bottom: 10px; }
   .schedule .working-time-item .edit-schedule-button {
     position: absolute;
     right: 0;
@@ -703,10 +710,12 @@
   .schedule .working-time-item .schedule-name {
     color: #262626;
     font-size: 16px;
-    font-weight: 500; }
+    font-weight: 500;
+    margin-bottom: 5px; }
   .schedule .working-time-item .working-time-days {
     list-style-type: none;
-    margin-left: 0; }
+    margin-left: 0;
+    margin-top: 5px; }
     .schedule .working-time-item .working-time-days .day-title {
       display: inline-block;
       min-width: 80px;
@@ -714,16 +723,21 @@
       font-size: 15px; }
     .schedule .working-time-item .working-time-days .working-day-from-to {
       display: inline-block;
-      border: 2px solid #656565;
-      border-radius: 3px;
+      border-left: 2px solid #656565;
       padding: 1px 4px;
-      margin-bottom: 10px; }
+      margin-bottom: 10px;
+      color: #626262; }
 
 .phone-numbers .phone-numbers-list {
   list-style-type: none;
   padding-left: 0; }
   .phone-numbers .phone-numbers-list .phone-numbers-item {
-    max-width: 180px; }
+    height: 25px;
+    line-height: 25px;
+    margin-bottom: 5px;
+    white-space: nowrap; }
+    .phone-numbers .phone-numbers-list .phone-numbers-item .edit-button {
+      margin-left: 8px; }
 
 .comments .comments-textarea {
   padding-left: 65px;

@@ -30,7 +30,8 @@
   <div class="comment-separator"><div class="inner-separator"></div></div>
 
   <div data-infinite-scroll="vm.loadMoreComments()"
-       data-infinite-scroll-distance="0">
+       data-infinite-scroll-distance="0"
+  >
     <ul class="comments-list">
       <li data-ng-repeat="comment in vm.comments.data track by $index">
         <div class="comment-item">
@@ -138,4 +139,6 @@
   <div data-preloader
        data-ng-if="vm.comments.isLoadInProcess"
   ></div>
+  <p class="all-loaded" data-ng-if="vm.comments.allCommentsLoaded"
+  >Усі відгуки відображено.</p>
 </div>

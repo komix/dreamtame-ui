@@ -1,5 +1,9 @@
 <div class="media-item noselect">
-  <img data-ng-src="{{vm.item.sqr || vm.item.imgUrl}}" class="media-item-image" alt="">
+  <img data-ng-src="{{vm.item.sqr || vm.item.imgUrl}}"
+       class="media-item-image"
+       data-preload-image
+       data-default-image="content/images/preloader.gif"
+  >
   <i data-ng-if="!vm.item.src" class="play-icon fa fa-play-circle-o" aria-hidden="true"></i>
   <div class="overlay">
     <span data-ng-if="vm.isOwner">

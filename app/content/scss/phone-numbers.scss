@@ -4,10 +4,13 @@
     padding-left: 0;
 
     .phone-numbers-item {
-      max-width: 180px;
+      height: 25px;
+      line-height: 25px;
+      margin-bottom: 5px;
+      white-space: nowrap;
 
       .edit-button {
-
+        margin-left: 8px;
       }
     }
   }

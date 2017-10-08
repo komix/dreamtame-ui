@@ -4,24 +4,28 @@
         .module('app')
         .controller('CategoryController', CategoryController);
 
-    CategoryController.$inject = ['$stateParams', 'users', 'instService', 'categoriesService'];
+    CategoryController.$inject = ['$stateParams', 'users', 'InstitutionsList', 'categoriesService'];
 
-    function CategoryController($stateParams, users, instService, categoriesService) {
+    function CategoryController($stateParams, users, InstitutionsList, categoriesService) {
         var vm = this;
 
         var catId = parseInt($stateParams.id);
+        vm.institutions = new InstitutionsList({categoryId: catId});
+        vm.loadMoreInstitutions = loadMoreInstitutions;
 
         activate();
 
         function activate() {
-            getInstitutions();
+            categoriesService.activeId = catId;
+            vm.institutions.getRemote();
         }
 
-        function getInstitutions() {
-            categoriesService.activeId = catId;
-            instService.getByCategoryId(catId).then(function(response) {
-                vm.institutions = response.data;
-            });
+        function loadMoreInstitutions() {
+            if (vm.institutions.allInstitutionsLoaded || vm.institutions.isLoadInProcess) {
+                return false;
+            }
+
+            vm.institutions.getRemote();
         }
 
 

@@ -1,26 +1,31 @@
 <div class="phone-numbers">
   <h3 class="info-section-title">
     <span>Телефони</span>
-    <span class="info-manage-button pull-right"
-          data-ng-click="vm.openAddPhoneNumberModal()"
-          data-ng-if="vm.isOwner()">
-      <i class="fa fa-plus"
-         aria-hidden="true"
-         title="Додати розклад роботи"
-      ></i>
-    </span>
+    <button class="btn btn-default dt-btn dt-btn-sm pull-right"
+            data-ng-click="vm.openAddPhoneNumberModal()"
+            data-ng-if="vm.isOwner()"
+    >
+      <span>Додати</span>
+    </button>
   </h3>
-    <ul class="phone-numbers-list">
+    <ul class="phone-numbers-list" data-ng-if="vm.options.institution.phoneNumbers.length">
       <li class="phone-numbers-item"
           data-ng-repeat="elem in vm.options.institution.phoneNumbers"
       >
         <span data-ng-bind="elem.rawNumber"></span>
-        <span class="fa fa-pencil edit-button pull-right"
-              title="Редагувати"
-              data-ng-click="vm.openAddPhoneNumberModal(elem)"
-              data-ng-if="vm.isOwner()"
-        ></span>
+        <button class="edit-button btn btn-default dt-btn dt-btn-sm"
+                data-ng-click="vm.openAddPhoneNumberModal(elem)"
+                data-ng-if="vm.isOwner()"
+                title="Редагувати"
+        >
+          <span class="fa fa-pencil"></span>
+        </button>
       </li>
     </ul>
+    <p class="empty-message"
+       data-ng-if="!vm.options.institution.phoneNumbers.length"
+    >
+      <span>Не вказано</span>
+    </p>
 
 </div>

@@ -6,6 +6,7 @@
 
   .working-time-item {
     position: relative;
+    margin-bottom: 10px;
 
     .edit-schedule-button {
       position: absolute;
@@ -17,12 +18,14 @@
       color: $text-color-dark;
       font-size: 16px;
       font-weight: 500;
+      margin-bottom: 5px;
     }
 
 
     .working-time-days {
       list-style-type: none;
       margin-left: 0;
+      margin-top: 5px;
 
       .day-title {
         display: inline-block;
@@ -33,10 +36,10 @@
 
       .working-day-from-to {
         display: inline-block;
-        border: 2px solid $logo-color;
-        border-radius: 3px;
+        border-left: 2px solid $logo-color;
         padding: 1px 4px;
         margin-bottom: 10px;
+        color: $text-color-light;
       }
     }
   }

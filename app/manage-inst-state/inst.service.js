@@ -60,9 +60,9 @@
             return defered.promise;
         }
 
-        function getByCategoryId(id) {
+        function getByCategoryId(id, params) {
             var defered = $q.defer();
-            $http.get(apiUrl +  '/institutions/category/' + id).then(function(data){
+            $http.post(apiUrl +  '/institutions/category/' + id, params).then(function(data){
                 defered.resolve(data);
             });
             return defered.promise;

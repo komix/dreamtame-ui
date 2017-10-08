@@ -1,15 +1,13 @@
 <div class="recruit-age-wrapper">
   <h3 class="info-section-title">
     <span>Набір</span>
-    <span class="info-manage-button pull-right"
-          data-ng-click="vm.openRecruitAgeModal()"
-          data-ng-if="vm.isOwner()">
-      <i class="fa"
-         data-ng-class="vm.getRecruitButtonClass()"
-         aria-hidden="true"
-         title="Додати розклад роботи"
-      ></i>
-    </span>
+    <button class="btn btn-default dt-btn dt-btn-sm pull-right"
+            data-ng-click="vm.openRecruitAgeModal()"
+            data-ng-if="vm.isOwner()"
+    >
+      <span data-ng-if="!vm.isRecruitAgeAvailable()">Додати</span>
+      <span data-ng-if="vm.isRecruitAgeAvailable()">Редагувати</span>
+    </button>
   </h3>
 
   <div data-ng-if="vm.isFromToAvailable()">
@@ -32,7 +30,7 @@
     <span>років.</span>
   </div>
 
-  <div data-ng-if="!vm.isRecruitAgeAvailable()">
+  <div class="empty-message" data-ng-if="!vm.isRecruitAgeAvailable()">
     <span>Не вказано.</span>
   </div>
 

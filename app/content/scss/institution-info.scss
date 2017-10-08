@@ -1,8 +1,12 @@
 .info-state {
   .info-section-title {
+    height: 25px;
+    line-height: 25px;
     font-size: 17px;
     font-weight: normal;
     color: $logo-color;
+    margin: 0;
+    margin-bottom: 5px;
   }
 
   .info-manage-button {

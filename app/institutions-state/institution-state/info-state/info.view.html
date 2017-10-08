@@ -1,20 +1,32 @@
 <div class="info-state">
-  <div class="working-hours-wrapper">
-    <div data-schedule
-         data-working-days="vm.workingDays"
-         data-ng-if="vm.workingDays"
-    ></div>
+  <div data-preloader
+       data-ng-if="vm.isLoadInProcess"
+  >
   </div>
-  <div class="recruit-info">
-    <div class="row">
-      <div class="col-md-4">
-        <div data-recruit-age
-             data-institution="vm.institution"
-        >
+  <div class="inner-wrapper" data-ng-if="!vm.isLoadInProcess">
+    <div class="working-hours-wrapper">
+      <div data-schedule
+           data-working-days="vm.workingDays"
+           data-ng-if="vm.workingDays"
+      ></div>
+    </div>
+    <div class="recruit-info">
+      <div class="row">
+        <div class="col-md-4">
+          <div data-recruit-age
+               data-institution="vm.institution"
+          >
+          </div>
         </div>
-        <div data-phone-numbers
-             data-options="vm.phoneNumbersOptions"
-             data-ng-if="vm.phoneNumbersOptions">
+      </div>
+    </div>
+    <div class="info-phone-numbers">
+      <div class="row">
+        <div class="col-md-4">
+          <div data-phone-numbers
+               data-options="vm.phoneNumbersOptions"
+               data-ng-if="vm.phoneNumbersOptions">
+          </div>
         </div>
       </div>
     </div>

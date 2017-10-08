@@ -13,6 +13,7 @@
 
         vm.scheduleConfig = {};
         vm.phoneNumbersOptions = null;
+        vm.isLoadInProcess = true;
 
         vm.isOwner = isOwner;
         vm.openRecruitAgeModal = openRecruitAgeModal;
@@ -24,10 +25,14 @@
         }
 
         function getInst() {
+            vm.isLoadInProcess = true;
+
             instService.get(instId).then(function(response) {
                 vm.institution = response.data;
                 vm.workingDays = new WorkingDays({institutionId: instId, ownerId: vm.institution.owner});
-                vm.workingDays.getRemote();
+                vm.workingDays.getRemote().then(function() {
+                    vm.isLoadInProcess = false;
+                });
                 vm.phoneNumbersOptions = {
                     institution: vm.institution
                 };
