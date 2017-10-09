@@ -885,5 +885,8 @@
     height: 25px;
     line-height: 21px;
     font-size: 12px; }
+  .btn.dt-btn.btn-preloader img {
+    display: inline-block;
+    height: 20px; }
 
 /*# sourceMappingURL=style.css.map */

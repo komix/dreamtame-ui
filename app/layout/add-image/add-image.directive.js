@@ -64,7 +64,10 @@
                 imageData.instId = vm.config.instId;
             }
 
+            vm.config.isLoadInProcess = true;
+
             photosService.add(imageData).then(function(response) {
+                vm.config.isLoadInProcess = false;
                 //if (vm.config.onSuccess) {
                 //    vm.config.onSuccess(response.data);
                 //}

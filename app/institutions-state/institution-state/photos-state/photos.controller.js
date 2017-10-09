@@ -4,31 +4,38 @@
         .module('app')
         .controller('InstitutionPhotosController', InstitutionPhotosController);
 
-    InstitutionPhotosController.$inject = ['$scope', '$rootScope', '$stateParams', 'users', 'photosService',
+    InstitutionPhotosController.$inject = ['$scope', '$rootScope', '$stateParams', 'users', 'MediaItemsList',
         'instService', 'photoswipe'];
 
-    function InstitutionPhotosController($scope, $rootScope, $stateParams, users, photosService,
+    function InstitutionPhotosController($scope, $rootScope, $stateParams, users, MediaItemsList,
                                          instService, photoswipe) {
         var vm = this;
 
         var instId = $stateParams.id;
         var listeners = [];
 
+        vm.photos = new MediaItemsList({
+            type: 'photos',
+            institutionId: instId
+        });
+
         vm.isOwnerOrAdmin = isOwnerOrAdmin;
         vm.initPhotoSwipe = initPhotoSwipe;
+        vm.loadMore = loadMore;
 
         activate();
 
         function activate() {
             getInst();
-            getInstPhotos();
+
+            vm.photos.getRemote();
 
             listeners.push($rootScope.$on('photo-added', function(e, photo) {
-                vm.photos.unshift(photo);
+                vm.photos.add(photo, true);
             }));
 
             listeners.push($rootScope.$on('photo-deleted', function(event, payload) {
-                removePhotoById(payload.id);
+                vm.photos.removeById(payload.id);
             }));
 
             $scope.$on('$destroy', function() {
@@ -44,12 +51,6 @@
             });
         }
 
-        function getInstPhotos() {
-            return photosService.getByInstId(instId).then(function(response) {
-                vm.photos = response.data;
-            });
-        }
-
         function isOwnerOrAdmin() {
             if (!vm.inst || !users.current) { return false; }
             var isOwner = parseInt(vm.inst.owner) === parseInt(users.current.id);
@@ -62,12 +63,10 @@
             photoswipe.init(angular.copy(vm.photos), index);
         }
 
-        function removePhotoById(id) {
-            var deletedPhoto = _.find(vm.photos, function(elem) {
-                return elem.id === id;
-            });
-            var index = _.indexOf(vm.photos, deletedPhoto);
-            vm.photos.splice(index, 1);
+        function loadMore() {
+            if (vm.photos.isLoadInProcess || vm.photos.allMediaItemsLoaded) { return false; }
+
+            vm.photos.getRemote();
         }
 
     }

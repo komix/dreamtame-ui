@@ -19,5 +19,12 @@
       line-height: 21px;
       font-size: 12px;
     }
+
+    &.btn-preloader {
+      img {
+        display: inline-block;
+        height: 20px;
+      }
+    }
   }
 }

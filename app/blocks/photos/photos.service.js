@@ -38,9 +38,9 @@
             return defered.promise;
         }
 
-        function getByInstId(id) {
+        function getByInstId(id, params) {
             var defered = $q.defer();
-            $http.get(apiUrl +  '/photos/institution/' + id).then(function(data){
+            $http.post(apiUrl +  '/photos/institution/' + id, params).then(function(data){
                 defered.resolve(data);
             });
             return defered.promise;

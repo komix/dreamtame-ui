@@ -4,24 +4,30 @@
         .module('app')
         .controller('InstitutionVideosController', InstitutionVideosController);
 
-    InstitutionVideosController.$inject = ['$scope', '$rootScope', '$stateParams', 'users', 'videos',
+    InstitutionVideosController.$inject = ['$scope', '$rootScope', '$stateParams', 'users', 'MediaItemsList',
         'instService', 'modalService'];
 
-    function InstitutionVideosController($scope, $rootScope, $stateParams, users, videos,
+    function InstitutionVideosController($scope, $rootScope, $stateParams, users, MediaItemsList,
                                          instService,  modalService) {
         var vm = this;
 
         var instId = $stateParams.id;
         var listeners = [];
 
+        vm.videos = new MediaItemsList({
+            type: 'videos',
+            institutionId: instId
+        });
+
         vm.isOwnerOrAdmin = isOwnerOrAdmin;
         vm.showVideo = showVideo;
+        vm.loadMore = loadMore;
 
         activate();
 
         function activate() {
             getInst();
-            getInstVideos();
+            vm.videos.getRemote();
 
             listeners.push($rootScope.$on('video-added', function(e, photo) {
                 vm.videos.unshift(photo);
@@ -44,12 +50,6 @@
             });
         }
 
-        function getInstVideos() {
-            return videos.getByInstId(instId).then(function(response) {
-                vm.videos = response.data;
-            });
-        }
-
         function showVideo(video) {
             modalService.showVideoModal({ytbUrl: video.ytbUrl});
         }
@@ -68,6 +68,12 @@
             });
             var index = _.indexOf(vm.videos, deletedVideo);
             vm.videos.splice(index, 1);
+        }
+
+        function loadMore() {
+            if (vm.videos.isLoadInProcess || vm.videos.allMediaItemsLoaded) { return false; }
+
+            vm.videos.getRemote();
         }
 
     }
