@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <button type="button" class="close" ng-click="$dismiss()"><span aria-hidden="true">&times;</span><span class="sr-only">Закрити</span></button>
+  <button type="button" class="close" ng-click="vm.close()"><span aria-hidden="true">&times;</span><span class="sr-only">Закрити</span></button>
   <h4 class="modal-title" id="{{$index}}-label" data-ng-bind="vm.modalMessage"></h4>
 </div>
 <div class="modal-body">
@@ -11,5 +11,5 @@
   </div>
 </div>
 <div class="modal-footer">
-  <button type="button" class="btn btn-sm btn-default" ng-click="$dismiss()">Закрити</button>
+  <button type="button" class="btn btn-sm btn-default" ng-click="vm.close()">Закрити</button>
 </div>

@@ -24,9 +24,9 @@
         return directive;
     }
 
-    ManageScheduleController.$inject = ['WorkingDay', 'workingDays', 'WorkingDays'];
+    ManageScheduleController.$inject = ['WorkingDay', 'workingDays', 'Schedule', '$uibModalStack'];
 
-    function ManageScheduleController(WorkingDay, workingDaysService, WorkingDays) {
+    function ManageScheduleController(WorkingDay, workingDaysService, Schedule, $uibModalStack) {
         var vm = this;
 
         vm.workingDaysService = workingDaysService;
@@ -48,13 +48,24 @@
         activate();
 
         function activate() {
-
-
             if (!vm.scheduleItem) {
-
+                vm.scheduleItem = new Schedule({
+                    institutionId: vm.config.schedules.institutionId
+                });
+            } else {
+                vm.isEditState = true;
             }
 
             vm.workingDay = new WorkingDay();
+
+            addEventHandlers();
+        }
+
+        function addEventHandlers() {
+            vm.scheduleItem.on('schedule-created', function() {
+                vm.config.schedules.addSchedule(vm.scheduleItem);
+                $uibModalStack.dismissAll();
+            });
         }
 
 
@@ -69,7 +80,7 @@
         function addWorkingDay() {
             var oldDayStart = vm.workingDay.start;
             var oldDayEnd = vm.workingDay.end;
-            vm.workingDays.addDay(vm.workingDay);
+            vm.scheduleItem.addWorkingDay(vm.workingDay);
 
             vm.workingDay = new WorkingDay({
                 start: oldDayStart,
@@ -87,11 +98,10 @@
         }
 
         function optionsFilter(actual) {
-            return true;
-            //if (!vm.workingDays.data.length) { return true }
-            //return !_.find(vm.workingDays.data, function(elem) {
-            //    return elem.dayNumber === actual.dayNumber;
-            //})
+            if (!vm.scheduleItem.workingDays.length) { return true }
+            return !_.find(vm.scheduleItem.workingDays, function(elem) {
+                return elem.dayNumber === actual.dayNumber;
+            })
         }
 
         function removeWorkingDay(day) {
@@ -99,7 +109,7 @@
         }
 
         function removeSchedule() {
-            vm.workingDays.remove();
+            vm.config.schedules.removeSchedule(vm.scheduleItem);
         }
 
         function setPristine() {
@@ -107,11 +117,13 @@
         }
 
         function isDefaultScheduleWarningVisible() {
-            return vm.config.schedules.hasDefaultSchedule && !vm.isEditState;
+            return vm.scheduleItem.isDefaultSchedule;
         }
 
         function isGroupScheduleWarningVisible() {
-            return !vm.config.hasDefaultSchedule && vm.config.data && vm.config.data.length;
+            return !vm.config.schedules.hasDefaultSchedule()
+                && vm.config.schedules.data
+                && vm.config.schedules.data.length;
         }
 
         function areScheduleTypeOptionsVisible() {
@@ -126,7 +138,7 @@
                 return false;
             }
 
-            var request = vm.workingDays.id ? vm.workingDays.update() : vm.workingDays.add();
+            var request = vm.scheduleItem.id ? vm.scheduleItem.update() : vm.scheduleItem.add();
 
             request.then(function(response) {
                 console.log(response);

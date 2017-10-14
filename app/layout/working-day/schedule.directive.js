@@ -35,15 +35,9 @@
         vm.isOwner = isOwner;
 
         function openWorkingHoursModal(scheduleItem) {
-            //if (!scheduleItem) {
-            //    scheduleItem = {
-            //        institutionId: vm.workingDays.institutionId,
-            //        data: scheduleItem,
-            //        hasDefaultSchedule: vm.workingDays.hasDefaultSchedule()
-            //    }
-            //}
-
-
+            if (vm.workingDays.hasDefaultSchedule() && !scheduleItem) {
+                scheduleItem = vm.workingDays.getDefaultSchedule();
+            }
 
             modalService.showWorkingHoursModal(scheduleItem, {
                 schedules: vm.workingDays

@@ -21,14 +21,17 @@
         >
           <span data-ng-bind="schedule.name"></span><span>:</span>
         </p>
-        <div class="working-time-days">
+        <div data-preloader
+             data-ng-if="schedule.isLoadInProcess"
+        ></div>
+        <div class="working-time-days" data-ng-if="!schedule.isLoadInProcess">
           <div class="working-time-day" data-ng-repeat="day in schedule.workingDays | orderBy:'dayNumber' track by day.dayNumber">
             <span data-ng-bind="vm.workingDaysService.getDayTitle(day.dayNumber)" class="day-title"></span>
-        <span class="working-day-from-to">
-          <span data-ng-bind="vm.workingDaysService.getTimeFormatted(day.start)"></span>
-          <span>-</span>
-          <span data-ng-bind="vm.workingDaysService.getTimeFormatted(day.end)"></span>
-        </span>
+            <span class="working-day-from-to">
+              <span data-ng-bind="vm.workingDaysService.getTimeFormatted(day.start)"></span>
+              <span>-</span>
+              <span data-ng-bind="vm.workingDaysService.getTimeFormatted(day.end)"></span>
+            </span>
           </div>
         </div>
         <button class="btn btn-default dt-btn dt-btn-sm"

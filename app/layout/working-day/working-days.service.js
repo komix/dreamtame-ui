@@ -45,6 +45,7 @@
             daysOfWeek: daysOfWeek,
             add: add,
             get: get,
+            getById: getById,
             update: update,
             remove: remove,
             getDayTitle: getDayTitle,
@@ -64,6 +65,14 @@
         function get(instId){
             var defered = $q.defer();
             $http.get(apiUrl +  '/working-hours/institution/' + instId).then(function(data){
+                defered.resolve(data);
+            });
+            return defered.promise;
+        }
+
+        function getById(id){
+            var defered = $q.defer();
+            $http.get(apiUrl +  '/working-hours/' + id).then(function(data){
                 defered.resolve(data);
             });
             return defered.promise;

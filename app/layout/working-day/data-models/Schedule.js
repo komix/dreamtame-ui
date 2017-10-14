@@ -18,6 +18,7 @@
             this.institutionId = null;
             this.institution = null;
             this.isDefaultSchedule = false;
+            this.isLoadInProcess = false;
             this.workingDays = [];
 
             this.init(options)
@@ -31,6 +32,7 @@
             if (options.isDefaultSchedule) { this.isDefaultSchedule = options.isDefaultSchedule; }
 
             if (options.workingDays) {
+                this.workingDays.length = 0;
                 this.addWorkingDaysList(options.workingDays);
             }
         };
@@ -52,6 +54,47 @@
             _.each(daysList, function(elem) {
                 _this.addWorkingDay(elem);
             });
+        };
+
+        Schedule.prototype.getData = function() {
+            return {
+                id: this.id,
+                name: this.name,
+                institutionId: this.institutionId,
+                workingDays: this.workingDays,
+                isDefaultSchedule: this.name ? false : true
+            }
+        };
+
+        Schedule.prototype.add = function() {
+            var _this = this;
+            return workingDays.add(this.getData())
+                .then(function(response) {
+                    _this.id = response.data.id;
+                    _this.emit('schedule-created');
+                })
+        };
+
+        Schedule.prototype.update = function() {
+            var _this = this;
+            return workingDays.update(this.getData())
+                .then(function() {
+                    _this.getRemote();
+                    _this.emit('schedule-updated');
+                });
+        };
+
+        Schedule.prototype.getRemote = function() {
+            var _this = this;
+            this.isLoadInProcess = true;
+
+            return workingDays.getById(this.id)
+                .then(function(response) {
+                    _this.init(response.data);
+                })
+                .finally(function() {
+                    _this.isLoadInProcess = false;
+                })
         };
 
 

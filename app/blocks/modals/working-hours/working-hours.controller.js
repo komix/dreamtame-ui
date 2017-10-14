@@ -13,10 +13,27 @@
         vm.schedule = schedule;
         vm.config = config;
 
+        vm.close = close;
+
         activate();
 
         function activate() {
+            if (vm.schedule) {
+                vm.config.schedules.on('schedule-deleted', function() {
+                    $uibModalStack.dismissAll();
+                });
+                vm.schedule.on('schedule-updated', function() {
+                    $uibModalStack.dismissAll();
+                });
+            }
+        }
 
+        function close() {
+            $uibModalStack.dismissAll();
+
+            if (vm.schedule.id) {
+                vm.schedule.getRemote();
+            }
         }
     }
 

@@ -703,6 +703,8 @@
 .schedule .working-time-item {
   position: relative;
   margin-bottom: 10px; }
+  .schedule .working-time-item .preloader {
+    text-align: left; }
   .schedule .working-time-item .edit-schedule-button {
     position: absolute;
     right: 0;
