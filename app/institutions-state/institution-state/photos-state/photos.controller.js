@@ -60,7 +60,7 @@
         }
 
         function initPhotoSwipe(index) {
-            photoswipe.init(angular.copy(vm.photos), index);
+            photoswipe.init(angular.copy(vm.photos.data), index);
         }
 
         function loadMore() {

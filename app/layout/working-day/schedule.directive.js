@@ -35,15 +35,19 @@
         vm.isOwner = isOwner;
 
         function openWorkingHoursModal(scheduleItem) {
-            if (!scheduleItem) {
-                scheduleItem = {
-                    institutionId: vm.workingDays.institutionId,
-                    data: vm.workingDays.data,
-                    hasDefaultSchedule: vm.workingDays.hasDefaultSchedule()
-                }
-            }
+            //if (!scheduleItem) {
+            //    scheduleItem = {
+            //        institutionId: vm.workingDays.institutionId,
+            //        data: scheduleItem,
+            //        hasDefaultSchedule: vm.workingDays.hasDefaultSchedule()
+            //    }
+            //}
 
-            modalService.showWorkingHoursModal(scheduleItem);
+
+
+            modalService.showWorkingHoursModal(scheduleItem, {
+                schedules: vm.workingDays
+            });
         }
 
         function isOwner() {

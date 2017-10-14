@@ -5,9 +5,9 @@
         .module('app')
         .factory('WorkingDays', workingDays);
 
-    workingDays.$inject = ['workingDays'];
+    workingDays.$inject = ['workingDays', 'Schedule'];
     /* @ngInject */
-    function workingDays(workingDays) {
+    function workingDays(workingDays, Schedule) {
         _(WorkingDays.prototype).extend(EventEmitter.prototype);
 
         var defaultScheduleName = 'Розклад роботи';
@@ -42,7 +42,8 @@
             return workingDays.get(this.institutionId).then(function(response) {
                 if (response && response.data) {
                     _.each(response.data, function(elem) {
-                        _this.data.push(elem);
+                        var schedule = new Schedule(elem);
+                        _this.addSchedule(schedule);
                     })
                 }
             });
@@ -52,8 +53,8 @@
             return this.isValid = !!this.data.length;
         };
 
-        WorkingDays.prototype.addDay = function(workingDay) {
-            this.data.push(workingDay);
+        WorkingDays.prototype.addSchedule = function(schedule) {
+            this.data.push(schedule);
         };
 
         WorkingDays.prototype.removeDay = function(day) {

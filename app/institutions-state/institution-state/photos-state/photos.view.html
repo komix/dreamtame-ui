@@ -1,9 +1,10 @@
-<div class="institution-photos">
+<div class="institution-photos"
+     data-infinite-scroll="vm.loadMore()"
+     data-infinite-scroll-distance="0"
+>
   <div class="row">
     <div data-ng-repeat="photo in vm.photos.data track by photo.id"
          class="col-md-4"
-         data-infinite-scroll="vm.loadMore()"
-         data-infinite-scroll-distance="0"
     >
       <media-item data-item="photo"
                   data-is-owner="vm.isOwnerOrAdmin()"

@@ -16,7 +16,7 @@
         <label class="form-check-label">
           <input class="form-check-input"
                  type="radio"
-                 data-ng-model="vm.workingDays.isDefaultSchedule"
+                 data-ng-model="vm.schedule.isDefaultSchedule"
                  data-ng-value="true"
                  data-ng-change="vm.setPristine()"
           >
@@ -27,18 +27,18 @@
         <label class="form-check-label">
           <input class="form-check-input"
                  type="radio"
-                 data-ng-model="vm.workingDays.isDefaultSchedule"
+                 data-ng-model="vm.scheduleItem.isDefaultSchedule"
                  data-ng-value="false"
                  data-ng-change="vm.setPristine()"
           >
           Додати розклад занять однієї з груп
         </label>
       </div>
-      <div class="form-group" data-ng-if="!vm.workingDays.isDefaultSchedule">
+      <div class="form-group" data-ng-if="!vm.scheduleItem.isDefaultSchedule">
         <label class="form-label" for="name-input">Назва:</label>
         <input type="text"
                class="form-control"
-               data-ng-model="vm.workingDays.name"
+               data-ng-model="vm.scheduleItem.name"
                placeholder="Молодша група (6-12 років)"
                id="name-input"
                data-ng-required="true"
@@ -104,7 +104,7 @@
   <div class="working-days-list">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info"
-          data-ng-repeat="day in vm.workingDays.data | orderBy:'dayNumber' track by day.dayNumber">
+          data-ng-repeat="day in vm.scheduleItem.workingDays | orderBy:'dayNumber' track by day.dayNumber">
         <span class="working-day-info-wrapper">
           <span class="working-day-label">День тижня:</span>
           <span data-ng-bind="vm.workingDaysService.getDayTitle(day.dayNumber)"></span>

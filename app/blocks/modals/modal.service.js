@@ -106,7 +106,7 @@
             })
         }
 
-        function showWorkingHoursModal(workingHoursItem) {
+        function showWorkingHoursModal(schedule, config) {
             $uibModal.open({
                 animation: true,
                 templateUrl: 'blocks/modals/working-hours/working-hours.html',
@@ -115,8 +115,11 @@
                 size: 'lg',
                 backdrop: 'static',
                 resolve: {
-                    workingHours: function() {
-                        return workingHoursItem;
+                    schedule: function() {
+                        return schedule;
+                    },
+                    config: function() {
+                        return config
                     }
                 }
             })

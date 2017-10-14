@@ -3,19 +3,20 @@
 
     angular
         .module('app')
-        .directive('workingDay', workingDay);
+        .directive('manageSchedule', manageSchedule);
 
-    workingDay.$inject = [];
+    manageSchedule.$inject = [];
     /* @ngInject */
-    function workingDay() {
+    function manageSchedule() {
         var directive = {
             replace: true,
             bindToController: true,
-            controller: WorkingDayController,
+            controller: ManageScheduleController,
             controllerAs: 'vm',
             restrict: 'EA',
-            templateUrl: 'layout/working-day/working-day.html',
+            templateUrl: 'layout/working-day/manage-schedule.html',
             scope: {
+                scheduleItem: '=',
                 config: '=?'
             }
         };
@@ -23,9 +24,9 @@
         return directive;
     }
 
-    WorkingDayController.$inject = ['WorkingDay', 'workingDays', 'WorkingDays'];
+    ManageScheduleController.$inject = ['WorkingDay', 'workingDays', 'WorkingDays'];
 
-    function WorkingDayController(WorkingDay, workingDaysService, WorkingDays) {
+    function ManageScheduleController(WorkingDay, workingDaysService, WorkingDays) {
         var vm = this;
 
         vm.workingDaysService = workingDaysService;
@@ -47,26 +48,10 @@
         activate();
 
         function activate() {
-            var options = {
-                institutionId: vm.config.institutionId
-            };
 
-            if (vm.config.id) {
-                options.id = vm.config.id;
-                options.name = vm.config.name;
-                vm.isEditState = true;
-                options.isDefaultSchedule = vm.config.isDefaultSchedule;
-            } else {
-                options.isDefaultSchedule = true;
-            }
 
-            vm.workingDays = new WorkingDays(options);
+            if (!vm.scheduleItem) {
 
-            if (vm.config.id) {
-                _.each(vm.config.workingDays, function(elem) {
-                    var workingDay = new WorkingDay(elem);
-                    vm.workingDays.addDay(workingDay);
-                });
             }
 
             vm.workingDay = new WorkingDay();
@@ -102,14 +87,15 @@
         }
 
         function optionsFilter(actual) {
-            if (!vm.workingDays.data.length) { return true }
-            return !_.find(vm.workingDays.data, function(elem) {
-                return elem.dayNumber === actual.dayNumber;
-            })
+            return true;
+            //if (!vm.workingDays.data.length) { return true }
+            //return !_.find(vm.workingDays.data, function(elem) {
+            //    return elem.dayNumber === actual.dayNumber;
+            //})
         }
 
         function removeWorkingDay(day) {
-            vm.workingDays.removeDay(day);
+            vm.scheduleItem.removeDay(day);
         }
 
         function removeSchedule() {
@@ -121,7 +107,7 @@
         }
 
         function isDefaultScheduleWarningVisible() {
-            return vm.config.hasDefaultSchedule && !vm.isEditState;
+            return vm.config.schedules.hasDefaultSchedule && !vm.isEditState;
         }
 
         function isGroupScheduleWarningVisible() {
@@ -129,7 +115,7 @@
         }
 
         function areScheduleTypeOptionsVisible() {
-            return !vm.isEditState && !vm.config.data.length;
+            return !vm.isEditState && !vm.config.schedules.data.length;
         }
 
         function submit() {

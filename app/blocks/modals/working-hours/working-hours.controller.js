@@ -5,13 +5,13 @@
         .module('app')
         .controller('WorkingHoursModalController', WorkingHoursModalController);
 
-    WorkingHoursModalController.$inject = ['$rootScope', 'workingHours', '$uibModalStack', '$stateParams'];
+    WorkingHoursModalController.$inject = ['$rootScope', 'schedule', 'config', '$uibModalStack', '$stateParams'];
 
-    function WorkingHoursModalController($rootScope, workingHours, $uibModalStack, $stateParams) {
+    function WorkingHoursModalController($rootScope, schedule, config, $uibModalStack, $stateParams) {
         var vm = this;
 
-        vm.workingHours = workingHours;
-
+        vm.schedule = schedule;
+        vm.config = config;
 
         activate();
 
