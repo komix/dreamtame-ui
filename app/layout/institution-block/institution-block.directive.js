@@ -13,7 +13,7 @@
             bindToController: true,
             controller: InstBlockController,
             controllerAs: 'vm',
-            restrict: 'E',
+            restrict: 'EA',
             templateUrl: 'layout/institution-block/institution-block.html',
             scope: {
                 inst: '='
