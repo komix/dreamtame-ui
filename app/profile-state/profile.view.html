@@ -1,40 +1,57 @@
 <div class="profile-view">
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-3">
-        <select-image data-image="vm.image"
-                      data-config="vm.selImgConfig"
-                      data-editable="vm.isImageEditable">
-        </select-image>
-      </div>
-      <div class="col-md-9">
-        <div class="user-info">
-          <p data-ng-bind="vm.user.firstName"></p>
-          <p data-ng-bind="vm.user.lastName"></p>
-          <button class="btn btn-default"
-                  data-ng-click="vm.logOut()"
-          >Вийти</button>
-          <a ui-sref="edit-profile({id: vm.user.id})"
-             data-ng-if="vm.user.id"
-            class="btn btn-default">
-            редагувати профіль
-            <i class="fa fa-pencil"></i>
-          </a>
-          <a ui-sref="manage-inst"
-             class="btn btn-default">
-            <i class="fa fa-plus"></i>
-            додати групу
-          </a>
+    <div data-preloader
+         data-ng-if="!vm.user"
+    ></div>
+    <div class="user-profile" data-ng-if="vm.user">
+      <div class="row">
+        <div class="col-md-2">
+          <select-image data-image="vm.image"
+                        data-config="vm.selImgConfig"
+                        data-editable="vm.isImageEditable">
+          </select-image>
+        </div>
+        <div class="col-md-10">
+          <div class="user-info">
+            <p class="user-name">
+              <span data-ng-bind="vm.user.firstName"></span>
+              <span data-ng-bind="vm.user.lastName"></span>
+            </p>
+
+            <button class="btn btn-default dt-btn"
+                    data-ng-click="vm.logOut()"
+            >Вийти</button>
+            <a ui-sref="edit-profile({id: vm.user.id})"
+               data-ng-if="vm.user.id"
+               class="btn btn-default dt-btn">
+              редагувати профіль
+              <i class="fa fa-pencil"></i>
+            </a>
+            <a ui-sref="manage-inst"
+               class="btn btn-default dt-btn">
+              <i class="fa fa-plus"></i>
+              додати секцію
+            </a>
+          </div>
         </div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-8">
+        <h4>Ваші секції:</h4>
         <div data-ng-repeat="institution in vm.institutions.data track by institution.id">
           <div data-inst-block
                data-inst="institution"
           ></div>
+          <div class="block-separator" data-ng-if="!$last"></div>
         </div>
+        <div data-preloader
+             data-ng-if="vm.institutions.isLoadInProcess"
+        ></div>
+        <p class="all-loaded" data-ng-if="vm.institutions.allInstitutionsLoaded && !vm.institutions.isEmpty()"
+        >Всі секції відображено.</p>
+        <p data-ng-if="vm.institutions.allInstitutionsLoaded && vm.institutions.isEmpty()"
+        >Ви ще не додали жодної секції.</p>
       </div>
     </div>
   </div>

@@ -10,7 +10,7 @@
     function permissions(PermissionsGroup) {
         var defaultStates = {
             guest: 'home',
-            user: 'home',
+            user: 'profile',
             admin: 'dashboard',
             superman: 'dashboard'
         };

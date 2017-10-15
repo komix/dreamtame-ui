@@ -8,11 +8,15 @@
     global.$inject = [];
 
     function global() {
-    	var defer;
     	var service = {
             //apiUrl: 'http://bitman.dreamtame.com',
             apiUrl: 'http://localhost:8000',
+            states: null
     	};
+
+        function initStates() {
+
+        }
 
     	return service;
     }

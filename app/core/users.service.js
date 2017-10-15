@@ -5,9 +5,9 @@
         .module('app')
         .factory('users', users);
 
-    users.$inject = ['$state', '$q', 'dtApi', 'User', 'permissions', '$uibModalStack', '$localStorage'];
+    users.$inject = ['$state', '$rootScope', 'dtApi', 'User', 'permissions', '$uibModalStack', '$localStorage'];
 
-    function users($state, $q, dtApi, User, permissions, $uibModalStack, $localStorage) {
+    function users($state, $rootScope, dtApi, User, permissions, $uibModalStack, $localStorage) {
 
         var service = {
             current: null,
@@ -60,6 +60,14 @@
         function onLoaded() {
             $localStorage.user = service.current;
             authorize();
+            $rootScope.$emit('user-logged-in');
+
+            var defaultState = service.defaultState;
+
+            if (defaultState === 'profile') {
+                return $state.go(defaultState, {id: service.current.id});
+            }
+
             $state.go(service.defaultState || 'home');
         }
 

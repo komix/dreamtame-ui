@@ -25,10 +25,7 @@
         function activate() {
             getUser();
             vm.institutions = new InstitutionsList({ownerId: userId});
-            vm.institutions.getRemote()
-                .then(function() {
-                    console.log(vm.institutions);
-                });
+            vm.institutions.getRemote();
         }
 
         function logOut() {

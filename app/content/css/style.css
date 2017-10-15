@@ -146,6 +146,17 @@
   .login-view .login-form .form-control {
     margin-bottom: 15px; }
 
+.profile-view .user-profile {
+  margin-bottom: 20px; }
+  .profile-view .user-profile .select-image-box {
+    border-radius: 50%;
+    overflow: hidden; }
+  .profile-view .user-profile .user-info {
+    padding: 10px 0; }
+    .profile-view .user-profile .user-info .user-name {
+      font-size: 19px;
+      color: #262626; }
+
 .edit-profile-view .edit-profile-form {
   max-width: 400px; }
 
@@ -359,7 +370,7 @@
     height: 41px;
     line-height: 41px;
     margin: 0;
-    padding-left: 50px;
+    padding-left: 53px;
     color: #717171;
     text-transform: capitalize;
     font-size: 16px; }

@@ -84,6 +84,10 @@
 
         };
 
+        InstitutionsList.prototype.isEmpty = function() {
+            return !this.data.length;
+        };
+
         return InstitutionsList;
     }
 })();

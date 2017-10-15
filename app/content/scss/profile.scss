@@ -1,0 +1,21 @@
+.profile-view {
+
+  .user-profile {
+    margin-bottom: 20px;
+
+    .select-image-box {
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .user-info {
+      padding: 10px 0;
+
+      .user-name {
+        font-size: 19px;
+        color: $text-color-dark;
+      }
+    }
+  }
+
+}
