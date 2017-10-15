@@ -16,6 +16,7 @@
             this.categoryId = null;
             this.description = '';
             this.photoId = null;
+            this.imgUrl = null;
             this.lat = '';
             this.lng = null;
             this.address = '';
@@ -30,6 +31,7 @@
             if (params.categoryId) { this.categoryId = params.categoryId; }
             if (params.description) { this.description = params.description; }
             if (params.photoId) { this.photoId = params.photoId; }
+            if (params.imgUrl) { this.imgUrl = params.imgUrl; }
             if (params.lat) { this.lat = params.lat; }
             if (params.lng) { this.lng = params.lng; }
             if (params.address) { this.address = params.address; }

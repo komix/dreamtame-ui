@@ -3,6 +3,11 @@
   padding-right: 0 !important;
 }
 
+.row-cust-padding > [class*="col-"] {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
 .noselect {
   -webkit-touch-callout: none;
   -webkit-user-select: none;

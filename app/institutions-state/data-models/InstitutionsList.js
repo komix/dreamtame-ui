@@ -15,6 +15,7 @@
 
             this.categoryId = null;
             this.ownerId = null;
+            this.categoriesIdsList = null;
             this.data = [];
             this.isLoadInProcess = false;
             this.allInstitutionsLoaded = false;
@@ -23,7 +24,7 @@
         }
 
         InstitutionsList.validate = function(params) {
-            if (!params || (!params.categoryId && !params.ownerId)) {
+            if (!params || (!params.categoryId && !params.ownerId && !params.categoriesIdsList)) {
                 console.log('InstitutionsList: Incorrect arguments!');
             }
         };
@@ -31,6 +32,7 @@
         InstitutionsList.prototype.init = function(params) {
             if (params.categoryId) { this.categoryId = params.categoryId; }
             if (params.ownerId) { this.ownerId = params.ownerId; }
+            if (params.categoriesIdsList) { this.categoriesIdsList = params.categoriesIdsList; }
         };
 
         InstitutionsList.prototype.add = function(institution, unshift) {
@@ -79,6 +81,11 @@
                 return instService.getByOwnerId(this.ownerId, {
                     offset: this.data.length,
                     limit: 15
+                });
+            } else if (this.categoriesIdsList) {
+                return instService.getLast({
+                    idsList: this.categoriesIdsList,
+                    limit: 4
                 });
             }
 

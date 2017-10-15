@@ -1,0 +1,22 @@
+<div class="institution-thumbnail">
+    <div class="thumbnail-photo">
+        <a ui-sref="institutions.institution.photos({id: vm.institution.id})"
+        >
+            <img data-ng-src="{{vm.institution.imgUrl}}"
+                 data-preload-image
+                 data-default-image="content/images/preloader.gif"
+            >
+        </a>
+        <a ui-sref="institutions.category({id: vm.institution.categoryId})"
+           class="category-button btn btn-default dt-btn dt-btn-sm"
+           data-ng-bind="vm.getCategoryTitle(vm.institution.categoryId)"
+        ></a>
+    </div>
+    <a data-ui-sref="institutions.institution.photos({id: vm.institution.id})"
+        class="thumbnail-title"
+         data-truncate
+         data-min-height="30"
+         data-ng-if="vm.institution.title"
+         data-ng-bind="vm.institution.title"
+    ></a>
+</div>

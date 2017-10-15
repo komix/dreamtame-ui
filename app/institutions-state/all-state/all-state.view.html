@@ -1,0 +1,15 @@
+<div class="all-state">
+  <div data-preloader
+       data-ng-if="vm.isLoadInProcess"
+  ></div>
+  <div class="categories-thumbnails"
+       data-ng-if="!vm.isLoadInProcess">
+    <div data-ng-repeat="category in vm.categories track by category.id"
+    >
+      <div data-category-thumbnails
+           data-category-id="category.id"
+      ></div>
+      <div class="block-separator" data-ng-if="!$last"></div>
+    </div>
+  </div>
+</div>

@@ -62,7 +62,10 @@
         }
 
         function truncate() {
-            elem.css('max-height', vm.originalMaxHeight);
+            if (vm.originalMaxHeight) {
+                elem.css('max-height', vm.originalMaxHeight);
+            }
+
             vm.isManuallyShown = false;
 
             if (vm.$showLessButton) {
@@ -71,8 +74,6 @@
 
             if (vm.fitParent) {
                 truncateByParent();
-            } else if (vm.minHeight) {
-                truncateByMinHeight();
             } else {
                 truncateByElemenHeight();
             }
@@ -91,7 +92,9 @@
         }
 
         function truncateByElemenHeight() {
-            vm.shave(elem.height());
+            var elemHeight = elem.height();
+            var truncateHeight = elemHeight < vm.minHeight ? vm.minHeight : elemHeight;
+            vm.shave(truncateHeight);
         }
 
         function getParentHeight() {

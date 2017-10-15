@@ -136,7 +136,10 @@
             vm.inst.categoryId = _.last(vm.infSelectConfig.selectedList).id;
 
             getSubmitPromise().then(function(response) {
-                $state.go('institution', {id: response.data.id});
+                console.log(response.data);
+                var institutionId = instId || response.data.institutionId;
+                console.log(institutionId);
+                $state.go('institutions.institution.photos', {id: institutionId});
             });
 
         }

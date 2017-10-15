@@ -2,6 +2,9 @@
   margin-bottom: 20px;
   border-bottom: 2px solid #656565;
   padding-bottom: 10px; }
+  .shell .main-header .inner-header {
+    max-width: 1200px;
+    margin: 0 auto; }
   .shell .main-header .left-header {
     white-space: nowrap;
     padding-top: 15px; }
@@ -107,6 +110,10 @@
 .row-no-padding > [class*="col-"] {
   padding-left: 0 !important;
   padding-right: 0 !important; }
+
+.row-cust-padding > [class*="col-"] {
+  padding-left: 10px !important;
+  padding-right: 10px !important; }
 
 .noselect {
   -webkit-touch-callout: none;
@@ -889,7 +896,9 @@
   outline: none !important;
   height: 30px;
   line-height: 26px;
-  color: #262626; }
+  color: #262626;
+  overflow: hidden;
+  text-overflow: ellipsis; }
   .btn.dt-btn:focus, .btn.dt-btn:active, .btn.dt-btn:hover {
     outline: none;
     background-color: #656565;
@@ -901,5 +910,41 @@
   .btn.dt-btn.btn-preloader img {
     display: inline-block;
     height: 20px; }
+
+.institution-thumbnail .thumbnail-photo {
+  position: relative; }
+  .institution-thumbnail .thumbnail-photo img {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 50%; }
+  .institution-thumbnail .thumbnail-photo .category-button {
+    position: absolute;
+    bottom: 20px;
+    background-color: #fff; }
+    .institution-thumbnail .thumbnail-photo .category-button:focus, .institution-thumbnail .thumbnail-photo .category-button:active, .institution-thumbnail .thumbnail-photo .category-button:hover {
+      background-color: #656565;
+      color: #fff; }
+.institution-thumbnail .thumbnail-title {
+  display: block;
+  max-height: 55px;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  color: #262626;
+  text-decoration: none;
+  text-align: center;
+  font-size: 15px;
+  padding: 2px 8px;
+  text-transform: capitalize;
+  overflow: hidden; }
+  .institution-thumbnail .thumbnail-title:focus, .institution-thumbnail .thumbnail-title:active, .institution-thumbnail .thumbnail-title:hover {
+    text-decoration: underline; }
+
+.all-state .block-separator {
+  margin-top: 0; }
+.all-state .institution-thumbnail {
+  margin-bottom: 9px; }
+
+.category-thumbnails .category-thumbnail-title {
+  margin-top: 0; }
 
 /*# sourceMappingURL=style.css.map */

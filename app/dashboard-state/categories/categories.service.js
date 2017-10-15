@@ -5,20 +5,23 @@
         .module('app')
         .factory('categoriesService', categoriesService);
 
-    categoriesService.$inject = ['$q', '$http', 'global'];
+    categoriesService.$inject = ['$q', '$http', 'global', 'helper'];
     /* @ngInject */
-    function categoriesService($q, $http, global) {
+    function categoriesService($q, $http, global, helper) {
 
         var apiUrl = global.apiUrl;
 
         var service = {
             activeId: null,
+            tree: null,
             getTree: getTree,
             add: add,
             get: get,
             update: update,
             remove: remove,
-            getCatsList: getCatsList
+            getCatsList: getCatsList,
+            getCategoryChildrenIds: getCategoryChildrenIds,
+            getInstanceById: getInstanceById
         };
 
         return service;
@@ -58,8 +61,9 @@
 
         function getTree() {
             var defered = $q.defer();
-            $http.get(apiUrl + '/categories/get-tree').then(function(data){
-                defered.resolve(data);
+            $http.get(apiUrl + '/categories/get-tree').then(function(response){
+                defered.resolve(response);
+                service.tree = response.data;
             });
             return defered.promise;
         }
@@ -70,6 +74,30 @@
                 defered.resolve(data);
             });
             return defered.promise;
+        }
+
+        function getCategoryChildrenIds(id) {
+            var childrenIds = [id];
+            var hash = helper.getHash(service.tree, 'id');
+
+            getChildrenIds(id);
+
+            return childrenIds;
+
+            function getChildrenIds(id) {
+                _.each(hash, function(value) {
+                    if (parseInt(value.parent) === parseInt(id)) {
+                        childrenIds.push(value.id);
+                        getChildrenIds(value.id);
+                    }
+                });
+            }
+        }
+
+        function getInstanceById(id) {
+            var hash = helper.getHash(service.tree, 'id');
+
+            return hash[id];
         }
     }
 })();

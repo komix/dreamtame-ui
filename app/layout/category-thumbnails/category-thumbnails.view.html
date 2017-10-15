@@ -1,0 +1,18 @@
+<div class="category-thumbnails">
+  <div class="row row-cust-padding">
+    <h4 class="category-thumbnail-title">
+      <span data-ng-bind="vm.getCategoryTitle(vm.categoryId)"></span>
+      <span>(останні додані):</span>
+    </h4>
+    <div data-preloader
+         data-ng-if="vm.institutions.isLoadInProcess"
+    ></div>
+    <div class="col-md-3"
+         data-ng-repeat="institution in vm.institutions.data track by institution.id"
+    >
+      <div data-institution-thumbnail
+           data-institution="institution"
+      ></div>
+    </div>
+  </div>
+</div>

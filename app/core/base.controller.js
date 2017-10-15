@@ -68,7 +68,7 @@
                 },
                 {
                     ukName: 'Секції',
-                    name: 'institutions'
+                    name: 'institutions.all-state'
                 },
                 {
                     ukName: 'Профіль',
@@ -79,7 +79,7 @@
                 },
                 {
                     ukName: 'Новини',
-                    name: 'news'
+                    name: 'news.news-list'
                 },
                 {
                     ukName: 'Адмінка',

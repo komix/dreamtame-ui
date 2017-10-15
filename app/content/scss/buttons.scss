@@ -7,6 +7,8 @@
     height: 30px;
     line-height: 26px;
     color: $text-color-dark;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     &:focus, &:active, &:hover {
       outline: none;

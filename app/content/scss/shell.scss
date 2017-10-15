@@ -4,6 +4,11 @@
     border-bottom: 2px solid $logo-color;
     padding-bottom: 10px;
 
+    .inner-header {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
     .left-header {
       white-space: nowrap;
       padding-top: 15px;

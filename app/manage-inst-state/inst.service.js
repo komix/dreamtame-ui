@@ -17,6 +17,7 @@
             getAll: getAll,
             getByOwnerId: getByOwnerId,
             getByCategoryId: getByCategoryId,
+            getLast: getLast,
             update: update,
             remove: remove,
             setRecruitAge: setRecruitAge,
@@ -63,6 +64,14 @@
         function getByCategoryId(id, params) {
             var defered = $q.defer();
             $http.post(apiUrl +  '/institutions/category/' + id, params).then(function(data){
+                defered.resolve(data);
+            });
+            return defered.promise;
+        }
+
+        function getLast(params) {
+            var defered = $q.defer();
+            $http.post(apiUrl +  '/institutions/last', params).then(function(data){
                 defered.resolve(data);
             });
             return defered.promise;

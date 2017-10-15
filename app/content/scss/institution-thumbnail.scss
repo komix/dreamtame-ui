@@ -1,0 +1,40 @@
+.institution-thumbnail {
+  .thumbnail-photo {
+    position: relative;
+
+    img {
+      width: 100%;
+      overflow: hidden;
+      border-radius: 50%;
+    }
+
+    .category-button {
+      position: absolute;
+      bottom: 20px;
+      background-color: #fff;
+
+      &:focus, &:active, &:hover {
+        background-color: $logo-color;
+        color: #fff;
+      }
+    }
+  }
+
+  .thumbnail-title {
+    display: block;
+    max-height: 55px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    color: $text-color-dark;
+    text-decoration: none;
+    text-align: center;
+    font-size: 15px;
+    padding: 2px 8px;
+    text-transform: capitalize;
+    overflow: hidden;
+
+    &:focus, &:active, &:hover {
+      text-decoration: underline;
+    }
+  }
+}

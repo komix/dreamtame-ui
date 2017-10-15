@@ -4,9 +4,9 @@
         .module('app')
         .controller('InstitutionsController', InstitutionsController);
 
-    InstitutionsController.$inject = ['$stateParams', 'users', 'instService'];
+    InstitutionsController.$inject = ['$stateParams'];
 
-    function InstitutionsController($stateParams, users, instService) {
+    function InstitutionsController($stateParams) {
         var vm = this;
 
         vm.activeCatId = $stateParams.id;
