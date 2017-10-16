@@ -4,9 +4,9 @@
         .module('app')
         .controller('CategoryController', CategoryController);
 
-    CategoryController.$inject = ['$stateParams', 'users', 'InstitutionsList', 'categoriesService'];
+    CategoryController.$inject = ['$stateParams', '$rootScope', 'InstitutionsList', 'categoriesService'];
 
-    function CategoryController($stateParams, users, InstitutionsList, categoriesService) {
+    function CategoryController($stateParams, $rootScope, InstitutionsList, categoriesService) {
         var vm = this;
 
         var catId = parseInt($stateParams.id);
@@ -18,6 +18,7 @@
         function activate() {
             categoriesService.activeId = catId;
             vm.institutions.getRemote();
+            emitActiveCatChangeEvent(catId);
         }
 
         function loadMoreInstitutions() {
@@ -26,6 +27,10 @@
             }
 
             vm.institutions.getRemote();
+        }
+
+        function emitActiveCatChangeEvent(catId) {
+            $rootScope.$emit('activeCatChange', catId);
         }
 
 

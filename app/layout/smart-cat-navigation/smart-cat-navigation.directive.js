@@ -113,6 +113,10 @@
             }
 
             vm.activeCat = _.last(vm.catHistory);
+            
+            if (vm.catHistory.length === 1) {
+                $state.go('institutions.all-state');
+            }
         }
 
         function getAbr(cat) {

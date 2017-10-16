@@ -1,12 +1,12 @@
 <div class="unit-block institution-block">
   <div class="unit-block-image">
     <a data-ui-sref="institutions.institution({id: vm.inst.id})" class="inst-block-image">
-      <img data-ng-if="vm.image"
-           data-ng-src="{{vm.image.msrc}}"
+      <img data-ng-if="vm.inst.imgUrl"
+           data-ng-src="{{vm.inst.imgUrl}}"
            data-preload-image
            data-default-image="content/images/preloader.gif"
       >
-      <img data-ng-if="!vm.image" src="content/images/placeholder_cropped.jpg" alt="">
+      <img data-ng-if="!vm.inst.imgUrl" src="content/images/placeholder_cropped.jpg" alt="">
     </a>
   </div>
   <div class="unit-block-info">
