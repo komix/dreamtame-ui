@@ -5,9 +5,9 @@
         .module('app')
         .factory('Article', article);
 
-    article.$inject = ['news'];
+    article.$inject = ['news', 'DateTimePicker', 'helper'];
     /* @ngInject */
-    function article(news) {
+    function article(news, DateTimePicker, helper) {
         _(Article.prototype).extend(EventEmitter.prototype);
 
         function Article(params) {
@@ -18,6 +18,10 @@
             this.text = '';
             this.imgUrl = null;
             this.text = '';
+            this.createdAt = new DateTimePicker({
+                date: new Date(),
+                time: new Date()
+            });
 
             this.init(params);
         }
@@ -31,6 +35,14 @@
             if (params.snippet) { this.snippet = params.snippet; }
             if (params.text) { this.text = params.text; }
             if (params.imgUrl) { this.imgUrl = params.imgUrl; }
+            if (params.createdAt) {
+                var dstTime = helper.applyDstOffset(params.createdAt);
+
+                this.createdAt = new DateTimePicker({
+                    date: new Date(dstTime),
+                    time: new Date(dstTime)
+                });
+            }
         };
 
         Article.prototype.getCreatedAtFromNow = function() {
@@ -42,7 +54,8 @@
                 title: this.title,
                 snippet: this.snippet,
                 text: this.text,
-                imgUrl: this.imgUrl
+                imgUrl: this.imgUrl,
+                createdAt: this.getTime()
             };
 
             if (this.id) {
@@ -65,6 +78,14 @@
             return news.get(this.id).then(function(response) {
                 _this.init(response.data);
             });
+        };
+
+        Article.prototype.getTime = function() {
+            return this.createdAt.getDateTime();
+        };
+
+        Article.prototype.getCreatedAtFormatted = function() {
+            return moment(this.getTime()).format('MM dd YYYY, h:mm:ss a');
         };
 
         return Article;

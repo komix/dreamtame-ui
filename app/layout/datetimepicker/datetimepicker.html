@@ -1,0 +1,54 @@
+<div class="datetimepicker" data-ng-class="{'disabled': vm.dateTime.isDisabled}">
+  <div class="datepicker-wrapper" data-ng-class="{'has-error': !vm.dateTime.isDateValid}">
+    <p class="input-group">
+      <input type="text"
+             class="form-control datepicker-field e2e-datepicker-input"
+             data-uib-datepicker-popup
+             data-ng-model="vm.dateTime.date"
+             data-ng-disabled="vm.dateTime.isDisabled"
+             data-is-open="vm.datepicker.opened"
+             data-datepicker-options="vm.datepickerOptions"
+             data-datepicker-template-url="layout/datetimepicker/layouts/datetime.html"
+             data-datepicker-popup-template-url="layout/datetimepicker/layouts/popup.html"
+             data-datepicker-append-to-body="true"
+             placeholder="YYYY-MM-DD"
+             data-on-open-focus="false"
+             data-ng-change="vm.onDatePickChange()"
+             data-ng-required="true"
+             data-close-text="Close"
+      />
+        <span class="input-group-btn">
+          <button type="button"
+                  class="btn btn-default"
+                  ng-click="vm.toggleDatePicker()"
+          >
+            <i class="fa fa-calendar"></i>
+          </button>
+        </span>
+    </p>
+  </div>
+
+  <div class="timepicker-wrapper" data-ng-class="{'has-error': !vm.dateTime.isTimeValid}">
+    <div data-uib-timepicker
+         data-ng-model="vm.dateTime.time"
+         data-ng-disabled="vm.dateTime.isDisabled"
+         data-ng-change="vm.onTimePickChange()"
+         data-hour-step="1"
+         data-minute-step="1"
+         data-show-meridian="false"
+         data-template-url="layout/datetimepicker/layouts/timepicker.html"
+    ></div>
+  </div>
+
+  <label class="now-trigger" data-ng-if="vm.dateTime.setToNowCheckbox">
+    <input type="checkbox" data-ng-model="vm.setToNow" data-ng-change="vm.onNowCheckboxChange()"><!--
+ --><span class="label-title">Now</span>
+  </label>
+
+  <div class="error-list form-field-error-tooltip ng-hide" data-ng-show="!vm.dateTime.isTimeValid || !vm.dateTime.isDateValid">
+    <ul>
+      <li data-ng-show="!vm.dateTime.isDateValid">Please select proper date.</li>
+      <li data-ng-show="!vm.dateTime.isTimeValid">Please select proper time.</li>
+    </ul>
+  </div>
+</div>

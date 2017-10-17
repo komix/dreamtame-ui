@@ -1,7 +1,10 @@
 <div class="article-block unit-block">
   <a data-ui-sref="news.article({id: vm.article.id})"
      class="article-block-image unit-block-image">
-    <img data-ng-src="{{vm.article.imgUrl}}">
+    <img data-ng-src="{{vm.article.imgUrl}}"
+         data-preload-image
+         data-default-image="content/images/preloader.gif"
+    >
   </a>
   <div class="article-info unit-block-info">
     <a data-ui-sref="news.article({id: vm.article.id})">
@@ -12,5 +15,10 @@
        data-truncate
        data-ng-if="vm.article.snippet"
     ></p>
+    <span class="article-date">
+      <i class="fa fa-calendar" aria-hidden="true"></i>
+      <span data-ng-bind="vm.article.getCreatedAtFormatted()"
+      ></span>
+    </span>
   </div>
 </div>

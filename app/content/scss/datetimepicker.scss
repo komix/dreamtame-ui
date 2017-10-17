@@ -1,0 +1,265 @@
+.input-timepicker-hours {
+  margin-bottom: 0 !important;
+}
+
+.input-timepicker-minutes {
+  margin-bottom: 0 !important;
+}
+
+.datetimepicker {
+  $fields-offset-outer: 20px;
+
+  .datepicker-wrapper {
+    float: left;
+    display: inline-block;
+    width: 150px;
+    margin-right: $fields-offset-outer;
+
+    .uib-daypicker {
+      &:focus, &:active {
+        outline: none;
+      }
+    }
+
+    .input-group-btn .btn-default {
+      border-color: #cccccc;
+      height: 30px;
+      line-height: 28px;
+      padding-top: 0;
+      padding-bottom: 0;
+
+      &:focus, &:active {
+        outline: none;
+      }
+    }
+
+    &.has-error {
+      .input-group-btn .btn-default {
+        border-color: #fb9694;
+        background-color: #fef4f4;
+      }
+    }
+  }
+
+  .timepicker-wrapper {
+    display: inline-block;
+    float: left;
+
+
+    .timepicker-layout {
+      display: inline-block;
+      overflow: hidden;
+
+      .timepicker-colon {
+        float: left;
+        height: 30px;
+        line-height: 30px;
+        font-size: 18px;
+        width: $fields-offset-outer;
+      }
+
+      .timepicker-input-wrap {
+        display: inline-block;
+        float: left;
+
+        input {
+          float: left;
+          width: 43px;
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+
+        .input-buttons {
+          display: inline-block;
+          float: left;
+
+          button {
+            height: 15px;
+            line-height: 13px;
+            width: 20px;
+            display: block;
+            background-color: transparent;
+            outline: none;
+            border: 1px solid #cccccc;
+            border-left: none;
+            border-top-right-radius: 3px;
+            padding: 0;
+
+            span {
+              font-size: 10px;
+            }
+
+            &+ button {
+              border-top-right-radius: 0;
+              border-top: none;
+              border-bottom-right-radius: 3px;
+            }
+          }
+        }
+      }
+
+      input[type=number]::-webkit-inner-spin-button,
+      input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+
+    &.has-error {
+      .timepicker-layout {
+        .timepicker-input-wrap {
+          .input-buttons button {
+            border-color: #fb9694;
+            background-color: #fef4f4;
+          }
+        }
+      }
+    }
+  }
+  .control-label {
+    clear: both;
+    display: block;
+  }
+
+  .error-list {
+    clear: both;
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+  }
+
+  .datepicker-field {
+    text-align: center;
+    height: 30px;
+    margin-bottom: 0 !important;
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  &.disabled {
+    .timepicker-layout {
+      .timepicker-input-wrap {
+        .input-buttons button {
+          cursor: not-allowed;
+          background-color: #dfe5e7;
+        }
+      }
+    }
+
+    .input-group-btn .btn-default {
+      cursor: not-allowed;
+      background-color: #dfe5e7;
+      color: #39424c;
+      box-shadow: none;
+    }
+  }
+
+  .now-trigger {
+    clear: both;
+    display: block;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: normal;
+
+    .label-title {
+      margin-left: 5px;
+    }
+  }
+}
+
+.uib-datepicker-popup {
+  padding: 10px;
+
+  .btn-default {
+    border-color: $logo-color;
+  }
+
+  .uib-left {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 0;
+  }
+
+  .uib-title {
+    border-radius: 0;
+  }
+
+  .uib-right {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: 0;
+  }
+
+  .day-labels {
+    padding: 15px 0 5px
+  }
+
+  .uib-button-bar {
+    padding: 10px 0 0 0;
+
+    .btn {
+      min-width: 10px;
+      width: auto;
+      line-height: 1;
+    }
+  }
+
+  .uib-yearpicker, .uib-monthpicker {
+    tbody:before {
+      content: '';
+      display: block;
+      height: 20px;
+    }
+  }
+
+  .uib-weeks, .uib-months, .uib-years {
+    .uib-day, .uib-month, .uib-year {
+      border: 1px solid $logo-color;
+
+      &:hover {
+        $background-color: $logo-color;
+        background-color: $background-color;
+
+        .btn,
+        .btn.active {
+          background-color: $background-color;
+          color: #fff;
+
+          .text-info {
+            color: inherit;
+          }
+        }
+      }
+
+      .btn {
+        border: none;
+        border-radius: 0;
+
+        &.active {
+          font-weight: 700;
+          background-color: #00A0DA;
+          box-shadow: none;
+          color: #fff;
+        }
+
+        .text-info {
+          color: inherit;
+        }
+      }
+
+      &.out-of-active-month {
+        border-width: 0;
+      }
+    }
+  }
+
+  .uib-months .uib-month {
+
+  }
+}

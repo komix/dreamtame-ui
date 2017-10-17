@@ -11,7 +11,8 @@
         var service = {
             updateArrayByReference: updateArrayByReference,
             getHash: getHash,
-            getHierarchy: getHierarchy
+            getHierarchy: getHierarchy,
+            applyDstOffset: applyDstOffset
         };
 
         return service;
@@ -61,6 +62,32 @@
             }
 
             return hierarchy;
+        }
+
+        function applyDstOffset(dateObj) {
+            if (!_.isDate(dateObj)) {
+                var dateUtc = moment.utc(dateObj);
+                dateObj = moment(dateUtc).local();
+
+                if (isDstActive(dateObj)) {
+                    dateObj.add(1, 'hours');
+                }
+            }
+
+            return dateObj;
+        }
+
+        function getDstOffset() {
+            var newDate = new Date();
+            var jan = new Date(newDate.getFullYear(), 0, 1).getTimezoneOffset();
+            var jul = new Date(newDate.getFullYear(), 6, 1).getTimezoneOffset();
+
+            return Math.max(jan, jul);
+        }
+
+        function isDstActive(dateObj) {
+            var dateItem = moment(dateObj).toDate();
+            return dateItem.getTimezoneOffset() < getDstOffset();
         }
     }
 })();

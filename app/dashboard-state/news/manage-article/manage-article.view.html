@@ -32,6 +32,13 @@
                         data-ng-required="true"
               ></textarea>
             </div>
+
+            <div class="form-group">
+              <label class="form-label" for="snippet-input">Час публікації:</label>
+              <div data-date-time-picker
+                   data-date-time="vm.article.createdAt">
+              </div>
+            </div>
           </div>
         </form>
       </div>
