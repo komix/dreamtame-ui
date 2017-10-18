@@ -938,7 +938,8 @@ body {
   font-size: 15px;
   padding: 2px 8px;
   text-transform: capitalize;
-  overflow: hidden; }
+  overflow: hidden;
+  margin-top: 10px; }
   .institution-thumbnail .thumbnail-title:focus, .institution-thumbnail .thumbnail-title:active, .institution-thumbnail .thumbnail-title:hover {
     text-decoration: underline; }
 
