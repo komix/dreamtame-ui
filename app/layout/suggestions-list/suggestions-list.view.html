@@ -1,0 +1,15 @@
+<div class="suggestions-list">
+  <div data-preloader
+       data-ng-if="vm.suggestions.isLoadInProcess"
+  ></div>
+  <p class="all-loaded" data-ng-if="vm.suggestions.allArticlesLoaded"
+  >Усі новини відображено.</p>
+
+  <div data-ng-repeat="suggestion in vm.suggestions.data track by suggestion.id">
+    <div data-suggestion
+         data-item="suggestion"
+    >
+    </div>
+    <div class="block-separator" data-ng-if="!$last"></div>
+  </div>
+</div>

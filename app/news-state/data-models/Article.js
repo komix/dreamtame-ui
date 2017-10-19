@@ -85,7 +85,7 @@
         };
 
         Article.prototype.getCreatedAtFormatted = function() {
-            return moment(this.getTime()).format('MM dd YYYY, h:mm:ss a');
+            return moment(this.getTime()).format('DD.MM.YYYY');
         };
 
         return Article;

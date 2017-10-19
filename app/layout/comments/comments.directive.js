@@ -57,8 +57,11 @@
 
             if (!vm.form.$valid) { return false; }
 
+            console.log(123);
+
             vm.comments.addRemotely({
                 institution: vm.options.institution,
+                article: vm.options.article,
                 text: vm.commentData.text,
                 author: users.current,
                 createdAt: new Date()

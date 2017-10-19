@@ -847,15 +847,51 @@ body {
   list-style-type: none;
   padding-left: 0; }
 
-.article-block .article-info .article-title {
-  text-transform: capitalize;
-  font-size: 19px;
-  color: #262626;
-  margin-top: 0; }
-.article-block .article-info .article-snippet {
-  color: #626262;
-  max-height: 70px;
+.article-block .article-info {
+  position: relative;
+  height: 170px; }
+  .article-block .article-info .article-title {
+    text-transform: capitalize;
+    font-size: 19px;
+    color: #262626;
+    margin-top: 0; }
+  .article-block .article-info .article-snippet {
+    color: #626262;
+    max-height: 70px;
+    overflow: hidden; }
+  .article-block .article-info .article-date {
+    position: absolute;
+    left: 190px;
+    bottom: 25px;
+    color: #626262; }
+    .article-block .article-info .article-date .fa-calendar {
+      display: inline-block;
+      margin-right: 2px; }
+  .article-block .article-info .article-details-button {
+    position: absolute;
+    right: 60px;
+    bottom: 22px; }
+@media screen and (max-width: 480px) {
+  .article-block .article-info {
+    height: auto;
+    padding: 10px 5px 0 5px !important; }
+    .article-block .article-info .article-date {
+      display: block;
+      position: static;
+      margin-top: 10px; }
+    .article-block .article-info .article-details-button {
+      position: static;
+      width: 100%; } }
+
+.article-view .article-header {
   overflow: hidden; }
+  .article-view .article-header .article-main-image {
+    float: left; }
+    .article-view .article-header .article-main-image img {
+      max-width: 180px; }
+  .article-view .article-header .article-title {
+    float: left;
+    padding: 10px; }
 
 .unit-block {
   overflow: hidden;
@@ -1120,5 +1156,22 @@ body {
         color: inherit; }
     .uib-datepicker-popup .uib-weeks .uib-day.out-of-active-month, .uib-datepicker-popup .uib-weeks .uib-month.out-of-active-month, .uib-datepicker-popup .uib-weeks .uib-year.out-of-active-month, .uib-datepicker-popup .uib-months .uib-day.out-of-active-month, .uib-datepicker-popup .uib-months .uib-month.out-of-active-month, .uib-datepicker-popup .uib-months .uib-year.out-of-active-month, .uib-datepicker-popup .uib-years .uib-day.out-of-active-month, .uib-datepicker-popup .uib-years .uib-month.out-of-active-month, .uib-datepicker-popup .uib-years .uib-year.out-of-active-month {
       border-width: 0; }
+
+.suggestion .suggestion-image img {
+  width: 100%; }
+.suggestion .suggestion-title {
+  display: block;
+  max-height: 55px;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  color: #626262;
+  text-decoration: none;
+  font-size: 17px;
+  padding: 2px 8px;
+  text-transform: capitalize;
+  overflow: hidden;
+  font-family: ubuntu, sans-serif; }
+  .suggestion .suggestion-title:focus, .suggestion .suggestion-title:active, .suggestion .suggestion-title:hover {
+    text-decoration: underline; }
 
 /*# sourceMappingURL=style.css.map */

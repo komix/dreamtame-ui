@@ -3,11 +3,11 @@
 
     angular
         .module('app')
-        .factory('news', news);
+        .factory('suggestions', suggestions);
 
-    news.$inject = ['$q', '$http', 'global'];
+    suggestions.$inject = ['$q', '$http', 'global'];
     /* @ngInject */
-    function news($q, $http, global) {
+    function suggestions($q, $http, global) {
 
         var apiUrl = global.apiUrl;
 
@@ -16,7 +16,7 @@
             get: get,
             getAll: getAll,
             update: update,
-            remove: remove,
+            remove: remove
         };
 
         return service;
@@ -24,7 +24,7 @@
         function add(article) {
             var defered = $q.defer();
 
-            $http.post(apiUrl +  '/api/news', article).then(function(data){
+            $http.post(apiUrl +  '/api/suggestions', article).then(function(data){
                 defered.resolve(data);
             });
             return defered.promise;
@@ -32,15 +32,15 @@
 
         function get(id){
             var defered = $q.defer();
-            $http.get(apiUrl +  '/news/' + id).then(function(data){
+            $http.get(apiUrl +  '/suggestions/' + id).then(function(data){
                 defered.resolve(data);
             });
             return defered.promise;
         }
 
-        function getAll(params) {
+        function getAll() {
             var defered = $q.defer();
-            $http.post(apiUrl +  '/news', params).then(function(data){
+            $http.get(apiUrl +  '/suggestions').then(function(data){
                 defered.resolve(data);
             });
             return defered.promise;
@@ -48,7 +48,7 @@
 
         function update(article) {
             var defered = $q.defer();
-            $http.put(apiUrl +  '/api/news/' + article.id, article).then(function(data){
+            $http.put(apiUrl +  '/api/suggestions/' + article.id, article).then(function(data){
                 defered.resolve(data);
             });
             return defered.promise;
@@ -56,7 +56,7 @@
 
         function remove(id) {
             var defered = $q.defer();
-            $http.delete(apiUrl +  '/api/news/' + id).then(function(data){
+            $http.delete(apiUrl +  '/api/suggestions/' + id).then(function(data){
                 defered.resolve(data);
             });
             return defered.promise;

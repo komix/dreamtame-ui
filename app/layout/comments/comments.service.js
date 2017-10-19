@@ -46,10 +46,10 @@
             return defered.promise;
         }
 
-        function getCommentsByArticleId(id) {
+        function getCommentsByArticleId(id, params) {
             var defered = $q.defer();
 
-            $http.get(apiUrl + '/comments/articles/' + id).then(function(data){
+            $http.post(apiUrl + '/comments/articles/' + id, params).then(function(data){
                 defered.resolve(data);
             });
 

@@ -1,0 +1,25 @@
+.suggestion {
+  .suggestion-image {
+    img {
+      width: 100%;
+    }
+  }
+
+  .suggestion-title {
+    display: block;
+    max-height: 55px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    color: $text-color-light;
+    text-decoration: none;
+    font-size: 17px;
+    padding: 2px 8px;
+    text-transform: capitalize;
+    overflow: hidden;
+    font-family: ubuntu, sans-serif;
+
+    &:focus, &:active, &:hover {
+      text-decoration: underline;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+
+<div class="container-fluid dashboard-suggestions-view">
+  <div class="row">
+    <div class="col-md-3">
+      <a ui-sref="dashboard.suggestions.manage-suggestion({id: null})"
+         class="btn btn-default"
+      >
+        <span>Створити додаток</span>
+      </a>
+      <ul class="articles-list items-list">
+        <li data-ng-repeat="suggestion in vm.suggestions.data track by suggestion.id">
+          <a ui-sref="dashboard.suggestions.manage-suggestion({id: suggestion.id})"
+             class="item-link">
+            <span data-ng-bind="suggestion.name"></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-9">
+      <div data-ui-view></div>
+    </div>
+  </div>
+</div>

@@ -17,7 +17,9 @@
         activate();
 
         function activate() {
-            vm.article.getRemote();
+            vm.article.getRemote().then(function() {
+                vm.options = { article: vm.article };
+            });
         }
 
     }

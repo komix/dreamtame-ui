@@ -1,0 +1,56 @@
+<div class="manage-article-view manage-inst-view manage-form">
+  <h1 class="page-title" data-ng-bind="vm.actionName"></h1>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3">
+        <select-image data-image="vm.image"
+                      data-config="vm.selImgConfig"
+                      data-editable="vm.selImgConfig.editable">
+        </select-image>
+      </div>
+      <div class="col-sm-9">
+        <form name="vm.form" data-ng-submit="vm.submit()">
+          <div class="manage-suggestion-form dt-form">
+            <div class="form-group">
+              <label class="form-label" for="suggustion-name-input">Заголовок:</label>
+              <input type="text"
+                     class="form-control"
+                     data-ng-model="vm.suggestion.name"
+                     placeholder="Назва"
+                     id="suggustion-name-input"
+                     data-ng-required="true"
+                     data-ng-trim="true"
+              >
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="suggestion-url-input">Посилання:</label>
+              <input type="text"
+                     class="form-control"
+                     data-ng-model="vm.suggestion.url"
+                     placeholder="http://url.com"
+                     id="suggestion-url-input"
+                     data-ng-required="true"
+                     data-ng-trim="true"
+              >
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="name-input">Активний:</label>
+              <input type="checkbox"
+                     class="form-control"
+                     data-ng-model="vm.suggestion.isActive"
+                     id="name-input"
+              >
+            </div>
+          </div>
+        </form>
+        <button class="btn btn-default pull-right"
+                data-ng-bind="vm.submitActionTitle"
+                data-ng-click="vm.submit()"
+        ></button>
+      </div>
+    </div>
+  </div>
+</div>
+

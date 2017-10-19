@@ -89,7 +89,10 @@
             }
 
             if (this.article) {
-                return commentsService.getCommentsByArticleId(this.article.id);
+                return commentsService.getCommentsByArticleId(this.article.id, {
+                    offset: this.data.length,
+                    limit: 10
+                });
             }
         };
 

@@ -1,0 +1,15 @@
+<div class="suggestion">
+  <div class="suggestion-image">
+    <a data-ng-href="{{vm.item.url}}" target="_blank">
+      <img data-ng-src="{{vm.item.imgUrl}}"
+           data-preload-image
+           data-default-image="content/images/preloader_green.gif"
+      >
+    </a>
+  </div>
+  <a data-ng-href="{{vm.item.url}}"
+     target="_blank"
+     class="suggestion-title"
+     data-ng-bind="vm.item.name"
+  ></a>
+</div>

@@ -6,7 +6,12 @@
 }
 
 .article-block {
+  $break-small: 480px;
+
   .article-info {
+    position: relative;
+    height: 170px;
+
     .article-title {
       text-transform: capitalize;
       font-size: 19px;
@@ -18,6 +23,61 @@
       color: $text-color-light;
       max-height: 70px;
       overflow: hidden;
+    }
+
+    .article-date {
+      position: absolute;
+      left: 190px;
+      bottom: 25px;
+      color: $text-color-light;
+
+      .fa-calendar {
+        display: inline-block;
+        margin-right: 2px;
+      }
+    }
+
+    .article-details-button {
+      position: absolute;
+      right: 60px;
+      bottom: 22px;
+    }
+  }
+
+  @media screen and (max-width: $break-small) {
+    .article-info {
+      height: auto;
+      padding: 10px 5px 0 5px !important;
+
+      .article-date {
+        display: block;
+        position: static;
+        margin-top: 10px;
+      }
+
+      .article-details-button {
+        position: static;
+        width: 100%;
+      }
+    }
+  }
+
+}
+
+.article-view {
+  .article-header {
+    overflow: hidden;
+
+    .article-main-image {
+      float: left;
+      img {
+        max-width: 180px;
+      }
+    }
+
+    .article-title {
+      float: left;
+      padding: 10px;
     }
   }
 }

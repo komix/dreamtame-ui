@@ -12,9 +12,19 @@
 
         vm.news = new ArticlesList();
 
+        vm.loadMoreArticles =loadMoreArticles;
+
         activate();
 
         function activate() {
+            vm.news.getRemote();
+        }
+
+        function loadMoreArticles() {
+            if (vm.news.allInstitutionsLoaded || vm.news.isLoadInProcess) {
+                return false;
+            }
+
             vm.news.getRemote();
         }
 

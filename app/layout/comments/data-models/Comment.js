@@ -25,7 +25,7 @@
         }
 
         Comment.validate = function(params) {
-            if (!params || !params.text || !params.institution) {
+            if (!params || !params.text || (!params.institution && !params.article)) {
                 console.log('Comment: Incorrect arguments!');
             }
         };
@@ -51,8 +51,15 @@
         Comment.prototype.getData = function() {
             var commentData = {
                 text: this.text,
-                institutionId: this.institution.id
             };
+
+            if (this.institution) {
+                commentData.institutionId = this.institution.id;
+            }
+
+            if (this.article) {
+                commentData.articleId = this.article.id
+            }
 
             if (this.commentId) {
                 commentData.commentId = this.commentId;

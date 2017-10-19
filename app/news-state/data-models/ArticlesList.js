@@ -12,7 +12,8 @@
 
         function ArticlesList(params) {
             this.data = [];
-            this.isLoadInProgress = false;
+            this.isLoadInProcess = false;
+            this.allArticlesLoaded = false;
         }
 
 
@@ -29,6 +30,10 @@
         ArticlesList.prototype.addList = function(articlesList) {
             var _this = this;
 
+            if (!articlesList.length) {
+                this.allArticlesLoaded = true;
+            }
+
             _.each(articlesList, function(elem) {
                 _this.add(elem);
             });
@@ -36,19 +41,20 @@
 
 
         ArticlesList.prototype.getRemote = function() {
+            if (this.allArticlesLoaded || this.isLoadInProcess) { return false; }
             var _this = this;
 
-            this.isLoadInProgress = true;
-            return news.getAll().then(function(response) {
-                _this.addList(response.data);
-                _this.isLoadInProgress = false;
-            });
-        };
-
-        ArticlesList.prototype.getArticleById = function(id) {
-            return _.find(this.data, function(elem) {
-                return elem.id === id;
-            });
+            this.isLoadInProcess = true;
+            return news.getAll({
+                    offset: this.data.length,
+                    limit: 15
+                })
+                .then(function(response) {
+                    _this.addList(response.data);
+                })
+                .finally(function() {
+                    _this.isLoadInProcess = false;
+                });
         };
 
         return ArticlesList;
