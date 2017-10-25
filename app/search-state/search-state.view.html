@@ -1,0 +1,30 @@
+<div class="search-state">
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4">
+        <div data-free-search
+             data-config="vm.searchConfig"
+        ></div>
+      </div>
+      <div class="col-md-8">
+        <div class="search-results"
+             data-infinite-scroll="vm.loadMoreResults()"
+             data-infinite-scroll-distance="0"
+        >
+          <div data-ng-repeat="institution in vm.institutions.data">
+            <inst-block data-inst="institution">
+            </inst-block>
+            <div class="block-separator" data-ng-if="!$last"></div>
+          </div>
+          <div data-preloader
+               data-ng-if="vm.institutions.isLoadInProcess"
+          ></div>
+          <p class="all-loaded"
+             data-ng-if="vm.institutions.allInstitutionsLoaded"
+          >Усі результати відображено.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

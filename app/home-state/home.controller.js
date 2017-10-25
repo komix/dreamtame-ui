@@ -4,11 +4,19 @@
         .module('app')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = [];
+    HomeController.$inject = ['ArticlesList'];
 
-    function HomeController() {
+    function HomeController(ArticlesList) {
         var vm = this;
 
+
+        vm.news = new ArticlesList();
+
+        activate();
+
+        function activate() {
+            vm.news.getRemote();
+        }
     }
 })();
 

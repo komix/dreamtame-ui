@@ -843,7 +843,7 @@ body {
   .manage-form .summernote-wrap .note-editable.panel-body {
     min-height: 300px; }
 
-.news-state .articles-list {
+.articles-list {
   list-style-type: none;
   padding-left: 0; }
 
@@ -851,7 +851,6 @@ body {
   position: relative;
   height: 170px; }
   .article-block .article-info .article-title {
-    text-transform: capitalize;
     font-size: 19px;
     color: #262626;
     margin-top: 0; }
@@ -938,7 +937,7 @@ body {
   color: #262626;
   overflow: hidden;
   text-overflow: ellipsis; }
-  .btn.dt-btn:focus, .btn.dt-btn:active, .btn.dt-btn:hover {
+  .btn.dt-btn:focus, .btn.dt-btn:active, .btn.dt-btn:hover, .btn.dt-btn.active {
     outline: none;
     background-color: #656565;
     color: #fff; }
@@ -1168,10 +1167,15 @@ body {
   text-decoration: none;
   font-size: 17px;
   padding: 2px 8px;
-  text-transform: capitalize;
   overflow: hidden;
   font-family: ubuntu, sans-serif; }
   .suggestion .suggestion-title:focus, .suggestion .suggestion-title:active, .suggestion .suggestion-title:hover {
     text-decoration: underline; }
+
+.free-search #free-search-place-input {
+  border: 2px solid #656565;
+  font-size: 12px; }
+.free-search .dt-btn {
+  margin-right: 8px; }
 
 /*# sourceMappingURL=style.css.map */

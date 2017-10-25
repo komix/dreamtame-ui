@@ -1,0 +1,30 @@
+<div class="free-search">
+  <form class="dt-form">
+    <div class="form-group">
+      <label class="form-label"
+             for="free-search-place-input"
+      >
+        <span>Шукати поруч:</span>
+      </label>
+      <input id="free-search-place-input"
+             type="text"
+             class="form-control"
+             placeholder="Введіть Адресу"
+             data-ng-model="vm.config.address">
+    </div>
+    <div class="form-group">
+      <label class="form-label">
+        <span>Шукати в межах:</span>
+      </label>
+
+      <button class="btn btn-default dt-btn dt-btn-sm"
+              data-ng-repeat="option in vm.radiusOptions track by $index"
+              data-ng-click="vm.setRadius(option.value)"
+              data-ng-attr-title="{{option.label}}"
+              data-ng-class="({active: vm.isRadiusOptionActive(option.value)})"
+      >
+        <span data-ng-bind="option.name"></span>
+      </button>
+    </div>
+  </form>
+</div>

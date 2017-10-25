@@ -18,6 +18,7 @@
             getByOwnerId: getByOwnerId,
             getByCategoryId: getByCategoryId,
             getLast: getLast,
+            search: search,
             update: update,
             remove: remove,
             setRecruitAge: setRecruitAge,
@@ -74,6 +75,16 @@
             $http.post(apiUrl +  '/institutions/last', params).then(function(data){
                 defered.resolve(data);
             });
+            return defered.promise;
+        }
+
+        function search(params) {
+            var defered = $q.defer();
+
+            $http.post(apiUrl +  '/institutions-search', params).then(function(data){
+                defered.resolve(data);
+            });
+
             return defered.promise;
         }
 

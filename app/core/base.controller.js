@@ -10,8 +10,6 @@
     function BaseController($state, users, $rootScope, routerHelper) {
         var vm = this;
 
-
-
         vm.users = users;
         vm.states = [];
         vm.isStateAvailable = isStateAvailable;
@@ -19,8 +17,6 @@
         vm.isLoggedIn = isLoggedIn;
         vm.isStateActive = isStateActive;
         vm.getStateHref = getStateHref;
-
-
 
         activate();
 
@@ -69,6 +65,10 @@
                 {
                     ukName: 'Секції',
                     name: 'institutions.all-state'
+                },
+                {
+                    ukName: 'Пошук',
+                    name: 'search'
                 },
                 {
                     ukName: 'Профіль',

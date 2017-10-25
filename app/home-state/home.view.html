@@ -1,3 +1,27 @@
-<div class="home-view">
-  <div class="main-banner"></div>
+<div class="container-fluid home-view">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="news-list">
+        <ul class="articles-list items-list"
+            data-infinite-scroll="vm.loadMoreArticles()"
+            data-infinite-scroll-distance="0">
+          <div data-preloader
+               data-ng-if="vm.news.isLoadInProcess"
+          ></div>
+          <li data-ng-repeat="article in vm.news.data track by article.id">
+            <div data-article-block
+                 data-article="article"
+            >
+            </div>
+            <div class="block-separator" data-ng-if="!$last"></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div data-suggestions-list
+      ></div>
+    </div>
+  </div>
 </div>
+

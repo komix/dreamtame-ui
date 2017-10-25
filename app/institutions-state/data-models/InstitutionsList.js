@@ -16,6 +16,7 @@
             this.categoryId = null;
             this.ownerId = null;
             this.categoriesIdsList = null;
+            this.searchParams = null;
             this.data = [];
             this.isLoadInProcess = false;
             this.allInstitutionsLoaded = false;
@@ -24,8 +25,12 @@
         }
 
         InstitutionsList.validate = function(params) {
-            if (!params || (!params.categoryId && !params.ownerId && !params.categoriesIdsList)) {
-                console.log('InstitutionsList: Incorrect arguments!');
+            if (!params
+                || (!params.categoryId
+                && !params.ownerId
+                && !params.categoriesIdsList
+                && !params.searchParams)) {
+                    console.log('InstitutionsList: Incorrect arguments!');
             }
         };
 
@@ -33,6 +38,7 @@
             if (params.categoryId) { this.categoryId = params.categoryId; }
             if (params.ownerId) { this.ownerId = params.ownerId; }
             if (params.categoriesIdsList) { this.categoriesIdsList = params.categoriesIdsList; }
+            if (params.searchParams) { this.searchParams = params.searchParams; }
         };
 
         InstitutionsList.prototype.add = function(institution, unshift) {
@@ -87,6 +93,10 @@
                     idsList: this.categoriesIdsList,
                     limit: 4
                 });
+            } else if (this.searchParams) {
+                this.searchParams.limit = 10;
+                this.searchParams.offset = this.data.length;
+                return instService.search(this.searchParams)
             }
 
         };

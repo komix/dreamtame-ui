@@ -10,7 +10,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
 
-    &:focus, &:active, &:hover {
+    &:focus, &:active, &:hover, &.active {
       outline: none;
       background-color: $logo-color;
       color: #fff;
