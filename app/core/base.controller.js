@@ -68,7 +68,7 @@
                 },
                 {
                     ukName: 'Пошук',
-                    name: 'search'
+                    name: 'search.default-state'
                 },
                 {
                     ukName: 'Профіль',

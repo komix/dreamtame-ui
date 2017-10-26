@@ -4,38 +4,24 @@
         .module('app')
         .controller('SearchController', SearchController);
 
-    SearchController.$inject = ['$stateParams', 'InstitutionsList'];
+    SearchController.$inject = ['$stateParams'];
 
-    function SearchController($stateParams, InstitutionsList) {
+    function SearchController($stateParams) {
         var vm = this;
 
         vm.searchConfig = {
             address: $stateParams.address || null,
-            radius: parseInt($stateParams.radius) || 1
+            radius: parseInt($stateParams.radius) || 1,
+            categoryId: $stateParams.categoryId
         };
-
-        vm.loadMoreResults = loadMoreResults;
-
 
         activate();
 
         function activate() {
-            if ($stateParams.lat && $stateParams.lng) {
-                vm.institutions = new InstitutionsList({searchParams: {
-                    point: {
-                        lat: Number($stateParams.lat),
-                        lng: Number($stateParams.lng)
-                    },
-                    radius: $stateParams.radius || 1
-                }});
 
-                vm.institutions.getRemote();
-            }
         }
 
-        function loadMoreResults() {
-            vm.institutions.getRemote();
-        }
+
 
     }
 

@@ -90,6 +90,7 @@
         function onBaseOptionChanged() {
             vm.config.selectedList.length = 0;
             vm.config.selectedList.push(vm.selected);
+            emitSelectChange();
         }
 
         function onOptionsChanged(id, index) {
@@ -97,6 +98,13 @@
 
             if (vm.selectedSubLoc && vm.selectedSubLoc[id]) {
                 vm.config.selectedList.push(vm.selectedSubLoc[id]);
+                emitSelectChange();
+            }
+        }
+
+        function emitSelectChange() {
+            if (vm.config.onSelectChange) {
+                vm.config.onSelectChange();
             }
         }
     }

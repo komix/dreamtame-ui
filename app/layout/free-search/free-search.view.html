@@ -17,14 +17,28 @@
         <span>Шукати в межах:</span>
       </label>
 
-      <button class="btn btn-default dt-btn dt-btn-sm"
-              data-ng-repeat="option in vm.radiusOptions track by $index"
-              data-ng-click="vm.setRadius(option.value)"
-              data-ng-attr-title="{{option.label}}"
-              data-ng-class="({active: vm.isRadiusOptionActive(option.value)})"
-      >
-        <span data-ng-bind="option.name"></span>
-      </button>
+      <div class="radius-buttons">
+        <button class="btn btn-default dt-btn dt-btn-sm"
+                data-ng-repeat="option in vm.radiusOptions track by $index"
+                data-ng-click="vm.setRadius(option.value)"
+                data-ng-attr-title="{{option.label}}"
+                data-ng-class="({active: vm.isRadiusOptionActive(option.value)})"
+        >
+          <span data-ng-bind="option.name"></span>
+        </button>
+      </div>
+
+      <div class="category-filter">
+        <label class="form-label"
+               for="free-search-place-input"
+        >
+          <span>Оберіть категорію:</span>
+        </label>
+        <div data-ng-if="vm.infSelectConfig"
+             data-infinite-select
+             data-config="vm.infSelectConfig"
+        ></div>
+      </div>
     </div>
   </form>
 </div>

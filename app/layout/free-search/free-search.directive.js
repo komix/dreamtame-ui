@@ -22,10 +22,18 @@
         return directive;
     }
 
-    FreeSearchController.$inject = ['$element', '$timeout', '$state', 'loadGoogleMaps'];
+    FreeSearchController.$inject = ['$element', '$timeout', '$state', 'loadGoogleMaps', 'categoriesService'];
     /* @ngInject */
-    function FreeSearchController($element, $timeout, $state, loadGoogleMaps) {
+    function FreeSearchController($element, $timeout, $state, loadGoogleMaps, categoriesService) {
         var vm = this;
+
+        var infSelectConfig = {
+            tree: null,
+            propertyToShow: 'ukName',
+            preselected: vm.config.categoryId || null,
+            selectedList: [],
+            onSelectChange: onCategorySelectChange
+        };
 
         vm.radiusOptions = [
             {
@@ -41,7 +49,7 @@
             {
                 value: 3,
                 name: '3 км',
-                label: 'Шукати у радіусі трьох кілометра'
+                label: 'Шукати у радіусі трьох кілометрів'
             }
         ];
 
@@ -55,11 +63,19 @@
         ///////////////
 
         function activate() {
+            getCategories();
             loadGoogleMaps.mapsInitialized.then(function() {
                 $timeout(function() {
                     attachPlacesInput();
                     parseConfig();
                 });
+            });
+        }
+
+        function getCategories() {
+            return categoriesService.getTree().then(function(response) {
+                infSelectConfig.tree = response.data;
+                vm.infSelectConfig = infSelectConfig;
             });
         }
 
@@ -71,11 +87,11 @@
                 var place = autocomplete.getPlace();
                 var position = getPosition(place);
 
-                $state.go('search', {
+                $state.go('search.results-state', {
                     lat: position.lat,
                     lng: position.lng,
                     address: input.value
-                });
+                }, {reload: false, notify: false});
             });
         }
 
@@ -94,13 +110,27 @@
 
         function setRadius(value) {
             vm.config.radius = value;
-            $state.go('search', {
+            $state.go('search.results-state', {
                radius: vm.config.radius
-            }, {reload: true});
+            }, {reload: false, notify: false});
         }
 
         function isRadiusOptionActive(value) {
             return vm.config.radius === value;
+        }
+
+        function onCategorySelectChange() {
+            if (!vm.infSelectConfig.selectedList.length) { return false }
+
+            var lastSelected = _.last(vm.infSelectConfig.selectedList);
+
+            $state.go('search.results-state', {
+                categoryId: lastSelected ? lastSelected.id : null
+            }, {
+                reload: false,
+                notify: false,
+                inherit: true
+            });
         }
     }
 })();

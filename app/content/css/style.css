@@ -1174,8 +1174,23 @@ body {
 
 .free-search #free-search-place-input {
   border: 2px solid #656565;
-  font-size: 12px; }
+  font-size: 12px;
+  box-shadow: none;
+  height: 30px;
+  line-height: 26px;
+  padding: 0 8px; }
 .free-search .dt-btn {
   margin-right: 8px; }
+.free-search .form-label {
+  font-weight: 400; }
+.free-search .category-filter {
+  margin-top: 10px; }
+  .free-search .category-filter .form-control {
+    border: 2px solid #656565;
+    height: 30px;
+    line-height: 26px;
+    font-size: 12px;
+    padding: 0 8px;
+    box-shadow: none; }
 
 /*# sourceMappingURL=style.css.map */

@@ -88,7 +88,7 @@
                     offset: this.data.length,
                     limit: 15
                 });
-            } else if (this.categoriesIdsList) {
+            } else if (this.categoriesIdsList && !this.searchParams) {
                 return instService.getLast({
                     idsList: this.categoriesIdsList,
                     limit: 4
@@ -96,7 +96,8 @@
             } else if (this.searchParams) {
                 this.searchParams.limit = 10;
                 this.searchParams.offset = this.data.length;
-                return instService.search(this.searchParams)
+                this.searchParams.categoriesIds = this.categoriesIdsList;
+                return instService.search(this.searchParams);
             }
 
         };

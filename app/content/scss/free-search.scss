@@ -2,6 +2,10 @@
   #free-search-place-input {
     border: 2px solid $logo-color;
     font-size: 12px;
+    box-shadow: none;
+    height: 30px;
+    line-height: 26px;
+    padding: 0 8px;
   }
 
   .dt-btn {
@@ -9,5 +13,21 @@
   }
 
 
+  .form-label {
+    font-weight: 400;
+  }
+
+  .category-filter {
+    margin-top: 10px;
+
+    .form-control {
+      border: 2px solid $logo-color;
+      height: 30px;
+      line-height: 26px;
+      font-size: 12px;
+      padding: 0 8px;
+      box-shadow: none;
+    }
+  }
 
 }
