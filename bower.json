@@ -31,6 +31,7 @@
     "moment": "2.18.1",
     "angular-preload-image": "*",
     "summernote": "^0.8.8",
-    "jquery.maskedinput": "^1.4.1"
+    "jquery.maskedinput": "^1.4.1",
+    "angular-summernote": "^0.8.1"
   }
 }
