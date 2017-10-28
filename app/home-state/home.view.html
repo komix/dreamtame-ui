@@ -1,4 +1,11 @@
 <div class="container-fluid home-view">
+  <div class="row search-panel">
+    <div class="col-md-8 col-md-offset-2">
+      <div data-free-search
+           data-config="vm.freeSearchConfig"
+      ></div>
+    </div>
+  </div>
   <div class="row">
     <div class="col-md-9">
       <div class="news-list">
@@ -20,6 +27,15 @@
     </div>
     <div class="col-md-3">
       <div data-suggestions-list
+      ></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5ths col-sm-4"
+         data-ng-repeat="institution in vm.institutions.data track by institution.id"
+    >
+      <div data-institution-thumbnail
+           data-institution="institution"
       ></div>
     </div>
   </div>
