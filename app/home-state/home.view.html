@@ -1,12 +1,17 @@
 <div class="container-fluid home-view">
-  <div class="row search-panel">
+  <div class="row search-block">
     <div class="col-md-8 col-md-offset-2">
-      <div data-free-search
-           data-config="vm.freeSearchConfig"
-      ></div>
+      <div class="search-wrapper">
+        <p class="search-panel-title">
+          <span>Знайди спортивні секції поруч:</span>
+        </p>
+        <div data-free-search
+             data-config="vm.freeSearchConfig"
+        ></div>
+      </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row news-block">
     <div class="col-md-9">
       <div class="news-list">
         <ul class="articles-list items-list"
@@ -29,15 +34,24 @@
       <div data-suggestions-list
       ></div>
     </div>
+    <a class="btn btn-default dt-btn url-button"
+       data-ui-sref="news.news-list"
+    >НОВИНИ</a>
   </div>
-  <div class="row">
-    <div class="col-md-5ths col-sm-4"
-         data-ng-repeat="institution in vm.institutions.data track by institution.id"
-    >
-      <div data-institution-thumbnail
-           data-institution="institution"
-      ></div>
+  <div class="row last-added-block">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="row">
+        <div class="col-md-5ths col-sm-6"
+             data-ng-repeat="institution in vm.institutions.data track by institution.id"
+        >
+          <div data-institution-thumbnail
+               data-institution="institution"
+          ></div>
+        </div>
+      </div>
     </div>
+    <a class="btn btn-default dt-btn url-button"
+       data-ui-sref="institutions.all-state">ОСТАННІ ДОДАНІ</a>
   </div>
 </div>
 

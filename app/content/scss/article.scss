@@ -1,0 +1,31 @@
+.article-view {
+  .article-header {
+    overflow: hidden;
+
+    .article-main-image {
+      float: left;
+      img {
+        max-width: 100%;
+      }
+    }
+
+    .article-title {
+      h1 {
+        padding: 0;
+        margin: 10px 0 0 15px;
+        font-size: 22px;
+        font-weight: 400;
+      }
+    }
+
+    margin-bottom: 15px;
+  }
+
+  .article-text {
+    font-size: 15px;
+
+    img {
+      max-width: 75%;
+    }
+  }
+}

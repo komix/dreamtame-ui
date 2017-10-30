@@ -17,6 +17,7 @@
         vm.isLoggedIn = isLoggedIn;
         vm.isStateActive = isStateActive;
         vm.getStateHref = getStateHref;
+        vm.isActiveStateWide = isActiveStateWide;
 
         activate();
 
@@ -50,6 +51,12 @@
 
         function getStateHref(state) {
             return $state.href(state.name, state.params);
+        }
+
+        function isActiveStateWide() {
+            var wideStates = ['home', 'about'];
+
+            return _.indexOf(wideStates, $state.current.name) !== -1;
         }
 
         function updateStates() {

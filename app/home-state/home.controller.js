@@ -15,7 +15,7 @@
 
 
         vm.news = new ArticlesList({limit: 3});
-        vm.institutions = new InstitutionsList({limit: 4});
+        vm.institutions = new InstitutionsList({limit: 5});
 
         activate();
 
