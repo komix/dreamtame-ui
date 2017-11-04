@@ -44,13 +44,53 @@
           .shell .main-header .navigation li a:hover span, .shell .main-header .navigation li a.active span, .shell .main-header .navigation li a:focus span {
             background-color: #656565;
             color: #fff; }
+.shell .content-block {
+  max-width: 1200px;
+  margin: 0 auto; }
+  .shell .content-block.wide-view {
+    max-width: none; }
 
-.home-view .main-banner {
-  width: 100%;
-  height: 400px;
-  background-image: url("../images/main-banner.jpg");
-  background-size: cover;
-  background-position-y: bottom; }
+.home-view {
+  margin-top: -20px; }
+  .home-view .url-button.dt-btn {
+    background-color: #fff; }
+  .home-view .search-block {
+    height: 400px;
+    padding: 20px 0;
+    background-image: url("../images/main-banner.jpeg");
+    background-size: cover;
+    position: relative; }
+    .home-view .search-block .search-wrapper {
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 12px;
+      border-radius: 4px;
+      margin-top: 200px; }
+      .home-view .search-block .search-wrapper .search-panel-title {
+        font-size: 17px;
+        margin-bottom: 4px;
+        padding-left: 10px;
+        color: #fff; }
+      .home-view .search-block .search-wrapper .free-search #free-search-place-input {
+        height: 36px;
+        line-height: 32px;
+        font-size: 14px; }
+  .home-view .news-block {
+    position: relative;
+    padding-top: 20px;
+    margin: 0 auto 15px auto;
+    max-width: 1200px; }
+    .home-view .news-block .url-button {
+      position: absolute;
+      top: -15px;
+      left: calc(50% - 41px); }
+  .home-view .last-added-block {
+    background-color: #3e3e3e;
+    padding-top: 25px;
+    position: relative; }
+    .home-view .last-added-block .url-button {
+      position: absolute;
+      top: -15px;
+      left: calc(50% - 70px); }
 
 .select-image-container {
   width: 100%; }
@@ -123,10 +163,6 @@
   -ms-user-select: none;
   user-select: none; }
 
-.content-block {
-  max-width: 1200px;
-  margin: 0 auto; }
-
 .noselect {
   -webkit-touch-callout: none;
   /* iOS Safari */
@@ -145,6 +181,31 @@
   padding: 10px;
   text-align: center; }
 
+.col-xs-5ths,
+.col-sm-5ths,
+.col-md-5ths,
+.col-lg-5ths {
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px; }
+
+.col-xs-5ths {
+  width: 20%;
+  float: left; }
+
+@media (min-width: 768px) {
+  .col-sm-5ths {
+    width: 20%;
+    float: left; } }
+@media (min-width: 992px) {
+  .col-md-5ths {
+    width: 20%;
+    float: left; } }
+@media (min-width: 1200px) {
+  .col-lg-5ths {
+    width: 20%;
+    float: left; } }
 body {
   font-family: 'Roboto', sans-serif; }
 
@@ -882,16 +943,6 @@ body {
       position: static;
       width: 100%; } }
 
-.article-view .article-header {
-  overflow: hidden; }
-  .article-view .article-header .article-main-image {
-    float: left; }
-    .article-view .article-header .article-main-image img {
-      max-width: 180px; }
-  .article-view .article-header .article-title {
-    float: left;
-    padding: 10px; }
-
 .unit-block {
   overflow: hidden;
   position: relative;
@@ -949,34 +1000,43 @@ body {
     display: inline-block;
     height: 20px; }
 
-.institution-thumbnail .thumbnail-photo {
-  position: relative; }
-  .institution-thumbnail .thumbnail-photo img {
-    width: 100%;
-    overflow: hidden;
-    border-radius: 50%; }
-  .institution-thumbnail .thumbnail-photo .category-button {
-    position: absolute;
-    bottom: 20px;
-    background-color: #fff; }
-    .institution-thumbnail .thumbnail-photo .category-button:focus, .institution-thumbnail .thumbnail-photo .category-button:active, .institution-thumbnail .thumbnail-photo .category-button:hover {
-      background-color: #656565;
-      color: #fff; }
-.institution-thumbnail .thumbnail-title {
-  display: block;
-  max-height: 55px;
-  border: 1px solid #fff;
-  border-radius: 4px;
-  color: #262626;
-  text-decoration: none;
-  text-align: center;
-  font-size: 15px;
-  padding: 2px 8px;
-  text-transform: capitalize;
+.institution-thumbnail {
+  box-shadow: -2px 4px 30px 0 rgba(103, 122, 141, 0.17);
   overflow: hidden;
-  margin-top: 10px; }
-  .institution-thumbnail .thumbnail-title:focus, .institution-thumbnail .thumbnail-title:active, .institution-thumbnail .thumbnail-title:hover {
-    text-decoration: underline; }
+  margin-bottom: 15px;
+  border-radius: 4px;
+  background-color: #fff; }
+  .institution-thumbnail .thumbnail-photo {
+    position: relative; }
+    .institution-thumbnail .thumbnail-photo img {
+      width: 100%;
+      overflow: hidden; }
+  .institution-thumbnail .thumbnail-info {
+    padding: 2px 8px 8px 8px;
+    height: 81px;
+    position: relative; }
+    .institution-thumbnail .thumbnail-info .category-button {
+      position: absolute;
+      left: 8px;
+      bottom: 8px;
+      max-width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis; }
+    .institution-thumbnail .thumbnail-info .thumbnail-title {
+      display: block;
+      max-height: 55px;
+      border: 1px solid #fff;
+      border-radius: 4px;
+      color: #262626;
+      text-decoration: none;
+      font-size: 15px;
+      padding: 2px 8px;
+      padding-top: 0;
+      text-transform: capitalize;
+      overflow: hidden; }
+      .institution-thumbnail .thumbnail-info .thumbnail-title:focus, .institution-thumbnail .thumbnail-info .thumbnail-title:active, .institution-thumbnail .thumbnail-info .thumbnail-title:hover {
+        text-decoration: underline; }
 
 .all-state .block-separator {
   margin-top: 0; }
@@ -1193,63 +1253,92 @@ body {
     padding: 0 8px;
     box-shadow: none; }
 
+.footer {
+  padding: 10px;
+  border-top: 2px solid #656565; }
+  .footer .footer-socials {
+    letter-spacing: 20px;
+    text-align: center; }
+    .footer .footer-socials .social-circle {
+      display: inline-block;
+      font-size: 34px;
+      color: #656565; }
+      .footer .footer-socials .social-circle:hover {
+        color: #262626; }
+  .footer .copyright {
+    line-height: 48px;
+    color: #626262; }
+    .footer .copyright .fa {
+      font-size: 20px; }
+    .footer .copyright .copyright-text {
+      font-size: 17px; }
+
+.article-view .article-header {
+  overflow: hidden;
+  margin-bottom: 15px; }
+  .article-view .article-header .article-main-image {
+    float: left; }
+    .article-view .article-header .article-main-image img {
+      max-width: 100%; }
+  .article-view .article-header .article-title h1 {
+    padding: 0;
+    margin: 10px 0 0 15px;
+    font-size: 22px;
+    font-weight: 400; }
+.article-view .article-text {
+  font-size: 15px; }
+  .article-view .article-text img {
+    max-width: 75%; }
+
 .about-state {
   margin-top: -20px; }
-
-.about-state p {
-  margin-top: 268px;
-  left: 0;
-  color: white;
-  font: bold 16px/16px Helvetica, Sans-Serif;
-  letter-spacing: -1px;
-  background: black;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 10px;
-  padding: 0 5px; }
-
-.about-state .about-banner {
-  height: 400px;
-  padding: 20px 0;
-  background-image: url("http://www.mytripolog.com/wp-content/uploads/2012/07/Lviv-skyline-wallpaper-beautiful-Ukraine.jpg");
-  background-size: cover;
-  background-position: center; }
-
-.about-text span {
-  font: Helvetica, Sans-Serif;
-  font-weight: 600; }
-
-.about-text {
-  width: 100%;
-  background-image: url("http://4.bp.blogspot.com/-47LOocapsRg/TkLf2qrhlOI/AAAAAAAABps/gwKB7NWllCE/s640/biking%2Bwallpapers.jpg");
-  background-size: cover;
-  background-position: center; }
-
-.karta {
-  width: 100%;
-  background-image: url("https://laughingsquid.com/wp-content/uploads/2015/12/people-are-awesome-2015-a-compil.jpg");
-  background-size: cover;
-  background-position: center; }
-
-.karta h4 {
-  margin-top: 150px;
-  margin-bottom: 150px;
-  color: white;
-  font: bold 25px/25px Helvetica, Sans-Serif;
-  letter-spacing: -1px;
-  background: black;
-  background: rgba(0, 0, 0, 0.7);
-  font-size: 30px; }
-
-.bomj img {
-  text-align: center;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background-size: auto 300px; }
-
-.bomj h5 {
-  text-align: center;
-  font-size: 25px;
-  font-weight: bolder; }
+  .about-state p {
+    margin-top: 268px;
+    left: 0;
+    color: white;
+    font: bold 16px/16px Helvetica, Sans-Serif;
+    letter-spacing: -1px;
+    background: black;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    padding: 0 5px; }
+  .about-state .about-banner {
+    height: 400px;
+    padding: 20px 0;
+    background-image: url("http://www.mytripolog.com/wp-content/uploads/2012/07/Lviv-skyline-wallpaper-beautiful-Ukraine.jpg");
+    background-size: cover;
+    background-position: center; }
+  .about-state span {
+    font: Helvetica, Sans-Serif;
+    font-weight: 600; }
+  .about-state .about-text {
+    width: 100%;
+    background-image: url("http://4.bp.blogspot.com/-47LOocapsRg/TkLf2qrhlOI/AAAAAAAABps/gwKB7NWllCE/s640/biking%2Bwallpapers.jpg");
+    background-size: cover;
+    background-position: center; }
+  .about-state .karta {
+    width: 100%;
+    background-image: url("https://laughingsquid.com/wp-content/uploads/2015/12/people-are-awesome-2015-a-compil.jpg");
+    background-size: cover;
+    background-position: center; }
+    .about-state .karta h4 {
+      margin-top: 150px;
+      margin-bottom: 150px;
+      color: white;
+      font: bold 25px/25px Helvetica, Sans-Serif;
+      letter-spacing: -1px;
+      background: black;
+      background: rgba(0, 0, 0, 0.7);
+      font-size: 30px; }
+  .about-state .bomj img {
+    text-align: center;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-size: auto 300px; }
+  .about-state .bomj h5 {
+    text-align: center;
+    font-size: 25px;
+    font-weight: bolder; }
 
 /*# sourceMappingURL=style.css.map */
