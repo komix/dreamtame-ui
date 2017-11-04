@@ -14,6 +14,7 @@
             this.data = [];
             this.isLoadInProcess = false;
             this.allArticlesLoaded = false;
+            this.limit = params && params.limit ? params.limit : null;
         }
 
 
@@ -45,16 +46,28 @@
             var _this = this;
 
             this.isLoadInProcess = true;
-            return news.getAll({
-                    offset: this.data.length,
-                    limit: 15
-                })
+            return this.getRemoteRequest()
                 .then(function(response) {
                     _this.addList(response.data);
                 })
                 .finally(function() {
                     _this.isLoadInProcess = false;
                 });
+        };
+
+        ArticlesList.prototype.getRemoteRequest = function() {
+            if (this.limit) {
+                return news.getLastN({
+                    limit: this.limit
+                })
+            } else {
+                return news.getAll({
+                    offset: this.data.length,
+                    limit: 15
+                })
+            }
+
+
         };
 
         return ArticlesList;

@@ -69,4 +69,13 @@
       }
     }
   }
+
+  .content-block {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    &.wide-view {
+      max-width: none;
+    }
+  }
 }

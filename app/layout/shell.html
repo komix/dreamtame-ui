@@ -24,7 +24,9 @@
       </div>
     </div>
   </header>
-  <div class="content-block">
+  <div class="content-block" data-ng-class="{'wide-view' :vm.isActiveStateWide()}">
     <div data-ui-view></div>
+    <footer data-footer>
+    </footer>
   </div>
 </div>
