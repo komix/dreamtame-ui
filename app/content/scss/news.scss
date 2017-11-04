@@ -60,21 +60,3 @@
   }
 
 }
-
-.article-view {
-  .article-header {
-    overflow: hidden;
-
-    .article-main-image {
-      float: left;
-      img {
-        max-width: 180px;
-      }
-    }
-
-    .article-title {
-      float: left;
-      padding: 10px;
-    }
-  }
-}

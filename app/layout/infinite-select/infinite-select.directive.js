@@ -32,6 +32,7 @@
 
         vm.onBaseOptionChanged = onBaseOptionChanged;
         vm.onOptionChanged = onOptionsChanged;
+        vm.clearSelectionModel = clearSelectionModel;
 
         activate();
 
@@ -91,6 +92,7 @@
             vm.config.selectedList.length = 0;
             vm.config.selectedList.push(vm.selected);
             emitSelectChange();
+            clearSelectionModel()
         }
 
         function onOptionsChanged(id, index) {
@@ -100,12 +102,26 @@
                 vm.config.selectedList.push(vm.selectedSubLoc[id]);
                 emitSelectChange();
             }
+
+            clearSelectionModel();
         }
 
         function emitSelectChange() {
             if (vm.config.onSelectChange) {
                 vm.config.onSelectChange();
             }
+        }
+
+        function clearSelectionModel() {
+            _.each(vm.selectedSubLoc, function(value, key) {
+                var match = _.find(vm.config.selectedList, function(elem) {
+                    return elem.id === value.id;
+                });
+
+                if (!match) {
+                    delete vm.selectedSubLoc[key];
+                }
+            });
         }
     }
 

@@ -14,6 +14,7 @@
         var service = {
             add: add,
             get: get,
+            getLastN: getLastN,
             getAll: getAll,
             update: update,
             remove: remove,
@@ -41,6 +42,14 @@
         function getAll(params) {
             var defered = $q.defer();
             $http.post(apiUrl +  '/news', params).then(function(data){
+                defered.resolve(data);
+            });
+            return defered.promise;
+        }
+
+        function getLastN(params) {
+            var defered = $q.defer();
+            $http.post(apiUrl +  '/news/last-n', params).then(function(data){
                 defered.resolve(data);
             });
             return defered.promise;

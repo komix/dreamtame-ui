@@ -24,7 +24,13 @@
             getInstanceById: getInstanceById
         };
 
+        init();
+
         return service;
+
+        function init() {
+            getTree();
+        }
 
         function add(category) {
             var defered = $q.defer();
@@ -95,6 +101,7 @@
         }
 
         function getInstanceById(id) {
+            if (!service.tree) { return false; }
             var hash = helper.getHash(service.tree, 'id');
 
             return hash[id];

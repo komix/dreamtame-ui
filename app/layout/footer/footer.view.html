@@ -1,0 +1,19 @@
+<footer class="footer">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4 footer-socials">
+        <a class="social-circle"
+           data-ng-repeat="social in vm.socials"
+           data-ng-href="{{social.url}}"
+        >
+          <span data-ng-class="vm.getSocialClass(social.name)"></span>
+        </a>
+      </div>
+      <div class="col-md-offset-4 col-md-4 copyright">
+        <span class="fa fa-copyright"></span>
+        <span class="copyright-text">Copyright 2017</span>
+      </div>
+    </div>
+  </div>
+
+</footer>

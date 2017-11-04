@@ -18,6 +18,7 @@
             getByOwnerId: getByOwnerId,
             getByCategoryId: getByCategoryId,
             getLast: getLast,
+            getLastN: getLastN,
             search: search,
             update: update,
             remove: remove,
@@ -75,6 +76,16 @@
             $http.post(apiUrl +  '/institutions/last', params).then(function(data){
                 defered.resolve(data);
             });
+            return defered.promise;
+        }
+
+        function getLastN(params) {
+            var defered = $q.defer();
+
+            $http.post(apiUrl +  '/institutions/last-n', params).then(function(data){
+                defered.resolve(data);
+            });
+
             return defered.promise;
         }
 

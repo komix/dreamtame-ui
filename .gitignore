@@ -7,3 +7,5 @@ tmp
 .idea
 app/content/.sass-cache/
 dump.rdb
+.sass-cache
+app/content/css/style.css.map

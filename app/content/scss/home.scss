@@ -1,9 +1,65 @@
 .home-view {
-  .main-banner {
-    width: 100%;
+  margin-top: -20px;
+
+  .url-button {
+    &.dt-btn {
+      background-color: #fff;
+    }
+  }
+
+  .search-block {
     height: 400px;
-    background-image: url('../images/main-banner.jpg');
+    padding: 20px 0;
+    background-image: url('../images/main-banner.jpeg');
     background-size: cover;
-    background-position-y: bottom;
+    position: relative;
+
+    .search-wrapper {
+      background-color: rgba(0,0,0, 0.4);
+      padding: 12px;
+      border-radius: 4px;
+      margin-top: 200px;
+
+      .search-panel-title {
+        font-size: 17px;
+        margin-bottom: 4px;
+        padding-left: 10px;
+        color: #fff;
+      }
+
+      .free-search {
+        #free-search-place-input {
+          height: 36px;
+          line-height: 32px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+
+  .news-block {
+    position: relative;
+    padding-top: 20px;
+    margin: 0 auto 15px auto;
+    max-width: 1200px;
+
+    .url-button {
+      position: absolute;
+      top: -15px;
+      left: calc(50% - 41px);
+    }
+  }
+
+  .last-added-block {
+    background-color: #3e3e3e;
+    padding-top: 25px;
+    position: relative;
+
+    .url-button {
+      position: absolute;
+      top: -15px;
+      left: calc(50% - 70px);
+    }
   }
 }

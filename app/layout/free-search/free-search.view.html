@@ -3,6 +3,7 @@
     <div class="form-group">
       <label class="form-label"
              for="free-search-place-input"
+             data-ng-if="!vm.config.addressOnly"
       >
         <span>Шукати поруч:</span>
       </label>
@@ -12,32 +13,32 @@
              placeholder="Введіть Адресу"
              data-ng-model="vm.config.address">
     </div>
-    <div class="form-group">
-      <label class="form-label">
-        <span>Шукати в межах:</span>
-      </label>
-
-      <div class="radius-buttons">
-        <button class="btn btn-default dt-btn dt-btn-sm"
-                data-ng-repeat="option in vm.radiusOptions track by $index"
-                data-ng-click="vm.setRadius(option.value)"
-                data-ng-attr-title="{{option.label}}"
-                data-ng-class="({active: vm.isRadiusOptionActive(option.value)})"
-        >
-          <span data-ng-bind="option.name"></span>
-        </button>
-      </div>
-
-      <div class="category-filter">
-        <label class="form-label"
-               for="free-search-place-input"
-        >
-          <span>Оберіть категорію:</span>
+    <div class="filters-block" data-ng-if="!vm.config.addressOnly">
+      <div class="form-group">
+        <label class="form-label">
+          <span>Шукати в межах:</span>
         </label>
-        <div data-ng-if="vm.infSelectConfig"
-             data-infinite-select
-             data-config="vm.infSelectConfig"
-        ></div>
+        <div class="radius-buttons">
+          <button class="btn btn-default dt-btn dt-btn-sm"
+                  data-ng-repeat="option in vm.radiusOptions track by $index"
+                  data-ng-click="vm.setRadius(option.value)"
+                  data-ng-attr-title="{{option.label}}"
+                  data-ng-class="({active: vm.isRadiusOptionActive(option.value)})"
+          >
+            <span data-ng-bind="option.name"></span>
+          </button>
+        </div>
+        <div class="category-filter">
+          <label class="form-label"
+                 for="free-search-place-input"
+          >
+            <span>Оберіть категорію:</span>
+          </label>
+          <div data-ng-if="vm.infSelectConfig"
+               data-infinite-select
+               data-config="vm.infSelectConfig"
+          ></div>
+        </div>
       </div>
     </div>
   </form>

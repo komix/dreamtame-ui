@@ -1,0 +1,33 @@
+.footer {
+  padding: 10px;
+  border-top: 2px solid $logo-color;
+
+  .footer-socials {
+    letter-spacing: 20px;
+    text-align: center;
+
+
+    .social-circle {
+      display: inline-block;
+      font-size: 34px;
+      color: $logo-color;
+
+      &:hover {
+        color: $text-color-dark;
+      }
+    }
+  }
+
+  .copyright {
+    line-height: 48px;
+    color: $text-color-light;
+
+    .fa {
+      font-size: 20px;
+    }
+
+    .copyright-text {
+      font-size: 17px;
+    }
+  }
+}

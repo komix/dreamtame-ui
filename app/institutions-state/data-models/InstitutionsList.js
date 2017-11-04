@@ -29,7 +29,8 @@
                 || (!params.categoryId
                 && !params.ownerId
                 && !params.categoriesIdsList
-                && !params.searchParams)) {
+                && !params.searchParams
+                && !params.limit)) {
                     console.log('InstitutionsList: Incorrect arguments!');
             }
         };
@@ -39,6 +40,7 @@
             if (params.ownerId) { this.ownerId = params.ownerId; }
             if (params.categoriesIdsList) { this.categoriesIdsList = params.categoriesIdsList; }
             if (params.searchParams) { this.searchParams = params.searchParams; }
+            if (params.limit) { this.limit = params.limit; }
         };
 
         InstitutionsList.prototype.add = function(institution, unshift) {
@@ -98,6 +100,10 @@
                 this.searchParams.offset = this.data.length;
                 this.searchParams.categoriesIds = this.categoriesIdsList;
                 return instService.search(this.searchParams);
+            } else if (this.limit) {
+                return instService.getLastN({
+                    limit: this.limit
+                })
             }
 
         };
