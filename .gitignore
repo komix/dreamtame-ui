@@ -8,3 +8,4 @@ tmp
 app/content/.sass-cache/
 dump.rdb
 .sass-cache
+app/content/css/style.css.map
