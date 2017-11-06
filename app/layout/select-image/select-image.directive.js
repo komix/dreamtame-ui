@@ -25,9 +25,9 @@
         return directive;
     }
 
-    SelectImageController.$inject = ['cropperService'];
+    SelectImageController.$inject = ['$element', 'cropperService'];
 
-    function SelectImageController(cropperService) {
+    function SelectImageController($element, cropperService) {
         var vm = this;
         vm.triggerInput = triggerInput;
         vm.onImageLoaded = onImageLoaded;
@@ -55,6 +55,8 @@
                     if (!response) { return false; }
                     vm.image = response.data ? response.data : response;
 
+                    updateImageSrc(vm.image.src);
+
                     if (vm.config.onChange) {
                         vm.config.onChange(response);
                     }
@@ -65,6 +67,11 @@
 
         function triggerInput() {
             $('#' + vm.inputId).click();
+        }
+
+        function updateImageSrc(newSrc) {
+            var elem = $element.find('.selectable-image');
+            elem.attr('src', newSrc);
         }
     }
 

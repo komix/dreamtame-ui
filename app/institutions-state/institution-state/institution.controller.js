@@ -76,9 +76,7 @@
 
         function onInstImageChange(image) {
             photosService.add(image).then(function(response) {
-                instService.update(vm.inst.id, {photoId: response.data.id}).then(function() {
-                    getInstPhoto(response.data.id);
-                });
+                instService.update(vm.inst.id, {photoId: response.data.id});
             });
         }
 
