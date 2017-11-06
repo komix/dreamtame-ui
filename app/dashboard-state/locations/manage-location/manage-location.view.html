@@ -1,0 +1,41 @@
+<div class="manage-location-view">
+  <form name="vm.form" class="dt-form">
+    <div class="form-group">
+      <label class="form-label" for="name-input">Назва локації:</label>
+      <input type="text"
+             class="form-control"
+             data-ng-model="vm.location.name"
+             placeholder="Заголовок"
+             id="name-input"
+             data-ng-required="true"
+             data-ng-trim="true"
+      >
+    </div>
+    <div class="form-group">
+      <label class="form-label">Введіть адресу:</label>
+      <div data-dt-google-map
+           data-config="vm.mapConfig"
+           data-ng-if="vm.isMapVisible"
+      ></div>
+    </div>
+  </form>
+
+  <ul class="location-areas">
+    <li data-ng-repeat="area in vm.location.areas track by $index">
+      <button class="btn btn-default dt-btn"
+              data-ng-bind="area.name"
+              data-ng-click="vm.editArea(area.id)"
+      ></button>
+    </li>
+  </ul>
+
+
+  <button data-ng-click="vm.submit()"
+          class="btn btn dt-btn"
+          data-ng-bind="vm.actionName"
+  ></button>
+
+
+</div>
+
+

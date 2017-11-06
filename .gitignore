@@ -6,4 +6,6 @@ tmp
 .DS_Store
 .idea
 app/content/.sass-cache/
+.sass-cache/
+
 dump.rdb

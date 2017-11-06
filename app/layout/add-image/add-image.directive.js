@@ -51,7 +51,7 @@
                 })
                 .then(function(response){
                     if (!response) { return false; }
-                    return imageService.deployRawImage(file, {}, response.data.src)
+                    return imageService.deployRawImage(file, vm.config, response.data.src)
                 });
         }
 
@@ -68,10 +68,6 @@
 
             photosService.add(imageData).then(function(response) {
                 vm.config.isLoadInProcess = false;
-                //if (vm.config.onSuccess) {
-                //    vm.config.onSuccess(response.data);
-                //}
-
                 $rootScope.$emit('photo-added', response.data);
             });
         }

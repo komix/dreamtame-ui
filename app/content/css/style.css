@@ -1019,7 +1019,7 @@ body {
       position: absolute;
       left: 8px;
       bottom: 8px;
-      max-width: 100%;
+      max-width: calc(100% - 16px);
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis; }
@@ -1031,7 +1031,6 @@ body {
       color: #262626;
       text-decoration: none;
       font-size: 15px;
-      padding: 2px 8px;
       padding-top: 0;
       text-transform: capitalize;
       overflow: hidden; }
@@ -1255,7 +1254,8 @@ body {
 
 .footer {
   padding: 10px;
-  border-top: 2px solid #656565; }
+  border-top: 2px solid #656565;
+  margin-top: 15px; }
   .footer .footer-socials {
     letter-spacing: 20px;
     text-align: center; }
@@ -1267,7 +1267,8 @@ body {
         color: #262626; }
   .footer .copyright {
     line-height: 48px;
-    color: #626262; }
+    color: #626262;
+    text-align: center; }
     .footer .copyright .fa {
       font-size: 20px; }
     .footer .copyright .copyright-text {
@@ -1289,5 +1290,17 @@ body {
   font-size: 15px; }
   .article-view .article-text img {
     max-width: 75%; }
+
+.locations-view .dt-google-map .google-map {
+  height: 600px;
+  margin-bottom: 15px; }
+.locations-view .locations-list {
+  list-style-type: none;
+  margin-top: 15px; }
+  .locations-view .locations-list .location-link {
+    display: block;
+    padding: 5px;
+    color: #262626;
+    font-size: 18px; }
 
 /*# sourceMappingURL=style.css.map */

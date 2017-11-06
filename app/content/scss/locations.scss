@@ -1,0 +1,20 @@
+.locations-view {
+  .dt-google-map {
+    .google-map {
+      height: 600px;
+      margin-bottom: 15px;
+    }
+  }
+
+  .locations-list {
+    list-style-type: none;
+    margin-top: 15px;
+
+    .location-link {
+      display: block;
+      padding: 5px;
+      color: $text-color-dark;
+      font-size: 18px;
+    }
+  }
+}

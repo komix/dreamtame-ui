@@ -23,18 +23,15 @@
         return directive;
     }
 
-    InstBlockController.$inject = ['$element', 'photosService'];
+    InstBlockController.$inject = [];
 
-    function InstBlockController($element, photosService) {
+    function InstBlockController() {
         var vm = this;
 
         activate();
 
-
-
         function activate() {
             setMapConfig();
-            getInstPhoto(vm.inst.photoId);
         }
 
         function setMapConfig() {
@@ -46,14 +43,6 @@
                 title: vm.inst.title
             }
         }
-
-        function getInstPhoto(photoId) {
-            if (!photoId) { return false; }
-            photosService.get(photoId).then(function(response) {
-                vm.image = response.data;
-            });
-        }
-
 
     }
 })();

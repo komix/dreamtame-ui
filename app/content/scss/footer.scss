@@ -1,11 +1,11 @@
 .footer {
   padding: 10px;
   border-top: 2px solid $logo-color;
+  margin-top: 15px;
 
   .footer-socials {
     letter-spacing: 20px;
     text-align: center;
-
 
     .social-circle {
       display: inline-block;
@@ -21,6 +21,7 @@
   .copyright {
     line-height: 48px;
     color: $text-color-light;
+    text-align: center;
 
     .fa {
       font-size: 20px;

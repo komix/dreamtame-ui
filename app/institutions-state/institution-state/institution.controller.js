@@ -18,6 +18,8 @@
             aspectRatio: 1,
             resizeTo: 700,
             mWidth: 500,
+            instance: 'institution',
+            instanceId: instId,
             onChange: onInstImageChange
         };
 
@@ -25,7 +27,9 @@
             instId: instId,
             rawDownload: true,
             aspectRatio: 1,
-            resizeTo: 640
+            resizeTo: 640,
+            instance: 'institution',
+            instanceId: instId
         };
 
         vm.isStoryDescriptionTruncated = true;
@@ -72,7 +76,9 @@
 
         function onInstImageChange(image) {
             photosService.add(image).then(function(response) {
-                instService.update(vm.inst.id, {photoId: response.data.id});
+                instService.update(vm.inst.id, {photoId: response.data.id}).then(function() {
+                    getInstPhoto(response.data.id);
+                });
             });
         }
 

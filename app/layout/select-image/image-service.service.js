@@ -20,10 +20,22 @@
 
 		return service;
 
-		function deployCroppedImage(img) {
+		function deployCroppedImage(img, config) {
 			var defered = $q.defer();
+			if (!config) {
+				config = {};
+			}
 
-			$q.all([deployImageString(img.src), deployImageString(img.msrc)])
+			$q.all([
+				deployImageString(img.src, {
+					instance: config.instance,
+					instanceId: config.instanceId
+				}),
+				deployImageString(img.msrc, {
+					instance: config.instance,
+					instanceId: config.instanceId
+				})
+			])
 				.then(function(responses) {
 					if (!responses[0] || !responses[0].data || !responses[1] || !responses[1].data) {
 						defered.reject(false);
@@ -45,6 +57,10 @@
 			var thumbW = config && config.thumbW ? config.thumbW : THUMB_W;
 
 			var images = [];
+
+			if (!config) {
+				config = {};
+			}
 
 			scaleImages();
 
@@ -69,7 +85,14 @@
 			}
 
 			function deployImages(images) {
-				$q.all([deployImageString(images[0]), deployImageString(images[1])])
+				$q.all([deployImageString(images[0], {
+						instance: config.instance,
+						instanceId: config.instanceId
+					}),
+					deployImageString(images[1], {
+						instance: config.instance,
+						instanceId: config.instanceId
+					})])
 					.then(function(results) {
 						defered.resolve(formImageData([
 							results[0].data,
@@ -101,8 +124,17 @@
 		}
 
 
-		function deployImageString(imgString) {
-			return $http.post(apiUrl + '/image-upload', {base64Image: imgString})
+		function deployImageString(imgString, config) {
+			var params = {
+				base64Image: imgString
+			};
+
+			if (config && config.instance && config.instanceId) {
+				params.instance = config.instance;
+				params.instanceId = config.instanceId;
+			}
+
+			return $http.post(apiUrl + '/image-upload', params);
 		}
 
 	}
