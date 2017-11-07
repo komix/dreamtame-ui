@@ -15,6 +15,7 @@
             defaultState: null,
             authorize: authorize,
             login: login,
+            signup: signup,
             logout: logout,
             getUser: getUser,
             update: update,
@@ -45,7 +46,11 @@
         }
 
         function login(credentials) {
-            service.current.login(credentials);
+            return service.current.login(credentials);
+        }
+
+        function signup(credentials) {
+            return service.current.signup(credentials);
         }
 
         function logout() {
@@ -78,7 +83,7 @@
             loadPermissions();
             setDefaultState();
             $uibModalStack.dismissAll();
-            $state.go('login');
+            $state.go('login.signin');
         }
 
         function loadPermissions() {

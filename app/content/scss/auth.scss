@@ -1,7 +1,50 @@
 .login-view {
-  .login-form {
-    max-width: 500px;
-    padding: 50px;
+  background-image: url('../images/main-banner.jpeg');
+  background-size: cover;
+  position: relative;
+  margin-top: -20px;
+  min-height: calc(100vh - 143px);
+
+  .sign-form {
+    background-color: #fff;
+    margin: 15px 0;
+    border-radius: 4px;
+
+    .form-group {
+      margin-bottom: 0;
+    }
+
+    .form-title {
+      font-size: 21px;
+      color: $text-color-light;
+      font-weight: 400;
+      margin: 17px 0 5px 0;
+    }
+
+    .form-control {
+      border: 2px solid $logo-color;
+      border-radius: 4px;
+    }
+
+    .error-message {
+      text-align: center;
+      padding: 10px 0;
+      color: $invalid-color;
+    }
+
+    .ng-dirty {
+      .form-control {
+        &.ng-invalid {
+          &.ng-touched {
+            border-color: $invalid-color;
+            background-color: $invalid-background;
+          }
+        }
+      }
+    }
+
+
+    padding: 15px;
     margin-left: auto;
     margin-right: auto;
 

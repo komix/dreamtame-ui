@@ -5,21 +5,18 @@
         .module('app')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['users'];
+    LoginController.$inject = ['$state'];
 
-    function LoginController(users) {
+    function LoginController($state) {
         var vm = this;
 
-        vm.submit = submit;
+        vm.isStateActive = isStateActive;
 
-        // delete this
-        vm.user = {};
-        vm.user.name = 'komixdbz@gmail.com';
-        vm.user.password = 'qwertyui';
 
-        function submit() {
-            users.login(vm.user);
+        function isStateActive(state) {
+            return $state.current.name === state;
         }
+
     }
 
 })();

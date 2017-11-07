@@ -54,7 +54,7 @@
         }
 
         function isActiveStateWide() {
-            var wideStates = ['home', 'about'];
+            var wideStates = ['home', 'about', 'login', 'login.signin', 'login.signup'];
 
             return _.indexOf(wideStates, $state.current.name) !== -1;
         }

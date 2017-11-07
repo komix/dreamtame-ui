@@ -209,13 +209,38 @@
 body {
   font-family: 'Roboto', sans-serif; }
 
-.login-view .login-form {
-  max-width: 500px;
-  padding: 50px;
-  margin-left: auto;
-  margin-right: auto; }
-  .login-view .login-form .form-control {
-    margin-bottom: 15px; }
+.login-view {
+  background-image: url("../images/main-banner.jpeg");
+  background-size: cover;
+  position: relative;
+  margin-top: -20px;
+  min-height: calc(100vh - 143px); }
+  .login-view .sign-form {
+    background-color: #fff;
+    margin: 15px 0;
+    border-radius: 4px;
+    padding: 15px;
+    margin-left: auto;
+    margin-right: auto; }
+    .login-view .sign-form .form-group {
+      margin-bottom: 0; }
+    .login-view .sign-form .form-title {
+      font-size: 21px;
+      color: #626262;
+      font-weight: 400;
+      margin: 17px 0 5px 0; }
+    .login-view .sign-form .form-control {
+      border: 2px solid #656565;
+      border-radius: 4px; }
+    .login-view .sign-form .error-message {
+      text-align: center;
+      padding: 10px 0;
+      color: #FF7F7F; }
+    .login-view .sign-form .ng-dirty .form-control.ng-invalid.ng-touched {
+      border-color: #FF7F7F;
+      background-color: #ffe6e6; }
+    .login-view .sign-form .form-control {
+      margin-bottom: 15px; }
 
 .profile-view .user-profile {
   margin-bottom: 20px; }

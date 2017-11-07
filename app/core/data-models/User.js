@@ -38,26 +38,31 @@
         User.prototype.login = function(credentials) {
             var _this = this;
 
-            $http({
-                method: 'POST',
-                url: global.apiUrl + '/api/login_check',
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                transformRequest: function(obj) {
-                    var str = [];
-                    for(var p in obj)
-                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-                    return str.join("&");
-                },
-                data: {_username: credentials.name, _password: credentials.password}
-            }).then(function (response) {
-
-                $localStorage.token = response.data.token;
-                _this.currentToken = response.data.token;
-                _this.load().then(function(response) {
-                    _this.init(response);
-                    _this.emit('onLoaded');
+            return $http({
+                    method: 'POST',
+                    url: global.apiUrl + '/api/login_check',
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    transformRequest: function(obj) {
+                        var str = [];
+                        for(var p in obj)
+                            str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                        return str.join("&");
+                    },
+                    data: {_username: credentials.name, _password: credentials.password}
+                })
+                .then(function (response) {
+                    if (!response) { return false; }
+                    $localStorage.token = response.data.token;
+                    _this.currentToken = response.data.token;
+                    _this.load().then(function(response) {
+                        _this.init(response);
+                        _this.emit('onLoaded');
+                    });
                 });
-            });
+        };
+
+        User.prototype.signup = function(credentials) {
+            return $http.post(global.apiUrl + '/users', credentials);
         };
 
         User.prototype.logout = function() {

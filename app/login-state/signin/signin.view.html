@@ -1,0 +1,31 @@
+<div>
+  <h1 class="form-title">Вхід</h1>
+  <form name="vm.form">
+    <div class="form-group">
+      <input type="email"
+             class="form-control"
+             data-ng-model="vm.user.name"
+             placeholder="email"
+             ng-required="true"
+             data-ng-change="vm.resetErrors()"
+             data-ng-trim="true"
+      >
+      <input type="password"
+             class="form-control"
+             data-ng-model="vm.user.password"
+             placeholder="пароль"
+             ng-required="true"
+             data-ng-change="vm.resetErrors()"
+      >
+      <button data-ng-click="vm.submit()"
+              class="btn btn-default dt-btn"
+      >
+        Увійти
+      </button>
+
+      <div class="error-message" data-ng-if="vm.errorMessage">
+        <span data-ng-bind="vm.errorMessage"></span>
+      </div>
+    </div>
+  </form>
+</div>
