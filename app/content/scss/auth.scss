@@ -1,9 +1,44 @@
-.login-view {
+.auth-view {
   background-image: url('../images/main-banner.jpeg');
   background-size: cover;
   position: relative;
   margin-top: -20px;
   min-height: calc(100vh - 143px);
+
+  .auth-form-container {
+    padding: 20px;
+    text-align: center;
+
+    .auth-form {
+      display: inline-block;
+      background-color: #fff;
+      max-width: 400px;
+      padding: 15px;
+      margin: 0 auto;
+
+      .error-message {
+        .error-text {
+          color: $invalid-color;
+          margin-bottom: 0;
+        }
+
+        .solution-message {
+          color: $text-color-dark;
+          margin-bottom: 0;
+          margin-top: 5px;
+
+          a {
+            text-decoration: underline;
+            color: $active-color;
+
+            &:hover {
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+  }
 
   .sign-form {
     background-color: #fff;
@@ -28,21 +63,9 @@
 
     .error-message {
       text-align: center;
-      padding: 10px 0;
+      padding: 10px 0 0 0;
       color: $invalid-color;
     }
-
-    .ng-dirty {
-      .form-control {
-        &.ng-invalid {
-          &.ng-touched {
-            border-color: $invalid-color;
-            background-color: $invalid-background;
-          }
-        }
-      }
-    }
-
 
     padding: 15px;
     margin-left: auto;

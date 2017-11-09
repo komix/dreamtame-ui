@@ -16,6 +16,7 @@
             authorize: authorize,
             login: login,
             signup: signup,
+            activate: activate,
             logout: logout,
             getUser: getUser,
             update: update,
@@ -26,7 +27,6 @@
 
         function authorize() {
             var user = $localStorage.user || {role: 'guest'};
-
             user.eventHandlers = {
                 onLoaded: onLoaded,
                 onLoggedOut: onLoggedOut
@@ -51,6 +51,10 @@
 
         function signup(credentials) {
             return service.current.signup(credentials);
+        }
+
+        function activate(token) {
+            return service.current.activate(token);
         }
 
         function logout() {

@@ -1,0 +1,23 @@
+<div class="confirm-view auth-view">
+  <div class="auth-form-container">
+    <div class="auth-form">
+      <div data-preloader
+           data-ng-if="vm.isLoadInProcess"
+      ></div>
+      <div class="error-message">
+        <p class="error-text"
+           data-ng-bind="vm.errorMessage"
+        ></p>
+        <p data-ng-if="vm.errorMessage"
+           class="solution-message"
+        >
+          <span>Ви можете скористатися формою</span>
+          <a ui-sref="forgot-password">відновлення</a>
+          <span>паролю, або</span>
+          <a ui-sref="login.signin">увійти</a>
+          <span>на сайт.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

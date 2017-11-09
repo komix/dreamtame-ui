@@ -17,6 +17,7 @@
         }
 
         User.prototype.init = function(options) {
+            console.log(options);
             this.id = options && options.id ? options.id : null;
             this.email = options && options.email ? options.email : null;
             this.firstName = options && options.firstName ? options.firstName : null;
@@ -63,6 +64,20 @@
 
         User.prototype.signup = function(credentials) {
             return $http.post(global.apiUrl + '/users', credentials);
+        };
+
+        User.prototype.activate = function(token) {
+            var _this = this;
+
+            return $http.post(global.apiUrl + '/activate-user/' + token)
+                .then(function(response) {
+                    if (response && response.data && response.data.code === 200) {
+                        $localStorage.token = response.data.token;
+                        _this.currentToken = response.data.token;
+                        _this.init(response.data.user);
+                        _this.emit('onLoaded');
+                    }
+                })
         };
 
         User.prototype.logout = function() {
@@ -114,6 +129,8 @@
             if (_.indexOf(roles, 'ROLE_ADMIN') !== -1) {
                 return 'admin';
             }
+
+            return 'user';
         };
 
         return User;

@@ -209,37 +209,55 @@
 body {
   font-family: 'Roboto', sans-serif; }
 
-.login-view {
+.auth-view {
   background-image: url("../images/main-banner.jpeg");
   background-size: cover;
   position: relative;
   margin-top: -20px;
   min-height: calc(100vh - 143px); }
-  .login-view .sign-form {
+  .auth-view .auth-form-container {
+    padding: 20px;
+    text-align: center; }
+    .auth-view .auth-form-container .auth-form {
+      display: inline-block;
+      background-color: #fff;
+      max-width: 400px;
+      padding: 15px;
+      margin: 0 auto; }
+      .auth-view .auth-form-container .auth-form .error-message .error-text {
+        color: #FF7F7F;
+        margin-bottom: 0; }
+      .auth-view .auth-form-container .auth-form .error-message .solution-message {
+        color: #262626;
+        margin-bottom: 0;
+        margin-top: 5px; }
+        .auth-view .auth-form-container .auth-form .error-message .solution-message a {
+          text-decoration: underline;
+          color: #6A9ABF; }
+          .auth-view .auth-form-container .auth-form .error-message .solution-message a:hover {
+            text-decoration: none; }
+  .auth-view .sign-form {
     background-color: #fff;
     margin: 15px 0;
     border-radius: 4px;
     padding: 15px;
     margin-left: auto;
     margin-right: auto; }
-    .login-view .sign-form .form-group {
+    .auth-view .sign-form .form-group {
       margin-bottom: 0; }
-    .login-view .sign-form .form-title {
+    .auth-view .sign-form .form-title {
       font-size: 21px;
       color: #626262;
       font-weight: 400;
       margin: 17px 0 5px 0; }
-    .login-view .sign-form .form-control {
+    .auth-view .sign-form .form-control {
       border: 2px solid #656565;
       border-radius: 4px; }
-    .login-view .sign-form .error-message {
+    .auth-view .sign-form .error-message {
       text-align: center;
-      padding: 10px 0;
+      padding: 10px 0 0 0;
       color: #FF7F7F; }
-    .login-view .sign-form .ng-dirty .form-control.ng-invalid.ng-touched {
-      border-color: #FF7F7F;
-      background-color: #ffe6e6; }
-    .login-view .sign-form .form-control {
+    .auth-view .sign-form .form-control {
       margin-bottom: 15px; }
 
 .profile-view .user-profile {
