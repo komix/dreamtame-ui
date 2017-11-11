@@ -30,10 +30,14 @@
       color: #fff;
     }
 
-    &.last-thumbnail:after {
-      content: '';
-      display: block;
-      clear: both;
+    &.last-thumbnail {
+      padding-left: 2px;
+
+      &:after {
+        content: '';
+        display: block;
+        clear: both;
+      }
     }
 
     &.active {

@@ -20,7 +20,9 @@
             logout: logout,
             getUser: getUser,
             update: update,
-            isPermissionAvailable: isPermissionAvailable
+            isPermissionAvailable: isPermissionAvailable,
+            requestPasswordChange: requestPasswordChange,
+            restorePassword: restorePassword
         };
 
         return service;
@@ -107,6 +109,14 @@
                 .then(function() {
                     service.current.reload();
                 });
+        }
+
+        function requestPasswordChange(email) {
+            return service.current.requestPasswordChange({email: email});
+        }
+
+        function restorePassword(params) {
+            return service.current.restorePassword(params)
         }
     }
 })();

@@ -12,9 +12,19 @@
     .auth-form {
       display: inline-block;
       background-color: #fff;
-      max-width: 400px;
+      width: 100%;
       padding: 15px;
       margin: 0 auto;
+      border-radius: 4px;
+
+      .success-text {
+        margin-bottom: 0;
+      }
+
+      .under-text-button {
+        display: inline-block;
+        margin-top: 10px;
+      }
 
       .error-message {
         .error-text {
@@ -42,8 +52,9 @@
 
   .sign-form {
     background-color: #fff;
-    margin: 15px 0;
     border-radius: 4px;
+    padding: 15px;
+    margin: 15px auto;
 
     .form-group {
       margin-bottom: 0;
@@ -67,12 +78,13 @@
       color: $invalid-color;
     }
 
-    padding: 15px;
-    margin-left: auto;
-    margin-right: auto;
-
     .form-control {
       margin-bottom: 15px;
+    }
+
+    &.forgot-form {
+      padding: 0;
+      margin: 0;
     }
   }
 }

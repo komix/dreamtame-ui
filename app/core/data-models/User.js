@@ -17,7 +17,6 @@
         }
 
         User.prototype.init = function(options) {
-            console.log(options);
             this.id = options && options.id ? options.id : null;
             this.email = options && options.email ? options.email : null;
             this.firstName = options && options.firstName ? options.firstName : null;
@@ -131,6 +130,14 @@
             }
 
             return 'user';
+        };
+
+        User.prototype.requestPasswordChange = function(email) {
+            return $http.post(global.apiUrl + '/forgot-password', email);
+        };
+
+        User.prototype.restorePassword = function(params) {
+            return $http.post(global.apiUrl + '/restore-password', params);
         };
 
         return User;
