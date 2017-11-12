@@ -4,7 +4,8 @@
   padding-bottom: 10px; }
   .shell .main-header .inner-header {
     max-width: 1200px;
-    margin: 0 auto; }
+    margin: 0 auto;
+    position: relative; }
   .shell .main-header .left-header {
     white-space: nowrap;
     padding-top: 15px; }
@@ -16,8 +17,9 @@
     .shell .main-header .left-header .site-name {
       display: inline-block;
       font-family: 'Poppins', sans-serif;
-      padding-left: 10px;
-      color: #656565; }
+      padding-left: 10px; }
+      .shell .main-header .left-header .site-name a {
+        color: #656565; }
       .shell .main-header .left-header .site-name h1 {
         font-size: 21px;
         font-weight: normal;
@@ -26,7 +28,10 @@
   .shell .main-header .navigation {
     list-style-type: none;
     margin: 0;
-    padding-top: 20px; }
+    padding-top: 20px;
+    -webkit-transition: all 0.3s;
+    /* For Safari 3.1 to 6.0 */
+    transition: all 0.3s; }
     .shell .main-header .navigation li {
       display: inline-block; }
       .shell .main-header .navigation li a {
@@ -44,6 +49,60 @@
           .shell .main-header .navigation li a:hover span, .shell .main-header .navigation li a.active span, .shell .main-header .navigation li a:focus span {
             background-color: #656565;
             color: #fff; }
+      .shell .main-header .navigation li.narrow-only {
+        display: none; }
+  .shell .main-header .toggle-header {
+    display: none;
+    position: absolute;
+    right: 15px;
+    top: 0;
+    padding: 5px;
+    font-size: 44px;
+    cursor: pointer;
+    color: #656565; }
+    .shell .main-header .toggle-header:hover {
+      color: #626262; }
+  .shell .main-header .profile-button {
+    position: absolute;
+    right: 15px;
+    top: 0;
+    padding: 10px;
+    font-size: 34px;
+    cursor: pointer; }
+    .shell .main-header .profile-button a {
+      color: #656565; }
+      .shell .main-header .profile-button a:hover {
+        color: #626262; }
+  @media screen and (max-width: 992px) {
+    .shell .main-header .toggle-header {
+      display: block; }
+    .shell .main-header .left-header .site-logo {
+      margin-left: 0; }
+    .shell .main-header .profile-button {
+      top: 2px;
+      right: 68px; }
+    .shell .main-header .navigation {
+      padding-left: 0;
+      height: 1px;
+      overflow: hidden;
+      padding-top: 0; }
+      .shell .main-header .navigation li {
+        display: block;
+        margin-top: 8px; }
+        .shell .main-header .navigation li a {
+          display: inline-block; }
+      .shell .main-header .navigation.expanded {
+        height: 236px;
+        padding-top: 8px; } }
+  @media screen and (max-width: 480px) {
+    .shell .main-header .navigation li a {
+      display: block;
+      text-align: center; } }
+  @media screen and (max-width: 340px) {
+    .shell .main-header .profile-button {
+      display: none; }
+    .shell .main-header .navigation li.narrow-only {
+      display: block; } }
 .shell .content-block {
   max-width: 1200px;
   margin: 0 auto; }
@@ -85,6 +144,10 @@
       position: absolute;
       top: -15px;
       left: calc(50% - 41px); }
+    @media screen and (max-width: 480px) {
+      .home-view .news-block {
+        margin-left: -15px;
+        margin-right: -15px; } }
   .home-view .last-added-block {
     background-color: #3e3e3e;
     padding-top: 25px;
@@ -439,6 +502,9 @@ body {
       text-decoration: none; }
   .institution-view .inst-info .inst-description.full-length {
     max-height: none; }
+
+.institutions-view .institutions-blocks {
+  margin-bottom: 15px; }
 
 .cats-navigation .cat-history {
   clear: both;
@@ -997,6 +1063,9 @@ body {
       position: static;
       width: 100%; } }
 
+.news-list {
+  margin-bottom: 16px; }
+
 .unit-block {
   overflow: hidden;
   position: relative;
@@ -1097,7 +1166,8 @@ body {
   margin-bottom: 9px; }
 
 .category-thumbnails .category-thumbnail-title {
-  margin-top: 0; }
+  margin-top: 0;
+  padding-left: 10px; }
 
 .input-timepicker-hours {
   margin-bottom: 0 !important; }

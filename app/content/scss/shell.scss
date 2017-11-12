@@ -7,6 +7,7 @@
     .inner-header {
       max-width: 1200px;
       margin: 0 auto;
+      position: relative;
     }
 
     .left-header {
@@ -26,7 +27,10 @@
         display: inline-block;
         font-family: 'Poppins', sans-serif;
         padding-left: 10px;
-        color: $logo-color;
+        a {
+          color: $logo-color;
+        }
+
 
         h1 {
           font-size: 21px;
@@ -41,6 +45,8 @@
       list-style-type: none;
       margin: 0;
       padding-top: 20px;
+      -webkit-transition: all 0.3s; /* For Safari 3.1 to 6.0 */
+      transition: all 0.3s;
 
       li {
         display: inline-block;
@@ -64,6 +70,105 @@
               background-color: $logo-color;
               color: #fff;
             }
+          }
+        }
+
+        &.narrow-only {
+          display: none;
+        }
+      }
+    }
+
+    .toggle-header {
+      display: none;
+      position: absolute;
+      right: 15px;
+      top: 0;
+      padding: 5px;
+      font-size: 44px;
+      cursor: pointer;
+      color: $logo-color;
+
+      &:hover {
+        color: $text-color-light;
+      }
+    }
+
+    .profile-button {
+      position: absolute;
+      right: 15px;
+      top: 0;
+      padding: 10px;
+      font-size: 34px;
+      cursor: pointer;
+
+      a {
+        color: $logo-color;
+
+        &:hover {
+          color: $text-color-light;
+        }
+      }
+    }
+
+    @media screen and (max-width: $break-small) {
+      .toggle-header {
+        display: block;
+      }
+
+      .left-header {
+        .site-logo {
+          margin-left: 0;
+        }
+      }
+
+      .profile-button {
+        top: 2px;
+        right: 68px;
+      }
+
+      .navigation {
+        padding-left: 0;
+        height: 1px;
+        overflow: hidden;
+        padding-top: 0;
+
+        li {
+          display: block;
+          margin-top: 8px;
+
+          a {
+            display: inline-block;
+          }
+        }
+
+        &.expanded {
+          height: 236px;
+          padding-top: 8px;
+        }
+      }
+    }
+
+    @media screen and (max-width: $break-extra-small) {
+      .navigation {
+        li {
+          a {
+            display: block;
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 340px) {
+      .profile-button {
+        display: none;
+      }
+
+      .navigation {
+        li {
+          &.narrow-only {
+            display: block;
           }
         }
       }
