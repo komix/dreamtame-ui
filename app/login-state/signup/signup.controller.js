@@ -4,15 +4,17 @@
         .module('app')
         .controller('SignUpController', SignUpController);
 
-    SignUpController.$inject = ['users', 'confirm'];
+    SignUpController.$inject = ['users'];
 
-    function SignUpController(users, confirm) {
+    function SignUpController(users) {
         var vm = this;
 
         vm.submit = submit;
         vm.resetErrors = resetErrors;
+        vm.isFormVisible = isFormVisible;
 
         vm.credentials = {};
+        vm.isLoadInProcess = false;
 
         function submit() {
             vm.form.$setDirty();
@@ -29,6 +31,8 @@
                 return false;
             }
 
+            vm.isLoadInProcess = true;
+
             users.signup({
                     email: vm.credentials.email,
                     plainPassword: vm.credentials.password
@@ -39,17 +43,22 @@
                     }
                 })
                 .then(function(response) {
-                if (response && response.data.code === 200) {
-                    var message = 'Підтвердіть свій email перейшовши за посиланням, яке ми щойно Вам відправили.';
-                    confirm.open(message);
-                }
-            })
+                    if (response && response.data.code === 200) {
+                        vm.successMessage = 'Підтвердіть свій email перейшовши за посиланням, яке ми щойно Вам відправили.';
+                    }
+                })
+                .finally(function() {
+                    vm.isLoadInProcess = false;
+                })
         }
 
         function resetErrors() {
-            console.log(vm.form);
             vm.errorMessage = '';
             vm.form.$setPristine();
+        }
+
+        function isFormVisible() {
+            return !vm.successMessage && !vm.isLoadInProcess;
         }
     }
 })();

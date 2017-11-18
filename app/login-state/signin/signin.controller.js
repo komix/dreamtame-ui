@@ -11,10 +11,9 @@
 
         vm.submit = submit;
         vm.resetErrors = resetErrors;
+        vm.isFormVisible = isFormVisible;
 
         vm.user = {};
-        vm.user.name = 'test@mail.com';
-        vm.user.password = 'password';
 
 
         activate();
@@ -39,11 +38,25 @@
 
             if (!vm.form.$valid) { return false; }
 
-            users.login(vm.user);
+            vm.isLoadInProcess = true;
+
+            users.login(vm.user)
+                .catch(function(err) {
+                    if (err && err.data && err.data.code === 401) {
+                        vm.errorMessage = 'Неправильний логін або пароль.';
+                    }
+                })
+                .finally(function() {
+                    vm.isLoadInProcess = false;
+                });
         }
 
         function resetErrors() {
             vm.errorMessage = '';
+        }
+
+        function isFormVisible() {
+            return !vm.isLoadInProcess;
         }
     }
 })();

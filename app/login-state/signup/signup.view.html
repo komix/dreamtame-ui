@@ -1,7 +1,7 @@
 <div>
   <h1 class="form-title">Реєстрація</h1>
   <form name="vm.form">
-    <div class="form-group">
+    <div class="form-group" data-ng-if="vm.isFormVisible()">
       <input type="email"
              class="form-control"
              data-ng-model="vm.credentials.email"
@@ -33,5 +33,15 @@
         <span data-ng-bind="vm.errorMessage"></span>
       </div>
     </div>
+    <div class="success-message"
+         data-ng-if="vm.successMessage"
+    >
+      <p class="success-text"
+         data-ng-bind="vm.successMessage"
+      ></p>
+    </div>
+    <div data-preloader
+         data-ng-if="vm.isLoadInProcess"
+    ></div>
   </form>
 </div>

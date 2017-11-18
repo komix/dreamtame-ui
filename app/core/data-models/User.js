@@ -39,17 +39,17 @@
             var _this = this;
 
             return $http({
-                    method: 'POST',
-                    url: global.apiUrl + '/api/login_check',
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                    transformRequest: function(obj) {
-                        var str = [];
-                        for(var p in obj)
-                            str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-                        return str.join("&");
-                    },
-                    data: {_username: credentials.name, _password: credentials.password}
-                })
+                        method: 'POST',
+                        url: global.apiUrl + '/api/login_check',
+                        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                        transformRequest: function(obj) {
+                            var str = [];
+                            for(var p in obj)
+                                str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                            return str.join("&");
+                        },
+                        data: {_username: credentials.name, _password: credentials.password}
+                    })
                 .then(function (response) {
                     if (!response) { return false; }
                     $localStorage.token = response.data.token;
