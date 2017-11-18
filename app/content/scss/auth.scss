@@ -1,12 +1,90 @@
-.login-view {
-  .login-form {
-    max-width: 500px;
-    padding: 50px;
-    margin-left: auto;
-    margin-right: auto;
+.auth-view {
+  background-image: url('../images/main-banner.jpeg');
+  background-size: cover;
+  position: relative;
+  margin-top: -20px;
+  min-height: calc(100vh - 143px);
+
+  .auth-form-container {
+    padding: 20px;
+    text-align: center;
+
+    .auth-form {
+      display: inline-block;
+      background-color: #fff;
+      width: 100%;
+      padding: 15px;
+      margin: 0 auto;
+      border-radius: 4px;
+
+      .success-text {
+        margin-bottom: 0;
+      }
+
+      .under-text-button {
+        display: inline-block;
+        margin-top: 10px;
+      }
+
+      .error-message {
+        .error-text {
+          color: $invalid-color;
+          margin-bottom: 0;
+        }
+
+        .solution-message {
+          color: $text-color-dark;
+          margin-bottom: 0;
+          margin-top: 5px;
+
+          a {
+            text-decoration: underline;
+            color: $active-color;
+
+            &:hover {
+              text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .sign-form {
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 15px;
+    margin: 15px auto;
+
+    .form-group {
+      margin-bottom: 0;
+    }
+
+    .form-title {
+      font-size: 21px;
+      color: $text-color-light;
+      font-weight: 400;
+      margin: 17px 0 5px 0;
+    }
+
+    .form-control {
+      border: 2px solid $logo-color;
+      border-radius: 4px;
+    }
+
+    .error-message {
+      text-align: center;
+      padding: 10px 0 0 0;
+      color: $invalid-color;
+    }
 
     .form-control {
       margin-bottom: 15px;
+    }
+
+    &.forgot-form {
+      padding: 0;
+      margin: 0;
     }
   }
 }

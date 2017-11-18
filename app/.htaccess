@@ -1,9 +1,8 @@
-RewriteEngine on
+RewriteEngine On  
+  # If an existing asset or directory is requested go to it as it is
+  RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
+  RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+  RewriteRule ^ - [L]
 
-    # Don't rewrite files or directories
-    RewriteCond %{REQUEST_FILENAME} -f [OR]
-    RewriteCond %{REQUEST_FILENAME} -d
-    RewriteRule ^ - [L]
-
-    # Rewrite everything else to index.html to allow html5 state links
-    RewriteRule ^ index.html [L]
+  # If the requested resource doesn't exist, use index.html
+  RewriteRule ^ /

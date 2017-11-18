@@ -12,8 +12,8 @@ angular
       'infinite-scroll',
       'youtube-embed',
       'summernote',
-      'angular-preload-image'
-      //'angular-google-analytics'
+      'angular-preload-image',
+      'angular-google-analytics'
     ])
 
     //.config(['$urlRouterProvider', '$locationProvider', 'AnalyticsProvider',
@@ -22,17 +22,18 @@ angular
     //    $urlRouterProvider.otherwise("login");
     //    AnalyticsProvider.setAccount('UA-100601648-1');
     //  }])
-    //.run(['Analytics', function(Analytics) { }]);
 
-    .config(['$urlRouterProvider', '$locationProvider', '$compileProvider', '$qProvider',
-        function($urlRouterProvider, $locationProvider, $compileProvider, $qProvider) {
+    .run(['Analytics', function(Analytics) { }])
+
+    .config(['$urlRouterProvider', '$locationProvider', '$compileProvider', '$qProvider', 'AnalyticsProvider',
+        function($urlRouterProvider, $locationProvider, $compileProvider, $qProvider, AnalyticsProvider) {
             //$locationProvider.html5Mode(true);
             $urlRouterProvider.otherwise("login");
             $compileProvider.preAssignBindingsEnabled(true);
             //$qProvider.errorOnUnhandledRejections(false);
-            //AnalyticsProvider.setAccount('UA-100601648-1');
+            AnalyticsProvider.setAccount('UA-109656575-1');
         }]);
-    //.run(['Analytics', function(Analytics) { }]);
+
 
 
 

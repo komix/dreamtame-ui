@@ -1,0 +1,59 @@
+<header class="main-header">
+  <div class="inner-header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3 left-header noselect">
+          <div class="site-logo">
+            <a ui-sref="home">
+              <img src="content/icons/logo_dt.svg">
+            </a>
+          </div>
+          <div class="site-name">
+            <a ui-sref="home">
+              <h1>Dreamtame</h1>
+            </a>
+          </div>
+          <div class="toggle-header"
+               data-ng-click="vm.toggleExpansion()"
+          >
+            <span class="fa fa-bars"></span>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <ul class="navigation noselect" data-ng-class="{expanded: vm.isExpanded}">
+            <li data-ng-repeat="state in vm.states"
+                data-ng-if="vm.isStateAvailable(state.name)"
+                data-ng-click="vm.collapseNavigation()"
+                data-ng-class="{'narrow-only': state.narrowOnly}"
+            >
+              <a data-ng-href="{{vm.getStateHref(state)}}" data-ng-class="{active: vm.isStateActive(state.name)}">
+                <span data-ng-bind="state.ukName"></span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="profile-button" >
+      <div class="profile-state"
+           title="Профіль"
+           data-ng-if="vm.isLoggedIn()"
+      >
+        <a ui-sref="profile({id: vm.getCurrentUserId()})">
+          <i class="fa fa-user-circle-o"
+             aria-hidden="true"
+          ></i>
+        </a>
+      </div>
+      <div class="login-state"
+           title="Вхід"
+           data-ng-if="!vm.isLoggedIn()">
+        <a ui-sref="login.signin">
+          <i class="fa fa-sign-in"
+             aria-hidden="true"
+          ></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>

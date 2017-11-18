@@ -23,7 +23,7 @@
       position: absolute;
       left: 8px;
       bottom: 8px;
-      max-width: 100%;
+      max-width: calc(100% - 16px);
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -37,7 +37,6 @@
       color: $text-color-dark;
       text-decoration: none;
       font-size: 15px;
-      padding: 2px 8px;
       padding-top: 0;
       text-transform: capitalize;
       overflow: hidden;

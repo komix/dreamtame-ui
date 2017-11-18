@@ -1,0 +1,44 @@
+<div class="dt-google-map">
+  <div data-ng-if="vm.config.searchField" class="dt-google-map-autocomplete-wrap form-group">
+    <input id="dt-google-map-autocomplete"
+           type="text"
+           class="form-control"
+           data-ng-model="vm.config.address">
+  </div>
+  <div data-ng-attr-id="{{vm.config.id}}"
+       class="google-map"
+       data-lat="{{vm.map.center.lat}}"
+       data-long="{{vm.map.center.lng}}"
+  >
+  </div>
+  <button data-ng-click="vm.addRectangle()"
+          data-ng-if="vm.isAddAreaButtonVisible()"
+          class="btn btn-default dt-btn"
+  >
+    <span>Додати квадрат</span>
+  </button>
+  <div class="area-form"
+       data-ng-if="vm.map.activeRectangle"
+  >
+    <form name="vm.areaform">
+      <div class="form-group">
+        <label class="form-label" for="area-name-input">Назва локації:</label>
+        <input type="text"
+               class="form-control"
+               data-ng-model="vm.map.activeRectangle.text"
+               placeholder="Назва квадрата"
+               id="area-name-input"
+               data-ng-required="true"
+               data-ng-trim="true"
+        >
+      </div>
+    </form>
+
+    <button data-ng-click="vm.submitActiveRectangle()"
+            class="btn btn-default dt-btn"
+    >
+      <span>Зберегти квадрат</span>
+    </button>
+  </div>
+
+</div>

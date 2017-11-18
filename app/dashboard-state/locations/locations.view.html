@@ -1,0 +1,25 @@
+<div class="locations-view">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+        <a class="btn btn-default dt-btn"
+           data-ui-sref="dashboard.locations.manage-location"
+        >Додати</a>
+
+        <ul class="locations-list">
+          <li data-ng-repeat="location in vm.locations.data track by $index">
+            <a ui-sref="dashboard.locations.manage-location({id: location.id})"
+               data-ng-bind="location.name"
+               class="location-link"
+            ></a>
+          </li>
+        </ul>
+
+      </div>
+      <div class="col-md-9">
+        <div data-ui-view
+        ></div>
+      </div>
+    </div>
+  </div>
+</div>

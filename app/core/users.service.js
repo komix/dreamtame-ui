@@ -15,17 +15,20 @@
             defaultState: null,
             authorize: authorize,
             login: login,
+            signup: signup,
+            activate: activate,
             logout: logout,
             getUser: getUser,
             update: update,
-            isPermissionAvailable: isPermissionAvailable
+            isPermissionAvailable: isPermissionAvailable,
+            requestPasswordChange: requestPasswordChange,
+            restorePassword: restorePassword
         };
 
         return service;
 
         function authorize() {
             var user = $localStorage.user || {role: 'guest'};
-
             user.eventHandlers = {
                 onLoaded: onLoaded,
                 onLoggedOut: onLoggedOut
@@ -45,7 +48,15 @@
         }
 
         function login(credentials) {
-            service.current.login(credentials);
+            return service.current.login(credentials);
+        }
+
+        function signup(credentials) {
+            return service.current.signup(credentials);
+        }
+
+        function activate(token) {
+            return service.current.activate(token);
         }
 
         function logout() {
@@ -78,7 +89,7 @@
             loadPermissions();
             setDefaultState();
             $uibModalStack.dismissAll();
-            $state.go('login');
+            $state.go('login.signin');
         }
 
         function loadPermissions() {
@@ -98,6 +109,14 @@
                 .then(function() {
                     service.current.reload();
                 });
+        }
+
+        function requestPasswordChange(email) {
+            return service.current.requestPasswordChange({email: email});
+        }
+
+        function restorePassword(params) {
+            return service.current.restorePassword(params)
         }
     }
 })();

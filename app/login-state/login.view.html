@@ -1,24 +1,22 @@
-<div class="login-view">
-  <div class="login-form text-center">
-    <h4>Вітаю!</h4>
-    <form data-ng-submit="vm.submit()">
-      <div class="form-group">
-        <input type="email"
-               class="form-control"
-               data-ng-model="vm.user.name"
-               placeholder="ім'я"
-               ng-required="true"
-        >
-        <input type="password"
-               class="form-control"
-               data-ng-model="vm.user.password"
-               placeholder="пароль"
-               ng-required="true"
-        >
-        <input type="submit" class="btn btn-default" value="Увійти">
+<div class="auth-view">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-offset-7 col-md-3">
+        <div class="sign-form">
+          <div class="sign-navigation">
+            <a ui-sref="login.signin"
+               class="btn btn-default dt-btn"
+               data-ng-class="{active: vm.isStateActive('login.signin')}"
+            >Вхід</a>
+            <a ui-sref="login.signup"
+               class="btn btn-default dt-btn"
+               data-ng-class="{active: vm.isStateActive('login.signup')}"
+            >Реєстрація</a>
+          </div>
+          <div class="ui-view"></div>
+        </div>
       </div>
-    </form>
-    <a ui-sref="photos.gallery" class="btn btn-primary">На сайт</a>
+    </div>
   </div>
 </div>
 

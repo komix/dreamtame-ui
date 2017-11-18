@@ -1,0 +1,47 @@
+<div>
+  <h1 class="form-title">Реєстрація</h1>
+  <form name="vm.form">
+    <div class="form-group" data-ng-if="vm.isFormVisible()">
+      <input type="email"
+             class="form-control"
+             data-ng-model="vm.credentials.email"
+             placeholder="email"
+             ng-required="true"
+             data-ng-trim="true"
+             data-ng-change="vm.resetErrors()"
+      >
+      <input type="password"
+             class="form-control"
+             data-ng-model="vm.credentials.password"
+             placeholder="пароль"
+             ng-required="true"
+             data-ng-change="vm.resetErrors()"
+      >
+      <input type="password"
+             class="form-control"
+             data-ng-model="vm.credentials.passwordConfirm"
+             placeholder="пароль ще раз"
+             ng-required="true"
+             data-ng-change="vm.resetErrors()"
+      >
+      <button data-ng-click="vm.submit()"
+              class="btn btn-default dt-btn"
+      >
+        Зареєструватись
+      </button>
+      <div class="error-message" data-ng-if="vm.errorMessage">
+        <span data-ng-bind="vm.errorMessage"></span>
+      </div>
+    </div>
+    <div class="success-message"
+         data-ng-if="vm.successMessage"
+    >
+      <p class="success-text"
+         data-ng-bind="vm.successMessage"
+      ></p>
+    </div>
+    <div data-preloader
+         data-ng-if="vm.isLoadInProcess"
+    ></div>
+  </form>
+</div>

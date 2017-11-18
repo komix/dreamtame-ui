@@ -26,6 +26,11 @@
 
         function responseError(rejection) {
             if (rejection.status === 401) {
+
+                if ($state.is('login.signin')) {
+                    return $q.reject(rejection);
+                }
+
                 $rootScope.$emit('token-invalid');
                 return $q(function(){return null;});
             }

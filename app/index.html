@@ -10,9 +10,12 @@
   <title>Dreamtame</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-site-verification" content="he8LJMfHmznOiIOQz-6k0D1QLkvJQceccxvocNUJyl8" />
+
   <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+
   <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
   <link href="bower_components/summernote/dist/summernote.css">
   <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
@@ -72,7 +75,7 @@
   <script src="bower_components/angular-masonry/angular-masonry.js"></script>
   <script src="bower_components/angular-summernote/dist/angular-summernote.min.js"></script>
   <script src='bower_components/ngInfiniteScroll/build/ng-infinite-scroll.min.js'></script>
-  <!--<script src="bower_components/angular-google-analytics/dist/angular-google-analytics.js"></script>-->
+  <script src="bower_components/angular-google-analytics/dist/angular-google-analytics.js"></script>
   <script src="bower_components/ngstorage/ngStorage.min.js"></script>
   <!--<script src="bower_components/ng-photoswipe/angular-photoswipe.min.js"></script>-->
   <script src="bower_components/chance/dist/chance.min.js"></script>
@@ -95,6 +98,10 @@
 
   <script src="blocks/google-maps/load-google-maps.service.js"></script>
   <script src="blocks/google-maps/google-map.directive.js"></script>
+
+  <script src="blocks/dt-google-map/data-models/DtGoogleMap.js"></script>
+  <script src="blocks/dt-google-map/data-models/DtGooglePlacesInput.js"></script>
+  <script src="blocks/dt-google-map/dt-google-map.directive.js"></script>
 
   <script src="blocks/modals/modal.service.js"></script>
   <script src="blocks/modals/manage-category/manage-category.controller.js"></script>
@@ -147,13 +154,26 @@
   <script src="login-state/login.route.js"></script>
   <script src="login-state/login.controller.js"></script>
 
+  <script src="login-state/signin/signin.route.js"></script>
+  <script src="login-state/signin/signin.controller.js"></script>
+
+  <script src="login-state/signup/signup.route.js"></script>
+  <script src="login-state/signup/signup.controller.js"></script>
+
+  <script src="login-state/confirm-email/confirm-email.route.js"></script>
+  <script src="login-state/confirm-email/confirm-email.controller.js"></script>
+
+  <script src="login-state/forgot-password/forgot-password.route.js"></script>
+  <script src="login-state/forgot-password/forgot-password.controller.js"></script>
+
+  <script src="login-state/restore-password/restore-password.route.js"></script>
+  <script src="login-state/restore-password/restore-password.controller.js"></script>
+
   <script src="about-state/about.route.js"></script>
   <script src="about-state/about.controller.js"></script>
 
   <script src="news-state/news.route.js"></script>
   <script src="news-state/news.controller.js"></script>
-
-
 
   <script src="manage-inst-state/inst.service.js"></script>
   <script src="manage-inst-state/manage-inst.route.js"></script>
@@ -230,6 +250,8 @@
 
   <script src="layout/free-search/free-search.directive.js"></script>
 
+  <script src="layout/dt-header/dt-header.directive.js"></script>
+
   <script src="dashboard-state/dashboard.route.js"></script>
   <script src="dashboard-state/dashboard.controller.js"></script>
 
@@ -248,6 +270,17 @@
 
   <script src="dashboard-state/suggestions/manage-suggestion/manage-suggestion.route.js"></script>
   <script src="dashboard-state/suggestions/manage-suggestion/manage-suggestion.controller.js"></script>
+
+  <script src="dashboard-state/locations/locations.route.js"></script>
+  <script src="dashboard-state/locations/locations.controller.js"></script>
+
+  <script src="dashboard-state/locations/manage-location/manage-location.route.js"></script>
+  <script src="dashboard-state/locations/manage-location/manage-location.controller.js"></script>
+
+  <script src="dashboard-state/locations/data-models/Location.js"></script>
+  <script src="dashboard-state/locations/data-models/LocationsList.js"></script>
+  <script src="dashboard-state/locations/data-models/Area.js"></script>
+  <script src="dashboard-state/locations/locations.service.js"></script>
 
   <script src="news-state/article-state/article.route.js"></script>
   <script src="news-state/article-state/article.controller.js"></script>

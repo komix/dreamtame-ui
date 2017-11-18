@@ -87,7 +87,7 @@
         }
 
         function goToLoginState() {
-            $state.go('login');
+            $state.go('login.signin');
         }
 
 
