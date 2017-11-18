@@ -1292,53 +1292,58 @@ body {
 
 .about-state {
   margin-top: -20px; }
-  .about-state p {
-    margin-top: 268px;
-    left: 0;
-    color: white;
-    font: bold 16px/16px Helvetica, Sans-Serif;
-    letter-spacing: -1px;
-    background: black;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 10px;
-    padding: 0 5px; }
   .about-state .about-banner {
-    height: 400px;
-    padding: 20px 0;
-    background-image: url("http://www.mytripolog.com/wp-content/uploads/2012/07/Lviv-skyline-wallpaper-beautiful-Ukraine.jpg");
+    padding-bottom: 50px;
+    padding-top: 70px;
+    background-image: url("../images/about-banner.jpg");
     background-size: cover;
-    background-position: center; }
-  .about-state span {
-    font: Helvetica, Sans-Serif;
-    font-weight: 600; }
-  .about-state .about-text {
-    width: 100%;
-    background-image: url("http://4.bp.blogspot.com/-47LOocapsRg/TkLf2qrhlOI/AAAAAAAABps/gwKB7NWllCE/s640/biking%2Bwallpapers.jpg");
-    background-size: cover;
-    background-position: center; }
-  .about-state .karta {
-    width: 100%;
-    background-image: url("https://laughingsquid.com/wp-content/uploads/2015/12/people-are-awesome-2015-a-compil.jpg");
-    background-size: cover;
-    background-position: center; }
-    .about-state .karta h4 {
-      margin-top: 150px;
-      margin-bottom: 150px;
+    background-position: center;
+    position: relative; }
+    .about-state .about-banner .overlay {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5); }
+    .about-state .about-banner .banner-text {
       color: white;
-      font: bold 25px/25px Helvetica, Sans-Serif;
-      letter-spacing: -1px;
-      background: black;
-      background: rgba(0, 0, 0, 0.7);
-      font-size: 30px; }
-  .about-state .bomj img {
-    text-align: center;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background-size: auto 300px; }
-  .about-state .bomj h5 {
-    text-align: center;
-    font-size: 25px;
-    font-weight: bolder; }
+      font-size: 19px; }
+    .about-state .about-banner .logo-column {
+      text-align: center; }
+  .about-state .about-text .about-text-title {
+    font-size: 27px;
+    color: #262626; }
+  .about-state .about-text .about-text-text {
+    font-size: 19px;
+    color: #626262; }
+  .about-state .about-social i {
+    font-size: 200px;
+    color: #656565; }
+  .about-state .about-social p {
+    font-size: 25px; }
+
+.credit-card {
+  background-color: #777777;
+  background-size: cover;
+  background-position: center; }
+
+.credit-card-text {
+  margin-left: 25px;
+  color: white;
+  font-size: 19px;
+  padding-top: 50px; }
+
+.credit-card-div span {
+  padding-top: 10px; }
+
+.credit-card-div img {
+  padding-top: 30px; }
+
+.credit-card-div .small-font {
+  font-size: 9px; }
+
+.credit-card-div .pad-adjust {
+  padding-top: 10px; }
 
 /*# sourceMappingURL=style.css.map */
