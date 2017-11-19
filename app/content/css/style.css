@@ -474,6 +474,8 @@ body {
     line-height: 30px;
     background-color: transparent;
     color: #656565; }
+    .institution-view .inst-navigation .dt-nav-pill .button-icon {
+      display: none; }
     .institution-view .inst-navigation .dt-nav-pill.active, .institution-view .inst-navigation .dt-nav-pill:hover {
       color: #fff;
       background-color: #656565; }
@@ -502,6 +504,32 @@ body {
       text-decoration: none; }
   .institution-view .inst-info .inst-description.full-length {
     max-height: none; }
+@media screen and (max-width: 992px) {
+  .institution-view .institution-main-photo {
+    padding: 15px 0; }
+  .institution-view .inst-info .inst-title {
+    text-align: center; }
+  .institution-view .media-item {
+    margin-bottom: 15px; }
+  .institution-view .inst-navigation .dt-nav-pill {
+    border: 2px solid #656565;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 46px;
+    font-size: 21px; }
+    .institution-view .inst-navigation .dt-nav-pill .button-icon {
+      display: inline-block; }
+    .institution-view .inst-navigation .dt-nav-pill .button-text {
+      display: none; } }
+@media screen and (max-width: 480px) {
+  .institution-view .admin-button.dt-btn {
+    display: block;
+    margin-bottom: 10px;
+    height: 40px;
+    line-height: 36px;
+    font-size: 17px;
+    width: 100%; } }
 
 .institutions-view .institutions-blocks {
   margin-bottom: 15px; }

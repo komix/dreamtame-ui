@@ -13,16 +13,15 @@
       background-color: transparent;
       color: $logo-color;
 
+      .button-icon {
+        display: none;
+      }
+
       &.active, &:hover {
         color: #fff;
         background-color: $logo-color;
       }
     }
-
-  }
-
-  .institution-photos, .institution-videos {
-    //padding-top: 30px;
   }
 
   .select-image-box {
@@ -66,6 +65,55 @@
       }
     }
   }
+
+  @media screen and (max-width: $break-small) {
+    .institution-main-photo {
+      padding: 15px 0;
+    }
+
+    .inst-info {
+      .inst-title {
+        text-align: center;
+      }
+    }
+
+    .media-item {
+      margin-bottom: 15px;
+    }
+
+    .inst-navigation {
+      .dt-nav-pill {
+        border: 2px solid $logo-color;
+        height: 50px;
+        width: 50px;
+        text-align: center;
+        line-height: 46px;
+        font-size: 21px;
+
+        .button-icon {
+          display: inline-block;
+        }
+
+        .button-text {
+          display: none;
+        }
+      }
+    }
+
+  }
+
+  @media screen and (max-width: $break-extra-small) {
+    .admin-button.dt-btn {
+      display: block;
+      margin-bottom: 10px;
+      height: 40px;
+      line-height: 36px;
+      font-size: 17px;
+      width: 100%;
+    }
+  }
+
+
 }
 
 .institutions-view {

@@ -54,6 +54,8 @@
             pushParent(preselected);
 
             function pushParent(category) {
+                if (!category) { return false; }
+
                 var parent = hash[category.parent];
                 if (parent) {
                     hierarchy.unshift(parent);
