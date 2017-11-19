@@ -12,8 +12,8 @@ angular
       'infinite-scroll',
       'youtube-embed',
       'summernote',
-      'angular-preload-image'
-      //'angular-google-analytics'
+      'angular-preload-image',
+      'angular-google-analytics'
     ])
 
     //.config(['$urlRouterProvider', '$locationProvider', 'AnalyticsProvider',
@@ -26,13 +26,14 @@ angular
 
     .config(['$urlRouterProvider', '$locationProvider', '$compileProvider', '$qProvider',
         function($urlRouterProvider, $locationProvider, $compileProvider, $qProvider) {
-            //$locationProvider.html5Mode(true);
+            $locationProvider.html5Mode(true);
             $urlRouterProvider.otherwise("login");
             $compileProvider.preAssignBindingsEnabled(true);
-            //$qProvider.errorOnUnhandledRejections(false);
-            //AnalyticsProvider.setAccount('UA-100601648-1');
-        }]);
-    //.run(['Analytics', function(Analytics) { }]);
+
+            AnalyticsProvider.setAccount('UA-109656575-1');
+        }])
+
+    .run(['Analytics', function(Analytics) { }]);
 
 
 
