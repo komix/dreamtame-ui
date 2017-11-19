@@ -24,8 +24,8 @@ angular
     //  }])
     //.run(['Analytics', function(Analytics) { }]);
 
-    .config(['$urlRouterProvider', '$locationProvider', '$compileProvider', '$qProvider',
-        function($urlRouterProvider, $locationProvider, $compileProvider, $qProvider) {
+    .config(['$urlRouterProvider', '$locationProvider', '$compileProvider', 'AnalyticsProvider',
+        function($urlRouterProvider, $locationProvider, $compileProvider, AnalyticsProvider) {
             $locationProvider.html5Mode(true);
             $urlRouterProvider.otherwise("login");
             $compileProvider.preAssignBindingsEnabled(true);
