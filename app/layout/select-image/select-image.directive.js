@@ -47,7 +47,7 @@
         }
 
         function onImageLoaded(file) {
-            cropperService.openCropper(file, vm.config.aspectRatio, vm.config.resizeTo, vm.config.mWidth)
+            cropperService.openCropper(file, vm.config.aspectRatio, vm.config.resizeTo, vm.config.mWidth, vm.config)
                 .catch(function(err) {
                     console.log(err);
                 })

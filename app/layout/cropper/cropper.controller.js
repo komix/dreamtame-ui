@@ -22,6 +22,8 @@
         vm.showEvent = 'show';
         vm.hideEvent = 'hide';
 
+        vm.isLoadInProcess = false;
+
         vm.options = {
             maximize: true,
             aspectRatio: cropperService.aspectRatio,
@@ -34,10 +36,13 @@
         vm.scale = scale;
         vm.sendFile = sendFile;
         vm.clear = clear;
+        vm.isPreviewVisible = isPreviewVisible;
+        vm.isCropperVisible = isCropperVisible;
 
         activate();
 
         function activate() {
+            vm.isLoadInProcess = true;
             Cropper.encode(file = cropperService.blob).then(function(dataUrl) {
                 vm.dataUrl = dataUrl;
                 $timeout(showCropper);
@@ -46,6 +51,8 @@
 
         function getPreview() {
             if (!cropperService.blob || !data) return;
+
+            vm.isLoadInProcess = true;
 
             Cropper.crop(file, data).then(Cropper.encode).then(function(dataUrl) {
                 (vm.preview || (vm.preview = {})).dataUrl = dataUrl;
@@ -66,6 +73,7 @@
                 })
                 .then(Cropper.encode).then(function(dataUrl) {
                     (vm.preview || (vm.preview = {})).dataUrl = dataUrl;
+                    vm.isLoadInProcess = false;
                 });
         }
 
@@ -103,10 +111,21 @@
         }
 
         function showCropper() {
+            vm.isLoadInProcess = false;
             $scope.$broadcast(vm.showEvent);
         }
+
         function hideCropper() {
             $scope.$broadcast(vm.hideEvent);
+        }
+
+        function isPreviewVisible() {
+            return vm.preview && vm.preview.dataUrl && !vm.isLoadInProcess;
+        }
+
+        function isCropperVisible() {
+            var isPreviewVisible = vm.preview && vm.preview.dataUrl;
+            return vm.dataUrl && !isPreviewVisible && !vm.isLoadInProcess;
         }
 
     }

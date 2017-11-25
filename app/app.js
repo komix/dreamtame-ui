@@ -22,18 +22,18 @@ angular
     //    $urlRouterProvider.otherwise("login");
     //    AnalyticsProvider.setAccount('UA-100601648-1');
     //  }])
+    //.run(['Analytics', function(Analytics) { }]);
 
-    .run(['Analytics', function(Analytics) { }])
-
-    .config(['$urlRouterProvider', '$locationProvider', '$compileProvider', '$qProvider', 'AnalyticsProvider',
-        function($urlRouterProvider, $locationProvider, $compileProvider, $qProvider, AnalyticsProvider) {
-            //$locationProvider.html5Mode(true);
+    .config(['$urlRouterProvider', '$locationProvider', '$compileProvider', 'AnalyticsProvider',
+        function($urlRouterProvider, $locationProvider, $compileProvider, AnalyticsProvider) {
+            $locationProvider.html5Mode(true);
             $urlRouterProvider.otherwise("login");
             $compileProvider.preAssignBindingsEnabled(true);
-            //$qProvider.errorOnUnhandledRejections(false);
-            AnalyticsProvider.setAccount('UA-109656575-1');
-        }]);
 
+            AnalyticsProvider.setAccount('UA-109656575-1');
+        }])
+
+    .run(['Analytics', function(Analytics) { }]);
 
 
 

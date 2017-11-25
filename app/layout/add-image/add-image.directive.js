@@ -38,20 +38,21 @@
                     deployImage(result);
                 })
             } else {
-                imageService.deployRawImage(file).then(function(result) {
+                imageService.deployRawImage(file, vm.config).then(function(result) {
                     deployImage(result);
                 });
             }
         }
 
         function deployWithPlaceholder(file) {
-            return cropperService.openCropper(file, vm.config.aspectRatio, vm.config.resizeTo)
+            return cropperService.openCropper(file, vm.config.aspectRatio, vm.config.resizeTo, null, vm.config)
                 .catch(function(err) {
                     console.log(err);
                 })
                 .then(function(response){
                     if (!response) { return false; }
-                    return imageService.deployRawImage(file, vm.config, response.data.src)
+                    var imgSrc = response.data ? response.data.src : response.src;
+                    return imageService.deployRawImage(file, vm.config, imgSrc);
                 });
         }
 

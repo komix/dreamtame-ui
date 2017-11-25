@@ -18,6 +18,7 @@
             mCropWidth: null,
             imageData: imageData,
             modal: null,
+            config: {},
             openCropper: openCropper,
             sendImage: sendImage,
             reset: reset,
@@ -27,12 +28,13 @@
         return service;
 
 
-        function openCropper(blob, aspectRatio, cropWidth, mCropWidth) {
+        function openCropper(blob, aspectRatio, cropWidth, mCropWidth, config) {
             service.defer = $q.defer();
             service.blob = blob;
             service.aspectRatio = aspectRatio;
             service.cropWidth = cropWidth;
             service.mCropWidth = mCropWidth;
+            service.config = config;
 
             if (blob) {
                 service.modal = $modal.open({
@@ -49,8 +51,8 @@
 
         function sendImage(image) {
             var request = service.mCropWidth
-                ? imageService.deployCroppedImage(image)
-                : imageService.deployImageString(image);
+                ? imageService.deployCroppedImage(image, service.config)
+                : imageService.deployImageString(image, service.config);
 
             request.then(function(result) {
                 service.defer.resolve(result);
@@ -69,6 +71,7 @@
             service.cropWidth = null;
             service.mCropWidth = null;
             service.imageData = {};
+            service.config = {};
         }
     }
 

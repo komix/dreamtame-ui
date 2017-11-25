@@ -52,6 +52,7 @@
 		}
 
 		function deployRawImage(file, config, placeholder) {
+			console.log(config);
 			var defered = $q.defer();
 			var origW = config && config.origW ? config.origW : ORIG_W;
 			var thumbW = config && config.thumbW ? config.thumbW : THUMB_W;
@@ -128,6 +129,8 @@
 			var params = {
 				base64Image: imgString
 			};
+
+			console.log(config);
 
 			if (config && config.instance && config.instanceId) {
 				params.instance = config.instance;
