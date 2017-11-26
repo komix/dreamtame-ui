@@ -91,16 +91,20 @@
                     name: 'home'
                 },
                 {
-                    ukName: 'Про проект',
-                    name: 'about'
-                },
-                {
                     ukName: 'Секції',
                     name: 'institutions.all-state'
                 },
                 {
+                    ukName: 'Новини',
+                    name: 'news.news-list'
+                },
+                {
                     ukName: 'Пошук',
                     name: 'search.default-state'
+                },
+                {
+                    ukName: 'Про проект',
+                    name: 'about'
                 },
                 {
                     ukName: 'Профіль',
@@ -111,8 +115,9 @@
                     }
                 },
                 {
-                    ukName: 'Новини',
-                    name: 'news.news-list'
+                    ukName: 'Увійти',
+                    name: 'login.signin',
+                    narrowOnly: true
                 },
                 {
                     ukName: 'Адмінка',

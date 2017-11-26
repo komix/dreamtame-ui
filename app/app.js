@@ -26,7 +26,7 @@ angular
 
     .config(['$urlRouterProvider', '$locationProvider', '$compileProvider', 'AnalyticsProvider',
         function($urlRouterProvider, $locationProvider, $compileProvider, AnalyticsProvider) {
-            $locationProvider.html5Mode(true);
+            //$locationProvider.html5Mode(true);
             $urlRouterProvider.otherwise("login");
             $compileProvider.preAssignBindingsEnabled(true);
 
