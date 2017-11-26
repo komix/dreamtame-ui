@@ -48,16 +48,19 @@
         }
 
         function areAllInstitutionsDisplayed() {
-            return vm.institutions && vm.institutions.allInstitutionsLoaded && vm.institutions.length;
+            return vm.institutions
+                && vm.institutions.allInstitutionsLoaded
+                && vm.institutions.length;
         }
 
         function areNoInstitutionsFound() {
-            return vm.institutions && vm.institutions.allInstitutionsLoaded && !vm.institutions.length;
+            return vm.institutions
+                && vm.institutions.allInstitutionsLoaded
+                && !vm.institutions.data.length;
         }
 
         function getNotFoundMessage() {
             var message;
-
 
 
             if (institutionsListParams.searchParams.radius === 1) {

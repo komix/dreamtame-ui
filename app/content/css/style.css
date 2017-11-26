@@ -1063,6 +1063,7 @@ body {
   height: 170px; }
   .article-block .article-info .article-title {
     font-size: 19px;
+    font-weight: 400;
     color: #262626;
     margin-top: 0; }
   .article-block .article-info .article-snippet {
