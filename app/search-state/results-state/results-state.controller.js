@@ -12,11 +12,14 @@
         var institutionsListParams = {
             searchParams: {
                 point: {},
-                radius: $stateParams.radius || 1
+                radius: parseInt($stateParams.radius) || 1
             }
         };
 
         vm.loadMoreResults = loadMoreResults;
+        vm.areAllInstitutionsDisplayed = areAllInstitutionsDisplayed;
+        vm.areNoInstitutionsFound = areNoInstitutionsFound;
+        vm.getNotFoundMessage = getNotFoundMessage;
 
 
         activate();
@@ -42,6 +45,39 @@
             if (vm.institutions) {
                 vm.institutions.getRemote();
             }
+        }
+
+        function areAllInstitutionsDisplayed() {
+            return vm.institutions && vm.institutions.allInstitutionsLoaded && vm.institutions.length;
+        }
+
+        function areNoInstitutionsFound() {
+            return vm.institutions && vm.institutions.allInstitutionsLoaded && !vm.institutions.length;
+        }
+
+        function getNotFoundMessage() {
+            var message;
+
+
+
+            if (institutionsListParams.searchParams.radius === 1) {
+                message = 'В межах одного кілометра у радіусі вказаної адреси' +
+                    ' не знайдено жодного закладу, спробуйте збільшити радіус пошуку';
+            }
+
+            if (institutionsListParams.searchParams.radius === 2) {
+                message = 'В межах двох кілометрів у радіусі вказаної адреси' +
+                    ' не знайдено жодного закладу, спробуйте збільшити радіус пошуку';
+            }
+
+            if (institutionsListParams.searchParams.radius === 3) {
+                message = 'На жаль у системі поки не зареєстровано' +
+                    ' жодного закладу поруч із вказаною адресою.';
+            }
+
+            console.log(institutionsListParams);
+
+            return message;
         }
     }
 

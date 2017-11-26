@@ -7,10 +7,17 @@
     </inst-block>
     <div class="block-separator" data-ng-if="!$last"></div>
   </div>
+
   <div data-preloader
        data-ng-if="vm.institutions.isLoadInProcess"
   ></div>
+
   <p class="all-loaded"
-     data-ng-if="vm.institutions.allInstitutionsLoaded"
+     data-ng-if="vm.areAllInstitutionsDisplayed()"
   >Усі результати відображено.</p>
+
+  <p class="all-loaded"
+     data-ng-if="vm.areNoInstitutionsFound()"
+     data-ng-bind="vm.getNotFoundMessage()"
+  ></p>
 </div>

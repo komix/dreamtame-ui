@@ -28,7 +28,7 @@
         vm.socials = [
             {
                 name: 'facebook',
-                url: ''
+                url: 'https://www.facebook.com/dreamtamecom'
             },
             {
                 name: 'instagram',
@@ -36,7 +36,7 @@
             },
             {
                 name: 'youtube',
-                url: ''
+                url: 'https://www.youtube.com/channel/UCnvP_yMbtrrcIYwtcqykabw'
             }
         ];
 
