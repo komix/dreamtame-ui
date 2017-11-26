@@ -75,8 +75,6 @@
                     ' жодного закладу поруч із вказаною адресою.';
             }
 
-            console.log(institutionsListParams);
-
             return message;
         }
     }
