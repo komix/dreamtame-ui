@@ -16,17 +16,9 @@ angular
       'angular-google-analytics'
     ])
 
-    //.config(['$urlRouterProvider', '$locationProvider', 'AnalyticsProvider',
-    //  function($urlRouterProvider, $locationProvider, AnalyticsProvider) {
-    //    //$locationProvider.html5Mode(true);
-    //    $urlRouterProvider.otherwise("login");
-    //    AnalyticsProvider.setAccount('UA-100601648-1');
-    //  }])
-    //.run(['Analytics', function(Analytics) { }]);
-
     .config(['$urlRouterProvider', '$locationProvider', '$compileProvider', 'AnalyticsProvider',
         function($urlRouterProvider, $locationProvider, $compileProvider, AnalyticsProvider) {
-            //$locationProvider.html5Mode(true);
+            $locationProvider.html5Mode(true);
             $urlRouterProvider.otherwise("login");
             $compileProvider.preAssignBindingsEnabled(true);
 
