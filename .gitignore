@@ -6,6 +6,7 @@ tmp
 .DS_Store
 .idea
 app/content/.sass-cache/
+app/production
 dump.rdb
 .sass-cache
 app/content/css/style.css.map

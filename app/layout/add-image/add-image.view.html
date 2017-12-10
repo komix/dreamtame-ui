@@ -1,12 +1,11 @@
-<span class="add-image-wrapper">
-  <button data-ng-click="vm.triggerInput()" class="admin-button btn dt-btn btn-default">
-    <i class="fa fa-camera" aria-hidden="true"></i>
-    <span>Додати фото</span>
-  </button>
+<button data-ng-click="vm.triggerInput()" class="admin-button btn dt-btn btn-default">
+  <i class="fa fa-camera" aria-hidden="true"></i>
+  <span>Додати фото</span>
   <input type="file"
          data-ng-attr-id="{{vm.inputId}}"
          class="add-image"
          style="display: none;"
          onchange="angular.element(this).scope().vm.onImageLoaded(this.files[0])"
   >
-</span>
+</button>
+
