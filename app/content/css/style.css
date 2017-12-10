@@ -115,6 +115,10 @@
   margin-top: -20px; }
   .home-view .url-button.dt-btn {
     background-color: #fff; }
+  .home-view .add-institution-button {
+    position: absolute;
+    top: 15px;
+    left: 15px; }
   .home-view .search-block {
     height: 400px;
     padding: 20px 0;
@@ -313,7 +317,8 @@ body {
     background-color: #fff;
     border-radius: 4px;
     padding: 15px;
-    margin: 15px auto; }
+    margin: 15px auto;
+    min-width: 238px; }
     .auth-view .sign-form .form-group {
       margin-bottom: 0; }
     .auth-view .sign-form .form-title {
@@ -344,6 +349,18 @@ body {
     .profile-view .user-profile .user-info .user-name {
       font-size: 19px;
       color: #262626; }
+.profile-view .profile-manage-buttons .profile-button {
+  margin-right: 6px; }
+@media screen and (max-width: 480px) {
+  .profile-view .profile-manage-buttons .dt-btn {
+    display: block;
+    margin-bottom: 10px;
+    height: 40px;
+    line-height: 36px;
+    font-size: 17px;
+    width: 100%; } }
+.profile-view .profile-institutions {
+  padding-bottom: 15px; }
 
 .edit-profile-view .edit-profile-form {
   max-width: 400px; }
@@ -506,6 +523,8 @@ body {
       text-decoration: none; }
   .institution-view .inst-info .inst-description.full-length {
     max-height: none; }
+.institution-view .institution-manage-buttons .admin-button.dt-btn {
+  margin-right: 70px; }
 @media screen and (max-width: 992px) {
   .institution-view .institution-main-photo {
     padding: 15px 0; }
@@ -535,6 +554,8 @@ body {
 
 .institutions-view .institutions-blocks {
   margin-bottom: 15px; }
+.institutions-view .add-section {
+  padding-top: 30px; }
 
 .cats-navigation .cat-history {
   clear: both;
@@ -1158,6 +1179,11 @@ body {
     line-height: 41px;
     min-width: 130px;
     font-size: 18px; }
+  .btn.dt-btn.btn-primary {
+    background-color: #fff; }
+    .btn.dt-btn.btn-primary:hover, .btn.dt-btn.btn-primary:active, .btn.dt-btn.btn-primary:focus {
+      background: #656565;
+      color: #fff; }
 
 .institution-thumbnail {
   box-shadow: -2px 4px 30px 0 rgba(103, 122, 141, 0.17);

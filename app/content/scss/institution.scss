@@ -66,6 +66,18 @@
     }
   }
 
+  .institution-manage-buttons {
+    .admin-button.dt-btn {
+      margin-right: 70px;
+    }
+
+    .add-image-wrapper {
+
+    }
+  }
+
+
+
   @media screen and (max-width: $break-small) {
     .institution-main-photo {
       padding: 15px 0;
@@ -119,5 +131,9 @@
 .institutions-view {
   .institutions-blocks {
     margin-bottom: 15px;
+  }
+
+  .add-section {
+    padding-top: 30px;
   }
 }

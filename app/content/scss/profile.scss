@@ -18,4 +18,25 @@
     }
   }
 
+  .profile-manage-buttons {
+    .profile-button {
+      margin-right: 6px;
+    }
+
+    @media screen and (max-width: $break-extra-small) {
+      .dt-btn {
+        display: block;
+        margin-bottom: 10px;
+        height: 40px;
+        line-height: 36px;
+        font-size: 17px;
+        width: 100%;
+      }
+    }
+  }
+
+  .profile-institutions {
+    padding-bottom: 15px;
+  }
+
 }

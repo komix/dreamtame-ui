@@ -35,5 +35,14 @@
       min-width: 130px;
       font-size: 18px;
     }
+
+    &.btn-primary {
+      background-color: #fff;
+
+      &:hover, &:active, &:focus {
+        background: $logo-color;
+        color: #fff;
+      }
+    }
   }
 }

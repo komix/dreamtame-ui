@@ -18,26 +18,28 @@
               <span data-ng-bind="vm.user.lastName"></span>
             </p>
 
-            <button class="btn btn-default dt-btn"
-                    data-ng-click="vm.logOut()"
-            >Вийти</button>
-            <a ui-sref="edit-profile({id: vm.user.id})"
-               data-ng-if="vm.user.id"
-               class="btn btn-default dt-btn">
-              редагувати профіль
-              <i class="fa fa-pencil"></i>
-            </a>
-            <a ui-sref="manage-inst"
-               class="btn btn-default dt-btn">
-              <i class="fa fa-plus"></i>
-              додати секцію
-            </a>
+            <div class="profile-manage-buttons">
+              <button class="btn btn-default dt-btn profile-button"
+                      data-ng-click="vm.logOut()"
+              >Вийти</button>
+              <a ui-sref="edit-profile({id: vm.user.id})"
+                 data-ng-if="vm.user.id"
+                 class="btn btn-default dt-btn profile-button">
+                <i class="fa fa-pencil"></i>
+                Редагувати Профіль
+              </a>
+              <a ui-sref="manage-inst"
+                 class="btn btn-default dt-btn profile-button">
+                <i class="fa fa-plus"></i>
+                Додати Секцію
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-8 profile-institutions">
         <h4>Ваші секції:</h4>
         <div data-ng-repeat="institution in vm.institutions.data track by institution.id">
           <div data-inst-block

@@ -4,6 +4,12 @@
       <div class="col-md-3">
         <smart-cat-navigation data-active-id="vm.activeCatId">
         </smart-cat-navigation>
+        <div class="add-section text-center">
+          <button class="dt-btn btn btn-primary add-institution-button"
+                  data-ng-click="vm.goToCreateState()">
+            Додати Секцію
+          </button>
+        </div>
       </div>
       <div class="col-md-9 institutions-wrapper">
         <div data-ui-view></div>
