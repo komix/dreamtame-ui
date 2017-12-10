@@ -524,7 +524,7 @@ body {
   .institution-view .inst-info .inst-description.full-length {
     max-height: none; }
 .institution-view .institution-manage-buttons .admin-button.dt-btn {
-  margin-right: 70px; }
+  margin-right: 7px; }
 @media screen and (max-width: 992px) {
   .institution-view .institution-main-photo {
     padding: 15px 0; }
