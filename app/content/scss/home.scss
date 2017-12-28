@@ -10,7 +10,7 @@
   .add-institution-button {
     position: absolute;
     top: 15px;
-    left: 15px;
+    right: 15px;
   }
 
   .search-block {
@@ -65,6 +65,11 @@
     background-color: #3e3e3e;
     padding-top: 25px;
     position: relative;
+
+    .last-added-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
     .url-button {
       position: absolute;

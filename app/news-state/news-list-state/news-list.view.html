@@ -2,9 +2,6 @@
   <ul class="articles-list items-list"
       data-infinite-scroll="vm.loadMoreArticles()"
       data-infinite-scroll-distance="0">
-    <div data-preloader
-         data-ng-if="vm.news.isLoadInProcess"
-    ></div>
     <li data-ng-repeat="article in vm.news.data track by article.id">
       <div data-article-block
            data-article="article"
@@ -13,5 +10,8 @@
       <div class="block-separator" data-ng-if="!$last"></div>
     </li>
   </ul>
+  <div data-preloader
+       data-ng-if="vm.news.isLoadInProcess"
+  ></div>
 </div>
 

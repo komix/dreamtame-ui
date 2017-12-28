@@ -29,9 +29,9 @@
     list-style-type: none;
     margin: 0;
     padding-top: 20px;
-    -webkit-transition: all 0.3s;
+    -webkit-transition: height 0.3s;
     /* For Safari 3.1 to 6.0 */
-    transition: all 0.3s; }
+    transition: height 0.3s; }
     .shell .main-header .navigation li {
       display: inline-block; }
       .shell .main-header .navigation li a {
@@ -118,7 +118,7 @@
   .home-view .add-institution-button {
     position: absolute;
     top: 15px;
-    left: 15px; }
+    right: 15px; }
   .home-view .search-block {
     height: 400px;
     padding: 20px 0;
@@ -156,6 +156,9 @@
     background-color: #3e3e3e;
     padding-top: 25px;
     position: relative; }
+    .home-view .last-added-block .last-added-wrapper {
+      max-width: 1200px;
+      margin: 0 auto; }
     .home-view .last-added-block .url-button {
       position: absolute;
       top: -15px;
@@ -1459,22 +1462,38 @@ body {
     .footer .copyright .copyright-text {
       font-size: 17px; }
 
-.article-view .article-header {
-  overflow: hidden;
-  margin-bottom: 15px; }
-  .article-view .article-header .article-main-image {
-    float: left; }
-    .article-view .article-header .article-main-image img {
-      max-width: 100%; }
-  .article-view .article-header .article-title h1 {
-    padding: 0;
-    margin: 10px 0 0 15px;
-    font-size: 22px;
-    font-weight: 400; }
-.article-view .article-text {
-  font-size: 15px; }
-  .article-view .article-text img {
-    max-width: 75%; }
+.article-view {
+  overflow: hidden; }
+  .article-view .article-header {
+    overflow: hidden;
+    margin-bottom: 15px; }
+    .article-view .article-header .article-main-image {
+      float: left; }
+      .article-view .article-header .article-main-image img {
+        max-width: 100%; }
+    .article-view .article-header .article-title h1 {
+      padding: 0;
+      margin: 10px 0 0 15px;
+      font-size: 22px;
+      font-weight: 400; }
+  .article-view .article-snippet {
+    font-style: italic;
+    color: #656565; }
+  .article-view .article-text {
+    font-size: 15px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    word-break: break-all;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto; }
+    .article-view .article-text img {
+      max-width: 75%; }
+  .article-view .note-video-clip {
+    max-width: 100%; }
 
 .locations-view .dt-google-map .google-map {
   height: 600px;

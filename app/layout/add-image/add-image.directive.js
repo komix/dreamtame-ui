@@ -23,9 +23,9 @@
         return directive;
     }
 
-    AddImageController.$inject = ['imageService', 'photosService', 'cropperService', '$rootScope'];
+    AddImageController.$inject = ['imageService', 'photosService', 'cropperService', '$rootScope', '$timeout'];
 
-    function AddImageController(imageService, photosService, cropperService, $rootScope) {
+    function AddImageController(imageService, photosService, cropperService, $rootScope, $timeout) {
         var vm = this;
         vm.triggerInput = triggerInput;
         vm.onImageLoaded = onImageLoaded;
@@ -74,7 +74,9 @@
         }
 
         function triggerInput() {
-            $('#' + vm.inputId).click();
+            $timeout(function() {
+                $('#' + vm.inputId).click();
+            });
         }
     }
 
