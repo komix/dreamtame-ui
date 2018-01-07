@@ -72,7 +72,8 @@
     .shell .main-header .profile-button a {
       color: #656565; }
       .shell .main-header .profile-button a:hover {
-        color: #626262; }
+        color: #626262;
+        opacity: 0.7; }
   @media screen and (max-width: 992px) {
     .shell .main-header .toggle-header {
       display: block; }
@@ -1601,5 +1602,85 @@ body {
 
 .credit-card-div .pad-adjust {
   padding-top: 10px; }
+
+.services-state .banner {
+  background: url("../images/swim_back.jpg") center;
+  background-size: cover;
+  position: relative;
+  margin: -20px 0 20px 0; }
+  .services-state .banner .banner-inner {
+    padding: 100px 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff; }
+  .services-state .banner .banner-description {
+    font-size: 16px; }
+    .services-state .banner .banner-description a {
+      color: #fff;
+      text-decoration: underline;
+      font-weight: 600; }
+      .services-state .banner .banner-description a:hover {
+        text-decoration: none; }
+.services-state .services-panels {
+  max-width: 1200px;
+  margin: 0 auto; }
+  .services-state .services-panels .services-panel .panel-header {
+    position: relative; }
+    .services-state .services-panels .services-panel .panel-header .panel-title {
+      color: #626262;
+      font-weight: 400;
+      font-size: 19px;
+      padding-left: 15px; }
+    .services-state .services-panels .services-panel .panel-header .service-price {
+      position: absolute;
+      text-align: right;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding-right: 15px;
+      color: #262626;
+      text-decoration: underline;
+      font-style: italic; }
+      @media (min-width: 992px) {
+        .services-state .services-panels .services-panel .panel-header .service-price {
+          width: 33.3%; } }
+  .services-state .services-panels .services-panel .service-description {
+    padding: 10px 0;
+    color: #656565;
+    font-size: 14px; }
+    .services-state .services-panels .services-panel .service-description .fat {
+      font-weight: 600; }
+  .services-state .services-panels .separator {
+    height: 2px;
+    background-color: #ccc;
+    margin: 0 20px 20px 20px; }
+  .services-state .services-panels .services-description-panel .copyright-banner {
+    height: 400px;
+    background: url("../images/writing-background.jpg") center;
+    background-size: cover;
+    background-position: bottom;
+    margin-bottom: 15px; }
+  @media (min-width: 992px) {
+    .services-state .services-panels .services-description-panel .description-container {
+      display: table;
+      width: 100%;
+      margin-top: -50px;
+      padding: 50px 0 0 0;
+      /*set left/right padding according to needs*/
+      box-sizing: border-box; }
+    .services-state .services-panels .services-description-panel .description-row {
+      height: 100%;
+      display: table-row; }
+      .services-state .services-panels .services-description-panel .description-row .no-float {
+        display: table-cell;
+        float: none; }
+    .services-state .services-panels .services-description-panel .copyright-banner {
+      height: auto;
+      position: absolute;
+      top: 0;
+      bottom: 15px;
+      right: 15px;
+      left: 15px;
+      margin: 0; } }
 
 /*# sourceMappingURL=style.css.map */

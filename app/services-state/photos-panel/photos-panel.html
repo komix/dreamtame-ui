@@ -1,3 +1,32 @@
-<div class="services-photos-panel">
-  <h1>photos</h1>
+<div class="services-panel services-photos-panel">
+  <div class="panel-header">
+    <h1 class="panel-title">Фотозйомка</h1>
+    <span class="service-price">450 грн</span>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="service-description">
+          Фотографія завжди була сильним інструментом, а в нинішню медіа-епоху її взагалі важко переоцінити.
+          Навіть якщо Ви не ведете сторінок в соціальних мережах, та не маєте персонального сайту, хороше фото не
+          стане на заваді. <br>
+          Замовивши фотозйомку, Ви отримаєте близько <span class="fat">тридцяти оброблених фотографій</span>, які
+          зможете використовувати не лише на нашому ресурсі.
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="row">
+          <div data-ng-repeat="photo in vm.photos track by $index"
+               class="col-md-3"
+          >
+            <div data-media-item
+                 data-item="photo"
+                 data-is-owner="vm.isOwnerOrAdmin()"
+                 data-ng-click="vm.initPhotoSwipe($index)">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

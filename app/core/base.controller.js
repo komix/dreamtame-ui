@@ -34,7 +34,8 @@
                 'login.signup',
                 'confirm-email',
                 'forgot-password',
-                'restore-password'
+                'restore-password',
+                'services'
             ];
 
             return _.indexOf(wideStates, $state.current.name) !== -1;

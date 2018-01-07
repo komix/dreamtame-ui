@@ -1,3 +1,29 @@
-<div class="services-videos-panel">
-  <h1>videos</h1>
+<div class="services-panel services-videos-panel">
+  <div class="panel-header">
+    <h1 class="panel-title">Відеозйомка</h1>
+    <span class="service-price">450 грн</span>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="service-description">
+          Саме відеозапис допоможе Вашим потенційним новобранцям остаточно визначитись з вибором спортивної секції.
+          Замовте у нас відеозйомку і ми перетворимо Ваш спортивний зал на справжню кіностудію. <br>
+          Ми змонтуємо з відзнятого матеріалу <span class="fat">відеоролик тривалістю до двох хвилин.</span>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="row">
+          <div data-ng-repeat="video in vm.videos track by $index"
+               class="col-md-3"
+          >
+            <div data-media-item
+                 data-item="video"
+                 data-ng-click="vm.showVideo(video)">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -13,7 +13,7 @@
             bindToController: true,
             controller: MediaItemController,
             controllerAs: 'vm',
-            restrict: 'E',
+            restrict: 'EA',
             templateUrl: 'layout/media-item/media-item.html',
             scope: {
                 item: '=',

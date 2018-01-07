@@ -18,7 +18,7 @@
         function init(items, index) {
 
             var options = {
-                index: index, // start at first slide
+                index: index,
                 backButtonHideEnabled: false,
                 history: false,
                 maxSpreadZoom: 2,
