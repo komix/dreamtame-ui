@@ -32,7 +32,7 @@
             },
             {
                 name: 'instagram',
-                url: 'https://www.instagram.com/dreamtame_com/'
+                url: 'https://www.instagram.com/dreamtamecom'
             },
             {
                 name: 'youtube',

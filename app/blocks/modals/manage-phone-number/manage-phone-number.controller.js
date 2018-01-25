@@ -5,12 +5,12 @@
         .module('app')
         .controller('ManagePhoneNumberModalController', ManagePhoneNumberModalController);
 
-    ManagePhoneNumberModalController.$inject = ['$timeout', '$uibModalStack', 'options', 'instService'];
+    ManagePhoneNumberModalController.$inject = ['$rootScope', '$timeout', '$uibModalStack', 'options', 'instService'];
 
-    function ManagePhoneNumberModalController($timeout, $uibModalStack, options, instService) {
+    function ManagePhoneNumberModalController($rootScope, $timeout, $uibModalStack, options, instService) {
         var vm = this;
 
-        var PHONE_LENGTH = 17;
+        var PHONE_LENGTH = 19;
 
         vm.isEditState = false;
 
@@ -25,6 +25,8 @@
             if (options && options.phoneNumber) {
                 vm.rawNumber = options.phoneNumber.rawNumber;
                 vm.isEditState = true;
+            } else {
+                vm.rawNumber = '';
             }
 
             setModalTitles();
@@ -46,11 +48,17 @@
         }
 
         function submit() {
-            if (!vm.rawNumber && vm.rawNumber.length !== PHONE_LENGTH) { return false; }
+            if (vm.rawNumber.length !== PHONE_LENGTH) { return false; }
+            vm.isLoadInProcess = true;
 
-            getPromise().then(function(response) {
-                console.log(response);
-            });
+            getPromise()
+                .then(function(response) {
+                    $uibModalStack.dismissAll();
+                    $rootScope.$emit('phone-number-added', {data: response.data})
+                })
+                .finally(function() {
+                    vm.isLoadInProcess = false;
+                })
         }
 
         function getPromise() {
@@ -73,6 +81,7 @@
         function remove() {
             instService.removePhoneNumber(options.phoneNumber.id).then(function() {
                 $uibModalStack.dismissAll();
+                $rootScope.$emit('phone-number-deleted', {id: options.phoneNumber.id});
             })
         }
 

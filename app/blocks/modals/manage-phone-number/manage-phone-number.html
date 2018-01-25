@@ -19,13 +19,23 @@
         <input type="text"
                id="manage-phone-number-input"
                class="form-control"
-               data-ng-model="vm.rawNumber">
+               data-ng-model="vm.rawNumber"
+               data-ng-disabled="vm.isLoadInProcess"
+        >
       </div>
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-sm btn-danger pull-left" ng-click="vm.remove()">Видалити</button>
-    <button type="button" class="btn btn-sm btn-default" data-ng-click="vm.submit()">Зберегти</button>
+    <button type="button"
+            class="btn btn-sm btn-danger pull-left"
+            ng-click="vm.remove()"
+            data-ng-if="vm.isEditState"
+    >Видалити</button>
+    <button type="button"
+            class="btn btn-sm btn-default"
+            data-ng-click="vm.submit()"
+            data-ng-disabled="vm.isLoadInProcess"
+    >Зберегти</button>
     <button type="button" class="btn btn-sm btn-default" ng-click="$dismiss()">Скасувати</button>
   </div>
 </div>

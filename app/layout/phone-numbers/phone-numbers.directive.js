@@ -23,9 +23,9 @@
         return directive;
     }
 
-    PhoneNumbersController.$inject = ['modalService', 'users'];
+    PhoneNumbersController.$inject = ['$rootScope', 'modalService', 'users'];
 
-    function PhoneNumbersController(modalService, users) {
+    function PhoneNumbersController($rootScope, modalService, users) {
         var vm = this;
 
         vm.openAddPhoneNumberModal = openAddPhoneNumberModal;
@@ -34,7 +34,23 @@
         activate();
 
         function activate() {
+            $rootScope.$on('phone-number-deleted', function(event, params) {
+                if (params.id) {
+                    var itemToRemove = _.find(vm.options.institution.phoneNumbers, function(elem) {
+                        return elem.id === params.id;
+                    });
+                    var index = _.indexOf(vm.options.institution.phoneNumbers, itemToRemove);
+                    if (index === -1) { return false; }
 
+                    vm.options.institution.phoneNumbers.splice(index, 1);
+                }
+            });
+
+            $rootScope.$on('phone-number-added', function(event, params) {
+                if (params.data && params.data.id) {
+                    vm.options.institution.phoneNumbers.push(params.data);
+                }
+            });
         }
 
         function openAddPhoneNumberModal(phoneNumber) {

@@ -117,7 +117,7 @@
         }
 
         function isDefaultScheduleWarningVisible() {
-            return vm.scheduleItem.isDefaultSchedule;
+            return vm.scheduleItem.isDefaultSchedule && vm.config.schedules.hasDefaultSchedule();
         }
 
         function isGroupScheduleWarningVisible() {
