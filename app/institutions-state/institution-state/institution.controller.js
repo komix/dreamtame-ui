@@ -4,10 +4,10 @@
         .module('app')
         .controller('InstitutionController', InstitutionController);
 
-    InstitutionController.$inject = ['$rootScope', '$state', '$stateParams', 'users', 'photosService',
-        'instService', 'categoriesService', 'photoswipe', 'modalService'];
+    InstitutionController.$inject = ['$rootScope', '$scope', '$state', '$stateParams', 'users', 'photosService', 'metaTags',
+                                    'instService', 'categoriesService', 'photoswipe', 'modalService'];
 
-    function InstitutionController($rootScope, $state, $stateParams, users, photosService,
+    function InstitutionController($rootScope, $scope, $state, $stateParams, users, photosService, metaTags,
                                    instService, categoriesService, photoswipe, modalService) {
         var vm = this;
 
@@ -46,6 +46,10 @@
             if ($state.current.name === 'institutions.institution') {
                 $state.go('institutions.institution.photos', {id: instId});
             }
+
+            $scope.$on('$destroy', function() {
+                metaTags.reset();
+            });
         }
 
         function getInst() {
@@ -54,10 +58,17 @@
                 vm.isImageEditable = parseInt(vm.inst.owner) === parseInt(users.current.id);
                 categoriesService.activeId = vm.inst.categoryId;
 
+                metaTags.setTitle(getPageTitle(vm.inst.title));
+                metaTags.setDescription(vm.inst.description);
+
                 setMapConfig();
                 getInstPhoto(vm.inst.photoId);
                 emitActiveCatChangeEvent(vm.inst.categoryId);
             });
+        }
+
+        function getPageTitle(instTitle) {
+            return instTitle + ' - Dreamtame';
         }
 
         function setMapConfig() {

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="app" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="app" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="app" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="app" class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html lang="en" ng-app="app" data-ng-controller='BaseController as vm' class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="app" data-ng-controller='BaseController as vm' class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="app" data-ng-controller='BaseController as vm' class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="app" data-ng-controller='BaseController as vm' class="no-js"> <!--<![endif]-->
 <head>
   <base href="/">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Dreamtame</title>
-  <meta name="description" content="">
+  <title data-ng-bind="vm.metaTags.title"></title>
+  <meta name="description" data-ng-attr-content="{{vm.metaTags.description}}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-site-verification" content="he8LJMfHmznOiIOQz-6k0D1QLkvJQceccxvocNUJyl8" />
 
@@ -32,10 +32,7 @@
   <link href="bower_components/ng-cropper/dist/ngCropper.all.css" rel="stylesheet">
   <link rel="stylesheet" href="content/css/style.css">
 </head>
-<body ng-controller='BaseController as vm'>
-
-  
-
+<body>
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
@@ -83,6 +80,8 @@
   <script src="core/data-models/User.js"></script>
 
   <script src="api/dtApi.js"></script>
+  <script src="blocks/meta-tags/meta-tags.service.js"></script>
+
   <script src="blocks/photos/photos.service.js"></script>
   <script src="blocks/videos/videos.service.js"></script>
 

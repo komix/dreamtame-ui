@@ -5,13 +5,15 @@
         .module('app')
         .controller('BaseController', BaseController);
 
-    BaseController.$inject = ['$state', 'users', '$rootScope'];
+    BaseController.$inject = ['$state', 'users', '$rootScope', 'metaTags'];
     /* @ngInject */
-    function BaseController($state, users, $rootScope) {
+    function BaseController($state, users, $rootScope, metaTags) {
         var vm = this;
 
         vm.users = users;
         vm.states = [];
+        vm.metaTags = metaTags;
+
         vm.isActiveStateWide = isActiveStateWide;
         //vm.isActiveStateFullHeight = isActiveStateFullHeight;
 
