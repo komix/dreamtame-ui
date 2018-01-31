@@ -37,7 +37,7 @@
                 ['edit',['undo','redo']],
                 ['headline', ['style']],
                 ['style', ['bold', 'italic', 'underline', 'superscript', 'subscript', 'strikethrough', 'clear']],
-                // ['fontface', ['fontname']],
+                 ['fontface', ['fontname']],
                 ['textsize', ['fontsize']],
                 ['fontclr', ['color']],
                 ['alignment', ['ul', 'ol', 'paragraph', 'lineheight']],

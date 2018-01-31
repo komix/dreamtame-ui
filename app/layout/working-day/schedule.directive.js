@@ -45,9 +45,12 @@
         }
 
         function isOwner() {
-            if (!users.current) { return false }
+            if (!users.current || !vm.workingDays.getOwnerId()) { return false }
 
-            return vm.workingDays.getOwnerId() === users.current.id;
+            var isOwner = parseInt(vm.workingDays.getOwnerId()) === parseInt(users.current.id);
+            var isAdmin = users.current.role === 'admin' || users.current.role === 'superman';
+
+            return isAdmin || isOwner;
         }
 
     }

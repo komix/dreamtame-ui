@@ -63,7 +63,11 @@
         function isOwner() {
             if (!vm.options.institution || !users.current) { return false }
 
-            return vm.options.institution.owner === users.current.id;
+            var isOwner = parseInt(vm.options.institution.owner) === parseInt(users.current.id);
+            var isAdmin = users.current.role === 'admin' || users.current.role === 'superman';
+
+            return isAdmin || isOwner;
+
         }
 
 

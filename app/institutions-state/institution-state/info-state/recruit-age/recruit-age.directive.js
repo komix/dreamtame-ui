@@ -52,7 +52,10 @@
         function isOwner() {
             if (!vm.institution || !users.current) { return false }
 
-            return vm.institution.owner === users.current.id;
+            var isOwner = parseInt(vm.institution.owner) === parseInt(users.current.id);
+            var isAdmin = users.current.role === 'admin' || users.current.role === 'superman';
+
+            return isAdmin || isOwner;
         }
 
         function openRecruitAgeModal() {
