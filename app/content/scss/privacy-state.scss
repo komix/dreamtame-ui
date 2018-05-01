@@ -1,0 +1,21 @@
+.privacy-state {
+  max-width: 800px;
+  padding: 15px 30px;
+  margin: 0 auto;
+  font-size: 15px;
+  font-weight: 400;
+  color: $text-color-dark;
+
+  h1 {
+    margin-top: 0;
+    color: $text-color-light;
+  }
+
+  .fat {
+    font-weight: 600;
+  }
+
+  @media screen and (max-width: $break-extra-small) {
+   padding: 15px;
+  }
+}

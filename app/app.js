@@ -19,7 +19,7 @@ angular
     .config(['$urlRouterProvider', '$locationProvider', '$compileProvider', 'AnalyticsProvider',
         function($urlRouterProvider, $locationProvider, $compileProvider, AnalyticsProvider) {
             $locationProvider.html5Mode(true);
-            $urlRouterProvider.otherwise('login/signin');
+            $urlRouterProvider.otherwise('home');
             $compileProvider.preAssignBindingsEnabled(true);
             AnalyticsProvider.setAccount('UA-109656575-1');
         }])
