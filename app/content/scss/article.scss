@@ -1,6 +1,18 @@
 .article-view {
   overflow: hidden;
 
+  .admin-block {
+    overflow: hidden;
+
+    .article-status {
+      line-height: 30px;
+    }
+
+    .dt-btn {
+      margin-left: 10px;
+    }
+  }
+
   .article-header {
     overflow: hidden;
 

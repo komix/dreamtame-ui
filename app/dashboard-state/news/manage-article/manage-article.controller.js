@@ -4,9 +4,9 @@
         .module('app')
         .controller('DashboardManageArticleController', DashboardManageArticleController);
 
-    DashboardManageArticleController.$inject = ['$stateParams', 'Article'];
+    DashboardManageArticleController.$inject = ['$stateParams', '$state', 'Article'];
 
-    function DashboardManageArticleController($stateParams, Article) {
+    function DashboardManageArticleController($stateParams, $state, Article) {
         var vm = this;
 
         var articleId = $stateParams.id;
@@ -57,7 +57,7 @@
             vm.article.imgUrl = vm.image.src;
 
             getRequest().then(function(response) {
-                console.log(response);
+                $state.go('news.article', {id: vm.article.id});
             })
         }
 

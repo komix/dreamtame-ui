@@ -4,9 +4,9 @@
         .module('app')
         .controller('SignInController', SignInController);
 
-    SignInController.$inject = ['$rootScope', '$scope', 'users'];
+    SignInController.$inject = ['$rootScope', '$stateParams', '$window', '$scope', 'users'];
 
-    function SignInController($rootScope, $scope, users) {
+    function SignInController($rootScope, $stateParams, $window, $scope, users) {
         var vm = this;
 
         vm.submit = submit;
@@ -19,6 +19,11 @@
         activate();
 
         function activate() {
+            if ($stateParams.fromservice) {
+                initFb();
+                vm.isLoadInProcess = true;
+            }
+
             var listener = $rootScope.$on('token-invalid', function() {
                 vm.errorMessage = 'Неправильний логін або пароль.'
             });
@@ -26,6 +31,21 @@
             $scope.$on('$destroy', function() {
                 listener();
             })
+        }
+
+        function initFb() {
+            $window.fbAsyncInit = function() {
+                // Executed when the SDK is loaded
+                FB.init({
+                    appId: '1755870721388469',
+                    channelUrl: 'login-state/auth-providers/channel.html',
+                    status: true,
+                    cookie: true,
+                    xfbml: true
+                });
+
+                users.watchFacebookAuthChange();
+            };
         }
 
 

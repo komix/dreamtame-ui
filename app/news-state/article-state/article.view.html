@@ -2,6 +2,27 @@
   <div class="article-header">
     <div class="container-fluid">
       <div class="row row-no-padding">
+        <div class="col-xs-12">
+          <div class="alert alert-warning admin-block" role="alert" data-ng-if="vm.isAdmin()">
+            <span data-ng-if="!vm.article.isPublished"
+                  class="article-status"
+            >Цей текст ще не опубліковано.</span>
+            <span data-ng-if="vm.article.isPublished"
+                  class="article-status"
+            >Цей текст вже опубліковано.</span>
+            <button class="btn btn-default dt-btn pull-right"
+                    data-ng-click="vm.article.setPublished(true)"
+                    data-ng-if="!vm.article.isPublished"
+            >Опублікувати</button>
+            <button class="btn btn-default dt-btn pull-right"
+                    data-ng-click="vm.article.setPublished(false)"
+                    data-ng-if="vm.article.isPublished"
+            >Приховати текст</button>
+            <a ui-sref="dashboard.news.manage-article({id: vm.article.id})"
+               class="btn btn-default dt-btn pull-right"
+            >Редагувати</a>
+          </div>
+        </div>
         <div class="col-md-2 col-xs-3">
           <div class="article-main-image">
             <img data-ng-src="{{vm.article.imgUrl}}" alt="">
@@ -25,7 +46,7 @@
   <div class="article-comments">
     <div data-comments
          data-options="vm.options"
-         data-ng-if="vm.options"
+         data-ng-if="vm.options && vm.article.text"
     ></div>
   </div>
 </div>

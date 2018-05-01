@@ -18,6 +18,7 @@
             getAll: getAll,
             update: update,
             remove: remove,
+            publish: publish
         };
 
         return service;
@@ -33,9 +34,14 @@
 
         function get(id){
             var defered = $q.defer();
-            $http.get(apiUrl +  '/news/' + id).then(function(data){
-                defered.resolve(data);
-            });
+            $http.get(apiUrl +  '/news/' + id)
+                .catch(function (err) {
+                    defered.reject(err)
+                })
+                .then(function(data){
+                    if (!data) { return false; }
+                    defered.resolve(data);
+                });
             return defered.promise;
         }
 
@@ -65,9 +71,27 @@
 
         function remove(id) {
             var defered = $q.defer();
-            $http.delete(apiUrl +  '/api/news/' + id).then(function(data){
+            $http.delete(apiUrl +  '/api/news/' + id)
+                .catch(function (err) {
+                    defered.reject(err)
+                })
+                .then(function(data){
+                    if (!data) { return false; }
+                    defered.resolve(data);
+                });
+            return defered.promise;
+        }
+
+        function publish(id, value) {
+            var defered = $q.defer();
+            var reqData = {
+              isPublished: value
+            };
+
+            $http.post(apiUrl + '/api/post-article/' + id, reqData).then(function(data){
                 defered.resolve(data);
             });
+
             return defered.promise;
         }
 

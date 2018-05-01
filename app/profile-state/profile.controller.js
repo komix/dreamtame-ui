@@ -46,7 +46,13 @@
         }
 
         function getProfilePhoto(photoId) {
-            if (!photoId) { return false; }
+            if (!photoId) {
+                vm.image = {
+                    src: vm.user.smallPhotoUrl
+                };
+
+                return false;
+            }
             photosService.get(photoId).then(function(response) {
                 vm.image = response.data;
             });

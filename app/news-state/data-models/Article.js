@@ -18,6 +18,7 @@
             this.text = '';
             this.imgUrl = null;
             this.text = '';
+            this.isPublished = false;
             this.createdAt = new DateTimePicker({
                 date: new Date(),
                 time: new Date()
@@ -35,6 +36,7 @@
             if (params.snippet) { this.snippet = params.snippet; }
             if (params.text) { this.text = params.text; }
             if (params.imgUrl) { this.imgUrl = params.imgUrl; }
+            if (params.isPublished) { this.isPublished = params.isPublished; }
             if (params.createdAt) {
                 var dstTime = helper.applyDstOffset(params.createdAt);
 
@@ -75,9 +77,14 @@
 
         Article.prototype.getRemote = function() {
             var _this = this;
-            return news.get(this.id).then(function(response) {
-                _this.init(response.data);
-            });
+            return news.get(this.id)
+                .catch(function() {
+                    console.log('Error while getting article.')
+                })
+                .then(function(response) {
+                    if (!response) { return false; }
+                    _this.init(response.data);
+                });
         };
 
         Article.prototype.getTime = function() {
@@ -86,6 +93,18 @@
 
         Article.prototype.getCreatedAtFormatted = function() {
             return moment(this.getTime()).format('DD.MM.YYYY');
+        };
+
+        Article.prototype.setPublished = function(value) {
+            var _this = this;
+
+            return news.publish(this.id, value)
+                .catch(function(err) {
+                    console.warn(err);
+                })
+                .then(function () {
+                    _this.isPublished = value;
+                });
         };
 
         return Article;

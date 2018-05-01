@@ -15,7 +15,8 @@
 		var service = {
 			deployCroppedImage: deployCroppedImage,
 			deployRawImage: deployRawImage,
-			deployImageString: deployImageString
+			deployImageString: deployImageString,
+			deployByExternalUrl: deployByExternalUrl
 		};
 
 		return service;
@@ -130,8 +131,6 @@
 				base64Image: imgString
 			};
 
-			console.log(config);
-
 			if (config && config.instance && config.instanceId) {
 				params.instance = config.instance;
 				params.instanceId = config.instanceId;
@@ -139,6 +138,36 @@
 
 			return $http.post(apiUrl + '/image-upload', params);
 		}
+
+		function deployByExternalUrl(url) {
+			var defer = $q.defer();
+
+			toDataURL(url, function(dataUrl) {
+				deployImageString(dataUrl).then(function(response) {
+					console.log(response);
+					defer.resolve(response);
+				});
+			});
+
+			return defer.promise;
+		}
+
+		function toDataURL(url, callback) {
+			var xhr = new XMLHttpRequest();
+			xhr.onload = function() {
+				var reader = new FileReader();
+				reader.onloadend = function() {
+					callback(reader.result);
+				};
+				reader.readAsDataURL(xhr.response);
+			};
+
+			xhr.open('GET', url);
+			xhr.responseType = 'blob';
+			xhr.send();
+		}
+
+
 
 	}
 })();

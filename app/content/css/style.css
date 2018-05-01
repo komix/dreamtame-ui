@@ -220,6 +220,15 @@
   padding: 30px;
   text-align: center; }
 
+@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
+  html {
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    width: 100vh;
+    overflow-x: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0; } }
 .row-no-padding > [class*="col-"] {
   padding-left: 0 !important;
   padding-right: 0 !important; }
@@ -342,6 +351,8 @@ body {
     .auth-view .sign-form.forgot-form {
       padding: 0;
       margin: 0; }
+  .auth-view .auth-providers {
+    padding-top: 15px; }
 
 .profile-view .user-profile {
   margin-bottom: 20px; }
@@ -669,7 +680,7 @@ body {
   .location-string i {
     display: inline-block;
     position: absolute;
-    left: 0;
+    left: 1px;
     top: 0;
     font-size: 22px; }
 
@@ -1465,6 +1476,12 @@ body {
 
 .article-view {
   overflow: hidden; }
+  .article-view .admin-block {
+    overflow: hidden; }
+    .article-view .admin-block .article-status {
+      line-height: 30px; }
+    .article-view .admin-block .dt-btn {
+      margin-left: 10px; }
   .article-view .article-header {
     overflow: hidden;
     margin-bottom: 15px; }

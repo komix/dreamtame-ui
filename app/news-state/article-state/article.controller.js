@@ -5,14 +5,16 @@
         .module('app')
         .controller('ArticleController', ArticleController);
 
-    ArticleController.$inject = ['$scope', '$stateParams', 'Article', 'metaTags'];
+    ArticleController.$inject = ['$scope', '$stateParams', 'Article', 'metaTags', 'users'];
 
-    function ArticleController($scope, $stateParams, Article, metaTags) {
+    function ArticleController($scope, $stateParams, Article, metaTags, users) {
         var vm = this;
 
         var articleId = $stateParams.id;
 
         vm.article = new Article({id: articleId});
+
+        vm.isAdmin = isAdmin;
 
         activate();
 
@@ -26,6 +28,13 @@
             $scope.$on('$destroy', function() {
                 metaTags.reset();
             });
+        }
+
+
+        function isAdmin() {
+            if (!users.current) { return false; }
+
+            return  users.current.role === 'admin' || users.current.role === 'superman';
         }
 
     }

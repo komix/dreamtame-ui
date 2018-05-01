@@ -5,9 +5,11 @@
         .module('app')
         .factory('users', users);
 
-    users.$inject = ['$state', '$rootScope', 'dtApi', 'User', 'permissions', '$uibModalStack', '$localStorage'];
+    users.$inject = ['$state', '$rootScope', '$timeout', 'dtApi', 'User', 'permissions', '$uibModalStack',
+        '$localStorage', 'imageService'];
 
-    function users($state, $rootScope, dtApi, User, permissions, $uibModalStack, $localStorage) {
+    function users($state, $rootScope, $timeout, dtApi, User, permissions, $uibModalStack,
+                   $localStorage, imageService) {
 
         var service = {
             current: null,
@@ -22,7 +24,8 @@
             update: update,
             isPermissionAvailable: isPermissionAvailable,
             requestPasswordChange: requestPasswordChange,
-            restorePassword: restorePassword
+            restorePassword: restorePassword,
+            watchFacebookAuthChange: watchFacebookAuthChange
         };
 
         return service;
@@ -117,6 +120,14 @@
 
         function restorePassword(params) {
             return service.current.restorePassword(params)
+        }
+
+         function watchFacebookAuthChange() {
+             FB.Event.subscribe('auth.authResponseChange', function(res) {
+                if (res.status === 'connected') {
+                    service.current.loginWithOuterService(res.authResponse.accessToken);
+                }
+            });
         }
     }
 })();

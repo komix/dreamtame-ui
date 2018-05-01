@@ -19,13 +19,33 @@ angular
     .config(['$urlRouterProvider', '$locationProvider', '$compileProvider', 'AnalyticsProvider',
         function($urlRouterProvider, $locationProvider, $compileProvider, AnalyticsProvider) {
             $locationProvider.html5Mode(true);
-            $urlRouterProvider.otherwise("login");
+            $urlRouterProvider.otherwise('login/signin');
             $compileProvider.preAssignBindingsEnabled(true);
-
             AnalyticsProvider.setAccount('UA-109656575-1');
         }])
 
-    .run(['Analytics', function(Analytics) { }]);
+    .run(['Analytics', function(Analytics) { }])
+    .run(['$rootScope', '$window', 'users', function($rootScope, $window, users) {
+        (function(d){
+            // load the Facebook javascript SDK
+
+            var js,
+                id = 'facebook-jssdk',
+                ref = d.getElementsByTagName('script')[0];
+
+            if (d.getElementById(id)) {
+                return;
+            }
+
+            js = d.createElement('script');
+            js.id = id;
+            js.async = true;
+            js.src = "//connect.facebook.net/en_US/all.js";
+
+            ref.parentNode.insertBefore(js, ref);
+
+        }(document));
+    }]);
 
 
 

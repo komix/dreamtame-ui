@@ -51,14 +51,20 @@
                         data: {_username: credentials.name, _password: credentials.password}
                     })
                 .then(function (response) {
-                    if (!response) { return false; }
-                    $localStorage.token = response.data.token;
-                    _this.currentToken = response.data.token;
-                    _this.load().then(function(response) {
-                        _this.init(response);
-                        _this.emit('onLoaded');
-                    });
+                    if (!response || !response.data ||  !response.data.token) { return false; }
+                    _this.loadByToken(response.data.token)
                 });
+        };
+
+        User.prototype.loadByToken = function(token) {
+            var _this = this;
+            $localStorage.token = token;
+
+            this.currentToken = token;
+            this.load().then(function(response) {
+                _this.init(response);
+                _this.emit('onLoaded');
+            });
         };
 
         User.prototype.signup = function(credentials) {
@@ -138,6 +144,13 @@
 
         User.prototype.restorePassword = function(params) {
             return $http.post(global.apiUrl + '/restore-password', params);
+        };
+
+        User.prototype.loginWithOuterService = function(token) {
+            var _this = this;
+            return $http.post(global.apiUrl + '/login-outer/' + token).then(function (response) {
+                _this.loadByToken(response.data.token);
+            });
         };
 
         return User;
