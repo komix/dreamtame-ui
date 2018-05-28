@@ -16,6 +16,7 @@
             get: get,
             getLastN: getLastN,
             getAll: getAll,
+            getAllIncludingUnpublished: getAllIncludingUnpublished,
             update: update,
             remove: remove,
             publish: publish
@@ -48,6 +49,14 @@
         function getAll(params) {
             var defered = $q.defer();
             $http.post(apiUrl +  '/news', params).then(function(data){
+                defered.resolve(data);
+            });
+            return defered.promise;
+        }
+
+        function getAllIncludingUnpublished(params) {
+            var defered = $q.defer();
+            $http.post(apiUrl +  '/api/news-all', params).then(function(data){
                 defered.resolve(data);
             });
             return defered.promise;

@@ -5,6 +5,10 @@
             <img data-ng-src="{{vm.institution.imgUrl}}"
                  data-preload-image
                  data-default-image="content/images/preloader.gif"
+                 data-ng-if="vm.institution.imgUrl"
+            >
+            <img data-ng-if="!vm.institution.imgUrl"
+                 src="content/images/placeholder_cropped.jpg" alt=""
             >
         </a>
     </div>

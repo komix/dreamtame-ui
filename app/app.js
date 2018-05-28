@@ -13,13 +13,14 @@ angular
       'youtube-embed',
       'summernote',
       'angular-preload-image',
-      'angular-google-analytics'
+      'angular-google-analytics',
+      '720kb.socialshare'
     ])
 
     .config(['$urlRouterProvider', '$locationProvider', '$compileProvider', 'AnalyticsProvider',
         function($urlRouterProvider, $locationProvider, $compileProvider, AnalyticsProvider) {
             $locationProvider.html5Mode(true);
-            $urlRouterProvider.otherwise('home');
+            $urlRouterProvider.otherwise('/');
             $compileProvider.preAssignBindingsEnabled(true);
             AnalyticsProvider.setAccount('UA-109656575-1');
         }])

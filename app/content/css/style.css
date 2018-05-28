@@ -1501,6 +1501,11 @@ body {
     hyphens: auto; }
     .article-view .article-text img {
       max-width: 75%; }
+    .article-view .article-text a {
+      text-decoration: underline; }
+    @media screen and (max-width: 992px) {
+      .article-view .article-text img {
+        max-width: 100%; } }
   .article-view .note-video-clip {
     max-width: 100%; }
 
@@ -1706,5 +1711,8 @@ body {
   @media screen and (max-width: 480px) {
     .privacy-state {
       padding: 15px; } }
+
+.share-buttons {
+  padding: 10px 0; }
 
 /*# sourceMappingURL=style.css.map */

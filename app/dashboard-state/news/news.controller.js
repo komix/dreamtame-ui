@@ -14,7 +14,7 @@
         activate();
 
         function activate() {
-            vm.news.getRemote();
+            vm.news.getAdminRemote();
         }
     }
 })();

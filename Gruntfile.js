@@ -24,7 +24,7 @@ module.exports = function (grunt) {
         "<%= publicPath %>/app/**/*.config.js",
         "<%= publicPath %>/app/**/*.run.js",
         "<%= publicPath %>/app/**/*.js",
-        "!<%= publicPath %>/app/**/bower_components/**"
+        "!<%= publicPath %>/app/bower_components/**"
     ];
     var CSS_DEPENDENCIES = [
     ];

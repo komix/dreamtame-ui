@@ -32,7 +32,6 @@
         vm.options = {
             height: 500,
             focus: true,
-
             toolbar: [
                 ['edit',['undo','redo']],
                 ['headline', ['style']],

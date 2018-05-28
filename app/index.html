@@ -12,6 +12,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-site-verification" content="he8LJMfHmznOiIOQz-6k0D1QLkvJQceccxvocNUJyl8" />
 
+  <meta property="og:url"                content="{{vm.metaTags.ogUrl}}" />
+  <meta property="og:type"               content="article" />
+  <meta property="og:title"              content="{{vm.metaTags.title}}" />
+  <meta property="og:description"        content="{{vm.metaTags.description}}" />
+  <meta property="og:image"              content="{{vm.metaTags.imageUrl}}" />
+
   <link rel="apple-touch-icon" sizes="180x180" href="content/icons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="content/icons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="content/icons/favicon-16x16.png">
@@ -73,7 +79,8 @@
   <script src="bower_components/chance/dist/chance.min.js"></script>
   <script src="bower_components/ng-cropper/dist/ngCropper.all.js"></script>
   <script src="bower_components/angular-preload-image/angular-preload-image.min.js"></script>
-  
+  <script src="bower_components/angular-socialshare/dist/angular-socialshare.min.js"></script>
+
   <script src="app.js"></script>
   <script src="core/global.service.js"></script>
   <script src="core/confirm.service.js"></script>
@@ -134,6 +141,7 @@
   <script src="layout/truncate/truncate.directive.js"></script>
 
   <script src="layout/footer/footer.directive.js"></script>
+  <script src="layout/share-buttons/share-buttons.directive.js"></script>
 
   <script src="home-state/home.route.js"></script>
   <script src="home-state/home.controller.js"></script>

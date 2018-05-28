@@ -18,6 +18,7 @@
             title: DEFAULT_TITLE,
             description: DEFAULT_DESCRIPTION,
             setTitle: setTitle,
+            setOg: setOg,
             setDescription: setDescription,
             reset: reset
         };
@@ -30,9 +31,17 @@
             service.description = description;
         }
 
+        function setOg(options) {
+            service.image = options.image;
+            service.url = options.url;
+            console.log(service);
+        }
+
         function reset() {
             service.setTitle(DEFAULT_TITLE);
             service.setDescription(DEFAULT_DESCRIPTION);
+            service.image = '';
+            service.url = '';
         }
 
         return service;

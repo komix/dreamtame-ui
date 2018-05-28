@@ -55,6 +55,16 @@
     img {
       max-width: 75%;
     }
+
+    a {
+      text-decoration: underline;
+    }
+
+    @media screen and (max-width: $break-small) {
+      img {
+        max-width: 100%;
+      }
+    }
   }
 
   .note-video-clip {

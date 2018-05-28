@@ -15,6 +15,8 @@
         vm.article = new Article({id: articleId});
 
         vm.isAdmin = isAdmin;
+        vm.getArticleUrl = getArticleUrl;
+        vm.getArticleHashtags = getArticleHashtags;
 
         activate();
 
@@ -23,6 +25,10 @@
                 vm.options = { article: vm.article };
                 metaTags.setTitle(vm.article.title);
                 metaTags.setDescription(vm.article.snippet);
+                metaTags.setOg({
+                    image: vm.article.imgUrl,
+                    url: vm.getArticleUrl()
+                })
             });
 
             $scope.$on('$destroy', function() {
@@ -30,11 +36,19 @@
             });
         }
 
-
         function isAdmin() {
             if (!users.current) { return false; }
 
             return  users.current.role === 'admin' || users.current.role === 'superman';
+        }
+
+        function getArticleUrl() {
+            var baseUrl = 'http://dreamtame.com/news/article/';
+            return baseUrl + articleId
+        }
+
+        function getArticleHashtags() {
+            return 'dreamtame';
         }
 
     }

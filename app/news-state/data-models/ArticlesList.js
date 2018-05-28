@@ -55,6 +55,20 @@
                 });
         };
 
+        ArticlesList.prototype.getAdminRemote = function() {
+            if (this.allArticlesLoaded || this.isLoadInProcess) { return false; }
+            var _this = this;
+
+            this.isLoadInProcess = true;
+            return this.getAdminRemoteRequest()
+                .then(function(response) {
+                    _this.addList(response.data);
+                })
+                .finally(function() {
+                    _this.isLoadInProcess = false;
+                });
+        };
+
         ArticlesList.prototype.getRemoteRequest = function() {
             if (this.limit) {
                 return news.getLastN({
@@ -66,8 +80,13 @@
                     limit: 15
                 })
             }
+        };
 
 
+        ArticlesList.prototype.getAdminRemoteRequest = function () {
+            return news.getAllIncludingUnpublished({
+                limit: this.limit
+            })
         };
 
         return ArticlesList;
