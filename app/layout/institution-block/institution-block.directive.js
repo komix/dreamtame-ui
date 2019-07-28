@@ -16,17 +16,20 @@
             restrict: 'EA',
             templateUrl: 'layout/institution-block/institution-block.html',
             scope: {
-                inst: '='
+                inst: '=',
+                isCategoryButtonVisible: '=?'
             }
         };
 
         return directive;
     }
 
-    InstBlockController.$inject = [];
+    InstBlockController.$inject = ['categoriesService'];
 
-    function InstBlockController() {
+    function InstBlockController(categoriesService) {
         var vm = this;
+
+        vm.getCategoryTitle = getCategoryTitle;
 
         activate();
 
@@ -42,6 +45,13 @@
                 address: vm.inst.address,
                 title: vm.inst.title
             }
+        }
+
+        function getCategoryTitle(id) {
+            var category = categoriesService.getInstanceById(id);
+            if (!category) { return ''; }
+
+            return category.ukName;
         }
 
     }

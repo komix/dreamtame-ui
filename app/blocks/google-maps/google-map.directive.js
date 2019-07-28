@@ -64,6 +64,8 @@
                 var position = getPosition(place);
 
                 vm.config.address = input.value;
+                vm.config.showError = false;
+                $scope.$apply();
 
                 setMarker(position);
                 centerMap(position);

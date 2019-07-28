@@ -3,7 +3,9 @@
      data-infinite-scroll-distance="0"
 >
   <div data-ng-repeat="institution in vm.institutions.data">
-    <inst-block data-inst="institution">
+    <inst-block data-inst="institution"
+                data-is-category-button-visible="true"
+    >
     </inst-block>
     <div class="block-separator" data-ng-if="!$last"></div>
   </div>

@@ -24,6 +24,12 @@
            data-ng-bind="vm.inst.description"
       >
       </div>
+      <div class="category-button" data-ng-if="vm.isCategoryButtonVisible">
+        <a ui-sref="institutions.category({id: vm.inst.categoryId})"
+           class="category-button btn btn-default dt-btn dt-btn-sm"
+           data-ng-bind="vm.getCategoryTitle(vm.inst.categoryId)"
+        ></a>
+      </div>
     </div>
   </div>
 </div>

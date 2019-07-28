@@ -41,6 +41,8 @@
         vm.isCreateState = true;
         vm.isLoadInProcess = true;
 
+        vm.isCategoryErrorVisible = isCategoryErrorVisible;
+
         vm.submit = submit;
 
         activate();
@@ -125,21 +127,44 @@
                 elem.$setDirty();
             });
 
-            if (!vm.form.$valid) { return false; }
+            var formIsValid = true;
 
-            if (vm.googleMapsConfig.address) {
-                vm.inst.address = vm.googleMapsConfig.address;
-                vm.inst.lat = vm.googleMapsConfig.lat;
-                vm.inst.lng = vm.googleMapsConfig.lng;
+            if (!vm.form.$valid) { formIsValid = false; }
+
+            if (!vm.googleMapsConfig.address) {
+                formIsValid = false;
+                vm.addressError = true;
+                vm.googleMapsConfig.showError = true;
             }
 
-            vm.inst.categoryId = _.last(vm.infSelectConfig.selectedList).id;
+            vm.inst.address = vm.googleMapsConfig.address;
+            vm.inst.lat = vm.googleMapsConfig.lat;
+            vm.inst.lng = vm.googleMapsConfig.lng;
+            vm.inst.categoryId = getSelectedCategoryId();
+
+            if (!vm.inst.categoryId) {
+                formIsValid = false;
+                vm.categorySelectError = true;
+            }
+
+            if (!formIsValid) {
+                return false;
+            }
 
             getSubmitPromise().then(function(response) {
                 var institutionId = instId || response.data.institutionId;
                 $state.go('institutions.institution.photos', {id: institutionId});
             });
 
+        }
+
+        function getSelectedCategoryId() {
+            var selectedCategory = _.last(vm.infSelectConfig.selectedList);
+            return selectedCategory ? selectedCategory.id : null;
+        }
+
+        function isCategoryErrorVisible() {
+            return vm.categorySelectError && !getSelectedCategoryId();
         }
     }
 

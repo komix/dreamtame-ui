@@ -1443,6 +1443,8 @@ body {
     font-size: 12px;
     padding: 0 8px;
     box-shadow: none; }
+.free-search .search-results {
+  padding-bottom: 15px; }
 
 .footer {
   padding: 10px;
@@ -1714,5 +1716,8 @@ body {
 
 .share-buttons {
   padding: 10px 0; }
+
+.search-state .search-results {
+  padding-bottom: 15px; }
 
 /*# sourceMappingURL=style.css.map */

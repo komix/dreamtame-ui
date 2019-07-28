@@ -1,9 +1,14 @@
 <div class="dt-google-map">
-     <div data-ng-if="vm.config.searchField" class="dt-google-map-autocomplete-wrap form-group">
+     <div data-ng-if="vm.config.searchField" class="dt-google-map-autocomplete-wrap form-group dt-form">
           <input id="dt-google-map-autocomplete"
                  type="text"
                  class="form-control"
-                 data-ng-model="vm.config.address">
+                 data-ng-model="vm.config.address"
+                 data-ng-class="{'ng-invalid ng-dirty': vm.config.showError}"
+          >
+     </div>
+     <div class="alert alert-danger" role="alert" data-ng-if="vm.config.showError">
+          Почніть вводити адресу та оберіть один із запропонованих пунктів.
      </div>
      <div data-ng-attr-id="{{vm.config.id}}"
           class="google-map"

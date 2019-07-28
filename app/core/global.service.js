@@ -9,7 +9,7 @@
 
     function global() {
     	var service = {
-            apiUrl: 'http://api.dreamtame.com',
+            apiUrl: 'https://api.dreamtame.com',
             // apiUrl: 'http://localhost:8000',
             states: null
     	};
